@@ -4,7 +4,7 @@
 
 -	TypeScript
 -   ReactJs
--   Redux
+-   Redux, Redux-Saga
 -   axios
 
 ## Установка
