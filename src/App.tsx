@@ -9,7 +9,7 @@ const App: React.FC = () => {
     return (
         <>
             <Suspense fallback={<></>}>
-				<HeaderMain />
+				{/* <HeaderMain /> */}
 				
                 <Routes>
                     <Route path="/" element={<Home />} />

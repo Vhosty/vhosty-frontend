@@ -13,7 +13,7 @@
 Клонируйте репозиторий.
 
 ```
-git clone https://github.com/vhosty/vhosty-frontend.git
+git clone https://github.com/Vhosty/vhosty-frontend.git
 ```
 
 Переход в рабочий каталог.
