@@ -7,6 +7,90 @@
 body
 	font-family: 'Ubuntu', sans-serif
 	font-size: 20px
+	background-color: #F3F4F5
+	overflow-x: hidden
+	color: $black
+
+// title
+h1, h2, h3, h4, h5, h6
+	font-weight: 700
+	line-height: 1.3em
+
+	& > span
+		color: $mainColor
+
+// description
+p
+	line-height: 1.5em
+
+.description
+	font-size: 20px
+
+// link
+a
+	text-decoration: none
+	color: $black
+
+// input
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active
+	-webkit-box-shadow: 0 0 0 30px rgba(225, 225, 225, 0.2) inset !important
+
+input
+	outline: none
+	font-family: 'Ubuntu', sans-serif
+
+// btn
+button
+	user-select: none
+	font-family: 'Ubuntu', sans-serif
+	border: none
+
+.btn
+	display: inline-block
+
+	cursor: pointer
+
+	padding: 20px 60px
+
+	font-size: 20px
+	font-weight: 700
+	color: $white
+
+	background: $mainGradient
+	background-size: 200%
+
+	border-radius: 100px
+
+	+transition
+
+	&:hover
+		background-position: center
+
+	&:active
+		background-position: right
+
+.btn-light
+	display: inline-block
+
+	cursor: pointer
+
+	padding: 20px 60px
+
+	font-size: 20px
+	font-weight: 700
+
+	color: $mainColor
+	background-color: $white
+
+	border-radius: 100px
+
+	+transition
+
+	&:hover
+		background-color: #F2FAFA
 
 // container
 .container
