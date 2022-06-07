@@ -43,7 +43,7 @@ npm start
 
 Используем только функциональные компоненты
 
-```TSX
+```JSX
 import React from "react";
 
 interface ExampleProps {}
