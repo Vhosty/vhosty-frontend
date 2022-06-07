@@ -38,3 +38,19 @@ npm install
 ```
 npm start
 ```
+
+## Руководство по стилю кода
+
+Используем только функциональные компоненты
+
+```TSX
+import React from "react";
+
+interface ExampleProps {}
+
+const Example: React.FC<ExampleProps> = () => {
+    return <div></div>;
+};
+
+export default Example;
+```
