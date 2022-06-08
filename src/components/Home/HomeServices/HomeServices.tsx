@@ -1,15 +1,45 @@
 import React from "react";
 
+import gsap from "gsap";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+
 import Service1 from "../../../assets/images/service1.png";
 import Service2 from "../../../assets/images/service2.png";
 import Service3 from "../../../assets/images/service3.png";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const HomeServices: React.FC = () => {
+    const panels = React.useRef<any>([]);
+    const panelsContainer = React.useRef<any>();
+
+    const createPanelsRefs = (panel: any, index: number) => {
+        panels.current[index] = panel;
+    };
+
+    React.useEffect(() => {
+        const totalPanels = panels.current.length;
+        const width: number = panelsContainer.current.offsetWidth;
+
+        gsap.to(panels.current, {
+            xPercent: -100 * (totalPanels - 1.5),
+            scrollTrigger: {
+                trigger: panelsContainer.current,
+                pin: true,
+                scrub: 1,
+                end: `+=${width}`,
+            },
+        });
+    }, []);
+
     return (
-        <section className="home-services">
+        <section className="home-services" ref={panelsContainer}>
             <div className="container">
                 <div className="home-services-wrapper">
-                    <div className="home-services-item">
+                    <div
+                        className="home-services-item"
+                        ref={(e) => createPanelsRefs(e, 0)}
+                    >
                         <div className="home-services-item-text">
                             <h2 className="home-services-item-text__title">
                                 Получи <span>500 бонусов</span> при регистрации
@@ -30,8 +60,10 @@ const HomeServices: React.FC = () => {
                             className="home-services-item__image"
                         />
                     </div>
-
-                    <div className="home-services-item color">
+                    <div
+                        className="home-services-item color"
+                        ref={(e) => createPanelsRefs(e, 1)}
+                    >
                         <div className="home-services-item-text">
                             <h2 className="home-services-item-text__title">
                                 Дешевле некуда!
@@ -53,8 +85,10 @@ const HomeServices: React.FC = () => {
                             className="home-services-item__image"
                         />
                     </div>
-
-                    <div className="home-services-item">
+                    <div
+                        className="home-services-item"
+                        ref={(e) => createPanelsRefs(e, 2)}
+                    >
                         <div className="home-services-item-text">
                             <h2 className="home-services-item-text__title">
                                 Писать отзывы <span>выгодно!</span>
