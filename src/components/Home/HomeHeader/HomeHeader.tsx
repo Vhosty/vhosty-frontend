@@ -44,8 +44,8 @@ const HomeHeader: React.FC = () => {
                 </Link>
             </div>
 
-			<HomeHeaderSearch />
-			
+            <HomeHeaderSearch />
+
             <HomeHeaderPassLink />
 
             <HomeHeaderUser />
