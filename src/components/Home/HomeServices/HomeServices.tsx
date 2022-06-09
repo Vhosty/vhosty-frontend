@@ -27,7 +27,7 @@ const HomeServices: React.FC = () => {
                 trigger: panelsContainer.current,
                 pin: true,
                 scrub: 1,
-                end: `+=${width}`,
+                end: `+=${width-500}`,
             },
         });
     }, []);
@@ -51,7 +51,7 @@ const HomeServices: React.FC = () => {
                         </div>
 
                         <button className="btn home-services-item__btn">
-                            Регистрация
+                            Зарегистрироваться
                         </button>
 
                         <img

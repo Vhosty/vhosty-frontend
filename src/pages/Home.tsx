@@ -1,7 +1,13 @@
 import React from "react";
 import {Helmet} from "react-helmet";
 
-import {HomeHeader, FiltersForm, HomeServices} from "../components";
+import {
+    HomeHeader,
+    FiltersForm,
+    HomeServices,
+    HomeSecurity,
+    HomeCorporate,
+} from "../components";
 
 import MainBg from "../assets/images/main-bg.png";
 
@@ -54,8 +60,8 @@ const Home: React.FC = () => {
                             <p className="description home-main-text__description">
                                 Бронирование жилья и отелей, которые впечатляют.
                             </p>
-						</div>
-						
+                        </div>
+
                         <div className="home-main-form">
                             <FiltersForm />
                         </div>
@@ -64,6 +70,10 @@ const Home: React.FC = () => {
             </section>
 
             <HomeServices />
+
+			<HomeSecurity />
+		
+			<HomeCorporate />
         </>
     );
 };

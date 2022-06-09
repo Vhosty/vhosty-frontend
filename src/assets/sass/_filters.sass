@@ -5,9 +5,25 @@
 	width: 100%
 	background-color: $white
 
-	min-height: 250px
-
 	+borderRadius
 
 	&-block
-		margin-bottom: 50px
+		&-row
+			display: flex
+			align-items: center
+			justify-content: space-between
+
+			&:last-child
+				margin-top: 25px
+
+		&.left
+			width: 30%
+
+		&.middle
+			width: 50%
+
+		&.right
+			width: 15%
+
+		&__btn
+			width: 100%
