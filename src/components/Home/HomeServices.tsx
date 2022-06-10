@@ -3,9 +3,9 @@ import React from "react";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 
-import Service1 from "../../../assets/images/service1.png";
-import Service2 from "../../../assets/images/service2.png";
-import Service3 from "../../../assets/images/service3.png";
+import Service1 from "../../assets/images/service1.png";
+import Service2 from "../../assets/images/service2.png";
+import Service3 from "../../assets/images/service3.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,12 +22,12 @@ const HomeServices: React.FC = () => {
         const width: number = panelsContainer.current.offsetWidth;
 
         gsap.to(panels.current, {
-            xPercent: -100 * (totalPanels - 1.5),
+            xPercent: -100 * (totalPanels - 0.5),
             scrollTrigger: {
                 trigger: panelsContainer.current,
                 pin: true,
                 scrub: 1,
-                end: `+=${width-500}`,
+                end: `+=${width}`,
             },
         });
     }, []);

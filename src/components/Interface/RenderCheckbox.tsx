@@ -8,12 +8,15 @@ interface CheckboxProps {
 
     small?: boolean;
     questionMessage?: string;
+
+    input: any;
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({
     children,
     small,
     questionMessage,
+    input,
 }) => {
     const id = v4();
 
@@ -55,7 +58,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
     return (
         <div className="checkbox-wrapper">
-            <input id={id} type="checkbox" className="checkbox" />
+            <input {...input} id={id} type="checkbox" className="checkbox" />
 
             <label
                 htmlFor={id}

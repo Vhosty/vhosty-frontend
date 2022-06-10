@@ -1,0 +1,70 @@
+// footer
+.footer
+	background-color: $white
+	padding: 50px 0
+
+	&-block-wrapper
+		display: flex
+		justify-content: space-between
+
+		margin-bottom: 50px
+
+		&:last-child
+			margin-bottom: 0
+
+	&-block
+		border: 1px solid gray
+
+		&-content
+			width: 25%
+
+		&-menu
+			width: 60%
+
+			display: flex
+			justify-content: space-between
+
+			&-item
+				&__subtitle
+					color: $darkMainColor
+					font-weight: 500
+
+					margin-bottom: 25px
+
+				&__link
+					display: block
+					font-size: 15px
+					margin-bottom: 15px
+
+					+transition
+
+					&:hover
+						color: $darkMainColor
+
+		&-logo
+			&__image
+				+disabledImage
+
+			&__subtitle
+				display: block
+				margin-top: 15px
+
+				font-size: 15px
+
+		&-social
+			margin-top: 50px
+
+			&__item
+				margin-right: 25px
+
+				& > svg
+					width: 30px
+
+		&__link
+			color: $gray
+			font-size: 15px
+
+			+transition
+
+			&:hover
+				color: $black

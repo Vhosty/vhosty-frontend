@@ -16,7 +16,7 @@ const HomeSecurity: React.FC = () => {
                 <div className="home-security-wrapper">
                     <h2 className="home-security__title">
                         Мы выбираем <span>безопасность</span> и{" "}
-                        <span>доверие</span>.
+                        <span>доверие.</span>
                     </h2>
                     <div className="home-security-items-wrapper">
                         <div className="home-security-item">

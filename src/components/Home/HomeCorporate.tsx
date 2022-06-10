@@ -1,5 +1,7 @@
 import React from "react";
 
+import {Link} from 'react-router-dom';
+
 import mockupCorporate from "../../assets/images/mockup-corporate.png";
 import bgImage1Corporate from "../../assets/images/bg-image1-corporate.png";
 
@@ -35,9 +37,9 @@ const HomeCorporate: React.FC = () => {
                             прогрессивного развития.
                         </p>
                         <div className="home-corporate-text-btn">
-                            <button className="btn home-corporate-text-btn__btn">
+                            <Link to="/1" className="btn home-corporate-text-btn__btn">
                                 Для корпоративных клиентов
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

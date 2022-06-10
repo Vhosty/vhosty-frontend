@@ -48,7 +48,7 @@ const FiltersForm: React.FC = () => {
 
             <div className="filters-form-block-row">
                 <div className="filters-form-block left filters-form-block-input">
-                    <Input label="Например, Дубай" />
+                    <Input label="Например, Дубай" small />
                 </div>
 
                 <div className="filters-form-block middle filters-form-block-calendar">
@@ -68,10 +68,9 @@ const FiltersForm: React.FC = () => {
                 </div>
 
                 <div className="filters-form-block middle filters-form-block-checkbox">
-                    <Checkbox
-                        label="У меня гибкая дата"
-                        questionMessage="Поиск будет осуществляться с учетом 3-х дат до и 3-х дат после указанных"
-                    />
+                    <Checkbox questionMessage="Поиск будет осуществляться с учетом 3-х дат до и 3-х дат после указанных">
+                        У меня гибкая дата
+                    </Checkbox>
                 </div>
 
                 <div className="filters-form-block right"></div>

@@ -7,9 +7,10 @@ import {
     HomeServices,
     HomeSecurity,
     HomeCorporate,
+    HomeEmail,
 } from "../components";
 
-import MainBg from "../assets/images/main-bg.png";
+import MainBg from "../assets/images/main-bg.jpg";
 
 const Home: React.FC = () => {
     const title = "отдыха мечты";
@@ -28,7 +29,7 @@ const Home: React.FC = () => {
             if (letterIndex !== titleSplit.length) {
                 writeTitle += titleSplit[letterIndex];
 
-                setWriteTitle(writeTitle + "|");
+                setWriteTitle(writeTitle);
 
                 letterIndex++;
             } else {
@@ -55,6 +56,7 @@ const Home: React.FC = () => {
                         <div className="home-main-text">
                             <h1 className="home-main-text__title">
                                 Несколько кликов до <span>{writeTitle}</span>
+                                <span id="blink">|</span>
                             </h1>
 
                             <p className="description home-main-text__description">
@@ -71,9 +73,11 @@ const Home: React.FC = () => {
 
             <HomeServices />
 
-			<HomeSecurity />
-		
-			<HomeCorporate />
+            <HomeSecurity />
+
+            <HomeCorporate />
+
+            <HomeEmail />
         </>
     );
 };

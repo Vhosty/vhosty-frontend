@@ -1,16 +1,21 @@
-import React, {Suspense, lazy} from "react";
-import {Routes, Route} from "react-router-dom";
+import React from "react";
+import {Route, Routes} from "react-router-dom";
 
-const Home = lazy(() => import("./pages/Home"));
+import {Footer} from "./components/";
 
-const App: React.FC = () => {
+const Home = React.lazy(() => import("./pages/Home"));
+
+const App = () => {
     return (
         <>
-            <Suspense fallback={<></>}>
+            <React.Suspense fallback={<></>}>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/policy" element={<>policy</>} />
                 </Routes>
-            </Suspense>
+
+                <Footer />
+            </React.Suspense>
         </>
     );
 };

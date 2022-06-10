@@ -109,6 +109,11 @@ button
 	&.small
 		padding: 15px 55px
 
+	&.disabled
+		pointer-events: none
+		color: $gray
+		background: $lightGray
+
 .btn-light
 	display: inline-flex
 	justify-content: center
@@ -132,6 +137,12 @@ button
 		background-color: #F2FAFA
 
 // input
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active
+	-webkit-box-shadow: 0 0 0 30px white inset !important
+
 .input
 	position: relative
 	width: 100%
@@ -141,14 +152,31 @@ button
 		color: $black
 
 		border-radius: 100px
-		padding: 13px 25px
+		padding: 18px 25px
 		width: 100%
 
 		background-color: transparent
 		border: 2px solid $lightGray
 
+		&.small
+			padding: 13px 25px
+
 		&::placeholder
+			user-select: none
 			color: $lightGray
+
+		&.error
+			border: 2px solid $red
+
+			&::placeholder
+				color: $red
+
+	&__error
+		margin-top: 5px
+		font-size: 15px
+		color: $red
+
+		+openPopup
 
 // popup
 .popup
@@ -514,6 +542,13 @@ button
 		user-select: none
 		+transition
 
+		& > a
+			margin-left: 4px
+			color: $mainColor
+
+		&.small
+			font-size: 15px
+
 	&__label::before
 		content: ''
 		display: inline-block
@@ -577,3 +612,14 @@ button
 			left: 35px
 
 			+borderRadius
+
+#blink
+	user-select: none
+	animation: blink 1s infinite
+
+@keyframes blink
+	50%
+		opacity: 1
+
+	100%
+		opacity: 0

@@ -1,7 +1,8 @@
 // Interface
 export {default as Popup} from "./Interface/Popup";
 export {default as Input} from "./Interface/Input";
-export { default as TitleIcon } from "./Interface/TitleIcon";
+export {default as RenderInput} from "./Interface/RenderInput";
+export {default as TitleIcon} from "./Interface/TitleIcon";
 // Calendar
 export {default as Calendar} from "./Interface/Calendar/Calendar";
 export {default as CalendarSelect} from "./Interface/Calendar/CalendarSelect";
@@ -12,6 +13,7 @@ export {default as GuestRoomSelectItem} from "./Interface/GuestRoom/GuestRoomSel
 export {default as GuestRoomSelectItemKids} from "./Interface/GuestRoom/GuestRoomSelectItemKids";
 // Checkbox
 export {default as Checkbox} from "./Interface/Checkbox";
+export {default as RenderCheckbox} from "./Interface/RenderCheckbox";
 
 // Home
 // HomeHeader
@@ -21,11 +23,17 @@ export {default as HomeHeaderSearch} from "./Home/HomeHeader/HomeHeaderSearch";
 export {default as HomeHeaderUser} from "./Home/HomeHeader/HomeHeaderUser/HomeHeaderUser";
 export {default as HomeHeaderUserNotifications} from "./Home/HomeHeader/HomeHeaderUser/HomeHeaderUserNotifications";
 // HomeServices
-export { default as HomeServices } from "./Home/HomeServices/HomeServices";
+export {default as HomeServices} from "./Home/HomeServices";
 // HomeSecurity
 export {default as HomeSecurity} from "./Home/HomeSecurity";
 // HomeCorporate
 export {default as HomeCorporate} from "./Home/HomeCorporate";
+// HomeEmail
+export {default as HomeEmail} from "./Home/HomeEmail/HomeEmail";
+export {default as HomeEmailForm} from "./Home/HomeEmail/HomeEmailForm";
 
 // FiltersForm
 export {default as FiltersForm} from "./FiltersForm/FiltersForm";
+
+// Footer
+export {default as Footer} from "./Footer/Footer";

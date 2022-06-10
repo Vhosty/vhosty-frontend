@@ -2,12 +2,16 @@ import React from "react";
 
 interface InputProps {
     label: string;
+    small?: boolean;
 }
 
-const Input: React.FC<InputProps> = ({label}) => {
+const Input: React.FC<InputProps> = ({label, small}) => {
     return (
         <div className="input">
-            <input type="text" className="input__field" placeholder={label} />
+            <input
+                className={`input__field ${small ? "small" : ""}`}
+                placeholder={label}
+            />
         </div>
     );
 };
