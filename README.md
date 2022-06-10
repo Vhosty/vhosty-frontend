@@ -42,11 +42,11 @@ npm start
 
 ## Структура проекта
 ### /src
--	/assets - все стили, шрифты, картинки и тд
--	/components - компоненты
--	/functions - дополнительные функции
--	/hooks - кастомные хуки
--	/pages - страницы
+-	/assets - Все стили, шрифты, картинки и тд
+-	/components - Компоненты
+-	/functions - Дополнительные функции
+-	/hooks - Кастомные хуки
+-	/pages - Страницы
 -	/redux - Redux
 	-	/redux/reducers - Редюсеры
 	-	/redux/actions - События
