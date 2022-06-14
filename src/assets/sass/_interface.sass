@@ -267,6 +267,9 @@ input:-webkit-autofill:active
 			justify-content: space-between
 			align-items: center
 
+			&__title
+				user-select: none
+
 			&-arrow-btn
 				cursor: pointer
 
@@ -289,65 +292,65 @@ input:-webkit-autofill:active
 
 				& > svg
 					stroke: $mainColor
+					+transition
 
 		&-days
-			margin-top: 10px
-
 			display: flex
-			justify-content: space-between
-			align-items: center
+			flex-wrap: wrap
 
-			&-column
+			&-title
+				margin-top: 5px
+
 				display: flex
-				flex-direction: column
 
 				&__title
-					width: 32px
-					height: 32px
+					width: calc( 100% / 7 - 8px )
+					height: 36px
+
+					margin: 4px
 
 					display: flex
 					justify-content: center
 					align-items: center
-
-					margin-bottom: 10px
 
 					user-select: none
 					color: $gray
 
-				&__day
-					cursor: pointer
+			&__day
+				cursor: pointer
 
-					font-size: 15px
+				width: calc( 100% / 7 - 8px )
+				height: 36px
 
-					width: 32px
-					height: 32px
+				margin: 4px
 
-					display: flex
-					justify-content: center
-					align-items: center
+				font-size: 15px
 
-					margin-bottom: 10px
+				display: flex
+				justify-content: center
+				align-items: center
 
-					user-select: none
-					border-radius: 50%
+				user-select: none
+				border-radius: 50%
 
-					+transition
+				+transition
 
-					&:last-child
-						margin-bottom: 0
+				&:last-child
+					margin-bottom: 0
 
-					&:hover
-						background-color: #E6F6F6
+				&:hover
+					background-color: #E6F6F6
 
-					&.included
-						background-color: #E6F6F6
+				&.included
+					background-color: #E6F6F6
 
-					&.active
-						color: $white
-						background-color: $mainColor
+				&.active
+					color: $white
+					background-color: $mainColor
 
-					&.disabled
-						pointer-events: none
+				&.disabled
+					color: $lightGray
+					pointer-events: none
 
 // guest-room
 .guest-room
@@ -371,22 +374,28 @@ input:-webkit-autofill:active
 		&.rotate
 			transform: rotate(180deg)
 
-	&-select
-		position: absolute
+	&-select-wrapper
+		z-index: 2
 
+		position: absolute
 		padding: 20px
 
 		left: 0
 		top: 40px
 
-		z-index: 2
-
 		width: 350px
+		max-height: 300px
 
 		background-color: $white
 
 		+boxShadow
 		+borderRadius
+
+	&-select
+		max-height: 260px
+		overflow-y: auto
+
+		padding-right: 15px
 
 		&-item
 			margin-bottom: 15px
@@ -394,11 +403,24 @@ input:-webkit-autofill:active
 
 			border-bottom: 1px solid $lightGray
 
-			&:last-child
-				margin-bottom: 0
+			+openPopup
 
-			&__title
+			&-title
 				margin-bottom: 15px
+
+				display: flex
+				align-items: center
+
+				&__title
+					user-select: none
+
+				&-delete
+					display: flex
+					justify-content: center
+					align-items: center
+
+					cursor: pointer
+					margin-left: 10px
 
 			&-block-wrapper
 				display: flex
@@ -430,6 +452,16 @@ input:-webkit-autofill:active
 
 						border-radius: 10px
 
+						&.disabled
+							pointer-events: none
+
+							& > svg
+								stroke: $lightMainColor
+
+						& > svg
+							stroke: $mainColor
+							+transition
+
 					&__count
 						user-select: none
 						display: block
@@ -446,17 +478,40 @@ input:-webkit-autofill:active
 					font-size: 15px
 					margin-bottom: 10px
 
-				&-wrapper
-					position: relative
+				&-null
+					&__title
+						user-select: none
 
+						font-size: 15px
+						color: $gray
+
+				&-wrapper
 					display: flex
 					align-items: center
+					justify-content: space-between
+
+				&-items-wrapper-wrapper
+					max-height: 100px
+
+					overflow-y: auto
+
+				&-items-wrapper
+					height: 100%
+					padding-right: 10px
 
 				&-item
 					display: flex
 					align-items: center
 
+					margin-bottom: 10px
+
+					+openPopup
+
+					&:last-child
+						margin-bottom: 0
+
 					&__title
+						width: 55px
 						user-select: none
 						white-space: nowrap
 						font-size: 15px
@@ -467,10 +522,9 @@ input:-webkit-autofill:active
 						align-items: center
 
 						cursor: pointer
-						margin-left: 10px
 
 				&-plus
-					margin-left: 25px
+					// margin-left: 25px
 
 					cursor: pointer
 					border: 1px solid $lightGray
@@ -489,10 +543,7 @@ input:-webkit-autofill:active
 
 					padding: 15px 10px 15px 20px
 
-					right: 10px
-					top: 0
-
-					z-index: 2
+					z-index: 10
 
 					background-color: $white
 
@@ -520,6 +571,7 @@ input:-webkit-autofill:active
 		&__add
 			display: inline-block
 
+			user-select: none
 			cursor: pointer
 			color: $mainColor
 

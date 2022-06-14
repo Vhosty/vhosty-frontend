@@ -1,11 +1,39 @@
 import React from "react";
 
+import {useTypedSelector} from "../../../hooks/useTypedSelector";
+
+import {checkDeclension} from "../../../functions/checkDeclension";
+
 import {Popup, GuestRoomSelect} from "../../";
 
 const GuestRoom: React.FC = () => {
+    const {guestRoom} = useTypedSelector(
+        ({filtersGuestRoom}) => filtersGuestRoom
+    );
+
     const [activeSelect, setActiveSelect] = React.useState<boolean>(false);
     const [activeSelectAnimation, setActiveSelectAnimation] =
         React.useState<boolean>(false);
+
+    const [totalGuestRoom, setTotalGuestRoom] = React.useState(0);
+    const [totalGuestRoomKids, setTotalGuestRoomKids] = React.useState(0);
+
+    React.useEffect(() => {
+        let totalGuestRoomTemp = 0;
+        let totalGuestRoomKidsTemp = 0;
+
+        guestRoom.map((item) => {
+            totalGuestRoomTemp += item.adultsCount;
+            totalGuestRoomKidsTemp += item.kids.length;
+        });
+
+        setTotalGuestRoom(totalGuestRoomTemp);
+        setTotalGuestRoomKids(totalGuestRoomKidsTemp);
+    }, [
+        guestRoom.length,
+        guestRoom.map((item) => item.adultsCount),
+        guestRoom.map((item) => item.kids.length),
+    ]);
 
     const PopupRef = React.useRef<HTMLDivElement>(null);
 
@@ -42,7 +70,30 @@ const GuestRoom: React.FC = () => {
         <div className="guest-room-wrapper">
             <div className="guest-room" onClick={openSelect}>
                 <span className="guest-room__title">
-                    1 номер, 2 гостя, 1 ребенок
+                    {
+                        checkDeclension(guestRoom.length, [
+                            "номер",
+                            "номера",
+                            "номеров",
+                        ]).title
+                    }
+                    ,{" "}
+                    {
+                        checkDeclension(totalGuestRoom, [
+                            "гость",
+                            "гостя",
+                            "гостей",
+                        ]).title
+                    }
+                    {totalGuestRoomKids
+                        ? `, ${
+                              checkDeclension(totalGuestRoomKids, [
+                                  "ребенок",
+                                  "ребенка",
+                                  "детей",
+                              ]).title
+                          }`
+                        : null}
                 </span>
 
                 <div
@@ -70,7 +121,7 @@ const GuestRoom: React.FC = () => {
             <Popup
                 active={activeSelect}
                 activeAnimation={activeSelectAnimation}
-                addClassWrapper="guest-room-select"
+                addClassWrapper="guest-room-select-wrapper"
                 refPopup={PopupRef}
             >
                 <GuestRoomSelect />

@@ -6,6 +6,7 @@ interface PopupProps {
     refPopup: React.RefObject<HTMLDivElement>;
 
     addClassWrapper?: string;
+    style?: any;
 
     children: React.ReactNode;
 }
@@ -16,6 +17,7 @@ const Popup: React.FC<PopupProps> = ({
     refPopup,
     addClassWrapper,
     children,
+    style,
 }) => {
     return (
         <>
@@ -24,6 +26,7 @@ const Popup: React.FC<PopupProps> = ({
                     className={`popup ${activeAnimation ? "close" : ""} ${
                         addClassWrapper ? addClassWrapper : ""
                     }`}
+                    style={style}
                     ref={refPopup}
                 >
                     {children}

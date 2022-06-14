@@ -15,6 +15,9 @@ export {default as GuestRoomSelectItemKids} from "./Interface/GuestRoom/GuestRoo
 export {default as Checkbox} from "./Interface/Checkbox";
 export {default as RenderCheckbox} from "./Interface/RenderCheckbox";
 
+// Header
+export {default as HeaderModal} from "./Header/HeaderModal";
+
 // Home
 // HomeHeader
 export {default as HomeHeader} from "./Home/HomeHeader/HomeHeader";
@@ -33,7 +36,10 @@ export {default as HomeEmail} from "./Home/HomeEmail/HomeEmail";
 export {default as HomeEmailForm} from "./Home/HomeEmail/HomeEmailForm";
 
 // FiltersForm
-export {default as FiltersForm} from "./FiltersForm/FiltersForm";
+export { default as FiltersForm } from "./FiltersForm/FiltersForm";
+
+// Login
+export {default as LoginForm} from "./Login/LoginForm";
 
 // Footer
 export {default as Footer} from "./Footer/Footer";

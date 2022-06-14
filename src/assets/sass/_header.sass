@@ -1,2 +1,117 @@
 // header
 .header
+	&-block
+		&-menu
+			&-btn
+				position: relative
+
+				width: 45px
+				height: 45px
+
+				cursor: pointer
+
+				&-icon
+					& > span
+						display: block
+						position: absolute
+						cursor: pointer
+						top: 50%
+						left: 0
+						right: 0
+
+						transform: translateY(-50%)
+
+						height: 4px
+						background-color: $white
+
+						border-radius: 100px
+
+						transition: background-color 0s 0.2s
+
+					& > span::before,
+					& > span::after
+						content: ""
+
+						cursor: pointer
+						position: absolute
+						display: block
+						left: 0
+						width: 100%
+						height: 4px
+						background-color: $white
+
+						border-radius: 100px
+
+						transition-duration: 0.2s, 0.2s
+						transition-delay: 0.2s, 0s
+
+					& > span::before
+						top: -16px
+						transition-property: top, transform
+
+					& > span::after
+						bottom: -16px
+						transition-property: bottom, transform
+						background-color: #76DD87
+
+					&.active span
+						background: none
+
+					&.active span::before
+						top: 0
+						transform: rotate(45deg)
+						background-color: #76DD87
+
+					&.active span::after
+						bottom: 0
+						transform: rotate(-45deg)
+						background-color: $white
+
+					&.active span::before,
+					&.active span::after
+						transition-delay: 0s, 0.2s
+						
+			&-modal-wrapper
+				position: absolute
+
+				top: 65px
+				left: 0
+
+				z-index: 15
+
+				width: 350px
+
+				padding: 35px
+
+				background-color: $white
+
+				+borderRadius
+				+boxShadow
+
+			&-modal
+				&-block
+					margin-bottom: 25px
+
+					&__title
+						color: $darkMainColor
+						margin-bottom: 15px
+						font-weight: 500
+
+					&__link
+						display: block
+						margin-bottom: 10px
+
+						font-size: 15px
+
+						+transition
+
+						&:hover
+							color: $darkMainColor
+
+					&-bottom__title
+						margin-top: 35px
+						font-size: 15px
+
+						& > a
+							color: $darkMainColor
+							font-weight: 500

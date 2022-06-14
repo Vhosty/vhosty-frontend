@@ -1,39 +1,78 @@
 import React from "react";
-import moment from "moment";
+import moment, {Moment} from "moment";
+import {useDispatch} from "react-redux";
+
+import {useTypedSelector} from "../../../hooks/useTypedSelector";
+
+import {
+    plusFiltersCalendarMonthDate,
+    minusFiltersCalendarMonthDate,
+    setFiltersCalendarDaysMonth,
+    setFiltersFromCalendarDate,
+    setFiltersToCalendarDate,
+    setFiltersFromCalendarDateAction,
+} from "../../../redux/actions/filtersCalendar";
+
+const totalDays = 35;
 
 const CalendarSelect: React.FC = () => {
-    const arrayDays1 = [0, 7, 14, 21, 28];
-    const arrayDays2 = [1, 8, 15, 22, 29];
-    const arrayDays3 = [2, 9, 16, 23, 30];
-    const arrayDays4 = [3, 10, 17, 24, 31];
-    const arrayDays5 = [4, 11, 18, 25, 0];
-    const arrayDays6 = [5, 12, 19, 26, 0];
-    const arrayDays7 = [6, 13, 20, 27, 0];
+    const dispatch = useDispatch();
 
-    const activeNum1 = 7;
-    const activeNum2 = 23;
+    const {date, daysMonth, from} = useTypedSelector(
+        ({filtersCalendar}) => filtersCalendar
+    );
 
-    // const [arrayDays, setArrayDays] = React.useState<number[]>([]);
+    React.useEffect(() => {
+        const startDay = date.clone().startOf("month").startOf("week");
+        const day = startDay.clone().subtract(1, "day");
 
-    // React.useEffect(() => {
-    //     const days = moment("August", "MMMM").daysInMonth();
+        dispatch(
+            setFiltersCalendarDaysMonth(
+                [...Array(totalDays)].map(() => day.add(1, "day").clone())
+            )
+        );
+    }, [date]);
 
-    //     const newArrayDays = [];
+    const isSelectedMonth = (day: Moment) => date.isSame(day, "month");
+    const isSelectedDay = (day: Moment) => moment(from.date).isSame(day, "day");
+    // ||
+    // moment(toDate).isSame(day, "day");
 
-    //     for (let i = 0; i < days; i++) {
-    //         newArrayDays.push(i + 1);
-    //     }
+    const isSmall = (day: Moment) => day;
 
-    //     setArrayDays(newArrayDays);
-    // }, []);
+    const addMonthOnClick = () => {
+        dispatch(plusFiltersCalendarMonthDate());
+    };
 
-    // console.log(moment("August", "MMMM").daysInMonth());
-    // console.log(moment.monthsShort());
+    const minusMonthOnClick = () => {
+        dispatch(minusFiltersCalendarMonthDate());
+    };
 
-	return (
+    const setFiltersFromCalendarDateOnClick = (day: Moment) => {
+        if (isSelectedDay(day)) {
+            dispatch(setFiltersFromCalendarDateAction(!from.active));
+        } else {
+            dispatch(setFiltersFromCalendarDate(day));
+        }
+    };
+
+    const setFiltersToCalendarDateOnClick = (day: Moment) => {
+        dispatch(setFiltersToCalendarDate(day));
+    };
+
+    return (
         <>
             <div className="calendar-select-top">
-                <div className="calendar-select-top-arrow-btn disabled prev">
+                <div
+                    className={`calendar-select-top-arrow-btn prev ${
+                        moment(date).format("MMMM") ===
+                            moment().format("MMMM") &&
+                        moment(date).format("YYYY") === moment().format("YYYY")
+                            ? "disabled"
+                            : ""
+                    }`}
+                    onClick={minusMonthOnClick}
+                >
                     <svg
                         width="9"
                         height="16"
@@ -49,9 +88,20 @@ const CalendarSelect: React.FC = () => {
                     </svg>
                 </div>
 
-                <p className="calendar-select-top__title">Июнь 2022</p>
+                <p className="calendar-select-top__title">
+                    {date.format("MMMM YYYY")}
+                </p>
 
-                <div className="calendar-select-top-arrow-btn next">
+                <div
+                    className={`calendar-select-top-arrow-btn next  ${
+                        moment(date).format("MM") === moment().format("MM") &&
+                        parseInt(moment(date).format("YYYY")) ===
+                            parseInt(moment().format("YYYY")) + 1
+                            ? "disabled"
+                            : ""
+                    }`}
+                    onClick={addMonthOnClick}
+                >
                     <svg
                         width="9"
                         height="16"
@@ -67,13 +117,73 @@ const CalendarSelect: React.FC = () => {
                     </svg>
                 </div>
             </div>
-            <div className="calendar-select-days">
-                <div className="calendar-select-days-column">
-                    <span className="calendar-select-days-column__title">
-                        пн
-                    </span>
 
-                    {arrayDays1.map((day, index) => (
+            <div className="calendar-select-days-title">
+                <span className="calendar-select-days-title__title">пн</span>
+                <span className="calendar-select-days-title__title">вт</span>
+                <span className="calendar-select-days-title__title">ср</span>
+                <span className="calendar-select-days-title__title">чт</span>
+                <span className="calendar-select-days-title__title">пт</span>
+                <span className="calendar-select-days-title__title">сб</span>
+                <span className="calendar-select-days-title__title">вс</span>
+            </div>
+
+            <div className="calendar-select-days">
+                {daysMonth.map((day, index) =>
+                    isSelectedMonth(day) ? (
+                        <span
+                            className={`calendar-select-days__day ${
+                                isSelectedDay(day) ? `active` : ""
+                            }`}
+                            style={{
+                                border:
+                                    isSelectedDay(day) && from.active
+                                        ? "3px solid #E6F6F6"
+                                        : "0px solid #E6F6F6",
+                            }}
+                            key={`calendar-select-days-${index}__day`}
+                            onClick={() =>
+                                setFiltersFromCalendarDateOnClick(day)
+                            }
+                        >
+                            {day.format("D")}
+                        </span>
+                    ) : (
+                        <span
+                            className={`calendar-select-days__day disabled`}
+                            key={`calendar-select-days-${index}__day`}
+                        ></span>
+                    )
+                )}
+
+                {/* {Object.keys(days).map((key, index) => (
+                    <div
+                        className="calendar-select-days-column"
+                        key={`calendar-select-days-column-${key}-${index}`}
+                    >
+                        <span className="calendar-select-days-column__title">
+                            пн
+                        </span>
+
+                        {Object.keys(days[key]).map((key2, subIndex) => (
+                            <span
+                                className={`calendar-select-days-column__day ${
+                                    index == 1 ? "active1" : ""
+                                } ${
+                                    days[key][key2] > activeNum1 &&
+                                    days[key][key2] < activeNum2
+                                        ? "included"
+                                        : ""
+                                } ${days[key][key2] ? "" : "disabled"}`}
+                                key={`calendar-select-days__item-${index}-${subIndex}`}
+                            >
+                                {days[key][key2] ? days[key][key2] : ""}
+                            </span>
+                        ))}
+                    </div>
+                ))} */}
+
+                {/* {arrayDays1.map((day, index) => (
                         <span
                             className={`calendar-select-days-column__day ${
                                 index == 1 ? "active" : ""
@@ -86,124 +196,7 @@ const CalendarSelect: React.FC = () => {
                         >
                             {day ? day : ""}
                         </span>
-                    ))}
-                </div>
-
-                <div className="calendar-select-days-column">
-                    <span className="calendar-select-days-column__title">
-                        вт
-                    </span>
-
-                    {arrayDays2.map((day, index) => (
-                        <span
-                            className={`calendar-select-days-column__day ${
-                                day > activeNum1 && day < activeNum2
-                                    ? "included"
-                                    : ""
-                            } ${day ? "" : "disabled"}`}
-                            key={`calendar-select-days__item-August-${index}`}
-                        >
-                            {day ? day : ""}
-                        </span>
-                    ))}
-                </div>
-
-                <div className="calendar-select-days-column">
-                    <span className="calendar-select-days-column__title">
-                        ср
-                    </span>
-
-                    {arrayDays3.map((day, index) => (
-                        <span
-                            className={`calendar-select-days-column__day ${
-                                index == 3 ? "active" : ""
-                            } ${
-                                day > activeNum1 && day < activeNum2
-                                    ? "included"
-                                    : ""
-                            } ${day ? "" : "disabled"}`}
-                            key={`calendar-select-days__item-August-${index}`}
-                        >
-                            {day ? day : ""}
-                        </span>
-                    ))}
-                </div>
-
-                <div className="calendar-select-days-column">
-                    <span className="calendar-select-days-column__title">
-                        чт
-                    </span>
-
-                    {arrayDays4.map((day, index) => (
-                        <span
-                            className={`calendar-select-days-column__day ${
-                                day > activeNum1 && day < activeNum2
-                                    ? "included"
-                                    : ""
-                            } ${day ? "" : "disabled"}`}
-                            key={`calendar-select-days__item-August-${index}`}
-                        >
-                            {day ? day : ""}
-                        </span>
-                    ))}
-                </div>
-
-                <div className="calendar-select-days-column">
-                    <span className="calendar-select-days-column__title">
-                        пт
-                    </span>
-
-                    {arrayDays5.map((day, index) => (
-                        <span
-                            className={`calendar-select-days-column__day ${
-                                day > activeNum1 && day < activeNum2
-                                    ? "included"
-                                    : ""
-                            } ${day ? "" : "disabled"}`}
-                            key={`calendar-select-days__item-August-${index}`}
-                        >
-                            {day ? day : ""}
-                        </span>
-                    ))}
-                </div>
-
-                <div className="calendar-select-days-column">
-                    <span className="calendar-select-days-column__title">
-                        сб
-                    </span>
-
-                    {arrayDays6.map((day, index) => (
-                        <span
-                            className={`calendar-select-days-column__day ${
-                                day > activeNum1 && day < activeNum2
-                                    ? "included"
-                                    : ""
-                            } ${day ? "" : "disabled"}`}
-                            key={`calendar-select-days__item-August-${index}`}
-                        >
-                            {day ? day : ""}
-                        </span>
-                    ))}
-                </div>
-
-                <div className="calendar-select-days-column">
-                    <span className="calendar-select-days-column__title">
-                        вс
-                    </span>
-
-                    {arrayDays7.map((day, index) => (
-                        <span
-                            className={`calendar-select-days-column__day ${
-                                day > activeNum1 && day < activeNum2
-                                    ? "included"
-                                    : ""
-                            } ${day ? "" : "disabled"}`}
-                            key={`calendar-select-days__item-August-${index}`}
-                        >
-                            {day ? day : ""}
-                        </span>
-                    ))}
-                </div>
+                    ))} */}
             </div>
         </>
     );
