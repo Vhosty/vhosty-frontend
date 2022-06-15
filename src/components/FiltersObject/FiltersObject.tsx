@@ -1,16 +1,19 @@
 import React from "react";
 
-import {TitleIcon, Input, Calendar, GuestRoom, Checkbox} from "../";
+import {
+    TitleIcon,
+    Input,
+    FiltersObjectCalendar,
+    FiltersObjectGuestRoom,
+    Checkbox,
+} from "../";
 
 const FiltersForm: React.FC = () => {
     return (
-        <div className="filters-form">
-            <div className="filters-form-block-row">
-                <div className="filters-form-block left">
-                    <TitleIcon
-                        title="Страна, город путешествия"
-                        marginBottom={true}
-                    >
+        <div className="filters-object-form">
+            <div className="filters-object-form-block-row">
+                <div className="filters-object-form-block left">
+                    <TitleIcon title="Страна, город путешествия" marginBottom>
                         <svg
                             width="14"
                             height="18"
@@ -26,8 +29,8 @@ const FiltersForm: React.FC = () => {
                     </TitleIcon>
                 </div>
 
-                <div className="filters-form-block middle">
-                    <TitleIcon title="Дата" marginBottom={true}>
+                <div className="filters-object-form-block middle">
+                    <TitleIcon title="Дата" marginBottom>
                         <svg
                             width="18"
                             height="18"
@@ -43,37 +46,37 @@ const FiltersForm: React.FC = () => {
                     </TitleIcon>
                 </div>
 
-                <div className="filters-form-block right"></div>
+                <div className="filters-object-form-block right"></div>
             </div>
 
-            <div className="filters-form-block-row">
-                <div className="filters-form-block left filters-form-block-input">
+            <div className="filters-object-form-block-row">
+                <div className="filters-object-form-block left filters-object-form-block-input">
                     <Input label="Например, Дубай" small />
                 </div>
 
-                <div className="filters-form-block middle filters-form-block-calendar">
-                    <Calendar />
+                <div className="filters-object-form-block middle filters-object-form-block-calendar">
+                    <FiltersObjectCalendar />
                 </div>
 
-                <div className="filters-form-block right filters-form-block-btn">
-                    <button className="btn small filters-form-block__btn">
+                <div className="filters-object-form-block right filters-object-form-block-btn">
+                    <button className="btn small filters-object-form-block__btn">
                         Искать
                     </button>
                 </div>
             </div>
 
-            <div className="filters-form-block-row">
-                <div className="filters-form-block left filters-form-block-guest-room">
-                    <GuestRoom />
+            <div className="filters-object-form-block-row">
+                <div className="filters-object-form-block left filters-object-form-block-guest-room">
+                    <FiltersObjectGuestRoom />
                 </div>
 
-                <div className="filters-form-block middle filters-form-block-checkbox">
+                <div className="filters-object-form-block middle filters-object-form-block-checkbox">
                     <Checkbox questionMessage="Поиск будет осуществляться с учетом 3-х дат до и 3-х дат после указанных">
                         У меня гибкая дата
                     </Checkbox>
                 </div>
 
-                <div className="filters-form-block right"></div>
+                <div className="filters-object-form-block right"></div>
             </div>
         </div>
     );

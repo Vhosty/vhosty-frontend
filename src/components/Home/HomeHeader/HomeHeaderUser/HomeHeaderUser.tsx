@@ -1,24 +1,21 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 
-import {setLoginOpen} from "../../../../redux/actions/login";
-import {useTypedSelector} from "../../../../hooks/useTypedSelector";
+import {setReglogOpen} from "../../../../redux/actions/reglog";
 
 import {HomeHeaderUserNotifications} from "../../../";
 
 const HomeHeaderUser: React.FC = () => {
     const dispatch = useDispatch();
 
-    const {open} = useTypedSelector(({login}) => login);
-
-    const setLoginOpenOnClick = () => {
-        dispatch(setLoginOpen(!open));
+    const setReglogOpenOnClick = () => {
+        dispatch(setReglogOpen());
     };
 
     return (
         <div
             className="home-main-header-block-user"
-            onClick={setLoginOpenOnClick}
+            onClick={setReglogOpenOnClick}
         >
             <HomeHeaderUserNotifications />
 

@@ -3,7 +3,7 @@ import {Helmet} from "react-helmet";
 
 import {
     HomeHeader,
-    FiltersForm,
+    FiltersObject,
     HomeServices,
     HomeSecurity,
     HomeCorporate,
@@ -65,7 +65,7 @@ const Home: React.FC = () => {
                         </div>
 
                         <div className="home-main-form">
-                            <FiltersForm />
+                            <FiltersObject />
                         </div>
                     </div>
                 </div>

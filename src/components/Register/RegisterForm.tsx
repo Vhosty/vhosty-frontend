@@ -9,50 +9,26 @@ import {ReglogStateTypes} from "../../redux/types/IReglog";
 
 import {RenderInput} from "../";
 
-interface LoginFormProps {
+interface RegisterFormProps {
     closeOnClick: () => void;
     setReglogTypeOnClick: (type: ReglogStateTypes) => void;
 }
 
-const LoginForm: React.FC<
-    LoginFormProps & InjectedFormProps<{}, LoginFormProps>
+const RegisterForm: React.FC<
+    RegisterFormProps & InjectedFormProps<{}, RegisterFormProps>
 > = ({handleSubmit, closeOnClick, setReglogTypeOnClick}) => {
     return (
         <form className="reglog-form" onSubmit={handleSubmit}>
-            <div className="reglog-form-close" onClick={closeOnClick}>
-                <svg
-                    width="30"
-                    height="30"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M26.25 15C26.25 8.78906 21.2109 3.75 15 3.75C8.78906 3.75 3.75 8.78906 3.75 15C3.75 21.2109 8.78906 26.25 15 26.25C21.2109 26.25 26.25 21.2109 26.25 15Z"
-                        stroke="#00A0A0"
-                        strokeWidth="2"
-                        strokeMiterlimit="10"
-                    />
-                    <path
-                        d="M11.25 18.75L18.75 11.25M18.75 18.75L11.25 11.25L18.75 18.75Z"
-                        stroke="#00A0A0"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                    />
-                </svg>
-            </div>
-
             <div className="reglog-form-text">
                 <p className="reglog-form-text__subtitle">Гость №685-973</p>
                 <p className="reglog-form-text__title">
-                    Войти или{" "}
+                    Зарегистрироваться или{" "}
                     <a
                         onClick={() =>
-                            setReglogTypeOnClick(ReglogStateTypes.REGISTER)
+                            setReglogTypeOnClick(ReglogStateTypes.LOGIN)
                         }
                     >
-                        Зарегистрироваться
+                        Войти
                     </a>
                 </p>
             </div>
@@ -80,19 +56,22 @@ const LoginForm: React.FC<
                         label="• • • • • • • • • •"
                     />
                 </div>
+                <div className="reglog-form-block-input">
+                    <p className="reglog-form-block-input__subtitle">
+                        Повторите пароль
+                    </p>
 
-                <a
-                    onClick={() =>
-                        setReglogTypeOnClick(ReglogStateTypes.RECOVERY_PASSWORD)
-                    }
-                    className="reglog-form-block-recovery__link"
-                >
-                    Забыли пароль?
-                </a>
+                    <Field
+                        component={RenderInput}
+                        type="password"
+                        name="password_repeat"
+                        label="• • • • • • • • • •"
+                    />
+                </div>
 
                 <div className="reglog-form-block-btn">
                     <p className="reglog-form-block-btn__description">
-                        Нажимая кнопку «Войти», я соглашаюсь c{" "}
+                        Нажимая кнопку «Зарегистрироваться», я соглашаюсь c{" "}
                         <Link to="/" onClick={closeOnClick}>
                             политикой конфиденциальности
                         </Link>{" "}
@@ -101,9 +80,8 @@ const LoginForm: React.FC<
                             обработкой персональных данных.
                         </Link>
                     </p>
-
                     <button className="btn reglog-form-block-btn__btn">
-                        Войти
+                        Зарегистрироваться
                     </button>
                 </div>
             </div>
@@ -111,7 +89,7 @@ const LoginForm: React.FC<
     );
 };
 
-export default reduxForm<{}, LoginFormProps>({
-    form: "login-form",
+export default reduxForm<{}, RegisterFormProps>({
+    form: "register-form",
     validate,
-})(LoginForm);
+})(RegisterForm);

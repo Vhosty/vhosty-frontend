@@ -12,9 +12,9 @@ import {
     deleteFiltersGuestRoomKids,
 } from "../../../redux/actions/filtersGuestRoom";
 
-import {GuestRoomSelectItem} from "../../";
+import {FiltersObjectGuestRoomSelectItem} from "../../";
 
-const GuestRoomSelect: React.FC = () => {
+const FiltersObjectGuestRoomSelect: React.FC = () => {
     const dispatch = useDispatch();
 
     const {guestRoom} = useTypedSelector(
@@ -49,11 +49,11 @@ const GuestRoomSelect: React.FC = () => {
     };
 
     return (
-        <div className="guest-room-select">
+        <div className="filters-object-form-guest-room-select">
             {guestRoom.map((item, index) => (
-                <GuestRoomSelectItem
+                <FiltersObjectGuestRoomSelectItem
                     {...item}
-                    key={`guest-room-select-item-${index}`}
+                    key={`filters-object-form-guest-room-select-item-${index}`}
                     itemIndex={index}
                     isLast={index + 1 === guestRoom.length}
                     isOne={guestRoom.length === 1}
@@ -73,11 +73,14 @@ const GuestRoomSelect: React.FC = () => {
                 />
             ))}
 
-            <p className="guest-room-select__add" onClick={addGuestRoomOnClick}>
+            <p
+                className="filters-object-form-guest-room-select__add"
+                onClick={addGuestRoomOnClick}
+            >
                 Добавить номер
             </p>
         </div>
     );
 };
 
-export default GuestRoomSelect;
+export default FiltersObjectGuestRoomSelect;

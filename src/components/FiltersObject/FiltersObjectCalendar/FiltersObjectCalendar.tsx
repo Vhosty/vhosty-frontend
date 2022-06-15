@@ -1,8 +1,8 @@
 import React from "react";
 
-import {Popup, CalendarSelect} from "../../";
+import {Popup, FiltersObjectCalendarSelect} from "../../";
 
-const Calendar: React.FC = () => {
+const FiltersObjectCalendar: React.FC = () => {
     const [activeCalendar, setActiveCalendar] = React.useState<boolean>(false);
     const [activeCalendarAnimation, setActiveCalendarAnimation] =
         React.useState<boolean>(false);
@@ -39,18 +39,27 @@ const Calendar: React.FC = () => {
     };
 
     return (
-        <div className="calendar-wrapper">
-            <div className="calendar" onClick={openCalendar}>
-                <div className="calendar-period">
-                    <span className="calendar-period__from">23 авг. (Вс)</span>
-                    <div className="calendar-period__line"></div>
-                    <span className="calendar-period__to">14 сент. (Пт)</span>
+        <div className="filters-object-form-calendar-wrapper">
+            <div
+                className="filters-object-form-calendar"
+                onClick={openCalendar}
+            >
+                <div className="filters-object-form-calendar-period">
+                    <span className="filters-object-form-calendar-period__from">
+                        23 авг. (Вс)
+                    </span>
+                    <div className="filters-object-form-calendar-period__line"></div>
+                    <span className="filters-object-form-calendar-period__to">
+                        14 сент. (Пт)
+                    </span>
                 </div>
 
-                <span className="calendar__count">29 суток</span>
+                <span className="filters-object-form-calendar__count">
+                    29 суток
+                </span>
 
                 <div
-                    className={`calendar-icon ${
+                    className={`filters-object-form-calendar-icon ${
                         activeCalendar ? "rotate" : ""
                     }`}
                 >
@@ -74,13 +83,13 @@ const Calendar: React.FC = () => {
             <Popup
                 active={activeCalendar}
                 activeAnimation={activeCalendarAnimation}
-                addClassWrapper="calendar-select"
+                addClassWrapper="filters-object-form-calendar-select"
                 refPopup={PopupRef}
             >
-                <CalendarSelect />
+                <FiltersObjectCalendarSelect />
             </Popup>
         </div>
     );
 };
 
-export default Calendar;
+export default FiltersObjectCalendar;

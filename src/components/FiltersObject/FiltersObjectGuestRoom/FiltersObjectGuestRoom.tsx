@@ -4,9 +4,9 @@ import {useTypedSelector} from "../../../hooks/useTypedSelector";
 
 import {checkDeclension} from "../../../functions/checkDeclension";
 
-import {Popup, GuestRoomSelect} from "../../";
+import {Popup, FiltersObjectGuestRoomSelect} from "../../";
 
-const GuestRoom: React.FC = () => {
+const FiltersObjectGuestRoom: React.FC = () => {
     const {guestRoom} = useTypedSelector(
         ({filtersGuestRoom}) => filtersGuestRoom
     );
@@ -67,9 +67,12 @@ const GuestRoom: React.FC = () => {
     };
 
     return (
-        <div className="guest-room-wrapper">
-            <div className="guest-room" onClick={openSelect}>
-                <span className="guest-room__title">
+        <div className="filters-object-form-guest-room-wrapper">
+            <div
+                className="filters-object-form-guest-room"
+                onClick={openSelect}
+            >
+                <span className="filters-object-form-guest-room__title">
                     {
                         checkDeclension(guestRoom.length, [
                             "номер",
@@ -97,7 +100,7 @@ const GuestRoom: React.FC = () => {
                 </span>
 
                 <div
-                    className={`guest-room-icon ${
+                    className={`filters-object-form-guest-room-icon ${
                         activeSelect ? "rotate" : ""
                     }`}
                 >
@@ -121,13 +124,13 @@ const GuestRoom: React.FC = () => {
             <Popup
                 active={activeSelect}
                 activeAnimation={activeSelectAnimation}
-                addClassWrapper="guest-room-select-wrapper"
+                addClassWrapper="filters-object-form-guest-room-select-wrapper"
                 refPopup={PopupRef}
             >
-                <GuestRoomSelect />
+                <FiltersObjectGuestRoomSelect />
             </Popup>
         </div>
     );
 };
 
-export default GuestRoom;
+export default FiltersObjectGuestRoom;

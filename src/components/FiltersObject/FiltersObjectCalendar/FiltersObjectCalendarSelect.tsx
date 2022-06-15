@@ -15,7 +15,7 @@ import {
 
 const totalDays = 35;
 
-const CalendarSelect: React.FC = () => {
+const FiltersObjectCalendarSelect: React.FC = () => {
     const dispatch = useDispatch();
 
     const {date, daysMonth, from} = useTypedSelector(
@@ -35,8 +35,6 @@ const CalendarSelect: React.FC = () => {
 
     const isSelectedMonth = (day: Moment) => date.isSame(day, "month");
     const isSelectedDay = (day: Moment) => moment(from.date).isSame(day, "day");
-    // ||
-    // moment(toDate).isSame(day, "day");
 
     const isSmall = (day: Moment) => day;
 
@@ -62,9 +60,9 @@ const CalendarSelect: React.FC = () => {
 
     return (
         <>
-            <div className="calendar-select-top">
+            <div className="filters-object-form-calendar-select-top">
                 <div
-                    className={`calendar-select-top-arrow-btn prev ${
+                    className={`filters-object-form-calendar-select-top-arrow-btn prev ${
                         moment(date).format("MMMM") ===
                             moment().format("MMMM") &&
                         moment(date).format("YYYY") === moment().format("YYYY")
@@ -88,12 +86,12 @@ const CalendarSelect: React.FC = () => {
                     </svg>
                 </div>
 
-                <p className="calendar-select-top__title">
+                <p className="filters-object-form-calendar-select-top__title">
                     {date.format("MMMM YYYY")}
                 </p>
 
                 <div
-                    className={`calendar-select-top-arrow-btn next  ${
+                    className={`filters-object-form-calendar-select-top-arrow-btn next  ${
                         moment(date).format("MM") === moment().format("MM") &&
                         parseInt(moment(date).format("YYYY")) ===
                             parseInt(moment().format("YYYY")) + 1
@@ -118,21 +116,35 @@ const CalendarSelect: React.FC = () => {
                 </div>
             </div>
 
-            <div className="calendar-select-days-title">
-                <span className="calendar-select-days-title__title">пн</span>
-                <span className="calendar-select-days-title__title">вт</span>
-                <span className="calendar-select-days-title__title">ср</span>
-                <span className="calendar-select-days-title__title">чт</span>
-                <span className="calendar-select-days-title__title">пт</span>
-                <span className="calendar-select-days-title__title">сб</span>
-                <span className="calendar-select-days-title__title">вс</span>
+            <div className="filters-object-form-calendar-select-days-title">
+                <span className="filters-object-form-calendar-select-days-title__title">
+                    пн
+                </span>
+                <span className="filters-object-form-calendar-select-days-title__title">
+                    вт
+                </span>
+                <span className="filters-object-form-calendar-select-days-title__title">
+                    ср
+                </span>
+                <span className="filters-object-form-calendar-select-days-title__title">
+                    чт
+                </span>
+                <span className="filters-object-form-calendar-select-days-title__title">
+                    пт
+                </span>
+                <span className="filters-object-form-calendar-select-days-title__title">
+                    сб
+                </span>
+                <span className="filters-object-form-calendar-select-days-title__title">
+                    вс
+                </span>
             </div>
 
-            <div className="calendar-select-days">
+            <div className="filters-object-form-calendar-select-days">
                 {daysMonth.map((day, index) =>
                     isSelectedMonth(day) ? (
                         <span
-                            className={`calendar-select-days__day ${
+                            className={`filters-object-form-calendar-select-days__day ${
                                 isSelectedDay(day) ? `active` : ""
                             }`}
                             style={{
@@ -141,7 +153,7 @@ const CalendarSelect: React.FC = () => {
                                         ? "3px solid #E6F6F6"
                                         : "0px solid #E6F6F6",
                             }}
-                            key={`calendar-select-days-${index}__day`}
+                            key={`filters-object-form-calendar-select-days-${index}__day`}
                             onClick={() =>
                                 setFiltersFromCalendarDateOnClick(day)
                             }
@@ -150,8 +162,8 @@ const CalendarSelect: React.FC = () => {
                         </span>
                     ) : (
                         <span
-                            className={`calendar-select-days__day disabled`}
-                            key={`calendar-select-days-${index}__day`}
+                            className={`filters-object-form-calendar-select-days__day disabled`}
+                            key={`filters-object-form-calendar-select-days-${index}__day`}
                         ></span>
                     )
                 )}
@@ -202,4 +214,4 @@ const CalendarSelect: React.FC = () => {
     );
 };
 
-export default CalendarSelect;
+export default FiltersObjectCalendarSelect;

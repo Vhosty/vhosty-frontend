@@ -9,14 +9,13 @@ import {ReglogStateTypes} from "../../redux/types/IReglog";
 
 import {RenderInput} from "../";
 
-interface LoginFormProps {
+interface RecoveryPasswordFormProps {
     closeOnClick: () => void;
-    setReglogTypeOnClick: (type: ReglogStateTypes) => void;
 }
 
-const LoginForm: React.FC<
-    LoginFormProps & InjectedFormProps<{}, LoginFormProps>
-> = ({handleSubmit, closeOnClick, setReglogTypeOnClick}) => {
+const RecoveryPasswordForm: React.FC<
+    RecoveryPasswordFormProps & InjectedFormProps<{}, RecoveryPasswordFormProps>
+> = ({handleSubmit, closeOnClick}) => {
     return (
         <form className="reglog-form" onSubmit={handleSubmit}>
             <div className="reglog-form-close" onClick={closeOnClick}>
@@ -45,16 +44,7 @@ const LoginForm: React.FC<
 
             <div className="reglog-form-text">
                 <p className="reglog-form-text__subtitle">Гость №685-973</p>
-                <p className="reglog-form-text__title">
-                    Войти или{" "}
-                    <a
-                        onClick={() =>
-                            setReglogTypeOnClick(ReglogStateTypes.REGISTER)
-                        }
-                    >
-                        Зарегистрироваться
-                    </a>
-                </p>
+                <p className="reglog-form-text__title">Восстановить пароль</p>
             </div>
 
             <div className="reglog-form-block">
@@ -70,40 +60,15 @@ const LoginForm: React.FC<
                         label="examplemyemail@mail.ru"
                     />
                 </div>
-                <div className="reglog-form-block-input">
-                    <p className="reglog-form-block-input__subtitle">Пароль</p>
-
-                    <Field
-                        component={RenderInput}
-                        type="password"
-                        name="password"
-                        label="• • • • • • • • • •"
-                    />
-                </div>
-
-                <a
-                    onClick={() =>
-                        setReglogTypeOnClick(ReglogStateTypes.RECOVERY_PASSWORD)
-                    }
-                    className="reglog-form-block-recovery__link"
-                >
-                    Забыли пароль?
-                </a>
 
                 <div className="reglog-form-block-btn">
                     <p className="reglog-form-block-btn__description">
-                        Нажимая кнопку «Войти», я соглашаюсь c{" "}
-                        <Link to="/" onClick={closeOnClick}>
-                            политикой конфиденциальности
-                        </Link>{" "}
-                        и
-                        <Link to="/" onClick={closeOnClick}>
-                            обработкой персональных данных.
-                        </Link>
+                        Укажите адрес электронной почты, и мы отправим вам
+                        ссылку для восстановления пароля
                     </p>
 
                     <button className="btn reglog-form-block-btn__btn">
-                        Войти
+                        Восстановить
                     </button>
                 </div>
             </div>
@@ -111,7 +76,7 @@ const LoginForm: React.FC<
     );
 };
 
-export default reduxForm<{}, LoginFormProps>({
-    form: "login-form",
+export default reduxForm<{}, RecoveryPasswordFormProps>({
+    form: "recovery-password-form",
     validate,
-})(LoginForm);
+})(RecoveryPasswordForm);

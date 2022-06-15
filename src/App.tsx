@@ -5,17 +5,17 @@ import {useTypedSelector} from "./hooks/useTypedSelector";
 
 import {Footer} from "./components/";
 
-import Login from "./pages/Login";
+import Reglog from "./pages/Reglog";
 
 const Home = React.lazy(() => import("./pages/Home"));
 
 const App = () => {
-    const {open} = useTypedSelector(({login}) => login);
+    const {open} = useTypedSelector(({reglog}) => reglog);
 
     return (
         <>
             <React.Suspense fallback={<></>}>
-                {open ? <Login /> : null}
+                {open ? <Reglog /> : null}
 
                 <Routes>
                     <Route path="/" element={<Home />} />

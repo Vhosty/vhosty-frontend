@@ -4,9 +4,9 @@ import {FiltersGuestRoomItem} from "../../../redux/types/filters/IFiltersGuestRo
 
 import {checkDeclension} from "../../../functions/checkDeclension";
 
-import {Popup, GuestRoomSelectItemKids} from "../../";
+import {Popup, FiltersObjectGuestRoomSelectItemKids} from "../../";
 
-interface GuestRoomSelectItem extends FiltersGuestRoomItem {
+interface FiltersObjectGuestRoomSelectItem extends FiltersGuestRoomItem {
     itemIndex: number;
     isLast: boolean;
     isOne: boolean;
@@ -21,7 +21,9 @@ interface GuestRoomSelectItem extends FiltersGuestRoomItem {
     ) => void;
 }
 
-const GuestRoomSelectItem: React.FC<GuestRoomSelectItem> = ({
+const FiltersObjectGuestRoomSelectItem: React.FC<
+    FiltersObjectGuestRoomSelectItem
+> = ({
     itemIndex,
     adultsCount,
     kids,
@@ -70,15 +72,15 @@ const GuestRoomSelectItem: React.FC<GuestRoomSelectItem> = ({
     };
 
     return (
-        <div className="guest-room-select-item">
-            <div className="guest-room-select-item-title">
-                <p className="guest-room-select-item-title__title">
+        <div className="filters-object-form-guest-room-select-item">
+            <div className="filters-object-form-guest-room-select-item-title">
+                <p className="filters-object-form-guest-room-select-item-title__title">
                     Номер {itemIndex + 1}
                 </p>
 
                 {itemIndex ? (
                     <div
-                        className="guest-room-select-item-title-delete"
+                        className="filters-object-form-guest-room-select-item-title-delete"
                         onClick={() => deleteGuestRoomOnClick(itemIndex)}
                     >
                         <svg
@@ -104,15 +106,15 @@ const GuestRoomSelectItem: React.FC<GuestRoomSelectItem> = ({
                 ) : null}
             </div>
 
-            <div className="guest-room-select-item-block-wrapper">
-                <div className="guest-room-select-item-adults">
-                    <p className="guest-room-select-item-adults__subtitle">
+            <div className="filters-object-form-guest-room-select-item-block-wrapper">
+                <div className="filters-object-form-guest-room-select-item-adults">
+                    <p className="filters-object-form-guest-room-select-item-adults__subtitle">
                         Взрослые
                     </p>
 
-                    <div className="guest-room-select-item-adults-change">
+                    <div className="filters-object-form-guest-room-select-item-adults-change">
                         <div
-                            className={`guest-room-select-item-adults-change-block minus ${
+                            className={`filters-object-form-guest-room-select-item-adults-change-block minus ${
                                 adultsCount === 1 ? "disabled" : ""
                             }`}
                             onClick={() =>
@@ -136,11 +138,11 @@ const GuestRoomSelectItem: React.FC<GuestRoomSelectItem> = ({
                                 />
                             </svg>
                         </div>
-                        <span className="guest-room-select-item-adults-change__count">
+                        <span className="filters-object-form-guest-room-select-item-adults-change__count">
                             {adultsCount}
                         </span>
                         <div
-                            className="guest-room-select-item-adults-change-block plus"
+                            className="filters-object-form-guest-room-select-item-adults-change-block plus"
                             onClick={() =>
                                 plusFiltersGuestRoomAdultsCountOnClick(
                                     itemIndex
@@ -165,12 +167,12 @@ const GuestRoomSelectItem: React.FC<GuestRoomSelectItem> = ({
                     </div>
                 </div>
 
-                <div className="guest-room-select-item-kids">
-                    <p className="guest-room-select-item-kids__subtitle">
+                <div className="filters-object-form-guest-room-select-item-kids">
+                    <p className="filters-object-form-guest-room-select-item-kids__subtitle">
                         Дети
                     </p>
                     <div
-                        className="guest-room-select-item-kids-wrapper"
+                        className="filters-object-form-guest-room-select-item-kids-wrapper"
                         style={
                             isOne
                                 ? {position: "static"}
@@ -178,12 +180,12 @@ const GuestRoomSelectItem: React.FC<GuestRoomSelectItem> = ({
                         }
                     >
                         {kids.length ? (
-                            <div className="guest-room-select-item-kids-items-wrapper-wrapper">
-                                <div className="guest-room-select-item-kids-items-wrapper">
+                            <div className="filters-object-form-guest-room-select-item-kids-items-wrapper-wrapper">
+                                <div className="filters-object-form-guest-room-select-item-kids-items-wrapper">
                                     {kids.map((item, index) => (
                                         <div
-                                            className="guest-room-select-item-kids-item"
-                                            key={`guest-room-select-item-${itemIndex}-kids-item-${index}`}
+                                            className="filters-object-form-guest-room-select-item-kids-item"
+                                            key={`filters-object-form-guest-room-select-item-${itemIndex}-kids-item-${index}`}
                                         >
                                             <span className="guest-room-select-item-kids-item__title">
                                                 {
@@ -196,7 +198,7 @@ const GuestRoomSelectItem: React.FC<GuestRoomSelectItem> = ({
                                             </span>
 
                                             <div
-                                                className="guest-room-select-item-kids-item-delete"
+                                                className="filters-object-form-guest-room-select-item-kids-item-delete"
                                                 onClick={() =>
                                                     deleteFiltersGuestRoomKidsOnClick(
                                                         itemIndex,
@@ -229,15 +231,15 @@ const GuestRoomSelectItem: React.FC<GuestRoomSelectItem> = ({
                                 </div>
                             </div>
                         ) : (
-                            <div className="guest-room-select-item-kids-null">
-                                <p className="guest-room-select-item-kids-null__title">
+                            <div className="filters-object-form-guest-room-select-item-kids-null">
+                                <p className="filters-object-form-guest-room-select-item-kids-null__title">
                                     Без детей
                                 </p>
                             </div>
                         )}
 
                         <div
-                            className="guest-room-select-item-kids-plus"
+                            className="filters-object-form-guest-room-select-item-kids-plus"
                             onClick={openKidsSelect}
                         >
                             <svg
@@ -260,7 +262,7 @@ const GuestRoomSelectItem: React.FC<GuestRoomSelectItem> = ({
                         <Popup
                             active={activeKidsSelect}
                             activeAnimation={activeKidsSelectAnimation}
-                            addClassWrapper="guest-room-select-item-kids-select-wrapper"
+                            addClassWrapper="filters-object-form-guest-room-select-item-kids-select-wrapper"
                             refPopup={PopupRef}
                             style={
                                 isOne
@@ -270,7 +272,7 @@ const GuestRoomSelectItem: React.FC<GuestRoomSelectItem> = ({
                                     : {top: "-50px", right: "10px"}
                             }
                         >
-                            <GuestRoomSelectItemKids
+                            <FiltersObjectGuestRoomSelectItemKids
                                 itemIndex={itemIndex}
                                 onChange={(age: number) => {
                                     addFiltersGuestRoomKidsOnClick(
@@ -288,4 +290,4 @@ const GuestRoomSelectItem: React.FC<GuestRoomSelectItem> = ({
     );
 };
 
-export default GuestRoomSelectItem;
+export default FiltersObjectGuestRoomSelectItem;

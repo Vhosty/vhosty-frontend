@@ -7,18 +7,17 @@ interface GuestRoomSelectItemKids {
     onChange: (age: number) => void;
 }
 
-const GuestRoomSelectItemKids: React.FC<GuestRoomSelectItemKids> = ({
-    itemIndex,
-    onChange,
-}) => {
+const FiltersObjectGuestRoomSelectItemKids: React.FC<
+    GuestRoomSelectItemKids
+> = ({itemIndex, onChange}) => {
     const ages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
     return (
-        <div className="guest-room-select-item-kids-select">
+        <div className="filters-object-form-guest-room-select-item-kids-select">
             {ages.map((age, index) => (
                 <p
-                    className="guest-room-select-item-kids-select__item"
-                    key={`guest-room-select-item-kids-select__item-${itemIndex}-${index}`}
+                    className="filters-object-form-guest-room-select-item-kids-select__item"
+                    key={`filters-object-form-guest-room-select-item-kids-select__item-${itemIndex}-${index}`}
                     onClick={() => onChange(age)}
                 >
                     {checkDeclension(age, ["год", "года", "лет"]).title}
@@ -28,4 +27,4 @@ const GuestRoomSelectItemKids: React.FC<GuestRoomSelectItemKids> = ({
     );
 };
 
-export default GuestRoomSelectItemKids;
+export default FiltersObjectGuestRoomSelectItemKids;

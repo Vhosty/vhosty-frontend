@@ -43,13 +43,58 @@ const HeaderModal: React.FC = () => {
     return (
         <>
             <div className="header-block-menu-btn" onClick={openHeaderModal}>
-                <div
-                    className={`header-block-menu-btn-icon ${
-                        activeHeaderModal ? "active" : ""
-                    }`}
-                >
-                    <span></span>
-                </div>
+                {activeHeaderModal ? (
+                    <svg
+                        viewBox="0 0 30 31"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <rect
+                            x="2.44922"
+                            y="0.612305"
+                            width="38.963"
+                            height="3.46338"
+                            rx="1.73169"
+                            transform="rotate(45 2.44922 0.612305)"
+                            fill="#76DD87"
+                        />
+                        <rect
+                            y="27.551"
+                            width="38.963"
+                            height="3.46338"
+                            rx="1.73169"
+                            transform="rotate(-45 0 27.551)"
+                            fill="white"
+                        />
+                    </svg>
+                ) : (
+                    <svg
+                        viewBox="0 0 30 26"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <rect
+                            width="30"
+                            height="2.66667"
+                            rx="1.33333"
+                            fill="white"
+                        />
+                        <rect
+                            y="11.3334"
+                            width="30"
+                            height="2.66667"
+                            rx="1.33333"
+                            fill="white"
+                        />
+                        <rect
+                            y="22.6666"
+                            width="30"
+                            height="2.66667"
+                            rx="1.33333"
+                            fill="#76DD87"
+                        />
+                    </svg>
+                )}
             </div>
 
             <Popup

@@ -8,10 +8,12 @@ interface InputProps {
 const Input: React.FC<InputProps> = ({label, small}) => {
     return (
         <div className="input">
-            <input
-                className={`input__field ${small ? "small" : ""}`}
-                placeholder={label}
-            />
+            <div className="input-field">
+                <input
+                    className={`input-field__input ${small ? "small" : ""}`}
+                    placeholder={label}
+                />
+            </div>
         </div>
     );
 };

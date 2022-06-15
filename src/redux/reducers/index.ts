@@ -3,12 +3,12 @@ import {reducer as formReducer} from "redux-form";
 
 import filtersGuestRoom from "../reducers/filtersGuestRoom";
 import filtersCalendar from "../reducers/filtersCalendar";
-import login from "../reducers/login";
+import reglog from "../reducers/reglog";
 
 export const rootReducer = combineReducers({
     filtersGuestRoom,
     filtersCalendar,
-    login,
+    reglog,
     form: formReducer,
 });
 

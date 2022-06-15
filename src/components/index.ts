@@ -3,14 +3,6 @@ export {default as Popup} from "./Interface/Popup";
 export {default as Input} from "./Interface/Input";
 export {default as RenderInput} from "./Interface/RenderInput";
 export {default as TitleIcon} from "./Interface/TitleIcon";
-// Calendar
-export {default as Calendar} from "./Interface/Calendar/Calendar";
-export {default as CalendarSelect} from "./Interface/Calendar/CalendarSelect";
-// GuestRoom
-export {default as GuestRoom} from "./Interface/GuestRoom/GuestRoom";
-export {default as GuestRoomSelect} from "./Interface/GuestRoom/GuestRoomSelect";
-export {default as GuestRoomSelectItem} from "./Interface/GuestRoom/GuestRoomSelectItem";
-export {default as GuestRoomSelectItemKids} from "./Interface/GuestRoom/GuestRoomSelectItemKids";
 // Checkbox
 export {default as Checkbox} from "./Interface/Checkbox";
 export {default as RenderCheckbox} from "./Interface/RenderCheckbox";
@@ -36,10 +28,24 @@ export {default as HomeEmail} from "./Home/HomeEmail/HomeEmail";
 export {default as HomeEmailForm} from "./Home/HomeEmail/HomeEmailForm";
 
 // FiltersForm
-export { default as FiltersForm } from "./FiltersForm/FiltersForm";
+export {default as FiltersObject} from "./FiltersObject/FiltersObject";
+// FiltersObjectCalendar
+export {default as FiltersObjectCalendar} from "./FiltersObject/FiltersObjectCalendar/FiltersObjectCalendar";
+export {default as FiltersObjectCalendarSelect} from "./FiltersObject/FiltersObjectCalendar/FiltersObjectCalendarSelect";
+// FiltersObjectGuestRoom
+export {default as FiltersObjectGuestRoom} from "./FiltersObject/FiltersObjectGuestRoom/FiltersObjectGuestRoom";
+export {default as FiltersObjectGuestRoomSelect} from "./FiltersObject/FiltersObjectGuestRoom/FiltersObjectGuestRoomSelect";
+export {default as FiltersObjectGuestRoomSelectItem} from "./FiltersObject/FiltersObjectGuestRoom/FiltersObjectGuestRoomSelectItem";
+export {default as FiltersObjectGuestRoomSelectItemKids} from "./FiltersObject/FiltersObjectGuestRoom/FiltersObjectGuestRoomSelectItemKids";
 
 // Login
 export {default as LoginForm} from "./Login/LoginForm";
+
+// Register
+export {default as RegisterForm} from "./Register/RegisterForm";
+
+// RecoveryPassword
+export {default as RecoveryPasswordForm} from "./RecoveryPassword/RecoveryPasswordForm";
 
 // Footer
 export {default as Footer} from "./Footer/Footer";
