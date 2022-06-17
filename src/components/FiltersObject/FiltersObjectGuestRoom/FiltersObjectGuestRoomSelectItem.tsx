@@ -1,21 +1,21 @@
 import React from "react";
 
-import {FiltersGuestRoomItem} from "../../../redux/types/filters/IFiltersGuestRoom";
+import {filtersItem} from "../../../redux/types/IFilters";
 
 import {checkDeclension} from "../../../functions/checkDeclension";
 
 import {Popup, FiltersObjectGuestRoomSelectItemKids} from "../../";
 
-interface FiltersObjectGuestRoomSelectItem extends FiltersGuestRoomItem {
+interface FiltersObjectGuestRoomSelectItem extends filtersItem {
     itemIndex: number;
     isLast: boolean;
     isOne: boolean;
 
-    plusFiltersGuestRoomAdultsCountOnClick: (index: number) => void;
-    minusFiltersGuestRoomAdultsCountOnClick: (index: number) => void;
+    plusfiltersAdultsCountOnClick: (index: number) => void;
+    minusfiltersAdultsCountOnClick: (index: number) => void;
     deleteGuestRoomOnClick: (index: number) => void;
-    addFiltersGuestRoomKidsOnClick: (index: number, age: number) => void;
-    deleteFiltersGuestRoomKidsOnClick: (
+    addfiltersKidsOnClick: (index: number, age: number) => void;
+    deletefiltersKidsOnClick: (
         itemIndex: number,
         kidsItemIndex: number
     ) => void;
@@ -29,11 +29,11 @@ const FiltersObjectGuestRoomSelectItem: React.FC<
     kids,
     isLast,
     isOne,
-    plusFiltersGuestRoomAdultsCountOnClick,
-    minusFiltersGuestRoomAdultsCountOnClick,
+    plusfiltersAdultsCountOnClick,
+    minusfiltersAdultsCountOnClick,
     deleteGuestRoomOnClick,
-    addFiltersGuestRoomKidsOnClick,
-    deleteFiltersGuestRoomKidsOnClick,
+    addfiltersKidsOnClick,
+    deletefiltersKidsOnClick,
 }) => {
     const [activeKidsSelect, setActiveKidsSelect] =
         React.useState<boolean>(false);
@@ -118,9 +118,7 @@ const FiltersObjectGuestRoomSelectItem: React.FC<
                                 adultsCount === 1 ? "disabled" : ""
                             }`}
                             onClick={() =>
-                                minusFiltersGuestRoomAdultsCountOnClick(
-                                    itemIndex
-                                )
+                                minusfiltersAdultsCountOnClick(itemIndex)
                             }
                         >
                             <svg
@@ -144,9 +142,7 @@ const FiltersObjectGuestRoomSelectItem: React.FC<
                         <div
                             className="filters-object-form-guest-room-select-item-adults-change-block plus"
                             onClick={() =>
-                                plusFiltersGuestRoomAdultsCountOnClick(
-                                    itemIndex
-                                )
+                                plusfiltersAdultsCountOnClick(itemIndex)
                             }
                         >
                             <svg
@@ -187,7 +183,7 @@ const FiltersObjectGuestRoomSelectItem: React.FC<
                                             className="filters-object-form-guest-room-select-item-kids-item"
                                             key={`filters-object-form-guest-room-select-item-${itemIndex}-kids-item-${index}`}
                                         >
-                                            <span className="guest-room-select-item-kids-item__title">
+                                            <span className="filters-object-form-guest-room-select-item-kids-item__title">
                                                 {
                                                     checkDeclension(item.age, [
                                                         "год",
@@ -200,7 +196,7 @@ const FiltersObjectGuestRoomSelectItem: React.FC<
                                             <div
                                                 className="filters-object-form-guest-room-select-item-kids-item-delete"
                                                 onClick={() =>
-                                                    deleteFiltersGuestRoomKidsOnClick(
+                                                    deletefiltersKidsOnClick(
                                                         itemIndex,
                                                         index
                                                     )
@@ -275,10 +271,7 @@ const FiltersObjectGuestRoomSelectItem: React.FC<
                             <FiltersObjectGuestRoomSelectItemKids
                                 itemIndex={itemIndex}
                                 onChange={(age: number) => {
-                                    addFiltersGuestRoomKidsOnClick(
-                                        itemIndex,
-                                        age
-                                    );
+                                    addfiltersKidsOnClick(itemIndex, age);
                                     closeKidsSelect();
                                 }}
                             />

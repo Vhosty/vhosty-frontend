@@ -32,10 +32,10 @@
 
 		+borderRadius
 
-		+open
+		+openPopup
 
 		&.close
-			+close
+			+closePopup
 
 	&-form
 		&-close
@@ -46,6 +46,13 @@
 			top: 20px
 			right: 20px
 
+			opacity: 0.5
+
+			+transition
+
+			&:hover
+				opacity: 1
+
 		&-text
 			&__subtitle
 				margin-bottom: 10px
@@ -53,10 +60,6 @@
 
 			&__title
 				user-select: none
-
-				& > a
-					cursor: pointer
-					color: $mainColor
 
 		&-block
 			margin-top: 30px
@@ -68,8 +71,6 @@
 					margin-bottom: 10px
 
 			&-recovery__link
-				cursor: pointer
-				
 				margin-top: 30px
 
 				display: block
@@ -84,9 +85,6 @@
 				&__description
 					font-size: 15px
 					text-align: center
-
-					& > a
-						color: $mainColor
 
 				&__btn
 					margin-top: 20px

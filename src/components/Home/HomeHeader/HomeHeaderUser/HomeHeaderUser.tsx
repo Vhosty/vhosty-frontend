@@ -1,28 +1,17 @@
 import React from "react";
-import {useDispatch} from "react-redux";
-
-import {setReglogOpen} from "../../../../redux/actions/reglog";
+import {Link} from "react-router-dom";
 
 import {HomeHeaderUserNotifications} from "../../../";
 
 const HomeHeaderUser: React.FC = () => {
-    const dispatch = useDispatch();
-
-    const setReglogOpenOnClick = () => {
-        dispatch(setReglogOpen());
-    };
-
     return (
-        <div
-            className="home-main-header-block-user"
-            onClick={setReglogOpenOnClick}
-        >
+        <Link to="#login" className="home-main-header-block-user">
             <HomeHeaderUserNotifications />
 
             <button className="home-main-header-block-user__btn">
                 Личный кабинет
             </button>
-        </div>
+        </Link>
     );
 };
 

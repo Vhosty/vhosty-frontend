@@ -4,13 +4,13 @@ import {useDispatch} from "react-redux";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 import {
-    addFiltersGuestRoom,
-    deleteFiltersGuestRoom,
-    plusFiltersGuestRoomAdultsCount,
-    minusFiltersGuestRoomAdultsCount,
-    addFiltersGuestRoomKids,
-    deleteFiltersGuestRoomKids,
-} from "../../../redux/actions/filtersGuestRoom";
+    addfilters,
+    deletefilters,
+    plusfiltersAdultsCount,
+    minusfiltersAdultsCount,
+    addfiltersKids,
+    deletefiltersKids,
+} from "../../../redux/actions/filters";
 
 import {FiltersObjectGuestRoomSelectItem} from "../../";
 
@@ -18,34 +18,34 @@ const FiltersObjectGuestRoomSelect: React.FC = () => {
     const dispatch = useDispatch();
 
     const {guestRoom} = useTypedSelector(
-        ({filtersGuestRoom}) => filtersGuestRoom
+        ({filters}) => filters
     );
 
     const addGuestRoomOnClick = () => {
-        dispatch(addFiltersGuestRoom({adultsCount: 1, kids: []}));
+        dispatch(addfilters({adultsCount: 1, kids: []}));
     };
 
     const deleteGuestRoomOnClick = (index: number) => {
-        dispatch(deleteFiltersGuestRoom(index));
+        dispatch(deletefilters(index));
     };
 
-    const plusFiltersGuestRoomAdultsCountOnClick = (index: number) => {
-        dispatch(plusFiltersGuestRoomAdultsCount(index));
+    const plusfiltersAdultsCountOnClick = (index: number) => {
+        dispatch(plusfiltersAdultsCount(index));
     };
 
-    const minusFiltersGuestRoomAdultsCountOnClick = (index: number) => {
-        dispatch(minusFiltersGuestRoomAdultsCount(index));
+    const minusfiltersAdultsCountOnClick = (index: number) => {
+        dispatch(minusfiltersAdultsCount(index));
     };
 
-    const addFiltersGuestRoomKidsOnClick = (index: number, age: number) => {
-        dispatch(addFiltersGuestRoomKids(index, {age}));
+    const addfiltersKidsOnClick = (index: number, age: number) => {
+        dispatch(addfiltersKids(index, {age}));
     };
 
-    const deleteFiltersGuestRoomKidsOnClick = (
+    const deletefiltersKidsOnClick = (
         itemIndex: number,
         kidsItemIndex: number
     ) => {
-        dispatch(deleteFiltersGuestRoomKids(itemIndex, kidsItemIndex));
+        dispatch(deletefiltersKids(itemIndex, kidsItemIndex));
     };
 
     return (
@@ -57,18 +57,18 @@ const FiltersObjectGuestRoomSelect: React.FC = () => {
                     itemIndex={index}
                     isLast={index + 1 === guestRoom.length}
                     isOne={guestRoom.length === 1}
-                    plusFiltersGuestRoomAdultsCountOnClick={
-                        plusFiltersGuestRoomAdultsCountOnClick
+                    plusfiltersAdultsCountOnClick={
+                        plusfiltersAdultsCountOnClick
                     }
-                    minusFiltersGuestRoomAdultsCountOnClick={
-                        minusFiltersGuestRoomAdultsCountOnClick
+                    minusfiltersAdultsCountOnClick={
+                        minusfiltersAdultsCountOnClick
                     }
                     deleteGuestRoomOnClick={deleteGuestRoomOnClick}
-                    addFiltersGuestRoomKidsOnClick={
-                        addFiltersGuestRoomKidsOnClick
+                    addfiltersKidsOnClick={
+                        addfiltersKidsOnClick
                     }
-                    deleteFiltersGuestRoomKidsOnClick={
-                        deleteFiltersGuestRoomKidsOnClick
+                    deletefiltersKidsOnClick={
+                        deletefiltersKidsOnClick
                     }
                 />
             ))}

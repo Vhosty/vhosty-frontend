@@ -1,10 +1,6 @@
 import {Dispatch} from "react";
 
-import {
-    ReglogStateTypes,
-    ReglogActionTypes,
-    ReglogActions,
-} from "../types/IReglog";
+import {ReglogActionTypes, ReglogActions} from "../types/IReglog";
 
 export const setReglogOpen = () => {
     document.body.style.overflowY = "hidden";
@@ -22,13 +18,7 @@ export const setReglogClose = () => (dispatch: Dispatch<ReglogActions>) => {
     });
 
     setTimeout(() => {
-		document.body.style.overflowY = "visible";
-		
-		dispatch({
-            type: ReglogActionTypes.SET_REGLOG_TYPE,
-            payload: ReglogStateTypes.LOGIN,
-        });
-
+        document.body.style.overflowY = "visible";
 
         dispatch({
             type: ReglogActionTypes.SET_REGLOG_OPEN,
@@ -42,7 +32,29 @@ export const setReglogClose = () => (dispatch: Dispatch<ReglogActions>) => {
     }, 180);
 };
 
-export const setReglogType = (type: ReglogStateTypes) => ({
-    type: ReglogActionTypes.SET_REGLOG_TYPE,
-    payload: type,
-});
+export const setReglogType =
+    (type: string, isOpen: boolean) => (dispatch: Dispatch<ReglogActions>) => {
+        if (isOpen) {
+            dispatch({
+                type: ReglogActionTypes.SET_REGLOG_CLOSE_CHANGE_ANIMATION,
+                payload: true,
+            });
+
+            setTimeout(() => {
+                dispatch({
+                    type: ReglogActionTypes.SET_REGLOG_TYPE,
+                    payload: type,
+                });
+
+                dispatch({
+                    type: ReglogActionTypes.SET_REGLOG_CLOSE_CHANGE_ANIMATION,
+                    payload: false,
+                });
+            }, 180);
+        } else {
+            dispatch({
+                type: ReglogActionTypes.SET_REGLOG_TYPE,
+                payload: type,
+            });
+        }
+    };

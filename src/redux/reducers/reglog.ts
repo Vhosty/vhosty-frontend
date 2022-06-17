@@ -7,7 +7,8 @@ import {
 
 const initialState: ReglogState = {
     open: false,
-    closeAnimation: false,
+	closeAnimation: false,
+	changeCloseAnimation: false,
 
     type: ReglogStateTypes.LOGIN,
 };
@@ -24,6 +25,13 @@ const login = (state = initialState, action: ReglogActions) => {
         return {
             ...state,
             closeAnimation: action.payload,
+        };
+    }
+
+    if (action.type === ReglogActionTypes.SET_REGLOG_CLOSE_CHANGE_ANIMATION) {
+        return {
+            ...state,
+            changeCloseAnimation: action.payload,
         };
     }
 

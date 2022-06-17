@@ -2,6 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 import LogoBlack from "../../assets/images/logo-black.svg";
+import UserIcon from "../../assets/images/user-icon.svg";
 
 const Footer: React.FC = () => {
     return (
@@ -134,6 +135,21 @@ const Footer: React.FC = () => {
                                     Центр помощи партнерам
                                 </Link>
                             </nav>
+                        </div>
+                    </div>
+
+                    <div className="footer-block-wrapper">
+                        <div className="footer-block-reglog">
+                            <img
+                                src={UserIcon}
+                                alt=""
+                                className="footer-block-reglog__image"
+                            />
+
+                            <p className="footer-block-reglog__title">
+                                <Link to="#register">Зарегистрироваться</Link>{" "}
+                                или <Link to="#login">Войти</Link>
+                            </p>
                         </div>
                     </div>
 

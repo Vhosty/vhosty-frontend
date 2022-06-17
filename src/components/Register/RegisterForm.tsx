@@ -11,25 +11,17 @@ import {RenderInput} from "../";
 
 interface RegisterFormProps {
     closeOnClick: () => void;
-    setReglogTypeOnClick: (type: ReglogStateTypes) => void;
 }
 
 const RegisterForm: React.FC<
     RegisterFormProps & InjectedFormProps<{}, RegisterFormProps>
-> = ({handleSubmit, closeOnClick, setReglogTypeOnClick}) => {
+> = ({handleSubmit, closeOnClick}) => {
     return (
         <form className="reglog-form" onSubmit={handleSubmit}>
             <div className="reglog-form-text">
                 <p className="reglog-form-text__subtitle">Гость №685-973</p>
                 <p className="reglog-form-text__title">
-                    Зарегистрироваться или{" "}
-                    <a
-                        onClick={() =>
-                            setReglogTypeOnClick(ReglogStateTypes.LOGIN)
-                        }
-                    >
-                        Войти
-                    </a>
+                    Зарегистрироваться или <Link to="#login">Войти</Link>
                 </p>
             </div>
 

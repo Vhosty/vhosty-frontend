@@ -5,57 +5,53 @@ import {useDispatch} from "react-redux";
 import {useTypedSelector} from "../../../hooks/useTypedSelector";
 
 import {
-    plusFiltersCalendarMonthDate,
-    minusFiltersCalendarMonthDate,
-    setFiltersCalendarDaysMonth,
+    plusfiltersMonthDate,
+    minusfiltersMonthDate,
+    setfiltersDaysMonth,
     setFiltersFromCalendarDate,
     setFiltersToCalendarDate,
-    setFiltersFromCalendarDateAction,
-} from "../../../redux/actions/filtersCalendar";
+} from "../../../redux/actions/filters";
 
 const totalDays = 35;
 
 const FiltersObjectCalendarSelect: React.FC = () => {
     const dispatch = useDispatch();
 
-    const {date, daysMonth, from} = useTypedSelector(
-        ({filtersCalendar}) => filtersCalendar
-    );
+    const {
+        calendar: {date, daysMonth, from, to},
+    } = useTypedSelector(({filters}) => filters);
 
     React.useEffect(() => {
         const startDay = date.clone().startOf("month").startOf("week");
         const day = startDay.clone().subtract(1, "day");
 
         dispatch(
-            setFiltersCalendarDaysMonth(
+            setfiltersDaysMonth(
                 [...Array(totalDays)].map(() => day.add(1, "day").clone())
             )
         );
     }, [date]);
 
     const isSelectedMonth = (day: Moment) => date.isSame(day, "month");
-    const isSelectedDay = (day: Moment) => moment(from.date).isSame(day, "day");
 
-    const isSmall = (day: Moment) => day;
+    const isSelectedDay = (day: Moment) =>
+        (from.date.isSame(day, "day") || to.date.isSame(day, "day")) &&
+        from.selected;
 
     const addMonthOnClick = () => {
-        dispatch(plusFiltersCalendarMonthDate());
+        dispatch(plusfiltersMonthDate());
     };
 
     const minusMonthOnClick = () => {
-        dispatch(minusFiltersCalendarMonthDate());
+        dispatch(minusfiltersMonthDate());
     };
 
-    const setFiltersFromCalendarDateOnClick = (day: Moment) => {
-        if (isSelectedDay(day)) {
-            dispatch(setFiltersFromCalendarDateAction(!from.active));
+    const setFiltersCalendarDateOnClick = (day: Moment) => {
+        if (from.active && from.date.isBefore(day)) {
+            dispatch(setFiltersToCalendarDate(day));
         } else {
             dispatch(setFiltersFromCalendarDate(day));
         }
-    };
-
-    const setFiltersToCalendarDateOnClick = (day: Moment) => {
-        dispatch(setFiltersToCalendarDate(day));
     };
 
     return (
@@ -145,18 +141,16 @@ const FiltersObjectCalendarSelect: React.FC = () => {
                     isSelectedMonth(day) ? (
                         <span
                             className={`filters-object-form-calendar-select-days__day ${
-                                isSelectedDay(day) ? `active` : ""
+                                day.isAfter(from.date) && day.isBefore(to.date)
+                                    ? "included"
+                                    : ""
+                            } ${isSelectedDay(day) ? "active" : ""} ${
+                                day.isBefore(moment().subtract(1, "days"))
+                                    ? "disabled"
+                                    : ""
                             }`}
-                            style={{
-                                border:
-                                    isSelectedDay(day) && from.active
-                                        ? "3px solid #E6F6F6"
-                                        : "0px solid #E6F6F6",
-                            }}
                             key={`filters-object-form-calendar-select-days-${index}__day`}
-                            onClick={() =>
-                                setFiltersFromCalendarDateOnClick(day)
-                            }
+                            onClick={() => setFiltersCalendarDateOnClick(day)}
                         >
                             {day.format("D")}
                         </span>
@@ -167,48 +161,6 @@ const FiltersObjectCalendarSelect: React.FC = () => {
                         ></span>
                     )
                 )}
-
-                {/* {Object.keys(days).map((key, index) => (
-                    <div
-                        className="calendar-select-days-column"
-                        key={`calendar-select-days-column-${key}-${index}`}
-                    >
-                        <span className="calendar-select-days-column__title">
-                            пн
-                        </span>
-
-                        {Object.keys(days[key]).map((key2, subIndex) => (
-                            <span
-                                className={`calendar-select-days-column__day ${
-                                    index == 1 ? "active1" : ""
-                                } ${
-                                    days[key][key2] > activeNum1 &&
-                                    days[key][key2] < activeNum2
-                                        ? "included"
-                                        : ""
-                                } ${days[key][key2] ? "" : "disabled"}`}
-                                key={`calendar-select-days__item-${index}-${subIndex}`}
-                            >
-                                {days[key][key2] ? days[key][key2] : ""}
-                            </span>
-                        ))}
-                    </div>
-                ))} */}
-
-                {/* {arrayDays1.map((day, index) => (
-                        <span
-                            className={`calendar-select-days-column__day ${
-                                index == 1 ? "active" : ""
-                            } ${
-                                day > activeNum1 && day < activeNum2
-                                    ? "included"
-                                    : ""
-                            } ${day ? "" : "disabled"}`}
-                            key={`calendar-select-days__item-August-${index}`}
-                        >
-                            {day ? day : ""}
-                        </span>
-                    ))} */}
             </div>
         </>
     );

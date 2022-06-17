@@ -8,7 +8,7 @@ import {Popup, FiltersObjectGuestRoomSelect} from "../../";
 
 const FiltersObjectGuestRoom: React.FC = () => {
     const {guestRoom} = useTypedSelector(
-        ({filtersGuestRoom}) => filtersGuestRoom
+        ({filters}) => filters
     );
 
     const [activeSelect, setActiveSelect] = React.useState<boolean>(false);

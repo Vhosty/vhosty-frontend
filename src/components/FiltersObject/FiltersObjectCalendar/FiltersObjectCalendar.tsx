@@ -1,4 +1,9 @@
 import React from "react";
+import moment from "moment";
+
+import {checkDeclension} from "../../../functions/checkDeclension";
+
+import {useTypedSelector} from "../../../hooks/useTypedSelector";
 
 import {Popup, FiltersObjectCalendarSelect} from "../../";
 
@@ -6,6 +11,10 @@ const FiltersObjectCalendar: React.FC = () => {
     const [activeCalendar, setActiveCalendar] = React.useState<boolean>(false);
     const [activeCalendarAnimation, setActiveCalendarAnimation] =
         React.useState<boolean>(false);
+
+    const {
+        calendar: {from, to},
+    } = useTypedSelector(({filters}) => filters);
 
     const PopupRef = React.useRef<HTMLDivElement>(null);
 
@@ -46,16 +55,26 @@ const FiltersObjectCalendar: React.FC = () => {
             >
                 <div className="filters-object-form-calendar-period">
                     <span className="filters-object-form-calendar-period__from">
-                        23 авг. (Вс)
+                        {from.selected
+                            ? from.date.format("D MMMM (dd)")
+                            : "Заезд"}
                     </span>
                     <div className="filters-object-form-calendar-period__line"></div>
                     <span className="filters-object-form-calendar-period__to">
-                        14 сент. (Пт)
+                        {from.selected && !from.date.isSame(to.date, "days")
+                            ? to.date.format("D MMMM (dd)")
+                            : "Отъезд"}
                     </span>
                 </div>
 
                 <span className="filters-object-form-calendar__count">
-                    29 суток
+                    {to.date.diff(from.date, "days") == 0
+                        ? ""
+                        : checkDeclension(to.date.diff(from.date, "days"), [
+                              "сутки",
+                              "суток",
+                              "суток",
+                          ]).title}
                 </span>
 
                 <div

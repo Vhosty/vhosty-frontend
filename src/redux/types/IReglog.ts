@@ -1,12 +1,14 @@
 export enum ReglogStateTypes {
-    LOGIN = "LOGIN",
-    REGISTER = "REGISTER",
-    RECOVERY_PASSWORD = "RECOVERY_PASSWORD",
+    LOGIN = "login",
+    REGISTER = "register",
+    RECOVERY_PASSWORD = "recovery_password",
 }
 
 export interface ReglogState {
     open: boolean;
     closeAnimation: boolean;
+
+    changeCloseAnimation: boolean;
 
     type: ReglogStateTypes;
 }
@@ -14,6 +16,7 @@ export interface ReglogState {
 export enum ReglogActionTypes {
     SET_REGLOG_OPEN = "SET_REGLOG_OPEN",
     SET_REGLOG_CLOSE_ANIMATION = "SET_REGLOG_CLOSE_ANIMATION",
+    SET_REGLOG_CLOSE_CHANGE_ANIMATION = "SET_REGLOG_CLOSE_CHANGE_ANIMATION",
     SET_REGLOG_TYPE = "SET_REGLOG_TYPE",
 }
 
@@ -27,9 +30,18 @@ interface setReglogCloseAnimation {
     payload: boolean;
 }
 
-interface setReglogType {
-    type: ReglogActionTypes.SET_REGLOG_TYPE;
-    payload: ReglogStateTypes;
+interface setReglogCloseChangeAnimation {
+    type: ReglogActionTypes.SET_REGLOG_CLOSE_CHANGE_ANIMATION;
+    payload: boolean;
 }
 
-export type ReglogActions = setReglogOpen | setReglogCloseAnimation | setReglogType;
+interface setReglogType {
+    type: ReglogActionTypes.SET_REGLOG_TYPE;
+    payload: string;
+}
+
+export type ReglogActions =
+    | setReglogOpen
+    | setReglogCloseAnimation
+    | setReglogCloseChangeAnimation
+    | setReglogType;

@@ -5,18 +5,15 @@ import {Field, reduxForm, InjectedFormProps} from "redux-form";
 
 import {validate} from "./validate";
 
-import {ReglogStateTypes} from "../../redux/types/IReglog";
-
 import {RenderInput} from "../";
 
 interface LoginFormProps {
     closeOnClick: () => void;
-    setReglogTypeOnClick: (type: ReglogStateTypes) => void;
 }
 
 const LoginForm: React.FC<
     LoginFormProps & InjectedFormProps<{}, LoginFormProps>
-> = ({handleSubmit, closeOnClick, setReglogTypeOnClick}) => {
+> = ({handleSubmit, closeOnClick}) => {
     return (
         <form className="reglog-form" onSubmit={handleSubmit}>
             <div className="reglog-form-close" onClick={closeOnClick}>
@@ -46,14 +43,7 @@ const LoginForm: React.FC<
             <div className="reglog-form-text">
                 <p className="reglog-form-text__subtitle">Гость №685-973</p>
                 <p className="reglog-form-text__title">
-                    Войти или{" "}
-                    <a
-                        onClick={() =>
-                            setReglogTypeOnClick(ReglogStateTypes.REGISTER)
-                        }
-                    >
-                        Зарегистрироваться
-                    </a>
+                    Войти или <Link to="#register">Зарегистрироваться</Link>
                 </p>
             </div>
 
@@ -81,14 +71,12 @@ const LoginForm: React.FC<
                     />
                 </div>
 
-                <a
-                    onClick={() =>
-                        setReglogTypeOnClick(ReglogStateTypes.RECOVERY_PASSWORD)
-                    }
+                <Link
+                    to="#recovery_password"
                     className="reglog-form-block-recovery__link"
                 >
                     Забыли пароль?
-                </a>
+                </Link>
 
                 <div className="reglog-form-block-btn">
                     <p className="reglog-form-block-btn__description">
