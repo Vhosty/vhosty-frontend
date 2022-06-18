@@ -1,21 +1,23 @@
 import React from "react";
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useLocation} from "react-router-dom";
 
-import {Footer} from "./components/";
+import {Footer, Header} from "./components/";
 
-import Reglog from "./pages/Reglog";
-
-const Home = React.lazy(() => import("./pages/Home"));
+import {Reglog, Home, Objects} from "./pages";
 
 const App = () => {
+    const location = useLocation();
+
     return (
         <>
             <React.Suspense fallback={<></>}>
-               <Reglog />
+                {location.pathname !== "/" ? <Header /> : null}
+
+                <Reglog />
 
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/policy" element={<>policy</>} />
+                    <Route path="/objects" element={<Objects />} />
                 </Routes>
 
                 <Footer />

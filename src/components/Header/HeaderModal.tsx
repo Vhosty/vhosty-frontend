@@ -3,7 +3,11 @@ import {Link} from "react-router-dom";
 
 import {Popup} from "../";
 
-const HeaderModal: React.FC = () => {
+interface HeaderModalProps {
+    color?: boolean;
+}
+
+const HeaderModal: React.FC<HeaderModalProps> = ({color}) => {
     const [activeHeaderModal, setActiveHeaderModal] =
         React.useState<boolean>(false);
     const [activeHeaderModalAnimation, setActiveHeaderModalAnimation] =
@@ -43,7 +47,7 @@ const HeaderModal: React.FC = () => {
     return (
         <>
             <div
-                className={`header-block-menu-btn ${
+                className={`header-block-menu-btn ${color ? "color" : ""} ${
                     activeHeaderModal ? "active" : ""
                 }`}
                 onClick={openHeaderModal}

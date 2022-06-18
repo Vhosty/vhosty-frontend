@@ -35,7 +35,6 @@ const Home: React.FC = () => {
             } else {
                 clearInterval();
             }
-            //
         }, 200);
     }, []);
 

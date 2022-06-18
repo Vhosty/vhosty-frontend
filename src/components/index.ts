@@ -8,7 +8,12 @@ export {default as Checkbox} from "./Interface/Checkbox";
 export {default as RenderCheckbox} from "./Interface/RenderCheckbox";
 
 // Header
+export {default as Header} from "./Header/Header";
 export {default as HeaderModal} from "./Header/HeaderModal";
+export { default as HeaderPassLink } from "./Header/HeaderPassLink";
+// HeaderUser
+export {default as HeaderUser} from "./Header/HeaderUser/HeaderUser";
+export {default as HeaderUserNotifications} from "./Header/HeaderUser/HeaderUserNotifications";
 
 // Home
 // HomeHeader

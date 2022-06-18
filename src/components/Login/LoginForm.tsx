@@ -84,7 +84,7 @@ const LoginForm: React.FC<
                         <Link to="/" onClick={closeOnClick}>
                             политикой конфиденциальности
                         </Link>{" "}
-                        и
+                        и{" "}
                         <Link to="/" onClick={closeOnClick}>
                             обработкой персональных данных.
                         </Link>

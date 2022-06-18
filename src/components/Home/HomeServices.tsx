@@ -7,30 +7,36 @@ import Service1 from "../../assets/images/service1.png";
 import Service2 from "../../assets/images/service2.png";
 import Service3 from "../../assets/images/service3.png";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const HomeServices: React.FC = () => {
+    gsap.registerPlugin(ScrollTrigger);
+
     const panels = React.useRef<any>([]);
     const panelsContainer = React.useRef<any>();
+
+    React.useLayoutEffect(() => {
+        if (panels.current && panelsContainer.current) {
+            const totalPanels = panels.current.length;
+            const width: number = panelsContainer.current.offsetWidth;
+
+            let scroll = gsap.to(panels.current, {
+                xPercent: -100 * (totalPanels - 1),
+                scrollTrigger: {
+                    trigger: panelsContainer.current,
+                    pin: true,
+                    scrub: 1,
+                    end: `+=${width}`,
+                },
+            });
+
+            return () => {
+                scroll.scrollTrigger?.kill();
+            };
+        }
+    }, []);
 
     const createPanelsRefs = (panel: any, index: number) => {
         panels.current[index] = panel;
     };
-
-    React.useEffect(() => {
-        const totalPanels = panels.current.length;
-        const width: number = panelsContainer.current.offsetWidth;
-
-        gsap.to(panels.current, {
-            xPercent: -100 * (totalPanels - 0.5),
-            scrollTrigger: {
-                trigger: panelsContainer.current,
-                pin: true,
-                scrub: 1,
-                end: `+=${width}`,
-            },
-        });
-    }, []);
 
     return (
         <section className="home-services" ref={panelsContainer}>
