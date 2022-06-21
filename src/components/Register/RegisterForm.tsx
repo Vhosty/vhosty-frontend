@@ -5,8 +5,6 @@ import {Field, reduxForm, InjectedFormProps} from "redux-form";
 
 import {validate} from "./validate";
 
-import {ReglogStateTypes} from "../../redux/types/IReglog";
-
 import {RenderInput} from "../";
 
 interface RegisterFormProps {

@@ -3,8 +3,8 @@ import React from "react";
 import {
     TitleIcon,
     Input,
-    FiltersObjectCalendar,
-    FiltersObjectGuestRoom,
+    ObjectFiltersGlobalCalendar,
+    ObjectFiltersGlobalGuestRoom,
     Checkbox,
 } from "../";
 
@@ -51,11 +51,11 @@ const FiltersForm: React.FC = () => {
 
             <div className="filters-object-form-block-row">
                 <div className="filters-object-form-block left filters-object-form-block-input">
-                    <Input label="Например, Дубай" small />
+                    <Input label="Например, Дубай" small type="text" />
                 </div>
 
                 <div className="filters-object-form-block middle filters-object-form-block-calendar">
-                    <FiltersObjectCalendar />
+                    <ObjectFiltersGlobalCalendar />
                 </div>
 
                 <div className="filters-object-form-block right filters-object-form-block-btn">
@@ -67,7 +67,7 @@ const FiltersForm: React.FC = () => {
 
             <div className="filters-object-form-block-row">
                 <div className="filters-object-form-block left filters-object-form-block-guest-room">
-                    <FiltersObjectGuestRoom />
+                    <ObjectFiltersGlobalGuestRoom />
                 </div>
 
                 <div className="filters-object-form-block middle filters-object-form-block-checkbox">

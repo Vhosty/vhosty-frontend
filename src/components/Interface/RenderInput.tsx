@@ -3,6 +3,7 @@ import React from "react";
 interface InputProps {
     label: string;
     small?: boolean;
+    smallPlaceholder?: boolean;
 
     input: any;
     type: any;
@@ -12,6 +13,7 @@ interface InputProps {
 const Input: React.FC<InputProps> = ({
     label,
     small,
+    smallPlaceholder,
     input,
     type,
     meta: {touched, error},
@@ -24,7 +26,11 @@ const Input: React.FC<InputProps> = ({
 
     return (
         <div className="input">
-            <div className="input-field">
+            <div
+                className={`input-field ${small ? "small" : ""} ${
+                    smallPlaceholder ? "small-placeholder" : ""
+                }`}
+            >
                 <input
                     {...input}
                     type={
@@ -34,9 +40,7 @@ const Input: React.FC<InputProps> = ({
                                 : "password"
                             : type
                     }
-                    className={`input-field__input ${small ? "small" : ""} ${
-                        touched && error ? "error" : ""
-                    }`}
+                    className="input-field__input"
                     placeholder={label}
                 />
 

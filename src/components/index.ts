@@ -3,6 +3,8 @@ export {default as Popup} from "./Interface/Popup";
 export {default as Input} from "./Interface/Input";
 export {default as RenderInput} from "./Interface/RenderInput";
 export {default as TitleIcon} from "./Interface/TitleIcon";
+export {default as InputRange} from "./Interface/InputRange";
+export {default as Select} from "./Interface/Select";
 // Checkbox
 export {default as Checkbox} from "./Interface/Checkbox";
 export {default as RenderCheckbox} from "./Interface/RenderCheckbox";
@@ -32,16 +34,16 @@ export {default as HomeCorporate} from "./Home/HomeCorporate";
 export {default as HomeEmail} from "./Home/HomeEmail/HomeEmail";
 export {default as HomeEmailForm} from "./Home/HomeEmail/HomeEmailForm";
 
-// FiltersForm
-export {default as FiltersObject} from "./FiltersObject/FiltersObject";
-// FiltersObjectCalendar
-export {default as FiltersObjectCalendar} from "./FiltersObject/FiltersObjectCalendar/FiltersObjectCalendar";
-export {default as FiltersObjectCalendarSelect} from "./FiltersObject/FiltersObjectCalendar/FiltersObjectCalendarSelect";
-// FiltersObjectGuestRoom
-export {default as FiltersObjectGuestRoom} from "./FiltersObject/FiltersObjectGuestRoom/FiltersObjectGuestRoom";
-export {default as FiltersObjectGuestRoomSelect} from "./FiltersObject/FiltersObjectGuestRoom/FiltersObjectGuestRoomSelect";
-export {default as FiltersObjectGuestRoomSelectItem} from "./FiltersObject/FiltersObjectGuestRoom/FiltersObjectGuestRoomSelectItem";
-export {default as FiltersObjectGuestRoomSelectItemKids} from "./FiltersObject/FiltersObjectGuestRoom/FiltersObjectGuestRoomSelectItemKids";
+// ObjectFiltersGlobal
+export {default as ObjectFiltersGlobal} from "./ObjectFiltersGlobal/ObjectFiltersGlobal";
+// ObjectFiltersGlobalCalendar
+export {default as ObjectFiltersGlobalCalendar} from "./ObjectFiltersGlobal/ObjectFiltersGlobalCalendar/ObjectFiltersGlobalCalendar";
+export {default as ObjectFiltersGlobalCalendarSelect} from "./ObjectFiltersGlobal/ObjectFiltersGlobalCalendar/ObjectFiltersGlobalCalendarSelect";
+// ObjectFiltersGlobalGuestRoom
+export {default as ObjectFiltersGlobalGuestRoom} from "./ObjectFiltersGlobal/ObjectFiltersGlobalGuestRoom/ObjectFiltersGlobalGuestRoom";
+export {default as ObjectFiltersGlobalGuestRoomSelect} from "./ObjectFiltersGlobal/ObjectFiltersGlobalGuestRoom/ObjectFiltersGlobalGuestRoomSelect";
+export {default as ObjectFiltersGlobalGuestRoomSelectItem} from "./ObjectFiltersGlobal/ObjectFiltersGlobalGuestRoom/ObjectFiltersGlobalGuestRoomSelectItem";
+export {default as ObjectFiltersGlobalGuestRoomSelectItemKids} from "./ObjectFiltersGlobal/ObjectFiltersGlobalGuestRoom/ObjectFiltersGlobalGuestRoomSelectItemKids";
 
 // Login
 export {default as LoginForm} from "./Login/LoginForm";
@@ -51,6 +53,34 @@ export {default as RegisterForm} from "./Register/RegisterForm";
 
 // RecoveryPassword
 export {default as RecoveryPasswordForm} from "./RecoveryPassword/RecoveryPasswordForm";
+
+// Objects
+// ObjectsFilters
+export {default as ObjectsFilters} from "./Objects/ObjectsFilters/ObjectsFilters";
+export {default as ObjectsFiltersBlockWrapper} from "./Objects/ObjectsFilters/ObjectsFiltersBlockWrapper";
+export {default as ObjectsFiltersMap} from "./Objects/ObjectsFilters/ObjectsFiltersMap";
+export {default as ObjectsFiltersPrice} from "./Objects/ObjectsFilters/ObjectsFiltersPrice";
+export {default as ObjectsFiltersDistance} from "./Objects/ObjectsFilters/ObjectsFiltersDistance";
+export {default as ObjectsFiltersLocation} from "./Objects/ObjectsFilters/ObjectsFiltersLocation";
+export {default as ObjectsFiltersTerms} from "./Objects/ObjectsFilters/ObjectsFiltersTerms";
+export {default as ObjectsFiltersTypes} from "./Objects/ObjectsFilters/ObjectsFiltersTypes";
+export {default as ObjectsFiltersStars} from "./Objects/ObjectsFilters/ObjectsFiltersStars";
+export {default as ObjectsFiltersFeedbacks} from "./Objects/ObjectsFilters/ObjectsFiltersFeedbacks";
+export {default as ObjectsFiltersServicesObject} from "./Objects/ObjectsFilters/ObjectsFiltersServicesObject";
+export {default as ObjectsFiltersServicesRoom} from "./Objects/ObjectsFilters/ObjectsFiltersServicesRoom";
+export {default as ObjectsFiltersFoods} from "./Objects/ObjectsFilters/ObjectsFiltersFoods";
+export {default as ObjectsFiltersHotels} from "./Objects/ObjectsFilters/ObjectsFiltersHotels";
+export { default as ObjectsFiltersThemes } from "./Objects/ObjectsFilters/ObjectsFiltersThemes";
+// ObjectsCatalog
+export {default as ObjectsCatalog} from "./Objects/ObjectsCatalog/ObjectsCatalog";
+export {default as ObjectsCatalogPagination} from "./Objects/ObjectsCatalog/ObjectsCatalogPagination";
+// ObjectsCatalogFilters
+export {default as ObjectsCatalogFilters} from "./Objects/ObjectsCatalog/ObjectsCatalogFilters/ObjectsCatalogFilters";
+export {default as ObjectsCatalogFiltersFavorites} from "./Objects/ObjectsCatalog/ObjectsCatalogFilters/ObjectsCatalogFiltersFavorites";
+export {default as ObjectsCatalogFiltersSearch} from "./Objects/ObjectsCatalog/ObjectsCatalogFilters/ObjectsCatalogFiltersSearch";
+export {default as ObjectsCatalogFiltersSort} from "./Objects/ObjectsCatalog/ObjectsCatalogFilters/ObjectsCatalogFiltersSort";
+// ObjectsCatalogBlock
+export {default as ObjectsCatalogBlock} from "./Objects/ObjectsCatalog/ObjectsCatalogBlock/ObjectsCatalogBlock";
 
 // Footer
 export {default as Footer} from "./Footer/Footer";

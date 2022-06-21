@@ -5,9 +5,9 @@ import {checkDeclension} from "../../../functions/checkDeclension";
 
 import {useTypedSelector} from "../../../hooks/useTypedSelector";
 
-import {Popup, FiltersObjectCalendarSelect} from "../../";
+import {Popup, ObjectFiltersGlobalCalendarSelect} from "../../";
 
-const FiltersObjectCalendar: React.FC = () => {
+const ObjectFiltersGlobalCalendar: React.FC = () => {
     const [activeCalendar, setActiveCalendar] = React.useState<boolean>(false);
     const [activeCalendarAnimation, setActiveCalendarAnimation] =
         React.useState<boolean>(false);
@@ -105,10 +105,10 @@ const FiltersObjectCalendar: React.FC = () => {
                 addClassWrapper="filters-object-form-calendar-select"
                 refPopup={PopupRef}
             >
-                <FiltersObjectCalendarSelect />
+                <ObjectFiltersGlobalCalendarSelect />
             </Popup>
         </div>
     );
 };
 
-export default FiltersObjectCalendar;
+export default ObjectFiltersGlobalCalendar;

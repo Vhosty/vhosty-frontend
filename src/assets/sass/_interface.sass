@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6
 p
 	line-height: 1.5em
 
-	& > a 
+	& > a
 		color: $mainColor
 
 .description
@@ -72,6 +72,10 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active
 	-webkit-box-shadow: 0 0 0 30px rgba(225, 225, 225, 0.2) inset !important
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  -webkit-appearance: none
 
 input
 	outline: none
@@ -109,6 +113,11 @@ button
 	&:active
 		background-position: right
 
+	&.border
+		font-size: 15px
+		padding: 17px 35px
+		border-radius: 35px 0px
+
 	&.small
 		padding: 15px 55px
 
@@ -139,6 +148,36 @@ button
 	&:hover
 		background-color: #F2FAFA
 
+.btn-white
+	display: inline-flex
+	justify-content: center
+	align-items: center
+
+	cursor: pointer
+
+	padding: 20px 60px
+
+	font-size: 20px
+	font-weight: 700
+	color: $black
+
+	background: #F3F4F5
+
+	border-radius: 100px
+
+	+transition
+
+	&:hover
+		background-color: #F0F0F0
+
+	&.small
+		padding: 15px 55px
+
+	&.disabled
+		pointer-events: none
+		color: $gray
+		background: $lightGray
+
 // input
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -152,6 +191,15 @@ input:-webkit-autofill:active
 	&-field
 		position: relative
 
+		&.small > input
+			padding: 13px 25px
+
+		&.small-placeholder > input
+			font-size: 15px
+
+			&::placeholder
+				font-size: 15px
+
 		&__input
 			font-size: 20px
 			color: $black
@@ -163,9 +211,6 @@ input:-webkit-autofill:active
 			background-color: transparent
 			border: 2px solid $lightGray
 
-			&.small
-				padding: 13px 25px
-
 			&::placeholder
 				user-select: none
 				color: $lightGray
@@ -175,6 +220,19 @@ input:-webkit-autofill:active
 
 				&::placeholder
 					color: $red
+
+		&__fixlabel
+			user-select: none
+
+			top: 50%
+			right: 20px
+
+			transform: translateY(-50%)
+
+			position: absolute
+
+		&.small-placeholder &__fixlabel
+			font-size: 15px
 
 		&-icon
 			cursor: pointer
@@ -196,6 +254,22 @@ input:-webkit-autofill:active
 		color: $red
 
 		+openPopup
+
+// input-range
+.input-range
+	display: flex
+	justify-content: space-between
+	align-items: center
+
+	&-slider
+		width: 55%
+
+	&-input
+		width: 35%
+
+.rc-slider-handle
+	&:active, &:focus
+		box-shadow: none !important
 
 // popup
 .popup
@@ -243,6 +317,21 @@ input:-webkit-autofill:active
 		& > a
 			margin-left: 4px
 			color: $mainColor
+
+		& > img
+			width: 50px
+
+			margin-left: 10px
+
+		& > svg
+			width: 20px
+			margin-left: 10px
+
+			&:first-child
+				margin-left: 5px
+
+			&:last-child
+				margin-right: 10px
 
 		&.small
 			font-size: 15px
@@ -312,6 +401,63 @@ input:-webkit-autofill:active
 			left: 35px
 
 			+borderRadius
+
+// select
+.select
+	top: 0
+	left: 0
+
+	position: absolute
+
+	z-index: 1
+
+	width: 100%
+
+	padding: 15px 25px
+	background-color: $white
+
+	+transition
+	+borderRadius
+
+	&.active
+		+boxShadow
+
+	&-wrapper
+		cursor: pointer
+
+		width: 100%
+		min-height: 60px
+
+		position: relative
+
+	&-title
+		display: flex
+		align-items: center
+		justify-content: space-between
+
+		+transition
+
+		&__title
+			user-select: none
+
+		&-icon
+			+transition
+
+			&.rotate
+				transform: rotate(180deg)
+
+	&-list
+		&__item
+			margin-top: 20px
+			user-select: none
+
+			+transition
+
+			&.active
+				color: $mainColor
+
+			&:hover
+				color: $mainColor
 
 #blink
 	user-select: none

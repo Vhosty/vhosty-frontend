@@ -40,22 +40,22 @@
 		&.close
 			+closePopup
 
+	&-close
+		cursor: pointer
+
+		position: absolute
+
+		top: 20px
+		right: 20px
+
+		opacity: 0.5
+
+		+transition
+
+		&:hover
+			opacity: 1
+
 	&-form
-		&-close
-			cursor: pointer
-
-			position: absolute
-
-			top: 20px
-			right: 20px
-
-			opacity: 0.5
-
-			+transition
-
-			&:hover
-				opacity: 1
-
 		&-text
 			&__subtitle
 				margin-bottom: 10px

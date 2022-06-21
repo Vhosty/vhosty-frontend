@@ -1,8 +1,508 @@
 // objects
 .objects
+	position: relative
 	padding: 50px 0
-	height: 500px
 
-	+backgroundSetting
+	&-bg
+		z-index: -1
 
-	&-wrapper
+		top: 0
+		left: 0
+
+		position: absolute
+
+		width: 100%
+		height: 500px
+
+		+backgroundSetting
+
+	&-catalog-wrapper
+		margin-top: 50px
+
+	&-filters-wrapper
+		width: 30%
+
+		overflow: hidden
+
+		+borderRadius
+
+	&-filters
+		padding: 40px 20px 20px 20px
+		background-color: $white
+
+		&-map
+			display: flex
+			align-items: flex-end
+
+			width: 100%
+			height: 210px
+
+			padding: 20px
+
+			&-btn
+				width: 100%
+
+				display: flex
+				justify-content: space-between
+				align-items: center
+
+				&__btn
+					width: 48%
+
+		&-block-wrapper
+			position: relative
+
+			padding-bottom: 20px
+			margin-bottom: 20px
+
+			border-bottom: 1px solid #EAEBE9
+
+			&:last-child
+				margin-bottom: 0
+				padding-bottom: 0
+
+				border: none
+
+		&-block
+			position: relative
+
+			+transition
+
+			&-title
+				&__subtitle
+					font-size: 15px
+					margin-left: 35px
+					margin-bottom: 20px
+
+					font-weight: 500
+
+			&-all
+				&-shadow
+					width: 100%
+					height: 50px
+
+					position: absolute
+
+					bottom: 0
+					left: 0
+
+					background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, $white 83.93%)
+
+					+transition
+
+					&.hidden
+						opacity: 0
+						bottom: -50px
+
+				&__btn
+					cursor: pointer
+
+					margin-top: 5px
+
+					border: none
+					background-color: transparent
+
+					font-size: 15px
+
+					color: $darkMainColor
+
+					&.visible
+						& > svg
+							transform: rotate(180deg)
+
+					& > svg
+						margin-left: 15px
+						+transition
+
+			&-input-from-to
+				display: flex
+				align-items: center
+				justify-content: space-between
+
+				&-line
+					width: 10%
+					height: 2px
+
+					background-color: $mainColor
+
+					border-radius: 100px
+
+				&-block
+					width: 40%
+
+			&-checkbox
+				margin-bottom: 15px
+
+				display: flex
+				justify-content: space-between
+				align-items: center
+
+				&:last-child
+					margin-bottom: 0
+
+				&__count
+					user-select: none
+
+					font-size: 15px
+					color: $gray
+
+	&-catalog-wrapper
+		display: flex
+		justify-content: space-between
+		align-items: flex-start
+
+	&-catalog
+		width: 67%
+
+		&-filters
+			display: flex
+			justify-content: space-between
+			align-items: center
+
+			&-favorites
+				&__btn
+					cursor: pointer
+
+					display: inline-flex
+					justify-content: center
+					align-items: center
+
+					padding: 15px 25px
+
+					border-radius: 100px
+
+					height: 60px
+
+					background-color: rgba(255, 255, 255, 0.8)
+
+					+transition
+
+					&:hover
+						background-color: $white
+
+					&.active
+						background-color: $mainColor
+
+						& > svg
+							fill: $white
+
+					& > svg
+						fill: #E92C63
+
+			&-search
+				position: relative
+
+				&__input
+					font-size: 20px
+					color: #7A918A
+
+					border-radius: 100px
+					padding: 15px 25px 15px 60px
+
+					width: 100%
+					height: 60px
+
+					background-color: rgba(255, 255, 255, 0.8)
+					border: none
+
+					+transition
+
+					&::placeholder
+						color: #7A918A
+						user-select: none
+
+					&:active, &:focus
+						background-color: $white
+						color: $black
+
+						&::placeholder
+							color: $black
+
+				&:focus-within::before
+					background-image: url("data:image/svg+xml, %3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M16.8395 15.4605L13.1641 11.7852C14.0489 10.6072 14.5266 9.17331 14.525 7.7C14.525 3.93672 11.4633 0.875 7.7 0.875C3.93672 0.875 0.875 3.93672 0.875 7.7C0.875 11.4633 3.93672 14.525 7.7 14.525C9.17331 14.5266 10.6072 14.0489 11.7852 13.1641L15.4605 16.8395C15.6466 17.0058 15.8893 17.0945 16.1387 17.0876C16.3881 17.0806 16.6255 16.9784 16.8019 16.8019C16.9784 16.6255 17.0806 16.3881 17.0876 16.1387C17.0945 15.8893 17.0058 15.6466 16.8395 15.4605ZM2.825 7.7C2.825 6.73582 3.11091 5.79328 3.64659 4.9916C4.18226 4.18991 4.94363 3.56506 5.83442 3.19609C6.72521 2.82711 7.70541 2.73057 8.65107 2.91867C9.59672 3.10677 10.4654 3.57107 11.1471 4.25285C11.8289 4.93464 12.2932 5.80328 12.4813 6.74893C12.6694 7.69459 12.5729 8.67479 12.2039 9.56558C11.8349 10.4564 11.2101 11.2177 10.4084 11.7534C9.60672 12.2891 8.66418 12.575 7.7 12.575C6.40755 12.5734 5.16847 12.0593 4.25457 11.1454C3.34066 10.2315 2.82655 8.99245 2.825 7.7Z' fill='black' /%3E%3C/svg%3E")
+
+				&::before
+					display: block
+					position: absolute
+					content: ""
+
+					top: 50%
+					left: 25px
+
+					transform: translateY(-50%)
+
+					width: 19px
+					height: 19px
+
+					background-image: url("data:image/svg+xml, %3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M16.8395 15.4605L13.1641 11.7852C14.0489 10.6072 14.5266 9.17331 14.525 7.7C14.525 3.93672 11.4633 0.875 7.7 0.875C3.93672 0.875 0.875 3.93672 0.875 7.7C0.875 11.4633 3.93672 14.525 7.7 14.525C9.17331 14.5266 10.6072 14.0489 11.7852 13.1641L15.4605 16.8395C15.6466 17.0058 15.8893 17.0945 16.1387 17.0876C16.3881 17.0806 16.6255 16.9784 16.8019 16.8019C16.9784 16.6255 17.0806 16.3881 17.0876 16.1387C17.0945 15.8893 17.0058 15.6466 16.8395 15.4605ZM2.825 7.7C2.825 6.73582 3.11091 5.79328 3.64659 4.9916C4.18226 4.18991 4.94363 3.56506 5.83442 3.19609C6.72521 2.82711 7.70541 2.73057 8.65107 2.91867C9.59672 3.10677 10.4654 3.57107 11.1471 4.25285C11.8289 4.93464 12.2932 5.80328 12.4813 6.74893C12.6694 7.69459 12.5729 8.67479 12.2039 9.56558C11.8349 10.4564 11.2101 11.2177 10.4084 11.7534C9.60672 12.2891 8.66418 12.575 7.7 12.575C6.40755 12.5734 5.16847 12.0593 4.25457 11.1454C3.34066 10.2315 2.82655 8.99245 2.825 7.7Z' fill='%237A918A' /%3E%3C/svg%3E")
+
+					+backgroundSetting
+					+transition
+
+			&-sort
+				width: 300px
+
+		&-block-wrapper
+			margin-top: 40px
+
+		&-block
+			display: flex
+
+			width: 100%
+
+			background-color: $white
+
+			overflow: hidden
+
+			margin-bottom: 40px
+
+			+borderRadius
+
+			&-cover-wrapper
+				position: relative
+
+				min-width: 220px
+				min-height: 100%
+
+			&-cover
+				width: 100%
+				height: 100%
+
+				+backgroundSetting
+
+				&-plaecholder
+					display: flex
+					flex-direction: column
+					justify-content: space-between
+					align-items: center
+
+					padding: 20px
+
+					top: 0
+					left: 0
+
+					width: 100%
+					height: 100%
+
+					position: absolute
+
+					background-color: rgba(0, 0, 0, 0.2)
+
+					&-icons
+						width: 100%
+
+						display: flex
+						justify-content: space-between
+						align-items: center
+
+						&-resize
+							cursor: pointer
+							opacity: 0.7
+
+							+transition
+
+							&:hover
+								opacity: 1
+
+						&-favorites
+							cursor: pointer
+							opacity: 0.7
+
+							+transition
+
+							&:hover
+								opacity: 1
+
+					&-dots
+						display: flex
+						align-items: center
+
+						&-item
+							cursor: pointer
+
+							width: 8px
+							height: 8px
+
+							background-color: rgba(255, 255, 255, 0.5)
+
+							border-radius: 50%
+
+							margin: 0 15px
+
+							&.active
+								background-color: $white
+
+			&-text
+				width: 100%
+
+				display: flex
+				justify-content: space-between
+
+				&-block
+					display: flex
+					flex-direction: column
+					justify-content: space-between
+
+					&.left
+						padding: 20px 0 20px 40px
+
+					&.right
+						text-align: right
+						align-items: flex-end
+
+					&-subblock
+						margin-bottom: 30px
+
+						&:last-child
+							margin-bottom: 0
+
+						&-stars
+							margin-bottom: 10px
+
+							& > svg
+								width: 15px
+								margin-right: 5px
+
+						&__title
+							font-size: 20px
+							margin-bottom: 10px
+
+							& > a
+								color: $darkMainColor
+
+						&-location
+							&__title
+								display: flex
+								align-items: center
+
+								font-size: 15px
+								color: $darkMainColor
+
+								& > svg
+									margin-left: 15px
+
+							&__subtitle
+								font-size: 15px
+
+						&-info-room
+							&__title
+								font-size: 15px
+								color: $darkMainColor
+
+							&__subtitle
+								font-size: 15px
+
+						&-filters
+							&-item
+								display: flex
+								align-items: center
+
+								font-size: 15px
+
+								margin-bottom: 10px
+
+								&:last-child
+									margin-bottom: 0
+
+								&__title
+									margin-left: 10px
+
+								& > svg
+									width: 17px
+
+								&.active
+									font-weight: 500
+									color: $darkMainGreen
+
+									& > svg
+										fill: $darkMainGreen
+
+								&.disabled
+									color: $gray
+
+									& > svg
+										fill: $gray
+
+						&-feedbacks
+							background-color: $darkMainColor
+							color: $white
+
+							padding: 20px 25px
+
+							text-align: center
+
+							border-radius: 0px 32px
+
+							&__title
+								font-size: 32px
+
+							&__subtitle
+								font-size: 13px
+
+						&-price
+							padding-right: 20px
+
+							&__title
+								font-size: 32px
+
+								& > span
+									font-size: 24px
+									color: $black
+
+							&__subtitle
+								font-size: 15px
+
+		&-block-pagination
+			margin-top: 50px
+
+			display: flex
+			justify-content: center
+			align-items: center
+
+			&__btn
+				cursor: pointer
+
+				display: flex
+				justify-content: center
+				align-items: center
+
+				width: 40px
+				height: 40px
+
+				border-radius: 10px
+
+				background-color: $white
+
+				&.disabled
+					pointer-events: none
+
+					& > svg
+						stroke: $lightMainColor
+
+				& > svg
+					stroke: $mainColor
+					+transition
+
+			&-number
+				display: flex
+				align-items: center
+
+				margin: 0 50px
+
+				&__item
+					cursor: pointer
+					user-select: none
+
+					color: $mainColor
+
+					margin-right: 40px
+
+					&.disabled
+						cursor: default
+
+					&.active
+						cursor: default
+						color: $black
+
+					&:last-child
+						margin-right: 0

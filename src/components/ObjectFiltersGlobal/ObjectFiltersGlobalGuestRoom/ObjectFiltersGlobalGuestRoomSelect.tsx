@@ -12,9 +12,9 @@ import {
     deletefiltersKids,
 } from "../../../redux/actions/filters";
 
-import {FiltersObjectGuestRoomSelectItem} from "../../";
+import {ObjectFiltersGlobalGuestRoomSelectItem} from "../../";
 
-const FiltersObjectGuestRoomSelect: React.FC = () => {
+const ObjectFiltersGlobalGuestRoomSelect: React.FC = () => {
     const dispatch = useDispatch();
 
     const {guestRoom} = useTypedSelector(
@@ -51,7 +51,7 @@ const FiltersObjectGuestRoomSelect: React.FC = () => {
     return (
         <div className="filters-object-form-guest-room-select">
             {guestRoom.map((item, index) => (
-                <FiltersObjectGuestRoomSelectItem
+                <ObjectFiltersGlobalGuestRoomSelectItem
                     {...item}
                     key={`filters-object-form-guest-room-select-item-${index}`}
                     itemIndex={index}
@@ -83,4 +83,4 @@ const FiltersObjectGuestRoomSelect: React.FC = () => {
     );
 };
 
-export default FiltersObjectGuestRoomSelect;
+export default ObjectFiltersGlobalGuestRoomSelect;

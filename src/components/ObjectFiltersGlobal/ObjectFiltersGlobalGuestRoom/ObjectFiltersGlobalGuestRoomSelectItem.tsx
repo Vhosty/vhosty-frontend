@@ -4,9 +4,9 @@ import {filtersItem} from "../../../redux/types/IFilters";
 
 import {checkDeclension} from "../../../functions/checkDeclension";
 
-import {Popup, FiltersObjectGuestRoomSelectItemKids} from "../../";
+import {Popup, ObjectFiltersGlobalGuestRoomSelectItemKids} from "../../";
 
-interface FiltersObjectGuestRoomSelectItem extends filtersItem {
+interface ObjectFiltersGlobalGuestRoomSelectItem extends filtersItem {
     itemIndex: number;
     isLast: boolean;
     isOne: boolean;
@@ -21,8 +21,8 @@ interface FiltersObjectGuestRoomSelectItem extends filtersItem {
     ) => void;
 }
 
-const FiltersObjectGuestRoomSelectItem: React.FC<
-    FiltersObjectGuestRoomSelectItem
+const ObjectFiltersGlobalGuestRoomSelectItem: React.FC<
+    ObjectFiltersGlobalGuestRoomSelectItem
 > = ({
     itemIndex,
     adultsCount,
@@ -268,7 +268,7 @@ const FiltersObjectGuestRoomSelectItem: React.FC<
                                     : {top: "-50px", right: "10px"}
                             }
                         >
-                            <FiltersObjectGuestRoomSelectItemKids
+                            <ObjectFiltersGlobalGuestRoomSelectItemKids
                                 itemIndex={itemIndex}
                                 onChange={(age: number) => {
                                     addfiltersKidsOnClick(itemIndex, age);
@@ -283,4 +283,4 @@ const FiltersObjectGuestRoomSelectItem: React.FC<
     );
 };
 
-export default FiltersObjectGuestRoomSelectItem;
+export default ObjectFiltersGlobalGuestRoomSelectItem;

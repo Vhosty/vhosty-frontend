@@ -4,9 +4,9 @@ import {useTypedSelector} from "../../../hooks/useTypedSelector";
 
 import {checkDeclension} from "../../../functions/checkDeclension";
 
-import {Popup, FiltersObjectGuestRoomSelect} from "../../";
+import {Popup, ObjectFiltersGlobalGuestRoomSelect} from "../../";
 
-const FiltersObjectGuestRoom: React.FC = () => {
+const ObjectFiltersGlobalGuestRoom: React.FC = () => {
     const {guestRoom} = useTypedSelector(
         ({filters}) => filters
     );
@@ -15,8 +15,9 @@ const FiltersObjectGuestRoom: React.FC = () => {
     const [activeSelectAnimation, setActiveSelectAnimation] =
         React.useState<boolean>(false);
 
-    const [totalGuestRoom, setTotalGuestRoom] = React.useState(0);
-    const [totalGuestRoomKids, setTotalGuestRoomKids] = React.useState(0);
+    const [totalGuestRoom, setTotalGuestRoom] = React.useState<number>(0);
+    const [totalGuestRoomKids, setTotalGuestRoomKids] =
+        React.useState<number>(0);
 
     React.useEffect(() => {
         let totalGuestRoomTemp = 0;
@@ -127,10 +128,10 @@ const FiltersObjectGuestRoom: React.FC = () => {
                 addClassWrapper="filters-object-form-guest-room-select-wrapper"
                 refPopup={PopupRef}
             >
-                <FiltersObjectGuestRoomSelect />
+                <ObjectFiltersGlobalGuestRoomSelect />
             </Popup>
         </div>
     );
 };
 
-export default FiltersObjectGuestRoom;
+export default ObjectFiltersGlobalGuestRoom;

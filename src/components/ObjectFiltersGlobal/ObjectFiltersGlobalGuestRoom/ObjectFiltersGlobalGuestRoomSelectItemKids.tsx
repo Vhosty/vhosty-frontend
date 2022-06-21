@@ -7,7 +7,7 @@ interface GuestRoomSelectItemKids {
     onChange: (age: number) => void;
 }
 
-const FiltersObjectGuestRoomSelectItemKids: React.FC<
+const ObjectFiltersGlobalGuestRoomSelectItemKids: React.FC<
     GuestRoomSelectItemKids
 > = ({itemIndex, onChange}) => {
     const ages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
@@ -27,4 +27,4 @@ const FiltersObjectGuestRoomSelectItemKids: React.FC<
     );
 };
 
-export default FiltersObjectGuestRoomSelectItemKids;
+export default ObjectFiltersGlobalGuestRoomSelectItemKids;

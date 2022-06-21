@@ -14,7 +14,7 @@ import {
 
 const totalDays = 35;
 
-const FiltersObjectCalendarSelect: React.FC = () => {
+const ObjectFiltersGlobalCalendarSelect: React.FC = () => {
     const dispatch = useDispatch();
 
     const {
@@ -166,4 +166,4 @@ const FiltersObjectCalendarSelect: React.FC = () => {
     );
 };
 
-export default FiltersObjectCalendarSelect;
+export default ObjectFiltersGlobalCalendarSelect;
