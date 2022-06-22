@@ -1,6 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
+import {Stars} from "../../../";
+
 const ObjectsCatalogBlock: React.FC = () => {
     const blockIndex = 1;
 
@@ -54,6 +56,7 @@ const ObjectsCatalogBlock: React.FC = () => {
                                     className={`objects-catalog-block-cover-plaecholder-dots-item ${
                                         index === 1 ? "active" : ""
                                     }`}
+                                    key={`${blockIndex}-objects-catalog-block-cover-plaecholder-dots-item-${index}`}
                                 ></div>
                             ))}
                     </div>
@@ -63,23 +66,9 @@ const ObjectsCatalogBlock: React.FC = () => {
             <div className="objects-catalog-block-text">
                 <div className="objects-catalog-block-text-block left">
                     <div className="objects-catalog-block-text-block-subblock">
-                        <div className="objects-catalog-block-text-block-subblock-stars">
-                            {Array(5)
-                                .fill(0)
-                                .map((_, index) => (
-                                    <svg
-                                        viewBox="0 0 11 10"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        key={`objects-catalog-block-${blockIndex}-text-block-subblock-stars-${index}`}
-                                    >
-                                        <path
-                                            d="M9.75524 3.79375L7.0278 3.39737L5.80856 0.92559C5.77526 0.857914 5.72047 0.803129 5.6528 0.769828C5.48307 0.686039 5.27682 0.755863 5.19196 0.92559L3.97272 3.39737L1.24528 3.79375C1.17008 3.8045 1.10133 3.83995 1.04869 3.89366C0.985059 3.95906 0.949994 4.04706 0.951202 4.1383C0.952411 4.22955 0.989795 4.31658 1.05514 4.38028L3.02848 6.3042L2.56227 9.0209C2.55134 9.0841 2.55833 9.14909 2.58246 9.20852C2.60658 9.26794 2.64688 9.31942 2.69877 9.35711C2.75066 9.3948 2.81207 9.41719 2.87605 9.42175C2.94002 9.42631 3.00399 9.41286 3.06071 9.38291L5.50026 8.1003L7.93981 9.38291C8.00641 9.41836 8.08375 9.43018 8.15788 9.41729C8.34479 9.38506 8.47047 9.20782 8.43825 9.0209L7.97203 6.3042L9.94537 4.38028C9.99909 4.32764 10.0345 4.25889 10.0453 4.1837C10.0743 3.99571 9.94323 3.82168 9.75524 3.79375Z"
-                                            fill="#F79E1B"
-                                        />
-                                    </svg>
-                                ))}
-                        </div>
+						<div className="objects-catalog-block-text-block-subblock-stars">
+							<Stars count={5} />
+						</div>
                         <h3 className="objects-catalog-block-text-block-subblock__title">
                             <Link to="/">Palm View Dubai Hotel & Suites</Link>
                         </h3>

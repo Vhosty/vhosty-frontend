@@ -3,7 +3,7 @@ import {Route, Routes, useLocation} from "react-router-dom";
 
 import {Footer, Header} from "./components/";
 
-import {Reglog, Home, Objects} from "./pages";
+import {Reglog, Home, Objects, ObjectPage} from "./pages";
 
 const App = () => {
     const location = useLocation();
@@ -17,7 +17,9 @@ const App = () => {
 
                 <Routes>
                     <Route path="/" element={<Home />} />
+
                     <Route path="/objects" element={<Objects />} />
+                    <Route path="/objects/:id" element={<ObjectPage />} />
                 </Routes>
 
                 <Footer />

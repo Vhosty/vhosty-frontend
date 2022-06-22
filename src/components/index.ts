@@ -5,14 +5,14 @@ export {default as RenderInput} from "./Interface/RenderInput";
 export {default as TitleIcon} from "./Interface/TitleIcon";
 export {default as InputRange} from "./Interface/InputRange";
 export {default as Select} from "./Interface/Select";
-// Checkbox
+export {default as Stars} from "./Interface/Stars";
 export {default as Checkbox} from "./Interface/Checkbox";
 export {default as RenderCheckbox} from "./Interface/RenderCheckbox";
 
 // Header
 export {default as Header} from "./Header/Header";
 export {default as HeaderModal} from "./Header/HeaderModal";
-export { default as HeaderPassLink } from "./Header/HeaderPassLink";
+export {default as HeaderPassLink} from "./Header/HeaderPassLink";
 // HeaderUser
 export {default as HeaderUser} from "./Header/HeaderUser/HeaderUser";
 export {default as HeaderUserNotifications} from "./Header/HeaderUser/HeaderUserNotifications";
@@ -70,7 +70,7 @@ export {default as ObjectsFiltersServicesObject} from "./Objects/ObjectsFilters/
 export {default as ObjectsFiltersServicesRoom} from "./Objects/ObjectsFilters/ObjectsFiltersServicesRoom";
 export {default as ObjectsFiltersFoods} from "./Objects/ObjectsFilters/ObjectsFiltersFoods";
 export {default as ObjectsFiltersHotels} from "./Objects/ObjectsFilters/ObjectsFiltersHotels";
-export { default as ObjectsFiltersThemes } from "./Objects/ObjectsFilters/ObjectsFiltersThemes";
+export {default as ObjectsFiltersThemes} from "./Objects/ObjectsFilters/ObjectsFiltersThemes";
 // ObjectsCatalog
 export {default as ObjectsCatalog} from "./Objects/ObjectsCatalog/ObjectsCatalog";
 export {default as ObjectsCatalogPagination} from "./Objects/ObjectsCatalog/ObjectsCatalogPagination";
@@ -81,6 +81,9 @@ export {default as ObjectsCatalogFiltersSearch} from "./Objects/ObjectsCatalog/O
 export {default as ObjectsCatalogFiltersSort} from "./Objects/ObjectsCatalog/ObjectsCatalogFilters/ObjectsCatalogFiltersSort";
 // ObjectsCatalogBlock
 export {default as ObjectsCatalogBlock} from "./Objects/ObjectsCatalog/ObjectsCatalogBlock/ObjectsCatalogBlock";
+
+// ObjectPage
+export {default as ObjectPageCover} from "./ObjectPage/ObjectPageCover";
 
 // Footer
 export {default as Footer} from "./Footer/Footer";

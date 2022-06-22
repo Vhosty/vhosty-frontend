@@ -39,6 +39,8 @@ div
 // container
 .container
 	width: 90%
+	height: 100%
+	
 	max-width: 1200px
 
 	margin: 0 auto
@@ -119,7 +121,7 @@ button
 		border-radius: 35px 0px
 
 	&.small
-		padding: 15px 55px
+		padding: 15px 45px
 
 	&.disabled
 		pointer-events: none
@@ -147,6 +149,9 @@ button
 
 	&:hover
 		background-color: #F2FAFA
+
+	&.small
+		padding: 15px 45px
 
 .btn-white
 	display: inline-flex
@@ -458,6 +463,12 @@ input:-webkit-autofill:active
 
 			&:hover
 				color: $mainColor
+
+// stars
+.stars
+	& > svg
+		width: 15px
+		margin-right: 5px
 
 #blink
 	user-select: none

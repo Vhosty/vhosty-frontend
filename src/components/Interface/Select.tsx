@@ -1,4 +1,5 @@
 import React from "react";
+import {v4} from "uuid";
 import AnimateHeight from "react-animate-height";
 
 interface SelectProps {
@@ -6,6 +7,8 @@ interface SelectProps {
 }
 
 const Select: React.FC<SelectProps> = ({choices}) => {
+    const id = v4();
+
     const [isOpen, setIsOpen] = React.useState(false);
     const [currentIndex, setCurrentIndex] = React.useState(0);
 
@@ -68,7 +71,7 @@ const Select: React.FC<SelectProps> = ({choices}) => {
                                 className={`select-list__item ${
                                     currentIndex === index ? "active" : ""
                                 }`}
-                                key={`select-list__item-${index}`}
+                                key={`${id}-select-list__item-${index}`}
                                 onClick={() => setCurrentIndex(index)}
                             >
                                 {item.title}
