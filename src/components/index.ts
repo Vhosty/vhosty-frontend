@@ -84,6 +84,7 @@ export {default as ObjectsCatalogBlock} from "./Objects/ObjectsCatalog/ObjectsCa
 
 // ObjectPage
 export {default as ObjectPageCover} from "./ObjectPage/ObjectPageCover";
+export {default as ObjectPageNavigation} from "./ObjectPage/ObjectPageNavigation";
 
 // Footer
 export {default as Footer} from "./Footer/Footer";

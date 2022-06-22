@@ -95,7 +95,7 @@
 			align-items: center
 			justify-content: center
 
-			margin-bottom: 30px
+			margin-bottom: 50px
 
 			&-item
 				cursor: pointer
@@ -111,3 +111,30 @@
 
 				&.active
 					background-color: $white
+
+	&-navigation-btn
+		position: fixed
+
+		top: 40px
+		left: 50%
+
+		transform: translateX(-50%)
+
+		z-index: 1
+
+		width: 90%
+		max-width: 1200px
+
+		display: flex
+		justify-content: space-between
+
+		+transition
+
+		&.visible
+			top: 110px
+
+		&-navigate
+			display: flex
+			justify-content: space-between
+
+			width: 65%

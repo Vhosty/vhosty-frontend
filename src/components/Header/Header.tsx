@@ -6,30 +6,47 @@ import {HeaderModal, HeaderPassLink, HeaderUser} from "../";
 import LogoColor from "../../assets/images/logo-color.svg";
 
 const Header: React.FC = () => {
+    const headerContentRef = React.useRef<HTMLDivElement>(null);
+
+    const [height, setHeight] = React.useState<number>(0);
+
+    React.useEffect(() => {
+        if (headerContentRef.current) {
+            setHeight(headerContentRef.current.offsetHeight);
+        }
+	}, [headerContentRef.current]);
+	
     return (
-        <header className="header">
-            <div className="container">
-                <div className="header-wrapper">
-                    <div className="header-block">
-                        <HeaderModal color />
+        <>
+            <div
+                className="header-height"
+                style={{height: `${height}px`}}
+            ></div>
 
-                        <Link to="/" className="header-block-logo">
-                            <img
-                                src={LogoColor}
-                                alt="Vhosty"
-                                className="header-block-logo__image"
-                            />
-                        </Link>
-                    </div>
+            <header className="header" ref={headerContentRef}>
+                <div className="container">
+                    <div className="header-wrapper">
+                        <div className="header-block">
+                            <HeaderModal color />
 
-                    <div className="header-block">
-						<HeaderPassLink />
-						
-						<HeaderUser />
+                            <Link to="/" className="header-block-logo">
+                                <img
+                                    src={LogoColor}
+                                    alt="Vhosty"
+                                    className="header-block-logo__image"
+                                />
+                            </Link>
+                        </div>
+
+                        <div className="header-block">
+                            <HeaderPassLink />
+
+                            <HeaderUser />
+                        </div>
                     </div>
                 </div>
-            </div>
-        </header>
+            </header>
+        </>
     );
 };
 

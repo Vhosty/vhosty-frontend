@@ -1,11 +1,13 @@
 import React from "react";
 
-import { ObjectPageCover} from "../components/";
+import {ObjectPageCover, ObjectPageNavigation} from "../components/";
 
 const ObjectPage: React.FC = () => {
     return (
         <>
             <ObjectPageCover />
+
+            <ObjectPageNavigation />
 
             <section className="object-page">
                 <div className="container">
