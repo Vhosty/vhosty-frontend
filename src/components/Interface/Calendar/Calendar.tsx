@@ -1,20 +1,35 @@
 import React from "react";
-import moment from "moment";
+import moment, {Moment} from "moment";
 
 import {checkDeclension} from "../../../functions/checkDeclension";
 
-import {useTypedSelector} from "../../../hooks/useTypedSelector";
+import {Popup, CalendarSelect} from "../../";
 
-import {Popup, ObjectFiltersGlobalCalendarSelect} from "../../";
+export interface CalendarFrom {
+    date: Moment;
+    active: boolean;
+    selected: boolean;
+}
 
-const ObjectFiltersGlobalCalendar: React.FC = () => {
+export interface CalendarTo {
+    date: Moment;
+}
+
+const Calendar: React.FC = () => {
     const [activeCalendar, setActiveCalendar] = React.useState<boolean>(false);
     const [activeCalendarAnimation, setActiveCalendarAnimation] =
         React.useState<boolean>(false);
 
-    const {
-        calendar: {from, to},
-    } = useTypedSelector(({filters}) => filters);
+    const [date, setDate] = React.useState<Moment>(moment());
+    const [from, setFrom] = React.useState<CalendarFrom>({
+        date: moment(),
+        active: false,
+        selected: false,
+    });
+    const [to, setTo] = React.useState<CalendarTo>({
+        date: moment(),
+    });
+    const [daysMonth, setDaysMonth] = React.useState<Moment[]>([]);
 
     const PopupRef = React.useRef<HTMLDivElement>(null);
 
@@ -48,26 +63,23 @@ const ObjectFiltersGlobalCalendar: React.FC = () => {
     };
 
     return (
-        <div className="filters-object-form-calendar-wrapper">
-            <div
-                className="filters-object-form-calendar"
-                onClick={openCalendar}
-            >
-                <div className="filters-object-form-calendar-period">
-                    <span className="filters-object-form-calendar-period__from">
+        <div className="calendar-wrapper">
+            <div className="calendar" onClick={openCalendar}>
+                <div className="calendar-period">
+                    <span className="calendar-period__from">
                         {from.selected
                             ? from.date.format("D MMMM (dd)")
                             : "Заезд"}
                     </span>
-                    <div className="filters-object-form-calendar-period__line"></div>
-                    <span className="filters-object-form-calendar-period__to">
+                    <div className="calendar-period__line"></div>
+                    <span className="calendar-period__to">
                         {from.selected && !from.date.isSame(to.date, "days")
                             ? to.date.format("D MMMM (dd)")
                             : "Отъезд"}
                     </span>
                 </div>
 
-                <span className="filters-object-form-calendar__count">
+                <span className="calendar__count">
                     {to.date.diff(from.date, "days") == 0
                         ? ""
                         : checkDeclension(to.date.diff(from.date, "days"), [
@@ -78,7 +90,7 @@ const ObjectFiltersGlobalCalendar: React.FC = () => {
                 </span>
 
                 <div
-                    className={`filters-object-form-calendar-icon ${
+                    className={`calendar-icon ${
                         activeCalendar ? "rotate" : ""
                     }`}
                 >
@@ -102,13 +114,22 @@ const ObjectFiltersGlobalCalendar: React.FC = () => {
             <Popup
                 active={activeCalendar}
                 activeAnimation={activeCalendarAnimation}
-                addClassWrapper="filters-object-form-calendar-select"
+                addClassWrapper="calendar-select"
                 refPopup={PopupRef}
             >
-                <ObjectFiltersGlobalCalendarSelect />
+                <CalendarSelect
+                    date={date}
+                    from={from}
+                    to={to}
+                    daysMonth={daysMonth}
+                    setDaysMonth={setDaysMonth}
+                    setDate={setDate}
+                    setFrom={setFrom}
+                    setTo={setTo}
+                />
             </Popup>
         </div>
     );
 };
 
-export default ObjectFiltersGlobalCalendar;
+export default Calendar;

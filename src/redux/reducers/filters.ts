@@ -10,22 +10,6 @@ import {
 } from "../types/IFilters";
 
 const initialState: FiltersState = {
-    calendar: {
-        date: moment(),
-
-        from: {
-            date: moment(),
-            active: false,
-            selected: false,
-        },
-
-        to: {
-            date: moment(),
-        },
-
-        daysMonth: [],
-    },
-
     guestRoom: [{adultsCount: 1, kids: []}],
 };
 
@@ -98,88 +82,6 @@ const filters = (state = initialState, action: FiltersActions) => {
 
         return {
             ...state,
-        };
-    }
-
-    if (action.type === FiltersActionTypes.PLUS_FILTERS_CALENDAR_MONTH_DATE) {
-        if (
-            moment(state.calendar.date).format("MM") ===
-                moment().format("MM") &&
-            parseInt(moment(state.calendar.date).format("YYYY")) ===
-                parseInt(moment().format("YYYY")) + 1
-        ) {
-            return state;
-        }
-
-        return {
-            ...state,
-            calendar: {
-                ...state.calendar,
-                date: moment(state.calendar.date).add(1, "month"),
-            },
-        };
-    }
-
-    if (action.type === FiltersActionTypes.MINUS_FILTERS_CALENDAR_MONTH_DATE) {
-        if (
-            moment(state.calendar.date).format("MM") ===
-                moment().format("MM") &&
-            parseInt(moment(state.calendar.date).format("YYYY")) ===
-                parseInt(moment().format("YYYY"))
-        ) {
-            return state;
-        }
-
-        return {
-            ...state,
-            calendar: {
-                ...state.calendar,
-                date: moment(state.calendar.date).subtract(1, "month"),
-            },
-        };
-    }
-
-    if (action.type === FiltersActionTypes.SET_FILTERS_CALENDAR_DAYS_MONTH) {
-        return {
-            ...state,
-            calendar: {...state.calendar, daysMonth: action.payload},
-        };
-    }
-
-    if (action.type === FiltersActionTypes.SET_FILTERS_FROM_CALENDAR_DATE) {
-        return {
-            ...state,
-            calendar: {
-                ...state.calendar,
-                from: {
-                    ...state.calendar.from,
-                    date: action.payload,
-                    active: true,
-                    selected: true,
-                },
-                to: {
-                    ...state.calendar.to,
-                    date: action.payload,
-                },
-            },
-        };
-    }
-
-    if (action.type === FiltersActionTypes.SET_FILTERS_TO_CALENDAR_DATE) {
-        return {
-            ...state,
-            calendar: {
-                ...state.calendar,
-
-                from: {
-                    ...state.calendar.from,
-                    active: false,
-                },
-                to: {
-                    ...state.calendar.to,
-                    date: action.payload,
-                },
-            },
         };
     }
 

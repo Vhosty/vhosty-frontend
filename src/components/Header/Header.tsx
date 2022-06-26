@@ -20,7 +20,7 @@ const Header: React.FC = () => {
         <>
             <div
                 className="header-height"
-                style={{height: `${height}px`}}
+                style={{height: `${height-1}px`}}
             ></div>
 
             <header className="header" ref={headerContentRef}>

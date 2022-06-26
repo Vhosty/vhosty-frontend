@@ -8,6 +8,11 @@ export {default as Select} from "./Interface/Select";
 export {default as Stars} from "./Interface/Stars";
 export {default as Checkbox} from "./Interface/Checkbox";
 export {default as RenderCheckbox} from "./Interface/RenderCheckbox";
+export {default as Calendar} from "./Interface/Calendar/Calendar";
+export {default as CalendarSelect} from "./Interface/Calendar/CalendarSelect";
+export {default as Count} from "./Interface/Count";
+export {default as ServiceIcon} from "./Interface/ServiceIcon";
+export {default as Tab} from "./Interface/Tab";
 
 // Header
 export {default as Header} from "./Header/Header";
@@ -36,9 +41,6 @@ export {default as HomeEmailForm} from "./Home/HomeEmail/HomeEmailForm";
 
 // ObjectFiltersGlobal
 export {default as ObjectFiltersGlobal} from "./ObjectFiltersGlobal/ObjectFiltersGlobal";
-// ObjectFiltersGlobalCalendar
-export {default as ObjectFiltersGlobalCalendar} from "./ObjectFiltersGlobal/ObjectFiltersGlobalCalendar/ObjectFiltersGlobalCalendar";
-export {default as ObjectFiltersGlobalCalendarSelect} from "./ObjectFiltersGlobal/ObjectFiltersGlobalCalendar/ObjectFiltersGlobalCalendarSelect";
 // ObjectFiltersGlobalGuestRoom
 export {default as ObjectFiltersGlobalGuestRoom} from "./ObjectFiltersGlobal/ObjectFiltersGlobalGuestRoom/ObjectFiltersGlobalGuestRoom";
 export {default as ObjectFiltersGlobalGuestRoomSelect} from "./ObjectFiltersGlobal/ObjectFiltersGlobalGuestRoom/ObjectFiltersGlobalGuestRoomSelect";
@@ -85,6 +87,25 @@ export {default as ObjectsCatalogBlock} from "./Objects/ObjectsCatalog/ObjectsCa
 // ObjectPage
 export {default as ObjectPageCover} from "./ObjectPage/ObjectPageCover";
 export {default as ObjectPageNavigation} from "./ObjectPage/ObjectPageNavigation";
+export {default as ObjectPageSliderImages} from "./ObjectPage/ObjectPageSliderImages";
+export {default as ObjectPageBlockTextWrapper} from "./ObjectPage/ObjectPageBlockTextWrapper";
+export {default as ObjectPageAbout} from "./ObjectPage/ObjectPageAbout";
+export {default as ObjectPageMaps} from "./ObjectPage/ObjectPageMaps";
+export {default as ObjectPageTerms} from "./ObjectPage/ObjectPageTerms";
+export {default as ObjectPageFaq} from "./ObjectPage/ObjectPageFaq";
+// ObjectPageRoom
+export {default as ObjectPageRoom} from "./ObjectPage/ObjectPageRoom/ObjectPageRoom";
+export {default as ObjectPageRoomFilters} from "./ObjectPage/ObjectPageRoom/ObjectPageRoomFilters";
+export {default as ObjectPageRoomBlock} from "./ObjectPage/ObjectPageRoom/ObjectPageRoomBlock";
+export {default as ObjectPageRoomBlockAdd} from "./ObjectPage/ObjectPageRoom/ObjectPageRoomBlockAdd";
+// ObjectPageFeedbacks
+export {default as ObjectPageFeedbacks} from "./ObjectPage/ObjectPageFeedbacks/ObjectPageFeedbacks";
+export {default as ObjectPageFeedbacksBlock} from "./ObjectPage/ObjectPageFeedbacks/ObjectPageFeedbacksBlock";
+// ObjectPageServices
+export {default as ObjectPageServices} from "./ObjectPage/ObjectPageServices/ObjectPageServices";
+
+// Prime
+export {default as PrimeSectionBlock} from "./Prime/PrimeSectionBlock";
 
 // Footer
 export {default as Footer} from "./Footer/Footer";

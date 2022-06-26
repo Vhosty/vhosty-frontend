@@ -1,4 +1,5 @@
 import React from "react";
+import {Link, animateScroll as scroll} from "react-scroll";
 
 const ObjectPageNavigation: React.FC = () => {
     const [isVisible, setIsVisible] = React.useState<boolean>(false);
@@ -20,26 +21,61 @@ const ObjectPageNavigation: React.FC = () => {
             }`}
         >
             <div className="object-page-navigation-btn-navigate">
-                <button className="btn-light small object-page-navigation-btn-block__btn">
+                <Link
+                    to="object-page-services"
+                    spy={true}
+                    smooth={true}
+                    offset={-200}
+                    duration={500}
+                    className="btn-light small object-page-navigation-btn-block__btn"
+                >
                     Удобства
-                </button>
+                </Link>
 
-                <button className="btn-light small object-page-navigation-btn-block__btn">
+                <Link
+                    to="object-page-maps"
+                    spy={true}
+                    smooth={true}
+                    offset={-200}
+                    duration={500}
+                    className="btn-light small object-page-navigation-btn-block__btn"
+                >
                     Местность
-                </button>
+                </Link>
 
-                <button className="btn-light small object-page-navigation-btn-block__btn">
+                <Link
+                    to="object-page-feedbacks"
+                    spy={true}
+                    smooth={true}
+                    offset={-200}
+                    duration={500}
+                    className="btn-light small object-page-navigation-btn-block__btn"
+                >
                     Отзывы
-                </button>
+                </Link>
 
-                <button className="btn-light small object-page-navigation-btn-block__btn">
+                <Link
+                    to="object-page-terms"
+                    spy={true}
+                    smooth={true}
+                    offset={-200}
+                    duration={500}
+                    className="btn-light small object-page-navigation-btn-block__btn"
+                >
                     Условия
-                </button>
+                </Link>
             </div>
             <div className="object-page-navigation-btn-accent">
-                <button className="btn small object-page-navigation-btn-block__btn">
+                <Link
+                    to="object-page-room"
+                    spy={true}
+                    smooth={true}
+                    offset={-200}
+                    duration={500}
+                    className="btn small object-page-navigation-btn-block__btn"
+                >
                     Доступные номера
-                </button>
+                </Link>
             </div>
         </div>
     );

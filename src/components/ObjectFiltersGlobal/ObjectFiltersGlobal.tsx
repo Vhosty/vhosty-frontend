@@ -3,7 +3,7 @@ import React from "react";
 import {
     TitleIcon,
     Input,
-    ObjectFiltersGlobalCalendar,
+    Calendar,
     ObjectFiltersGlobalGuestRoom,
     Checkbox,
 } from "../";
@@ -55,7 +55,7 @@ const FiltersForm: React.FC = () => {
                 </div>
 
                 <div className="filters-object-form-block middle filters-object-form-block-calendar">
-                    <ObjectFiltersGlobalCalendar />
+                    <Calendar />
                 </div>
 
                 <div className="filters-object-form-block right filters-object-form-block-btn">

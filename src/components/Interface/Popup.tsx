@@ -31,9 +31,7 @@ const Popup: React.FC<PopupProps> = ({
                 >
                     {children}
                 </div>
-            ) : (
-                <></>
-            )}
+            ) : null}
         </>
     );
 };

@@ -41,26 +41,3 @@ export const deletefiltersKids = (
     type: FiltersActionTypes.DELETE_FILTERS_GUEST_ROOM_KIDS,
     payload: {itemIndex, kidsItemIndex},
 });
-
-export const plusfiltersMonthDate = () => ({
-    type: FiltersActionTypes.PLUS_FILTERS_CALENDAR_MONTH_DATE,
-});
-
-export const minusfiltersMonthDate = () => ({
-    type: FiltersActionTypes.MINUS_FILTERS_CALENDAR_MONTH_DATE,
-});
-
-export const setfiltersDaysMonth = (daysMonth: Moment[]) => ({
-    type: FiltersActionTypes.SET_FILTERS_CALENDAR_DAYS_MONTH,
-    payload: daysMonth,
-});
-
-export const setFiltersFromCalendarDate = (day: Moment) => ({
-    type: FiltersActionTypes.SET_FILTERS_FROM_CALENDAR_DATE,
-    payload: day,
-});
-
-export const setFiltersToCalendarDate = (day: Moment) => ({
-    type: FiltersActionTypes.SET_FILTERS_TO_CALENDAR_DATE,
-    payload: day,
-});

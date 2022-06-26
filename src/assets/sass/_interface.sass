@@ -40,7 +40,7 @@ div
 .container
 	width: 90%
 	height: 100%
-	
+
 	max-width: 1200px
 
 	margin: 0 auto
@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6
 
 // description
 p
-	line-height: 1.5em
+	line-height: 1.6em
 
 	& > a
 		color: $mainColor
@@ -298,6 +298,7 @@ input:-webkit-autofill:active
 		margin-right: 15px
 
 	&__title
+		user-select: none
 		font-size: 20px
 
 // checkbox 
@@ -427,6 +428,12 @@ input:-webkit-autofill:active
 	&.active
 		+boxShadow
 
+	&.border
+		border: 2px solid $lightGray
+
+		&.active
+			box-shadow: none
+
 	&-wrapper
 		cursor: pointer
 
@@ -469,6 +476,312 @@ input:-webkit-autofill:active
 	& > svg
 		width: 15px
 		margin-right: 5px
+
+// calendar
+.calendar
+	cursor: pointer
+
+	width: 100%
+
+	display: flex
+	justify-content: space-between
+	align-items: center
+
+	padding: 13px 25px
+	border: 2px solid $lightGray
+	border-radius: 100px
+
+	&-wrapper
+		position: relative
+
+	&-period
+		display: flex
+		align-items: center
+
+		&__from, &__to
+			user-select: none
+
+		&__line
+			margin: 0 15px
+			background-color: $mainColor
+
+			width: 20px
+			height: 2px
+			border-radius: 100px
+
+	&__count
+		color: $gray
+		user-select: none
+
+	&-icon
+		+transition
+
+		&.rotate
+			transform: rotate(180deg)
+
+	// select
+	&-select
+		position: absolute
+
+		padding: 20px
+
+		right: 0
+		top: 70px
+
+		z-index: 2
+
+		width: 350px
+		height: 350px
+
+		background-color: $white
+
+		+boxShadow
+		+borderRadius
+
+		&-top
+			display: flex
+			justify-content: space-between
+			align-items: center
+
+			&__title
+				user-select: none
+
+			&-arrow-btn
+				cursor: pointer
+
+				display: flex
+				justify-content: center
+				align-items: center
+
+				width: 40px
+				height: 40px
+
+				border: 1px solid $lightGray
+
+				border-radius: 10px
+
+				&.disabled
+					pointer-events: none
+
+					& > svg
+						stroke: $lightMainColor
+
+				& > svg
+					stroke: $mainColor
+					+transition
+
+		&-days
+			display: flex
+			flex-wrap: wrap
+
+			+open
+
+			&-title
+				margin-top: 5px
+
+				display: flex
+
+				&__title
+					width: calc( 100% / 7 - 8px )
+					height: 36px
+
+					margin: 4px
+
+					display: flex
+					justify-content: center
+					align-items: center
+
+					user-select: none
+					color: $gray
+
+			&__day
+				cursor: pointer
+
+				width: calc( 100% / 7 - 8px )
+				height: 36px
+
+				margin: 4px
+
+				font-size: 15px
+
+				display: flex
+				justify-content: center
+				align-items: center
+
+				user-select: none
+				border-radius: 50%
+
+				+transition
+
+				&:last-child
+					margin-bottom: 0
+
+				&:hover
+					background-color: #E6F6F6
+
+				&.included
+					background-color: #E6F6F6
+
+				&.active
+					color: $white
+					background-color: $mainColor
+
+				&.disabled
+					color: $lightGray
+					pointer-events: none
+
+// count
+.count
+	display: flex
+	align-items: center
+
+	&__btn
+		cursor: pointer
+
+		display: flex
+		justify-content: center
+		align-items: center
+
+		width: 50px
+		height: 50px
+
+		border: 1px solid $lightGray
+
+		background-color: $white
+
+		border-radius: 10px
+
+		&.disabled
+			pointer-events: none
+
+			& > svg
+				stroke: $lightMainColor
+
+		& > svg
+			stroke: $mainColor
+			+transition
+
+	&__title
+		margin: 0 25px
+		user-select: none
+
+// service-icon
+.service-icon
+
+	display: flex
+	align-items: center
+
+	&.marginBottom
+		margin-bottom: 10px
+
+	&__title
+		display: flex
+		align-items: center
+
+		font-size: 15px
+
+		font-weight: 500
+
+	&__title > svg
+		width: 18px
+		fill: $mainColor
+
+		margin-right: 10px
+
+	&__messageIcon
+		position: relative
+		cursor: pointer
+
+		& > svg
+			width: 20px
+			stroke: $mainColor
+
+			margin-left: 10px
+
+		&__fill
+			fill: $mainColor
+
+	&__messageText
+		user-select: none
+
+		z-index: 1
+
+		padding: 20px
+		width: 320px
+
+		display: block
+
+		position: absolute
+
+		bottom: 15px
+		left: 35px
+
+		font-size: 15px
+		color: $white
+		background-color: $mainColor
+
+		+borderRadius
+
+	&.green &__messageText
+		background-color: $darkMainGreen
+
+	&.green &__title
+		color: $darkMainGreen
+
+		& > svg
+			fill: $darkMainGreen
+
+	&.green &__messageIcon
+		& > svg
+			stroke: $darkMainGreen
+
+		&__fill
+			fill: $darkMainGreen
+
+	&.disabled &__title
+		color: $gray
+
+		& > svg
+			fill: $gray
+
+// tab
+.tab
+	padding-bottom: 30px
+	margin-bottom: 30px
+
+	border-bottom: 1px solid $lightGray
+
+	&:last-child
+		margin-bottom: 0
+
+	&__title
+		user-select: none
+		cursor: pointer
+
+		display: flex
+		justify-content: space-between
+		align-items: center
+
+		color: $darkMainColor
+
+		&.visible
+			& > svg
+				transform: rotate(180deg)
+
+		& > svg
+			width: 20px
+			+transition
+			
+	&__description
+		width: 90%
+		color: $gray
+
+		margin-top: 25px
+		font-size: 15px
+
+// owl-slider
+#object-page-slider-images .owl-stage-outer
+	overflow: visible
 
 #blink
 	user-select: none

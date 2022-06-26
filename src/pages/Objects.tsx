@@ -1,4 +1,5 @@
 import React from "react";
+import {Helmet} from "react-helmet";
 
 import {
     ObjectFiltersGlobal,
@@ -10,24 +11,30 @@ import ObjectsBg from "../assets/images/objects-bg.jpg";
 
 const Objects: React.FC = () => {
     return (
-        <section className="objects">
-            <div
-                className="objects-bg"
-                style={{backgroundImage: `url('${ObjectsBg}')`}}
-            ></div>
+        <>
+            <Helmet>
+                <title>Vhosty | Найти отель</title>
+			</Helmet>
+			
+            <section className="objects">
+                <div
+                    className="objects-bg"
+                    style={{backgroundImage: `url('${ObjectsBg}')`}}
+                ></div>
 
-            <div className="container">
-                <div className="objects-wrapper">
-                    <ObjectFiltersGlobal />
+                <div className="container">
+                    <div className="objects-wrapper">
+                        <ObjectFiltersGlobal />
 
-                    <div className="objects-catalog-wrapper">
-						<ObjectsFilters />
-						
-						<ObjectsCatalog />
+                        <div className="objects-catalog-wrapper">
+                            <ObjectsFilters />
+
+                            <ObjectsCatalog />
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 };
 

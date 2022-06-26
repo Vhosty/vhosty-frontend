@@ -4,9 +4,11 @@ import AnimateHeight from "react-animate-height";
 
 interface SelectProps {
     choices: {key: string; title: string}[];
+
+    border?: boolean;
 }
 
-const Select: React.FC<SelectProps> = ({choices}) => {
+const Select: React.FC<SelectProps> = ({choices, border}) => {
     const id = v4();
 
     const [isOpen, setIsOpen] = React.useState(false);
@@ -33,7 +35,9 @@ const Select: React.FC<SelectProps> = ({choices}) => {
     return (
         <div className="select-wrapper">
             <div
-                className={`select ${isOpen ? "active" : ""}`}
+                className={`select ${isOpen ? "active" : ""} ${
+                    border ? "border" : ""
+                }`}
                 onClick={() => setIsOpen(!isOpen)}
                 ref={SelectRef}
             >
