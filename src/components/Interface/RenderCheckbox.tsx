@@ -1,15 +1,14 @@
 import React from "react";
 import {v4} from "uuid";
+import {WrappedFieldProps} from "redux-form";
 
 import {Popup} from "../../components/";
 
-interface CheckboxProps {
+interface CheckboxProps extends WrappedFieldProps {
     children: React.ReactNode;
 
     small?: boolean;
     questionMessage?: string;
-
-    input: any;
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({

@@ -8,7 +8,6 @@ body
 	font-family: 'Ubuntu', sans-serif
 	font-size: 20px
 	background-color: #F3F4F5
-	overflow-x: hidden
 	color: $black
 
 div
@@ -140,12 +139,19 @@ button
 	font-size: 20px
 	font-weight: 700
 
-	color: $mainColor
+	color: $darkMainColor
 	background-color: $white
 
 	border-radius: 100px
 
 	+transition
+
+	&.active
+		color: $white
+		background-color: $darkMainColor
+
+		&:hover
+			background-color: $darkMainColor
 
 	&:hover
 		background-color: #F2FAFA
@@ -166,7 +172,7 @@ button
 	font-weight: 700
 	color: $black
 
-	background: #F3F4F5
+	background-color: #F3F4F5
 
 	border-radius: 100px
 
@@ -182,6 +188,23 @@ button
 		pointer-events: none
 		color: $gray
 		background: $lightGray
+
+.btn-line
+	text-decoration: underline
+
+	cursor: pointer
+
+	font-size: 20px
+	color: $mainColor
+
+	background-color: transparent
+
+	border-radius: 100px
+
+	+transition
+
+	&:hover
+		color: $darkMainColor
 
 // input
 input:-webkit-autofill,
@@ -300,6 +323,9 @@ input:-webkit-autofill:active
 	&__title
 		user-select: none
 		font-size: 20px
+
+		&.bold
+			font-weight: 500
 
 // checkbox 
 .checkbox-wrapper
@@ -433,6 +459,9 @@ input:-webkit-autofill:active
 
 		&.active
 			box-shadow: none
+
+	&.small
+		padding: 10px 25px
 
 	&-wrapper
 		cursor: pointer
@@ -771,12 +800,24 @@ input:-webkit-autofill:active
 		& > svg
 			width: 20px
 			+transition
-			
+
 	&__description
 		width: 90%
 		color: $gray
 
 		margin-top: 25px
+		font-size: 15px
+
+// location
+.location
+	&__title
+		color: $darkMainColor
+		margin-bottom: 5px
+
+		& > svg
+			margin-left: 15px
+
+	&__subtitle
 		font-size: 15px
 
 // owl-slider

@@ -1,0 +1,319 @@
+// payment
+.payment
+	margin: 50px 0
+
+	&-block
+		background-color: $white
+		+borderRadius
+
+		&-padding
+			padding: 50px
+
+			&.notMarginBottom
+				padding: 50px 50px 0 50px
+
+	&-title
+		&-progressbar
+			padding: 50px 50px 0 50px
+
+			display: flex
+			justify-content: space-between
+			align-items: center
+
+			&-line
+				width: 130px
+				height: 1px
+				background-color: $lightGray
+
+			&-item
+				display: flex
+				align-items: center
+
+				&.active
+
+				&.success
+					color: $mainColor
+
+				&-success-icon
+					display: flex
+					align-items: center
+
+					margin-right: 15px
+
+					& > svg
+						width: 25px
+
+				&__count
+					user-select: none
+
+					margin-right: 15px
+
+					display: flex
+					justify-content: center
+					align-items: center
+
+					color: $white
+					background-color: $lightGray
+
+					width: 25px
+					height: 25px
+
+					font-size: 15px
+
+					border-radius: 50%
+
+				&.active &__count
+					background-color: $mainColor
+
+		&-room
+			display: flex
+			justify-content: space-between
+
+			margin-top: 50px
+
+			&-text
+				padding: 0 50px 35px 50px
+
+				&-stars
+					margin-bottom: 10px
+
+				&__title
+					margin-bottom: 5px
+
+			&-feedbacks
+				display: flex
+				flex-direction: column
+				align-items: center
+				justify-content: center
+
+				padding: 25px
+				background-color: $darkMainColor
+				color: $white
+
+				border-radius: 35px 0px
+
+				&__title
+					font-size: 40px
+
+				&__subtitle
+					font-size: 12px
+
+	&-info
+		display: flex
+		justify-content: space-between
+		align-items: flex-start
+
+		margin-top: 50px
+
+		&-smeta
+			width: 35%
+
+			&-block
+				margin-bottom: 50px
+
+				&:last-child
+					margin-bottom: 0
+
+			&__title
+				font-size: 20px
+				margin-bottom: 30px
+
+			&-from-to
+				&-block
+					margin-bottom: 20px
+
+					&-text
+						margin-top: 10px
+						margin-left: 35px
+
+						&__title
+							font-size: 15px
+
+						&__subtitle
+							font-size: 15px
+							color: $gray
+
+				&-length
+					&__title
+						font-size: 20px
+						margin-bottom: 5px
+
+					&__subtitle
+						font-size: 15px
+
+			&-price
+				&-item
+					display: flex
+					justify-content: space-between
+					align-items: center
+
+					font-size: 15px
+
+					margin-bottom: 10px
+
+					&.green
+						color: $darkMainGreen
+
+					&:last-child
+						margin-bottom: 0
+
+					&__title
+						width: 50%
+
+			&-total-price
+				margin-top: 20px
+
+				background-color: #E6F6F6
+				padding: 20px 50px
+
+				&__subtitle
+					font-size: 15px
+					margin-bottom: 5px
+
+				&__title
+					font-size: 20px
+					margin-bottom: 5px
+
+				&__description
+					font-size: 15px
+					color: $gray
+
+			&-cancel-booking
+				&-item
+					display: flex
+					justify-content: space-between
+					align-items: center
+
+					font-size: 15px
+					margin-bottom: 10px
+
+					&:last-child
+						margin-bottom: 0
+
+					&.green
+						color: $darkMainGreen
+
+			&-promocode
+				&-input
+					&__title
+						font-size: 15px
+						color: $gray
+						margin-bottom: 5px
+
+					&__btn
+						margin-top: 20px
+
+		&-room-and-contact
+			width: calc( 65% - 50px )
+
+			&-room-block
+				display: flex
+
+				background-color: $white
+
+				+borderRadius
+
+				&-cover
+					padding: 10px 15px
+
+					display: flex
+					align-items: flex-end
+
+					width: 200px
+					min-height: 100%
+
+					border-radius: 35px 0px 0px 35px
+
+					+backgroundSetting
+
+					&__count
+						user-select: none
+
+						font-size: 14px
+
+						background-color: $white
+						padding: 5px 15px
+
+						border-radius: 100px
+
+				&-text
+					padding: 50px
+
+					&-block
+						margin-bottom: 30px
+
+						&:last-child
+							margin-bottom: 0
+
+						&__title
+							font-size: 20px
+							color: $darkMainColor
+							margin-bottom: 10px
+
+						&__subtitle
+							font-size: 15px
+							margin-bottom: 20px
+
+						&-services
+							display: flex
+							align-items: center
+
+							&-item
+								margin-right: 25px
+
+								&:last-child
+									margin-right: 0
+
+			&-form
+				margin-top: 50px
+
+				&__title
+					font-size: 20px
+					margin-bottom: 10px
+
+				&__subtitle
+					font-size: 15px
+
+				&-bonus
+					margin-top: 30px
+
+					background-color: #E6F6F6
+					padding: 20px 50px
+
+					&__title
+						max-width: 75%
+
+						font-size: 20px
+						margin-bottom: 10px
+
+					&__subtitle
+						font-size: 15px
+
+				&-input
+					&-block
+						display: flex
+						justify-content: space-between
+
+						margin-bottom: 30px
+
+						&:last-child
+							margin-bottom: 0
+
+						&-subblock
+							width: 48%
+
+							&__title
+								font-size: 20px
+								margin-bottom: 10px
+
+							&.fullWidth
+								width: 100%
+
+				&-btn
+					margin-top: 50px
+
+					display: flex
+					justify-content: center
+
+					&__btn
+						width: 75%

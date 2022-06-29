@@ -25,7 +25,7 @@ const ObjectPageNavigation: React.FC = () => {
                     to="object-page-services"
                     spy={true}
                     smooth={true}
-                    offset={-200}
+                    offset={-50}
                     duration={500}
                     className="btn-light small object-page-navigation-btn-block__btn"
                 >
@@ -36,7 +36,7 @@ const ObjectPageNavigation: React.FC = () => {
                     to="object-page-maps"
                     spy={true}
                     smooth={true}
-                    offset={-200}
+                    offset={-50}
                     duration={500}
                     className="btn-light small object-page-navigation-btn-block__btn"
                 >
@@ -47,7 +47,7 @@ const ObjectPageNavigation: React.FC = () => {
                     to="object-page-feedbacks"
                     spy={true}
                     smooth={true}
-                    offset={-200}
+                    offset={-50}
                     duration={500}
                     className="btn-light small object-page-navigation-btn-block__btn"
                 >
@@ -58,7 +58,7 @@ const ObjectPageNavigation: React.FC = () => {
                     to="object-page-terms"
                     spy={true}
                     smooth={true}
-                    offset={-200}
+                    offset={-50}
                     duration={500}
                     className="btn-light small object-page-navigation-btn-block__btn"
                 >
@@ -70,7 +70,7 @@ const ObjectPageNavigation: React.FC = () => {
                     to="object-page-room"
                     spy={true}
                     smooth={true}
-                    offset={-200}
+                    offset={-50}
                     duration={500}
                     className="btn small object-page-navigation-btn-block__btn"
                 >

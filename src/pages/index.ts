@@ -9,3 +9,6 @@ export {default as Objects} from "./Objects";
 
 // ObjectPage
 export {default as ObjectPage} from "./ObjectPage";
+
+// Payment
+export {default as Payment} from "./Payment";

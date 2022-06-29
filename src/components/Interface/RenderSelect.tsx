@@ -1,15 +1,25 @@
 import React from "react";
 import {v4} from "uuid";
 import AnimateHeight from "react-animate-height";
+import {useDispatch} from "react-redux";
+import {WrappedFieldProps, change} from "redux-form";
 
-interface SelectProps {
+interface RenderSelectProps extends WrappedFieldProps {
     choices: {key: string; title: string}[];
 
     border?: boolean;
     small?: boolean;
 }
 
-const Select: React.FC<SelectProps> = ({choices, border, small}) => {
+const RenderSelect: React.FC<RenderSelectProps> = ({
+    choices,
+    border,
+    small,
+    input,
+    meta: {form},
+}) => {
+    const dispatch = useDispatch();
+
     const id = v4();
 
     const [isOpen, setIsOpen] = React.useState(false);
@@ -31,6 +41,12 @@ const Select: React.FC<SelectProps> = ({choices, border, small}) => {
         if (SelectRef.current && !SelectRef.current.contains(e.target)) {
             setIsOpen(false);
         }
+    };
+
+    const selectItemOnClick = (index: number) => {
+        setCurrentIndex(index);
+
+        dispatch(change(form, input.name, choices[index].key));
     };
 
     return (
@@ -77,7 +93,7 @@ const Select: React.FC<SelectProps> = ({choices, border, small}) => {
                                     currentIndex === index ? "active" : ""
                                 }`}
                                 key={`${id}-select-list__item-${index}`}
-                                onClick={() => setCurrentIndex(index)}
+                                onClick={() => selectItemOnClick(index)}
                             >
                                 {item.title}
                             </p>
@@ -89,4 +105,4 @@ const Select: React.FC<SelectProps> = ({choices, border, small}) => {
     );
 };
 
-export default Select;
+export default RenderSelect;

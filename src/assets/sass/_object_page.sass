@@ -1,6 +1,7 @@
 // object-page
 .object-page
 	margin: 50px 0
+	overflow-x: hidden
 
 	&-cover
 		position: relative
@@ -48,18 +49,7 @@
 
 				&__title
 					font-size: 32px
-					margin-bottom: 15px
-
-				&-location
-					&__title
-						color: $darkMainColor
-						margin-bottom: 5px
-
-						& > svg
-							margin-left: 15px
-
-					&__subtitle
-						font-size: 15px
+					margin-bottom: 5px
 
 			&-feedbacks
 				display: flex
@@ -146,7 +136,6 @@
 
 	&-slider-images
 		position: relative
-
 		display: flex
 
 		&:hover &__btn
@@ -776,9 +765,6 @@
 
 			&-payment
 				margin-top: 50px
-
-				display: flex
-				justify-content: space-between
 
 				&-block
 					width: 45%

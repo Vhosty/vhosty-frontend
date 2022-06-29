@@ -5,6 +5,7 @@ export {default as RenderInput} from "./Interface/RenderInput";
 export {default as TitleIcon} from "./Interface/TitleIcon";
 export {default as InputRange} from "./Interface/InputRange";
 export {default as Select} from "./Interface/Select";
+export {default as RenderSelect} from "./Interface/RenderSelect";
 export {default as Stars} from "./Interface/Stars";
 export {default as Checkbox} from "./Interface/Checkbox";
 export {default as RenderCheckbox} from "./Interface/RenderCheckbox";
@@ -13,6 +14,7 @@ export {default as CalendarSelect} from "./Interface/Calendar/CalendarSelect";
 export {default as Count} from "./Interface/Count";
 export {default as ServiceIcon} from "./Interface/ServiceIcon";
 export {default as Tab} from "./Interface/Tab";
+export {default as Location} from "./Interface/Location";
 
 // Header
 export {default as Header} from "./Header/Header";
@@ -106,6 +108,13 @@ export {default as ObjectPageServices} from "./ObjectPage/ObjectPageServices/Obj
 
 // Prime
 export {default as PrimeSectionBlock} from "./Prime/PrimeSectionBlock";
+
+// Payment
+// PaymentForm
+export {default as PaymentForm} from "./Payment/PaymentForm/PaymentForm";
+// PaymentProgressbar
+export {default as PaymentProgressbar} from "./Payment/PaymentProgressbar/PaymentProgressbar";
+export {default as PaymentProgressbarItem} from "./Payment/PaymentProgressbar/PaymentProgressbarItem";
 
 // Footer
 export {default as Footer} from "./Footer/Footer";

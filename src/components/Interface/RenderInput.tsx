@@ -1,13 +1,12 @@
 import React from "react";
+import {WrappedFieldProps} from "redux-form";
 
-interface InputProps {
+interface InputProps extends WrappedFieldProps {
     label: string;
     small?: boolean;
     smallPlaceholder?: boolean;
 
-    input: any;
-    type: any;
-    meta: any;
+    type: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -40,7 +39,9 @@ const Input: React.FC<InputProps> = ({
                                 : "password"
                             : type
                     }
-                    className="input-field__input"
+                    className={`input-field__input ${
+                        touched && error ? "error" : ""
+                    }`}
                     placeholder={label}
                 />
 

@@ -1,9 +1,11 @@
 import React from "react";
 import {Route, Routes, useLocation} from "react-router-dom";
 
+import "moment/locale/ru";
+
 import {Footer, Header} from "./components/";
 
-import {Reglog, Home, Objects, ObjectPage} from "./pages";
+import {Reglog, Home, Objects, ObjectPage, Payment} from "./pages";
 
 const App = () => {
     const location = useLocation();
@@ -20,6 +22,8 @@ const App = () => {
 
                     <Route path="/objects" element={<Objects />} />
                     <Route path="/objects/:id" element={<ObjectPage />} />
+
+                    <Route path="/payment" element={<Payment />} />
                 </Routes>
 
                 <Footer />

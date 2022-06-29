@@ -14,7 +14,7 @@ const ObjectPageTerms: React.FC = () => {
                 </h2>
                 <div className="object-page-section-terms-from-to">
                     <div className="object-page-section-terms-from-to-block-wrapper">
-                        <TitleIcon title="Заселение">
+                        <TitleIcon title="Заселение" bold>
                             <svg
                                 viewBox="0 0 20 20"
                                 fill="none"
@@ -49,7 +49,7 @@ const ObjectPageTerms: React.FC = () => {
                     </div>
 
                     <div className="object-page-section-terms-from-to-block-wrapper">
-                        <TitleIcon title="Выезд">
+                        <TitleIcon title="Выезд" bold>
                             <svg
                                 viewBox="0 0 20 20"
                                 fill="none"
@@ -84,7 +84,10 @@ const ObjectPageTerms: React.FC = () => {
                     </div>
                 </div>
                 <div className="object-page-section-terms-from-to-change-time">
-                    <TitleIcon title="Возможность другого времени заезда/выезда">
+                    <TitleIcon
+                        title="Возможность другого времени заезда/выезда"
+                        bold
+                    >
                         <svg
                             viewBox="0 0 20 19"
                             fill="none"
@@ -155,7 +158,7 @@ const ObjectPageTerms: React.FC = () => {
 
                 <div className="object-page-section-terms-payment">
                     <div className="object-page-section-terms-payment-block">
-                        <TitleIcon title="Оплата в отеле">
+                        <TitleIcon title="Оплата в отеле" bold>
                             <svg
                                 viewBox="0 0 22 15"
                                 fill="none"
@@ -170,27 +173,6 @@ const ObjectPageTerms: React.FC = () => {
 
                         <p className="object-page-section-terms-payment-block__description">
                             Безналичный и наличный расчет в валюте страны отеля
-                        </p>
-                    </div>
-
-                    <div className="object-page-section-terms-payment-block">
-                        <TitleIcon title="Оплата на сайте">
-                            <svg
-                                viewBox="0 0 21 21"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M0 3.79167C0 2.78605 0.399478 1.82163 1.11055 1.11055C1.82163 0.399478 2.78605 0 3.79167 0H17.2083C18.2139 0 19.1784 0.399478 19.8894 1.11055C20.6005 1.82163 21 2.78605 21 3.79167V17.2083C21 18.2139 20.6005 19.1784 19.8894 19.8894C19.1784 20.6005 18.2139 21 17.2083 21H3.79167C2.78605 21 1.82163 20.6005 1.11055 19.8894C0.399478 19.1784 0 18.2139 0 17.2083V3.79167ZM4.375 4.375C4.14294 4.375 3.92038 4.46719 3.75628 4.63128C3.59219 4.79538 3.5 5.01794 3.5 5.25C3.5 5.48206 3.59219 5.70462 3.75628 5.86872C3.92038 6.03281 4.14294 6.125 4.375 6.125H16.625C16.8571 6.125 17.0796 6.03281 17.2437 5.86872C17.4078 5.70462 17.5 5.48206 17.5 5.25C17.5 5.01794 17.4078 4.79538 17.2437 4.63128C17.0796 4.46719 16.8571 4.375 16.625 4.375H4.375Z"
-                                    fill="#00A0A0"
-                                />
-                            </svg>
-                        </TitleIcon>
-
-                        <p className="object-page-section-terms-payment-block__description">
-                            Доступна оплата банковской картой при бронировании
-                            на сайте. Можно оплатить бронирование с помощью
-                            промокода, если он у вас есть.
                         </p>
                     </div>
                 </div>

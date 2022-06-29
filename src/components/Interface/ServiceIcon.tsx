@@ -86,7 +86,7 @@ const ServiceIcon: React.FC<ServiceIconProps> = ({
                             strokeLinecap="round"
                         />
                         <path
-                            className="service-icon__message__fill"
+                            className="service-icon__messageIcon__fill"
                             d="M11.1422 18.1818C11.8011 18.1818 12.3353 17.6476 12.3353 16.9886C12.3353 16.3296 11.8011 15.7954 11.1422 15.7954C10.4832 15.7954 9.94897 16.3296 9.94897 16.9886C9.94897 17.6476 10.4832 18.1818 11.1422 18.1818Z"
                         />
                     </svg>
