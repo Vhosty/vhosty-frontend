@@ -10,12 +10,16 @@ import {
 import ObjectsBg from "../assets/images/objects-bg.jpg";
 
 const Objects: React.FC = () => {
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <Helmet>
                 <title>Vhosty | Найти отель</title>
-			</Helmet>
-			
+            </Helmet>
+
             <section className="objects">
                 <div
                     className="objects-bg"

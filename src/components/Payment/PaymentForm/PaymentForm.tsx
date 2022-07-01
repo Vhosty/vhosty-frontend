@@ -40,13 +40,10 @@ const PaymentForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
             <div className="payment-block-padding">
                 <div className="payment-info-room-and-contact-form-input-block">
                     <div className="payment-info-room-and-contact-form-input-block-subblock">
-                        <p className="payment-info-room-and-contact-form-input-block-subblock__title">
-                            Электронная почта
-                        </p>
-
                         <Field
                             component={RenderInput}
                             name="email"
+                            title="Электронная почта"
                             label="examplemyemail@mail.ru"
                             type="email"
                             small
@@ -54,13 +51,10 @@ const PaymentForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
                     </div>
 
                     <div className="payment-info-room-and-contact-form-input-block-subblock">
-                        <p className="payment-info-room-and-contact-form-input-block-subblock__title">
-                            Телефон для связи
-                        </p>
-
                         <Field
                             component={RenderInput}
                             name="phone"
+                            title="Телефон для связи"
                             label={"8 999 999 99 99"}
                             type="text"
                             small
@@ -74,13 +68,10 @@ const PaymentForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
                 </div>
                 <div className="payment-info-room-and-contact-form-input-block">
                     <div className="payment-info-room-and-contact-form-input-block-subblock">
-                        <p className="payment-info-room-and-contact-form-input-block-subblock__title">
-                            Имя
-                        </p>
-
                         <Field
                             component={RenderInput}
                             name="name"
+                            title="Имя"
                             label="Анастасия"
                             type="text"
                             small
@@ -88,13 +79,10 @@ const PaymentForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
                     </div>
 
                     <div className="payment-info-room-and-contact-form-input-block-subblock">
-                        <p className="payment-info-room-and-contact-form-input-block-subblock__title">
-                            Фамилия
-                        </p>
-
                         <Field
                             component={RenderInput}
                             name="surname"
+                            title="Фамилия"
                             label="Иванова"
                             type="text"
                             small
@@ -103,10 +91,6 @@ const PaymentForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
                 </div>
                 <div className="payment-info-room-and-contact-form-input-block">
                     <div className="payment-info-room-and-contact-form-input-block-subblock fullWidth">
-                        <p className="payment-info-room-and-contact-form-input-block-subblock__title">
-                            Гражданство
-                        </p>
-
                         <Field
                             component={RenderSelect}
                             choices={[
@@ -117,6 +101,7 @@ const PaymentForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
                                 },
                             ]}
                             border
+                            title="Гражданство"
                             small
                             name="country"
                         />
@@ -124,13 +109,10 @@ const PaymentForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
                 </div>
                 <div className="payment-info-room-and-contact-form-input-block">
                     <div className="payment-info-room-and-contact-form-input-block-subblock fullWidth">
-                        <p className="payment-info-room-and-contact-form-input-block-subblock__title">
-                            Особые пожелания
-                        </p>
-
                         <Field
                             component={RenderInput}
                             name="message"
+                            title="Особые пожелания"
                             label="Например, номер на 3 этаже"
                             type="text"
                             small

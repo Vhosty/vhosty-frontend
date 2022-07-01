@@ -1,9 +1,13 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {HeaderUserNotifications, HeaderUserModal, Popup} from "../../";
+import {
+    HeaderTransparentUserNotifications,
+    HeaderUserModal,
+    Popup,
+} from "../../";
 
-const HeaderUser: React.FC = () => {
+const HeaderTransparentUser: React.FC = () => {
     const isLogin = true;
 
     const [activeHeaderModal, setActiveHeaderModal] =
@@ -45,11 +49,11 @@ const HeaderUser: React.FC = () => {
     return (
         <>
             {isLogin ? (
-                <div className="header-block-user">
-                    <HeaderUserNotifications />
+                <div className="header-transparent-block-user">
+                    <HeaderTransparentUserNotifications />
 
                     <button
-                        className="header-block-user__btn"
+                        className="header-transparent-block-user__btn"
                         onClick={openHeaderModal}
                     >
                         Личный кабинет
@@ -65,10 +69,10 @@ const HeaderUser: React.FC = () => {
                     </Popup>
                 </div>
             ) : (
-                <Link to="#login" className="header-block-user">
-                    <HeaderUserNotifications />
+                <Link to="#login" className="header-transparent-block-user">
+                    <HeaderTransparentUserNotifications />
 
-                    <button className="header-block-user__btn">
+                    <button className="header-transparent-block-user__btn">
                         Личный кабинет
                     </button>
                 </Link>
@@ -77,4 +81,4 @@ const HeaderUser: React.FC = () => {
     );
 };
 
-export default HeaderUser;
+export default HeaderTransparentUser;

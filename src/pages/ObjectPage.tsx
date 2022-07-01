@@ -16,6 +16,10 @@ import {
 } from "../components/";
 
 const ObjectPage: React.FC = () => {
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <Helmet>
@@ -43,11 +47,11 @@ const ObjectPage: React.FC = () => {
 
                         <ObjectPageFeedbacks />
 
-						<ObjectPageServices />
-						
-						<ObjectPageTerms />
+                        <ObjectPageServices />
 
-						<ObjectPageFaq />
+                        <ObjectPageTerms />
+
+                        <ObjectPageFaq />
                     </div>
                 </div>
             </section>

@@ -23,19 +23,19 @@ export {default as HeaderPassLink} from "./Header/HeaderPassLink";
 // HeaderUser
 export {default as HeaderUser} from "./Header/HeaderUser/HeaderUser";
 export {default as HeaderUserNotifications} from "./Header/HeaderUser/HeaderUserNotifications";
+export {default as HeaderUserModal} from "./Header/HeaderUser/HeaderUserModal";
+
+// HeaderTransparent
+export {default as HeaderTransparent} from "./HeaderTransparent/HeaderTransparent";
+export {default as HeaderTransparentPassLink} from "./HeaderTransparent/HeaderTransparentPassLink";
+export {default as HeaderTransparentSearch} from "./HeaderTransparent/HeaderTransparentSearch";
+export {default as HeaderTransparentUser} from "./HeaderTransparent/HeaderTransparentUser/HeaderTransparentUser";
+export {default as HeaderTransparentUserNotifications} from "./HeaderTransparent/HeaderTransparentUser/HeaderTransparentUserNotifications";
 
 // Home
-// HomeHeader
-export {default as HomeHeader} from "./Home/HomeHeader/HomeHeader";
-export {default as HomeHeaderPassLink} from "./Home/HomeHeader/HomeHeaderPassLink";
-export {default as HomeHeaderSearch} from "./Home/HomeHeader/HomeHeaderSearch";
-export {default as HomeHeaderUser} from "./Home/HomeHeader/HomeHeaderUser/HomeHeaderUser";
-export {default as HomeHeaderUserNotifications} from "./Home/HomeHeader/HomeHeaderUser/HomeHeaderUserNotifications";
-// HomeServices
+export {default as HomeMain} from "./Home/HomeMain";
 export {default as HomeServices} from "./Home/HomeServices";
-// HomeSecurity
 export {default as HomeSecurity} from "./Home/HomeSecurity";
-// HomeCorporate
 export {default as HomeCorporate} from "./Home/HomeCorporate";
 // HomeEmail
 export {default as HomeEmail} from "./Home/HomeEmail/HomeEmail";
@@ -115,6 +115,20 @@ export {default as PaymentForm} from "./Payment/PaymentForm/PaymentForm";
 // PaymentProgressbar
 export {default as PaymentProgressbar} from "./Payment/PaymentProgressbar/PaymentProgressbar";
 export {default as PaymentProgressbarItem} from "./Payment/PaymentProgressbar/PaymentProgressbarItem";
+
+// Cabinet
+export {default as CabinetMenu} from "./Cabinet/CabinetMenu";
+export {default as CabinetLogout} from "./Cabinet/CabinetLogout";
+// CabinetSetting
+export {default as CabinetSetting} from "./Cabinet/CabinetSetting/CabinetSetting";
+export {default as CabinetSettingForm} from "./Cabinet/CabinetSetting/CabinetSettingForm";
+// CabinetHistory
+export {default as CabinetHistory} from "./Cabinet/CabinetHistory/CabinetHistory";
+export {default as CabinetHistorySection} from "./Cabinet/CabinetHistory/CabinetHistorySection";
+export {default as CabinetHistorySectionBlock} from "./Cabinet/CabinetHistory/CabinetHistorySectionBlock";
+// CabinetFavorites
+export {default as CabinetFavorites} from "./Cabinet/CabinetFavorites/CabinetFavorites";
+export {default as CabinetFavoritesBlock} from "./Cabinet/CabinetFavorites/CabinetFavoritesBlock";
 
 // Footer
 export {default as Footer} from "./Footer/Footer";

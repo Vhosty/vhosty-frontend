@@ -1,9 +1,9 @@
 import React from "react";
 
-const HomeHeaderPassLink: React.FC = () => {
+const HeaderTransparentPassLink: React.FC = () => {
     return (
-        <div className="home-main-header-block">
-            <a href="#" className="home-main-header-block__pass">
+        <div className="header-transparent-block">
+            <a href="#" className="header-transparent-block__pass">
                 <svg
                     width="20"
                     height="20"
@@ -20,4 +20,4 @@ const HomeHeaderPassLink: React.FC = () => {
     );
 };
 
-export default HomeHeaderPassLink;
+export default HeaderTransparentPassLink;

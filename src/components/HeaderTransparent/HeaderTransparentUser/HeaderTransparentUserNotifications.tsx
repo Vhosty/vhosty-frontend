@@ -1,9 +1,9 @@
 import React from "react";
 
-const HomeHeaderUserNotifications: React.FC = () => {
+const HeaderTransparentUserNotifications: React.FC = () => {
     return (
-        <div className="home-main-header-block-user-notifications">
-            <span className="home-main-header-block-user-notifications__count">
+        <div className="header-transparent-block-user-notifications">
+            <span className="header-transparent-block-user-notifications__count">
                 23
             </span>
 
@@ -23,4 +23,4 @@ const HomeHeaderUserNotifications: React.FC = () => {
     );
 };
 
-export default HomeHeaderUserNotifications;
+export default HeaderTransparentUserNotifications;

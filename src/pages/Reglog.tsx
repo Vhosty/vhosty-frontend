@@ -18,7 +18,7 @@ const Reglog: React.FC = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const {open, closeAnimation, changeCloseAnimation, type} = useTypedSelector(
+    const {closeAnimation, changeCloseAnimation, type} = useTypedSelector(
         ({reglog}) => reglog
     );
 

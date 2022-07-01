@@ -31,7 +31,7 @@ const ObjectPageRoomBlock: React.FC = () => {
                             <p className="object-page-section-room-block-subblock-info-text-block__subtitle">
                                 1 Двуспальная кровать
                             </p>
-                            <div className="object-page-section-room-block-subblock-info-text-block-services">
+                            {/* <div className="object-page-section-room-block-subblock-info-text-block-services">
                                 <div className="object-page-section-room-block-subblock-info-text-block-services-item">
                                     <ServiceIcon>
                                         <svg
@@ -81,7 +81,7 @@ const ObjectPageRoomBlock: React.FC = () => {
                                         Сейф
                                     </ServiceIcon>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className="object-page-section-room-block-subblock-info-text-block">

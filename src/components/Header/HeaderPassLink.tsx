@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-const HomeHeaderPassLink: React.FC = () => {
+const HeaderTransparentPassLink: React.FC = () => {
     return (
         <Link to="/" className="header-block__pass">
             <svg
@@ -19,4 +19,4 @@ const HomeHeaderPassLink: React.FC = () => {
     );
 };
 
-export default HomeHeaderPassLink;
+export default HeaderTransparentPassLink;

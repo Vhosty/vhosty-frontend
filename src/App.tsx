@@ -5,7 +5,7 @@ import "moment/locale/ru";
 
 import {Footer, Header} from "./components/";
 
-import {Reglog, Home, Objects, ObjectPage, Payment} from "./pages";
+import {Reglog, Home, Objects, ObjectPage, Payment, Cabinet} from "./pages";
 
 const App = () => {
     const location = useLocation();
@@ -13,7 +13,10 @@ const App = () => {
     return (
         <>
             <React.Suspense fallback={<></>}>
-                {location.pathname !== "/" ? <Header /> : null}
+                {location.pathname === "/" ||
+                location.pathname.indexOf("/cabinet") !== -1 ? null : (
+                    <Header />
+                )}
 
                 <Reglog />
 
@@ -24,6 +27,8 @@ const App = () => {
                     <Route path="/objects/:id" element={<ObjectPage />} />
 
                     <Route path="/payment" element={<Payment />} />
+
+                    <Route path="/cabinet/:section" element={<Cabinet />} />
                 </Routes>
 
                 <Footer />
