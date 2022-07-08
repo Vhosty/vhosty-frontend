@@ -16,10 +16,6 @@ import {
 } from "../components/";
 
 const ObjectPage: React.FC = () => {
-    React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     return (
         <>
             <Helmet>

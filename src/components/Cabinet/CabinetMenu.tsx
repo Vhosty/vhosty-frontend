@@ -1,11 +1,7 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink, Link} from "react-router-dom";
 
-interface CabinetMenuProps {
-    openLogout: () => void;
-}
-
-const CabinetMenu: React.FC<CabinetMenuProps> = ({openLogout}) => {
+const CabinetMenu: React.FC = () => {
     return (
         <div className="cabinet-content-block cabinet-content-menu">
             <NavLink
@@ -92,7 +88,7 @@ const CabinetMenu: React.FC<CabinetMenuProps> = ({openLogout}) => {
                 </p>
             </NavLink>
 
-            <div className="cabinet-content-menu-item" onClick={openLogout}>
+            <Link to="#logout" className="cabinet-content-menu-item">
                 <p className="cabinet-content-menu-item__title">
                     <svg
                         viewBox="0 0 16 16"
@@ -106,7 +102,7 @@ const CabinetMenu: React.FC<CabinetMenuProps> = ({openLogout}) => {
                 <p className="cabinet-content-menu-item__subtitle">
                     Возвращайтесь скорее!
                 </p>
-            </div>
+            </Link>
         </div>
     );
 };

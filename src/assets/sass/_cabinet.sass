@@ -1,7 +1,6 @@
 // cabinet
 .cabinet
 	margin-bottom: 50px
-	+open
 
 	&-content
 		display: flex
@@ -16,8 +15,6 @@
 
 			&-render
 				width: calc( 70% - 50px )
-
-				+open
 
 		&-menu
 			top: 25px
@@ -69,24 +66,26 @@
 				&-block
 					margin-top: 50px
 
+					&-inputs
+						display: flex
+						flex-wrap: wrap
+
 					&__title
 						font-size: 20px
 
 						color: $darkMainColor
-						margin-bottom: 25px
+						margin-bottom: 30px
 
 					&-input-wrapper
-						display: flex
-						justify-content: space-between
-						align-items: center
+						width: 50%
 
 						margin-bottom: 30px
 
-						&:last-child
+						&:nth-last-child(1), &:nth-last-child(2)
 							margin-bottom: 0
 
 					&-input
-						width: 48%
+						width: 90%
 
 		&-history
 			&-section
@@ -360,66 +359,3 @@
 								position: absolute
 								bottom: 0
 								right: 0
-
-		&-logout
-			display: flex
-			justify-content: center
-			align-items: center
-
-			position: fixed
-
-			top: 0
-			left: 0
-
-			width: 100%
-			height: 100%
-
-			background-color: rgba(0, 0, 0, 0.7)
-
-			z-index: 20
-
-			+open
-
-			&.close
-				+close
-
-			&-content
-				text-align: center
-
-				position: relative
-
-				margin: 50px 0
-
-				padding: 35px
-				background-color: $white
-
-				width: 500px
-
-				+borderRadius
-
-				+openPopup
-
-				&.close
-					+closePopup
-
-				&__title
-					font-size: 20px
-					color: $darkMainColor
-					margin-bottom: 20px
-
-				&__subtitle
-					font-size: 15px
-
-				&-btn
-					margin-top: 35px
-					display: flex
-					flex-direction: column
-
-					&__logout
-						margin-bottom: 25px
-						cursor: pointer
-						color: $mainColor
-						font-weight: 500
-						font-size: 20px
-						border: none
-						background-color: transparent

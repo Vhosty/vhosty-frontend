@@ -3,11 +3,15 @@ import {Link} from "react-router-dom";
 
 import {Popup} from "../";
 
+import {useTypedSelector} from "../../hooks/useTypedSelector";
+
 interface HeaderModalProps {
     color?: boolean;
 }
 
 const HeaderModal: React.FC<HeaderModalProps> = ({color}) => {
+    const {isLoadedUser} = useTypedSelector(({user}) => user);
+
     const [activeHeaderModal, setActiveHeaderModal] =
         React.useState<boolean>(false);
     const [activeHeaderModalAnimation, setActiveHeaderModalAnimation] =
@@ -131,15 +135,17 @@ const HeaderModal: React.FC<HeaderModalProps> = ({color}) => {
                         </Link>
                     </div>
 
-                    <p className="header-block-menu-modal-block-bottom__title">
-                        <Link to="#register" onClick={closeHeaderModal}>
-                            Зарегистрироваться
-                        </Link>{" "}
-                        или{" "}
-                        <Link to="#login" onClick={closeHeaderModal}>
-                            Войти
-                        </Link>
-                    </p>
+                    {isLoadedUser ? null : (
+                        <p className="header-block-menu-modal-block-bottom__link">
+                            <Link to="#register" onClick={closeHeaderModal}>
+                                Зарегистрироваться
+                            </Link>{" "}
+                            или{" "}
+                            <Link to="#login" onClick={closeHeaderModal}>
+                                Войти
+                            </Link>
+                        </p>
+                    )}
                 </nav>
             </Popup>
         </>

@@ -7,8 +7,10 @@ import {
     Popup,
 } from "../../";
 
+import {useTypedSelector} from "../../../hooks/useTypedSelector";
+
 const HeaderTransparentUser: React.FC = () => {
-    const isLogin = true;
+    const {isLoadedUser} = useTypedSelector(({user}) => user);
 
     const [activeHeaderModal, setActiveHeaderModal] =
         React.useState<boolean>(false);
@@ -48,7 +50,7 @@ const HeaderTransparentUser: React.FC = () => {
 
     return (
         <>
-            {isLogin ? (
+            {isLoadedUser ? (
                 <div className="header-transparent-block-user">
                     <HeaderTransparentUserNotifications />
 

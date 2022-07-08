@@ -3,8 +3,10 @@ import {Link} from "react-router-dom";
 
 import {HeaderUserNotifications, HeaderUserModal, Popup} from "../../";
 
+import {useTypedSelector} from "../../../hooks/useTypedSelector";
+
 const HeaderUser: React.FC = () => {
-    const isLogin = true;
+    const {isLoadedUser} = useTypedSelector(({user}) => user);
 
     const [activeHeaderModal, setActiveHeaderModal] =
         React.useState<boolean>(false);
@@ -44,7 +46,7 @@ const HeaderUser: React.FC = () => {
 
     return (
         <>
-            {isLogin ? (
+            {isLoadedUser ? (
                 <div className="header-block-user">
                     <HeaderUserNotifications />
 

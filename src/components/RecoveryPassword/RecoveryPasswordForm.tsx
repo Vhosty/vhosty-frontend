@@ -17,7 +17,9 @@ const RecoveryPasswordForm: React.FC<
     return (
         <form className="reglog-form" onSubmit={handleSubmit}>
             <div className="reglog-form-text">
-                <p className="reglog-form-text__subtitle">Гость №685-973</p>
+                <p className="reglog-form-text__subtitle">
+                    Гость №{localStorage.getItem("userNumber")}
+                </p>
                 <p className="reglog-form-text__title">Восстановить пароль</p>
             </div>
 

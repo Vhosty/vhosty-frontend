@@ -3,21 +3,26 @@ import {Link} from "react-router-dom";
 
 import {Field, reduxForm, InjectedFormProps} from "redux-form";
 
+import {useTypedSelector} from "../../hooks/useTypedSelector";
+
 import {validate} from "./validate";
 
-import {RenderInput} from "../";
+import {RenderInput, PolicyCheckbox} from "../";
 
-interface RegisterFormProps {
-    closeOnClick: () => void;
-}
+const RegisterForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
+    handleSubmit,
+    invalid,
+    pristine,
+    submitting,
+}) => {
+    const {isPending} = useTypedSelector(({register}) => register);
 
-const RegisterForm: React.FC<
-    RegisterFormProps & InjectedFormProps<{}, RegisterFormProps>
-> = ({handleSubmit, closeOnClick}) => {
     return (
         <form className="reglog-form" onSubmit={handleSubmit}>
             <div className="reglog-form-text">
-                <p className="reglog-form-text__subtitle">Гость №685-973</p>
+                <p className="reglog-form-text__subtitle">
+                    Гость №{localStorage.getItem("userNumber")}
+                </p>
                 <p className="reglog-form-text__title">
                     Зарегистрироваться или <Link to="#login">Войти</Link>
                 </p>
@@ -54,24 +59,23 @@ const RegisterForm: React.FC<
                     <Field
                         component={RenderInput}
                         type="password"
-                        name="password_repeat"
+                        name="password2"
                         label="• • • • • • • • • •"
                     />
                 </div>
 
                 <div className="reglog-form-block-btn">
-                    <p className="reglog-form-block-btn__description">
-                        Нажимая кнопку «Зарегистрироваться», я соглашаюсь c{" "}
-                        <Link to="/" onClick={closeOnClick}>
-                            политикой конфиденциальности
-                        </Link>{" "}
-                        и{" "}
-                        <Link to="/" onClick={closeOnClick}>
-                            обработкой персональных данных.
-                        </Link>
-                    </p>
-                    <button className="btn reglog-form-block-btn__btn">
-                        Зарегистрироваться
+                    <PolicyCheckbox />
+
+                    <button
+                        className={`btn ${
+                            isPending ? "disabled" : ""
+                        } reglog-form-block-btn__btn`}
+                        disabled={
+                            invalid || submitting || pristine || isPending
+                        }
+                    >
+                        {isPending ? "Загрузка" : "Зарегистрироваться"}
                     </button>
                 </div>
             </div>
@@ -79,7 +83,7 @@ const RegisterForm: React.FC<
     );
 };
 
-export default reduxForm<{}, RegisterFormProps>({
+export default reduxForm<{}, {}>({
     form: "register-form",
     validate,
 })(RegisterForm);

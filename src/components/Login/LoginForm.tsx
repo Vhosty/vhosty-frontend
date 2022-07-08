@@ -5,19 +5,17 @@ import {Field, reduxForm, InjectedFormProps} from "redux-form";
 
 import {validate} from "./validate";
 
-import {RenderInput} from "../";
-
-interface LoginFormProps {
-    closeOnClick: () => void;
-}
+import {RenderInput, PolicyCheckbox} from "../";
 
 const LoginForm: React.FC<
-    LoginFormProps & InjectedFormProps<{}, LoginFormProps>
-> = ({handleSubmit, closeOnClick}) => {
+    {} & InjectedFormProps<{}, {}>
+> = ({handleSubmit}) => {
     return (
         <form className="reglog-form" onSubmit={handleSubmit}>
             <div className="reglog-form-text">
-                <p className="reglog-form-text__subtitle">Гость №685-973</p>
+                <p className="reglog-form-text__subtitle">
+                    Гость №{localStorage.getItem("userNumber")}
+                </p>
                 <p className="reglog-form-text__title">
                     Войти или <Link to="#register">Зарегистрироваться</Link>
                 </p>
@@ -55,16 +53,7 @@ const LoginForm: React.FC<
                 </Link>
 
                 <div className="reglog-form-block-btn">
-                    <p className="reglog-form-block-btn__description">
-                        Нажимая кнопку «Войти», я соглашаюсь c{" "}
-                        <Link to="/" onClick={closeOnClick}>
-                            политикой конфиденциальности
-                        </Link>{" "}
-                        и{" "}
-                        <Link to="/" onClick={closeOnClick}>
-                            обработкой персональных данных.
-                        </Link>
-                    </p>
+                    <PolicyCheckbox />
 
                     <button className="btn reglog-form-block-btn__btn">
                         Войти
@@ -75,7 +64,7 @@ const LoginForm: React.FC<
     );
 };
 
-export default reduxForm<{}, LoginFormProps>({
+export default reduxForm<{}, {}>({
     form: "login-form",
     validate,
 })(LoginForm);

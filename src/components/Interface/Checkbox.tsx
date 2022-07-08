@@ -61,7 +61,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
                 htmlFor={id}
                 className={`checkbox__label ${small ? "small" : " "}`}
             >
-                {children}
+                <p className="checkbox__label__text">{children}</p>
             </label>
 
             {questionMessage ? (

@@ -12,10 +12,6 @@ import {
 } from "../components/";
 
 const Payment: React.FC = () => {
-    React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     const onSubmit = (data: any) => {
         console.log(data);
     };

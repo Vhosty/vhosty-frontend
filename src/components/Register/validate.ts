@@ -2,14 +2,18 @@ export interface validateValues {
     email?: string;
 
     password?: string;
-    password_repeat?: string;
+	password2?: string;
+	
+    policyCheckbox?: string;
 }
 
 interface validateErrors {
     email?: string;
 
     password?: string;
-    password_repeat?: string;
+    password2?: string;
+
+    policyCheckbox?: string;
 }
 
 export const validate = (values: validateValues) => {
@@ -42,14 +46,18 @@ export const validate = (values: validateValues) => {
         errors.password = `Не менее ${min} символов`;
     }
 
-    if (!values.password_repeat) {
-        errors.password_repeat = "Поле не может быть пустым";
-    } else if (values.password_repeat.length > max) {
-        errors.password_repeat = `Не более ${max} символов`;
-    } else if (values.password_repeat.length < min) {
-        errors.password_repeat = `Не менее ${min} символов`;
-    } else if (values.password_repeat !== values.password) {
-        errors.password_repeat = `Пароли не равны`;
+    if (!values.password2) {
+        errors.password2 = "Поле не может быть пустым";
+    } else if (values.password2.length > max) {
+        errors.password2 = `Не более ${max} символов`;
+    } else if (values.password2.length < min) {
+        errors.password2 = `Не менее ${min} символов`;
+    } else if (values.password2 !== values.password) {
+        errors.password2 = `Пароли не равны`;
+    }
+
+    if (!values.policyCheckbox) {
+        errors.policyCheckbox = "Поле не может быть пустым";
     }
 
     return errors;

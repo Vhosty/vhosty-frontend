@@ -24,6 +24,8 @@
 		+close
 
 	&-content
+		overflow: hidden
+
 		position: relative
 
 		margin: 50px 0
@@ -57,12 +59,12 @@
 
 	&-form
 		&-text
+			&__title
+				user-select: none
+
 			&__subtitle
 				margin-bottom: 10px
 				font-size: 15px
-
-			&__title
-				user-select: none
 
 		&-block
 			margin-top: 30px
@@ -92,3 +94,65 @@
 				&__btn
 					margin-top: 20px
 					width: 100%
+
+	&-logout
+		padding: 15px 0
+
+		text-align: center
+
+		&__title
+			font-size: 20px
+			color: $darkMainColor
+			margin-bottom: 20px
+
+		&__subtitle
+			font-size: 15px
+
+		&-btn
+			margin-top: 35px
+			display: flex
+			flex-direction: column
+
+			&__logout
+				margin-bottom: 25px
+				cursor: pointer
+				color: $mainColor
+				font-weight: 500
+				font-size: 20px
+				border: none
+				background-color: transparent
+
+	&-success
+		&-bg
+			position: absolute
+			top: 0
+			left: 0
+
+		&-title
+			position: relative
+
+			&__title
+				user-select: none
+
+			&__subtitle
+				margin-bottom: 10px
+				font-size: 15px
+
+		&-text
+			position: relative
+			
+			margin-top: 50px
+			text-align: center
+
+			&__title
+				color: $darkMainColor
+				font-size: 20px
+
+			&__description
+				margin-top: 20px
+
+				font-size: 15px
+
+			&__btn
+				margin-top: 50px
+				width: 100%

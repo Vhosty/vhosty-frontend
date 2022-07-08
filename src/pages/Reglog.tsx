@@ -4,7 +4,13 @@ import {useDispatch} from "react-redux";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
-import {LoginForm, RegisterForm, RecoveryPasswordForm} from "../components/";
+import {
+    ReglogSuccess,
+    LoginForm,
+    RegisterForm,
+    RecoveryPasswordForm,
+    Logout,
+} from "../components/";
 
 import {ReglogStateTypes} from "../redux/types/IReglog";
 
@@ -13,6 +19,9 @@ import {
     setReglogClose,
     setReglogType,
 } from "../redux/actions/reglog";
+
+import {sendRegister} from "../redux/actions/register";
+import {sendLogin} from "../redux/actions/login";
 
 const Reglog: React.FC = () => {
     const navigate = useNavigate();
@@ -34,8 +43,14 @@ const Reglog: React.FC = () => {
         };
     }, [PopupRef]);
 
-    const onSubmit = (data: any) => {
-        console.log(data);
+    const onSubmit = (data: any) => {};
+
+    const onSubmitLogin = (data: any) => {
+        dispatch(sendLogin(data) as any);
+    };
+
+    const onSubmitRegister = (data: any) => {
+        dispatch(sendRegister(data) as any);
     };
 
     const closeFunc = () => {
@@ -87,42 +102,49 @@ const Reglog: React.FC = () => {
                 </div>
 
                 {type === ReglogStateTypes.LOGIN ? (
-                    <LoginForm onSubmit={onSubmit} closeOnClick={closeFunc} />
+                    <LoginForm onSubmit={onSubmitLogin} />
                 ) : null}
 
                 {type === ReglogStateTypes.REGISTER ? (
-                    <RegisterForm
-                        onSubmit={onSubmit}
-                        closeOnClick={closeFunc}
+                    <RegisterForm onSubmit={onSubmitRegister} />
+                ) : null}
+
+                {type === ReglogStateTypes.REGISTER_SUCCESS ? (
+                    <ReglogSuccess
+                        topTitle="Зарегистрироваться или Войти"
+                        title="Проверьте почту!"
+                        description="Мы выслали всю информацию для подтверждения данных на указанную Вами почту. Перейдите по ссылке в письме и получите полный доступ к функционалу сайта."
+                        btnLink="/cabinet/setting"
+                        btnText="В личный кабинет"
                     />
                 ) : null}
 
                 {type === ReglogStateTypes.RECOVERY_PASSWORD ? (
                     <RecoveryPasswordForm onSubmit={onSubmit} />
                 ) : null}
+
+                {type === ReglogStateTypes.LOGOUT ? <Logout /> : null}
             </div>
         </section>
     );
 };
 
 const ReglogWrapper: React.FC = () => {
-    const location = useLocation();
+    const {hash, pathname} = useLocation();
     const dispatch = useDispatch();
 
     const {open} = useTypedSelector(({reglog}) => reglog);
 
     React.useEffect(() => {
-        const type: string = location.hash.split("#")[1];
+        const type_hash: string = hash.split("#")[1];
 
-        if (
-            type === "login" ||
-            type === "register" ||
-            type === "recovery_password"
-        ) {
-            dispatch(setReglogType(type, open) as any);
+        if (Object.values(ReglogStateTypes).find((type) => type == type_hash)) {
+            dispatch(setReglogType(type_hash, open) as any);
             dispatch(setReglogOpen());
+        } else {
+            dispatch(setReglogClose() as any);
         }
-    }, [location.hash]);
+    }, [hash, pathname]);
 
     return <>{open ? <Reglog /> : null}</>;
 };

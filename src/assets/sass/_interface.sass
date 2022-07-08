@@ -213,14 +213,7 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active
 	-webkit-box-shadow: 0 0 0 30px white inset !important
 
-.input-wrapper
-	width: 100%
-
 .input
-	display: flex
-	justify-content: space-between
-	align-items: center
-
 	width: 100%
 
 	&__title
@@ -370,24 +363,25 @@ input:-webkit-autofill:active
 		user-select: none
 		+transition
 
-		& > a
-			margin-left: 4px
-			color: $mainColor
+		&__text
+			& > a
+				margin-left: 3px
+				color: $mainColor
 
-		& > img
-			width: 50px
+			& > img
+				width: 50px
 
-			margin-left: 10px
+				margin-left: 10px
 
-		& > svg
-			width: 20px
-			margin-left: 10px
+			& > svg
+				width: 20px
+				margin-left: 10px
 
-			&:first-child
-				margin-left: 5px
+				&:first-child
+					margin-left: 5px
 
-			&:last-child
-				margin-right: 10px
+				&:last-child
+					margin-right: 10px
 
 		&.small
 			font-size: 15px
@@ -850,6 +844,10 @@ input:-webkit-autofill:active
 
 	&__subtitle
 		font-size: 15px
+
+// policy-checkbox
+.policy-checkbox
+	margin-top: 20px
 
 // owl-slider
 #object-page-slider-images .owl-stage-outer
