@@ -14,4 +14,7 @@ export {default as ObjectPage} from "./ObjectPage";
 export {default as Payment} from "./Payment";
 
 // Cabinet
-export {default as Cabinet} from "./Cabinet";
+export { default as Cabinet } from "./Cabinet";
+
+// Confirmed
+export { default as Confirmed } from "./Confirmed";

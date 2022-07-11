@@ -1,14 +1,25 @@
 export interface LoginState {
-    isPending: boolean;
+	isPending: boolean;
+	errorMessage: LoginErrorMessageTypes | ""
+}
+
+export enum LoginErrorMessageTypes {
+	INCORRECT_EMAIL_OR_PASSWORD = "Неверно введена почта или пароль"
 }
 
 export enum LoginActionTypes {
-    SET_IS_PENDING_LOGIN = "SET_IS_PENDING_LOGIN",
+	SET_LOGIN_IS_PENDING = "SET_LOGIN_IS_PENDING",
+	SET_LOGIN_ERROR_MESSAGE = "SET_LOGIN_ERROR_MESSAGE",
 }
 
-interface setIsPendingLogin {
-    type: LoginActionTypes.SET_IS_PENDING_LOGIN;
-    payload: boolean;
+interface setLoginIsPending {
+	type: LoginActionTypes.SET_LOGIN_IS_PENDING;
+	payload: boolean;
 }
 
-export type LoginActions = setIsPendingLogin;
+interface setLoginErrorMessage {
+	type: LoginActionTypes.SET_LOGIN_ERROR_MESSAGE;
+	payload: LoginErrorMessageTypes;
+}
+
+export type LoginActions = setLoginIsPending | setLoginErrorMessage;

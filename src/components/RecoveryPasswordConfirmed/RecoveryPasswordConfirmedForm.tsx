@@ -6,10 +6,11 @@ import {validate} from "./validate";
 
 import {RenderInput} from "../";
 
-interface RecoveryPasswordFormProps {}
+interface RecoveryPasswordConfirmedFormProps {}
 
-const RecoveryPasswordForm: React.FC<
-    RecoveryPasswordFormProps & InjectedFormProps<{}, RecoveryPasswordFormProps>
+const RecoveryPasswordConfirmedForm: React.FC<
+    RecoveryPasswordConfirmedFormProps &
+        InjectedFormProps<{}, RecoveryPasswordConfirmedFormProps>
 > = ({handleSubmit}) => {
     return (
         <div className="reglog-content-padding">
@@ -27,19 +28,23 @@ const RecoveryPasswordForm: React.FC<
                     <div className="reglog-form-block-input">
                         <Field
                             component={RenderInput}
-                            type="email"
-                            name="email"
-                            label="examplemyemail@mail.ru"
-                            title="Электронная почта"
+                            type="password"
+                            name="password"
+                            label="• • • • • • • • • •"
+                            title="Пароль"
                         />
                     </div>
-
+                    <div className="reglog-form-block-input">
+                        <Field
+                            component={RenderInput}
+                            type="password"
+                            name="password2"
+                            label="• • • • • • • • • •"
+                            title="Повторите пароль"
+                        />
+					</div>
+					
                     <div className="reglog-form-block-btn">
-                        <p className="reglog-form-block-btn__description">
-                            Укажите адрес электронной почты, и мы отправим вам
-                            ссылку для восстановления пароля
-                        </p>
-
                         <button className="btn reglog-form-block-btn__btn">
                             Восстановить
                         </button>
@@ -50,7 +55,7 @@ const RecoveryPasswordForm: React.FC<
     );
 };
 
-export default reduxForm<{}, RecoveryPasswordFormProps>({
-    form: "recovery-password-form",
+export default reduxForm<{}, RecoveryPasswordConfirmedFormProps>({
+    form: "recovery-password-confirmed-form",
     validate,
-})(RecoveryPasswordForm);
+})(RecoveryPasswordConfirmedForm);

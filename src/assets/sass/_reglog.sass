@@ -30,7 +30,6 @@
 
 		margin: 50px 0
 
-		padding: 35px
 		background-color: $white
 
 		width: 500px
@@ -41,6 +40,15 @@
 
 		&.close
 			+closePopup
+
+		&-padding
+			padding: 35px
+
+		&-padding-top
+			padding: 35px 35px 0 35px
+
+		&-padding-bottom
+			padding: 0 35px 35px 35px
 
 	&-close
 		cursor: pointer
@@ -66,14 +74,25 @@
 				margin-bottom: 10px
 				font-size: 15px
 
+		&__error
+			margin-top: 20px
+
+			width: 100%
+			display: block
+
+			text-align: center
+
+			padding: 10px 0
+			color: $red
+			background-color: $lightRed
+
+			+open
+
 		&-block
-			margin-top: 30px
+			margin-top: 20px
 
 			&-input
 				margin-bottom: 15px
-
-				&__subtitle
-					margin-bottom: 10px
 
 			&-recovery__link
 				margin-top: 30px
@@ -140,7 +159,7 @@
 
 		&-text
 			position: relative
-			
+
 			margin-top: 50px
 			text-align: center
 

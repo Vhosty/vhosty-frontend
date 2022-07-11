@@ -70,11 +70,74 @@
 						display: flex
 						flex-wrap: wrap
 
-					&__title
-						font-size: 20px
+					&-title
+						display: flex
+						justify-content: space-between
+						align-items: center
 
-						color: $darkMainColor
 						margin-bottom: 30px
+
+						&__title
+							font-size: 20px
+
+							color: $darkMainColor
+
+						&__btn
+							cursor: pointer
+
+							background-color: transparent
+							border: none
+
+							display: flex
+							align-items: center
+
+							font-size: 20px
+							color: $darkMainColor
+
+							& > svg
+								margin-right: 15px
+								fill: $darkMainColor
+
+							&.disabled
+								cursor: default
+								user-select: none
+
+								color: $gray
+
+								& > svg
+									fill: $gray
+
+							&-message-icon
+								cursor: pointer
+								margin-right: 15px
+
+								display: flex
+								justify-content: center
+								align-items: center
+
+							&-message-wrapper
+								position: relative
+
+							&-message
+								&-text
+									padding: 20px
+
+									width: 375px
+
+									position: absolute
+
+									bottom: -15px
+									right: 10px
+
+									text-align: left
+									background-color: #BEC1BC
+									color: $white
+									font-size: 15px
+
+									+borderRadius
+
+									&__description
+										margin-top: 5px
 
 					&-input-wrapper
 						width: 50%
@@ -86,6 +149,54 @@
 
 					&-input
 						width: 90%
+
+						&-title
+							display: flex
+							align-items: center
+
+							margin-bottom: 10px
+
+							&.error
+								color: $darkMainRed
+
+							&-icon
+								margin-left: 10px
+
+								display: flex
+								align-items: center
+								justify-content: center
+
+								cursor: pointer
+
+							&-message-wrapper
+								position: relative
+
+							&-message
+								padding: 20px
+								width: 350px
+
+								position: absolute
+
+								bottom: -15px
+								left: 10px
+
+								font-size: 15px
+								color: $white
+								background-color: $darkMainRed
+
+								+borderRadius
+								
+								&__btn
+									margin-top: 10px
+
+									cursor: pointer
+
+									background-color: transparent
+									color: $white
+
+									font-size: 15px
+
+									border-bottom: 1px solid $white
 
 		&-history
 			&-section

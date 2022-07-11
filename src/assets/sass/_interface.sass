@@ -216,9 +216,13 @@ input:-webkit-autofill:active
 .input
 	width: 100%
 
-	&__title
-		font-size: 20px
-		margin-bottom: 5px
+	&-title
+		display: flex
+		align-items: center
+
+		&__title
+			font-size: 20px
+			margin-bottom: 5px
 
 	&-field
 		position: relative
@@ -243,6 +247,8 @@ input:-webkit-autofill:active
 
 			background-color: transparent
 			border: 2px solid $lightGray
+
+			+transition
 
 			&::placeholder
 				user-select: none

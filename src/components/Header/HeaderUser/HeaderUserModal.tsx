@@ -26,7 +26,7 @@ const HeaderUserModal: React.FC = () => {
                 </p>
             </NavLink>
 
-            <NavLink
+            {/* <NavLink
                 to="/"
                 className={({isActive}) =>
                     `header-block-user-modal-item ${isActive ? "active" : ""}`
@@ -34,7 +34,7 @@ const HeaderUserModal: React.FC = () => {
             >
                 <p className="header-block-user-modal-item__title">Мои баллы</p>
                 <p className="header-block-user-modal-item__subtitle">34 000</p>
-            </NavLink>
+            </NavLink> */}
 
             <NavLink
                 to="/cabinet/favorites"

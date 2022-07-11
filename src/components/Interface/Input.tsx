@@ -38,7 +38,9 @@ const Input: React.FC<InputProps> = ({
 
     return (
         <div className="input">
-            {title ? <p className="input__title">{title}</p> : null}
+            <div className="input-title">
+                {title ? <p className="input-title__title">{title}</p> : null}
+            </div>
 
             <div
                 className={`input-field ${small ? "small" : ""} ${

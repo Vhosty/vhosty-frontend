@@ -1,18 +1,26 @@
-import {LoginState, LoginActionTypes, LoginActions} from "../types/ILogin";
+import { LoginState, LoginActionTypes, LoginActions } from "../types/ILogin";
 
 const initialState: LoginState = {
-    isPending: false,
+	isPending: false,
+	errorMessage: "",
 };
 
 const login = (state = initialState, action: LoginActions) => {
-    if (action.type === LoginActionTypes.SET_IS_PENDING_LOGIN) {
-        return {
-            ...state,
-            isPending: action.payload,
-        };
-    }
+	if (action.type === LoginActionTypes.SET_LOGIN_IS_PENDING) {
+		return {
+			...state,
+			isPending: action.payload,
+		};
+	}
 
-    return state;
+	if (action.type === LoginActionTypes.SET_LOGIN_ERROR_MESSAGE) {
+		return {
+			...state,
+			errorMessage: action.payload,
+		};
+	}
+
+	return state;
 };
 
 export default login;

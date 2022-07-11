@@ -7,7 +7,7 @@ import {useTypedSelector} from "../../hooks/useTypedSelector";
 
 import {validate} from "./validate";
 
-import {RenderInput, PolicyCheckbox} from "../";
+import {RenderInput, PolicyCheckbox, RegisterMessageError} from "../";
 
 const RegisterForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
     handleSubmit,
@@ -19,64 +19,63 @@ const RegisterForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
 
     return (
         <form className="reglog-form" onSubmit={handleSubmit}>
-            <div className="reglog-form-text">
-                <p className="reglog-form-text__subtitle">
-                    Гость №{localStorage.getItem("userNumber")}
-                </p>
-                <p className="reglog-form-text__title">
-                    Зарегистрироваться или <Link to="#login">Войти</Link>
-                </p>
+            <div className="reglog-content-padding-top">
+                <div className="reglog-form-text">
+                    <p className="reglog-form-text__subtitle">
+                        Гость №{localStorage.getItem("userNumber")}
+                    </p>
+                    <p className="reglog-form-text__title">
+                        Зарегистрироваться или <Link to="#login">Войти</Link>
+                    </p>
+                </div>
             </div>
 
-            <div className="reglog-form-block">
-                <div className="reglog-form-block-input">
-                    <p className="reglog-form-block-input__subtitle">
-                        Электронная почта
-                    </p>
+            <RegisterMessageError />
 
-                    <Field
-                        component={RenderInput}
-                        type="email"
-                        name="email"
-                        label="examplemyemail@mail.ru"
-                    />
-                </div>
-                <div className="reglog-form-block-input">
-                    <p className="reglog-form-block-input__subtitle">Пароль</p>
+            <div className="reglog-content-padding-bottom">
+                <div className="reglog-form-block">
+                    <div className="reglog-form-block-input">
+                        <Field
+                            component={RenderInput}
+                            type="email"
+                            name="email"
+                            label="examplemyemail@mail.ru"
+                            title="Электронная почта"
+                        />
+                    </div>
+                    <div className="reglog-form-block-input">
+                        <Field
+                            component={RenderInput}
+                            type="password"
+                            name="password"
+                            label="• • • • • • • • • •"
+                            title="Пароль"
+                        />
+                    </div>
+                    <div className="reglog-form-block-input">
+                        <Field
+                            component={RenderInput}
+                            type="password"
+                            name="password2"
+                            label="• • • • • • • • • •"
+                            title="Повторите пароль"
+                        />
+                    </div>
 
-                    <Field
-                        component={RenderInput}
-                        type="password"
-                        name="password"
-                        label="• • • • • • • • • •"
-                    />
-                </div>
-                <div className="reglog-form-block-input">
-                    <p className="reglog-form-block-input__subtitle">
-                        Повторите пароль
-                    </p>
+                    <div className="reglog-form-block-btn">
+                        <PolicyCheckbox />
 
-                    <Field
-                        component={RenderInput}
-                        type="password"
-                        name="password2"
-                        label="• • • • • • • • • •"
-                    />
-                </div>
-
-                <div className="reglog-form-block-btn">
-                    <PolicyCheckbox />
-
-                    <button
-                        className={`btn ${
-                            isPending ? "disabled" : ""
-                        } reglog-form-block-btn__btn`}
-                        disabled={
-                            invalid || submitting || pristine || isPending
-                        }
-                    >
-                        {isPending ? "Загрузка" : "Зарегистрироваться"}
-                    </button>
+                        <button
+                            className={`btn ${
+                                isPending ? "disabled" : ""
+                            } reglog-form-block-btn__btn`}
+                            disabled={
+                                invalid || submitting || pristine || isPending
+                            }
+                        >
+                            {isPending ? "Загрузка" : "Зарегистрироваться"}
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>

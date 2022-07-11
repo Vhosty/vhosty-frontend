@@ -1,6 +1,9 @@
 import { Dispatch } from "redux";
 
+import { SubmissionError } from "redux-form";
+
 import {
+	RegisterErrorMessageTypes,
 	RegisterActionTypes,
 	RegisterActions,
 } from "../types/IRegister";
@@ -12,13 +15,13 @@ import $api from "../../http/index";
 export const sendRegister = (data: Register) => {
 	return async (dispatch: Dispatch<RegisterActions>) => {
 		dispatch({
-			type: RegisterActionTypes.SET_IS_PENDING_REGISTER,
+			type: RegisterActionTypes.SET_REGISTER_IS_PENDING,
 			payload: true,
 		});
 
 		await $api.post("/users/register/email", data).then(({ data }) => {
 			dispatch({
-				type: RegisterActionTypes.SET_IS_SEND_REGISTER,
+				type: RegisterActionTypes.SET_REGISTER_IS_SEND,
 				payload: true,
 			});
 
@@ -26,12 +29,28 @@ export const sendRegister = (data: Register) => {
 
 			window.location.hash = "register_success"
 		})
-			.catch((error) => {
-				console.log(error);
+			.catch(({ response }) => {
+				const errorMessage = response.data.detail
+
+				dispatch({
+					type: RegisterActionTypes.SET_REGISTER_IS_PENDING,
+					payload: false,
+				});
+
+				if (errorMessage === "This email already is used") {
+					dispatch({
+						type: RegisterActionTypes.SET_REGISTER_ERROR_MESSAGE,
+						payload: RegisterErrorMessageTypes.IS_EMAIL_USED
+					})
+
+					throw new SubmissionError({
+						email: " ",
+					});
+				}
 			});
 
 		dispatch({
-			type: RegisterActionTypes.SET_IS_PENDING_REGISTER,
+			type: RegisterActionTypes.SET_REGISTER_IS_PENDING,
 			payload: false,
 		});
 	};

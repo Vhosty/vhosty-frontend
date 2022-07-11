@@ -14,38 +14,9 @@ const HeaderTransparentUser: React.FC = () => {
 
     const [activeHeaderModal, setActiveHeaderModal] =
         React.useState<boolean>(false);
-    const [activeHeaderModalAnimation, setActiveHeaderModalAnimation] =
-        React.useState<boolean>(false);
-
-    const PopupRef = React.useRef<HTMLDivElement>(null);
-
-    React.useEffect(() => {
-        document.addEventListener("mousedown", toggleHeaderModal);
-        document.addEventListener("touchstart", toggleHeaderModal);
-
-        return () => {
-            document.removeEventListener("mousedown", toggleHeaderModal);
-            document.removeEventListener("touchstart", toggleHeaderModal);
-        };
-    }, [PopupRef]);
 
     const openHeaderModal = () => {
         setActiveHeaderModal(true);
-    };
-
-    const closeHeaderModal = () => {
-        setActiveHeaderModalAnimation(true);
-
-        setTimeout(() => {
-            setActiveHeaderModalAnimation(false);
-            setActiveHeaderModal(false);
-        }, 180);
-    };
-
-    const toggleHeaderModal = (e: any) => {
-        if (PopupRef.current && !PopupRef.current.contains(e.target)) {
-            closeHeaderModal();
-        }
     };
 
     return (
@@ -62,10 +33,9 @@ const HeaderTransparentUser: React.FC = () => {
                     </button>
 
                     <Popup
-                        active={activeHeaderModal}
-                        activeAnimation={activeHeaderModalAnimation}
+                        wrapperActive={activeHeaderModal}
+                        setWrapperActive={setActiveHeaderModal}
                         addClassWrapper="header-block-user-modal-wrapper"
-                        refPopup={PopupRef}
                     >
                         <HeaderUserModal />
                     </Popup>

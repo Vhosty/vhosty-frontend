@@ -20,38 +20,9 @@ const ServiceIcon: React.FC<ServiceIconProps> = ({
     questionMessage,
 }) => {
     const [activeMessage, setActiveMessage] = React.useState<boolean>(false);
-    const [activeMessageAnimation, setActiveMessageAnimation] =
-        React.useState<boolean>(false);
-
-    const PopupRef = React.useRef<HTMLDivElement>(null);
-
-    React.useEffect(() => {
-        document.addEventListener("mousedown", toggleMessage);
-        document.addEventListener("touchstart", toggleMessage);
-
-        return () => {
-            document.removeEventListener("mousedown", toggleMessage);
-            document.removeEventListener("touchstart", toggleMessage);
-        };
-    }, [PopupRef]);
 
     const openMessage = () => {
         setActiveMessage(true);
-    };
-
-    const closeMessage = () => {
-        setActiveMessageAnimation(true);
-
-        setTimeout(() => {
-            setActiveMessageAnimation(false);
-            setActiveMessage(false);
-        }, 180);
-    };
-
-    const toggleMessage = (e: any) => {
-        if (PopupRef.current && !PopupRef.current.contains(e.target)) {
-            closeMessage();
-        }
     };
 
     return (
@@ -92,9 +63,8 @@ const ServiceIcon: React.FC<ServiceIconProps> = ({
                     </svg>
 
                     <Popup
-                        active={activeMessage}
-                        activeAnimation={activeMessageAnimation}
-                        refPopup={PopupRef}
+                        wrapperActive={activeMessage}
+                        setWrapperActive={setActiveMessage}
                     >
                         <span className="service-icon__messageText">
                             {questionMessage}

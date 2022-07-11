@@ -14,38 +14,9 @@ const HeaderModal: React.FC<HeaderModalProps> = ({color}) => {
 
     const [activeHeaderModal, setActiveHeaderModal] =
         React.useState<boolean>(false);
-    const [activeHeaderModalAnimation, setActiveHeaderModalAnimation] =
-        React.useState<boolean>(false);
-
-    const PopupRef = React.useRef<HTMLDivElement>(null);
-
-    React.useEffect(() => {
-        document.addEventListener("mousedown", toggleHeaderModal);
-        document.addEventListener("touchstart", toggleHeaderModal);
-
-        return () => {
-            document.removeEventListener("mousedown", toggleHeaderModal);
-            document.removeEventListener("touchstart", toggleHeaderModal);
-        };
-    }, [PopupRef]);
 
     const openHeaderModal = () => {
         setActiveHeaderModal(true);
-    };
-
-    const closeHeaderModal = () => {
-        setActiveHeaderModalAnimation(true);
-
-        setTimeout(() => {
-            setActiveHeaderModalAnimation(false);
-            setActiveHeaderModal(false);
-        }, 180);
-    };
-
-    const toggleHeaderModal = (e: any) => {
-        if (PopupRef.current && !PopupRef.current.contains(e.target)) {
-            closeHeaderModal();
-        }
     };
 
     return (
@@ -60,10 +31,9 @@ const HeaderModal: React.FC<HeaderModalProps> = ({color}) => {
             </div>
 
             <Popup
-                active={activeHeaderModal}
-                activeAnimation={activeHeaderModalAnimation}
+                wrapperActive={activeHeaderModal}
+                setWrapperActive={setActiveHeaderModal}
                 addClassWrapper="header-block-menu-modal-wrapper"
-                refPopup={PopupRef}
             >
                 <nav className="header-block-menu-modal">
                     <div className="header-block-menu-modal-block">
@@ -137,11 +107,17 @@ const HeaderModal: React.FC<HeaderModalProps> = ({color}) => {
 
                     {isLoadedUser ? null : (
                         <p className="header-block-menu-modal-block-bottom__link">
-                            <Link to="#register" onClick={closeHeaderModal}>
+                            <Link
+                                to="#register"
+                                onClick={() => setActiveHeaderModal(false)}
+                            >
                                 Зарегистрироваться
                             </Link>{" "}
                             или{" "}
-                            <Link to="#login" onClick={closeHeaderModal}>
+                            <Link
+                                to="#login"
+                                onClick={() => setActiveHeaderModal(false)}
+                            >
                                 Войти
                             </Link>
                         </p>

@@ -9,6 +9,7 @@ import {
     LoginForm,
     RegisterForm,
     RecoveryPasswordForm,
+    RecoveryPasswordConfirmedForm,
     Logout,
 } from "../components/";
 
@@ -22,6 +23,7 @@ import {
 
 import {sendRegister} from "../redux/actions/register";
 import {sendLogin} from "../redux/actions/login";
+import {sendRequestRecoveryPassword} from "../redux/actions/recovery_password";
 
 const Reglog: React.FC = () => {
     const navigate = useNavigate();
@@ -30,6 +32,7 @@ const Reglog: React.FC = () => {
     const {closeAnimation, changeCloseAnimation, type} = useTypedSelector(
         ({reglog}) => reglog
     );
+    const {isLoadedUser} = useTypedSelector(({user}) => user);
 
     const PopupRef = React.useRef<HTMLDivElement>(null);
 
@@ -43,14 +46,16 @@ const Reglog: React.FC = () => {
         };
     }, [PopupRef]);
 
-    const onSubmit = (data: any) => {};
+    const onSubmitRecoveryPassword = (data: any) => {
+        return dispatch(sendRequestRecoveryPassword(data) as any);
+    };
 
     const onSubmitLogin = (data: any) => {
-        dispatch(sendLogin(data) as any);
+        return dispatch(sendLogin(data) as any);
     };
 
     const onSubmitRegister = (data: any) => {
-        dispatch(sendRegister(data) as any);
+        return dispatch(sendRegister(data) as any);
     };
 
     const closeFunc = () => {
@@ -120,10 +125,26 @@ const Reglog: React.FC = () => {
                 ) : null}
 
                 {type === ReglogStateTypes.RECOVERY_PASSWORD ? (
-                    <RecoveryPasswordForm onSubmit={onSubmit} />
+                    <RecoveryPasswordForm onSubmit={onSubmitRecoveryPassword} />
                 ) : null}
 
-                {type === ReglogStateTypes.LOGOUT ? <Logout /> : null}
+                {type === ReglogStateTypes.RECOVERY_PASSWORD_SUCCESS ? (
+                    <ReglogSuccess
+                        topTitle="Восстановить пароль"
+                        title="Проверьте почту!"
+                        description="Мы выслали всю информацию для восстановления доступа на указанную Вами почту. Перейдите по ссылке в письме и восстановите доступ."
+                        btnLink="#login"
+                        btnText="Авторизоваться"
+                    />
+                ) : null}
+
+                {type === ReglogStateTypes.RECOVERY_PASSWORD_CONFIRMED ? (
+                    <RecoveryPasswordConfirmedForm onSubmit={() => {}} />
+                ) : null}
+
+                {type === ReglogStateTypes.LOGOUT && isLoadedUser ? (
+                    <Logout />
+                ) : null}
             </div>
         </section>
     );

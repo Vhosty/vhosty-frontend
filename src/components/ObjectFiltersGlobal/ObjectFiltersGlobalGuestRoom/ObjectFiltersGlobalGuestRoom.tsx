@@ -12,8 +12,6 @@ const ObjectFiltersGlobalGuestRoom: React.FC = () => {
     );
 
     const [activeSelect, setActiveSelect] = React.useState<boolean>(false);
-    const [activeSelectAnimation, setActiveSelectAnimation] =
-        React.useState<boolean>(false);
 
     const [totalGuestRoom, setTotalGuestRoom] = React.useState<number>(0);
     const [totalGuestRoomKids, setTotalGuestRoomKids] =
@@ -34,37 +32,10 @@ const ObjectFiltersGlobalGuestRoom: React.FC = () => {
         guestRoom.length,
         guestRoom.map((item) => item.adultsCount),
         guestRoom.map((item) => item.kids.length),
-    ]);
-
-    const PopupRef = React.useRef<HTMLDivElement>(null);
-
-    React.useEffect(() => {
-        document.addEventListener("mousedown", toggleSelect);
-        document.addEventListener("touchstart", toggleSelect);
-
-        return () => {
-            document.removeEventListener("mousedown", toggleSelect);
-            document.removeEventListener("touchstart", toggleSelect);
-        };
-    }, [PopupRef]);
-
+	]);
+	
     const openSelect = () => {
         setActiveSelect(true);
-    };
-
-    const closeSelect = () => {
-        setActiveSelectAnimation(true);
-
-        setTimeout(() => {
-            setActiveSelectAnimation(false);
-            setActiveSelect(false);
-        }, 180);
-    };
-
-    const toggleSelect = (e: any) => {
-        if (PopupRef.current && !PopupRef.current.contains(e.target)) {
-            closeSelect();
-        }
     };
 
     return (
@@ -123,10 +94,9 @@ const ObjectFiltersGlobalGuestRoom: React.FC = () => {
             </div>
 
             <Popup
-                active={activeSelect}
-                activeAnimation={activeSelectAnimation}
+                wrapperActive={activeSelect}
+                setWrapperActive={setActiveSelect}
                 addClassWrapper="filters-object-form-guest-room-select-wrapper"
-                refPopup={PopupRef}
             >
                 <ObjectFiltersGlobalGuestRoomSelect />
             </Popup>

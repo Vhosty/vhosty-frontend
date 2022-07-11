@@ -55,12 +55,17 @@ export { default as ReglogSuccess } from "./Reglog/ReglogSuccess";
 
 // Login
 export { default as LoginForm } from "./Login/LoginForm";
+export { default as LoginMessageError } from "./Login/LoginMessageError";
 
 // Register
 export { default as RegisterForm } from "./Register/RegisterForm";
+export { default as RegisterMessageError } from "./Register/RegisterMessageError";
 
 // RecoveryPassword
 export { default as RecoveryPasswordForm } from "./RecoveryPassword/RecoveryPasswordForm";
+
+// RecoveryPassword
+export { default as RecoveryPasswordConfirmedForm } from "./RecoveryPasswordConfirmed/RecoveryPasswordConfirmedForm";
 
 // Logout
 export { default as Logout } from "./Logout/Logout";
@@ -127,7 +132,12 @@ export { default as PaymentProgressbarItem } from "./Payment/PaymentProgressbar/
 export { default as CabinetMenu } from "./Cabinet/CabinetMenu";
 // CabinetSetting
 export { default as CabinetSetting } from "./Cabinet/CabinetSetting/CabinetSetting";
-export { default as CabinetSettingForm } from "./Cabinet/CabinetSetting/CabinetSettingForm";
+// CabinetSettingForm
+export { default as CabinetSettingForm } from "./Cabinet/CabinetSetting/CabinetSettingForm/CabinetSettingForm";
+export { default as CabinetSettingFormInfo } from "./Cabinet/CabinetSetting/CabinetSettingForm/CabinetSettingFormInfo";
+// CabinetSettingFormContact
+export { default as CabinetSettingFormContact } from "./Cabinet/CabinetSetting/CabinetSettingForm/CabinetSettingFormContact/CabinetSettingFormContact";
+export { default as CabinetSettingFormContactEmailInput } from "./Cabinet/CabinetSetting/CabinetSettingForm/CabinetSettingFormContact/CabinetSettingFormContactEmailInput";
 // CabinetHistory
 export { default as CabinetHistory } from "./Cabinet/CabinetHistory/CabinetHistory";
 export { default as CabinetHistorySection } from "./Cabinet/CabinetHistory/CabinetHistorySection";

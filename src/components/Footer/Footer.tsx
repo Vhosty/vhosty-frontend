@@ -1,10 +1,14 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
+import {useTypedSelector} from "../../hooks/useTypedSelector";
+
 import LogoBlack from "../../assets/images/logo-black.svg";
 import UserIcon from "../../assets/images/user-icon.svg";
 
 const Footer: React.FC = () => {
+    const {isLoadedUser} = useTypedSelector(({user}) => user);
+
     return (
         <footer className="footer">
             <div className="container">
@@ -138,20 +142,24 @@ const Footer: React.FC = () => {
                         </div>
                     </div>
 
-                    <div className="footer-block-wrapper">
-                        <div className="footer-block-reglog">
-                            <img
-                                src={UserIcon}
-                                alt=""
-                                className="footer-block-reglog__image"
-                            />
+                    {isLoadedUser ? null : (
+                        <div className="footer-block-wrapper">
+                            <div className="footer-block-reglog">
+                                <img
+                                    src={UserIcon}
+                                    alt=""
+                                    className="footer-block-reglog__image"
+                                />
 
-                            <p className="footer-block-reglog__title">
-                                <Link to="#register">Зарегистрироваться</Link>{" "}
-                                или <Link to="#login">Войти</Link>
-                            </p>
+                                <p className="footer-block-reglog__title">
+                                    <Link to="#register">
+                                        Зарегистрироваться
+                                    </Link>{" "}
+                                    или <Link to="#login">Войти</Link>
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    )}
 
                     <div className="footer-block-wrapper">
                         <Link to="/" className="footer-block__link">

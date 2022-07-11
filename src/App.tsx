@@ -1,19 +1,30 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import {Route, Routes, useLocation} from "react-router-dom";
+import {Navigate, Route, Routes, useLocation} from "react-router-dom";
 import rn from "random-number";
 
 import "moment/locale/ru";
 
 import {Footer, Header} from "./components/";
 
-import {Reglog, Home, Objects, ObjectPage, Payment, Cabinet} from "./pages";
+import {
+    Reglog,
+    Home,
+    Objects,
+    ObjectPage,
+    Payment,
+    Cabinet,
+    Confirmed,
+} from "./pages";
 
 import {fetchUserAboutMe} from "./redux/actions/user";
 
 const App = () => {
     const dispatch = useDispatch();
+
     const {pathname} = useLocation();
+
+    const isRedirectUser = localStorage.getItem("accessToken");
 
     React.useEffect(() => {
         let cords: any = ["scrollX", "scrollY"];
@@ -44,7 +55,9 @@ const App = () => {
         <>
             <React.Suspense fallback={<></>}>
                 {pathname === "/" ||
-                pathname.indexOf("/cabinet") !== -1 ? null : (
+                pathname.indexOf("/cabinet") !== -1 ||
+                pathname === "/" ||
+                pathname.indexOf("/confirmed") !== -1 ? null : (
                     <Header />
                 )}
 
@@ -58,10 +71,22 @@ const App = () => {
 
                     <Route path="/payment" element={<Payment />} />
 
-                    <Route path="/cabinet/:section" element={<Cabinet />} />
+                    <Route
+                        path="/confirmed/:hash"
+                        element={
+                            isRedirectUser ? <Confirmed /> : <Navigate to="/" />
+                        }
+                    />
+
+                    <Route
+                        path="/cabinet/:section"
+                        element={
+                            isRedirectUser ? <Cabinet /> : <Navigate to="/" />
+                        }
+                    />
                 </Routes>
 
-                <Footer />
+                {pathname.indexOf("/confirmed") !== -1 ? null : <Footer />}
             </React.Suspense>
         </>
     );

@@ -17,8 +17,6 @@ export interface CalendarTo {
 
 const Calendar: React.FC = () => {
     const [activeCalendar, setActiveCalendar] = React.useState<boolean>(false);
-    const [activeCalendarAnimation, setActiveCalendarAnimation] =
-        React.useState<boolean>(false);
 
     const [date, setDate] = React.useState<Moment>(moment());
     const [from, setFrom] = React.useState<CalendarFrom>({
@@ -31,35 +29,8 @@ const Calendar: React.FC = () => {
     });
     const [daysMonth, setDaysMonth] = React.useState<Moment[]>([]);
 
-    const PopupRef = React.useRef<HTMLDivElement>(null);
-
-    React.useEffect(() => {
-        document.addEventListener("mousedown", toggleCalendar);
-        document.addEventListener("touchstart", toggleCalendar);
-
-        return () => {
-            document.removeEventListener("mousedown", toggleCalendar);
-            document.removeEventListener("touchstart", toggleCalendar);
-        };
-    }, [PopupRef]);
-
     const openCalendar = () => {
         setActiveCalendar(true);
-    };
-
-    const closeCalendar = () => {
-        setActiveCalendarAnimation(true);
-
-        setTimeout(() => {
-            setActiveCalendarAnimation(false);
-            setActiveCalendar(false);
-        }, 180);
-    };
-
-    const toggleCalendar = (e: any) => {
-        if (PopupRef.current && !PopupRef.current.contains(e.target)) {
-            closeCalendar();
-        }
     };
 
     return (
@@ -112,10 +83,9 @@ const Calendar: React.FC = () => {
             </div>
 
             <Popup
-                active={activeCalendar}
-                activeAnimation={activeCalendarAnimation}
+                wrapperActive={activeCalendar}
+                setWrapperActive={setActiveCalendar}
                 addClassWrapper="calendar-select"
-                refPopup={PopupRef}
             >
                 <CalendarSelect
                     date={date}

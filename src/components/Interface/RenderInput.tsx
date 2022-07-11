@@ -1,27 +1,33 @@
 import React from "react";
 import {WrappedFieldProps} from "redux-form";
 
+import {Popup} from "../";
+
 interface InputProps extends WrappedFieldProps {
     label: string;
+    type: string;
 
     small?: boolean;
     smallPlaceholder?: boolean;
 
     title?: string;
 
-    type: string;
+    disabled?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
     label,
+    type,
     small,
     smallPlaceholder,
     title,
     input,
-    type,
+    disabled,
     meta: {touched, error},
 }) => {
     const [isVisible, setIsVisible] = React.useState<boolean>(false);
+    const [isActiveMessage, setIsActiveMessage] =
+        React.useState<boolean>(false);
 
     const onClickVisible = () => {
         setIsVisible(!isVisible);
@@ -29,8 +35,12 @@ const Input: React.FC<InputProps> = ({
 
     return (
         <div className="input-wrapper">
-			{title ? <p className="input__title">{title}</p> : null}
-			
+            {title ? (
+                <div className="input-title">
+                    <p className="input-title__title">{title}</p>
+                </div>
+            ) : null}
+
             <div className="input">
                 <div
                     className={`input-field ${small ? "small" : ""} ${
@@ -48,7 +58,7 @@ const Input: React.FC<InputProps> = ({
                         }
                         className={`input-field__input ${
                             touched && error ? "error" : ""
-                        }`}
+                        } ${disabled ? "disabled" : ""}`}
                         placeholder={label}
                     />
 

@@ -1,5 +1,3 @@
-import {Moment} from "moment";
-
 import {
     filtersItemKidsItem,
     filtersItem,

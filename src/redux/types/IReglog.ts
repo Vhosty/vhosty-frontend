@@ -3,13 +3,14 @@ export enum ReglogStateTypes {
 	REGISTER = "register",
 	REGISTER_SUCCESS = "register_success",
 	RECOVERY_PASSWORD = "recovery_password",
+	RECOVERY_PASSWORD_SUCCESS = "recovery_password_success",
+	RECOVERY_PASSWORD_CONFIRMED = "recovery_password_confirmed",
 	LOGOUT = "logout",
 }
 
 export interface ReglogState {
 	open: boolean;
 	closeAnimation: boolean;
-
 	changeCloseAnimation: boolean;
 
 	type: ReglogStateTypes;
@@ -46,4 +47,4 @@ export type ReglogActions =
 	| setReglogOpen
 	| setReglogCloseAnimation
 	| setReglogCloseChangeAnimation
-	| setReglogType;
+	| setReglogType

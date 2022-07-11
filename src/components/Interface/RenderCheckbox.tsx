@@ -21,38 +21,9 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
     const [activeCheckboxMessage, setActiveCheckboxMessage] =
         React.useState<boolean>(false);
-    const [activeCheckboxMessageAnimation, setActiveCheckboxMessageAnimation] =
-        React.useState<boolean>(false);
-
-    const PopupRef = React.useRef<HTMLDivElement>(null);
-
-    React.useEffect(() => {
-        document.addEventListener("mousedown", toggleCheckboxMessage);
-        document.addEventListener("touchstart", toggleCheckboxMessage);
-
-        return () => {
-            document.removeEventListener("mousedown", toggleCheckboxMessage);
-            document.removeEventListener("touchstart", toggleCheckboxMessage);
-        };
-    }, [PopupRef]);
 
     const openCheckboxMessage = () => {
         setActiveCheckboxMessage(true);
-    };
-
-    const closeCheckboxMessage = () => {
-        setActiveCheckboxMessageAnimation(true);
-
-        setTimeout(() => {
-            setActiveCheckboxMessageAnimation(false);
-            setActiveCheckboxMessage(false);
-        }, 180);
-    };
-
-    const toggleCheckboxMessage = (e: any) => {
-        if (PopupRef.current && !PopupRef.current.contains(e.target)) {
-            closeCheckboxMessage();
-        }
     };
 
     return (
@@ -134,9 +105,8 @@ const Checkbox: React.FC<CheckboxProps> = ({
                     </div>
 
                     <Popup
-                        active={activeCheckboxMessage}
-                        activeAnimation={activeCheckboxMessageAnimation}
-                        refPopup={PopupRef}
+                        wrapperActive={activeCheckboxMessage}
+                        setWrapperActive={setActiveCheckboxMessage}
                     >
                         <p className="checkbox-message__text">
                             {questionMessage}

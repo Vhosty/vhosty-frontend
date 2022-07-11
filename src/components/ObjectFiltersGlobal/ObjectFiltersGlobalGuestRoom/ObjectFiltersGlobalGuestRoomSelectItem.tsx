@@ -37,38 +37,9 @@ const ObjectFiltersGlobalGuestRoomSelectItem: React.FC<
 }) => {
     const [activeKidsSelect, setActiveKidsSelect] =
         React.useState<boolean>(false);
-    const [activeKidsSelectAnimation, setActiveKidsSelectAnimation] =
-        React.useState<boolean>(false);
-
-    const PopupRef = React.useRef<HTMLDivElement>(null);
-
-    React.useEffect(() => {
-        document.addEventListener("mousedown", toggleKidsSelect);
-        document.addEventListener("touchstart", toggleKidsSelect);
-
-        return () => {
-            document.removeEventListener("mousedown", toggleKidsSelect);
-            document.removeEventListener("touchstart", toggleKidsSelect);
-        };
-    }, [PopupRef]);
 
     const openKidsSelect = () => {
         setActiveKidsSelect(true);
-    };
-
-    const closeKidsSelect = () => {
-        setActiveKidsSelectAnimation(true);
-
-        setTimeout(() => {
-            setActiveKidsSelectAnimation(false);
-            setActiveKidsSelect(false);
-        }, 180);
-    };
-
-    const toggleKidsSelect = (e: any) => {
-        if (PopupRef.current && !PopupRef.current.contains(e.target)) {
-            closeKidsSelect();
-        }
     };
 
     return (
@@ -256,10 +227,9 @@ const ObjectFiltersGlobalGuestRoomSelectItem: React.FC<
                         </div>
 
                         <Popup
-                            active={activeKidsSelect}
-                            activeAnimation={activeKidsSelectAnimation}
+                            wrapperActive={activeKidsSelect}
+                            setWrapperActive={setActiveKidsSelect}
                             addClassWrapper="filters-object-form-guest-room-select-item-kids-select-wrapper"
-                            refPopup={PopupRef}
                             style={
                                 isOne
                                     ? {top: "85px", right: "30px"}
@@ -271,8 +241,8 @@ const ObjectFiltersGlobalGuestRoomSelectItem: React.FC<
                             <ObjectFiltersGlobalGuestRoomSelectItemKids
                                 itemIndex={itemIndex}
                                 onChange={(age: number) => {
-                                    addfiltersKidsOnClick(itemIndex, age);
-                                    closeKidsSelect();
+									addfiltersKidsOnClick(itemIndex, age);
+									setActiveKidsSelect(false);
                                 }}
                             />
                         </Popup>
