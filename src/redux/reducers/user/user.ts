@@ -1,7 +1,8 @@
-import { UserState, UserActionTypes, UserActions } from '../types/IUser';
+import { UserState, UserActionTypes, UserActions } from '../../types/IUser';
 
 const initialState: UserState = {
 	isLoadedUser: false,
+
 	user: {
 		first_name: "",
 		last_name: "",

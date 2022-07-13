@@ -185,8 +185,11 @@
 								background-color: $darkMainRed
 
 								+borderRadius
-								
+
 								&__btn
+									display: flex
+									align-items: center
+
 									margin-top: 10px
 
 									cursor: pointer
@@ -196,7 +199,52 @@
 
 									font-size: 15px
 
-									border-bottom: 1px solid $white
+									+transition
+
+									&.disabled
+										pointer-events: none
+										color: rgba(255, 255, 255, .5)
+
+										& > p
+											border: none
+
+									& > p
+										border-bottom: 1px solid $white
+
+										+transition
+
+									& > span
+										display: block
+										margin-left: 15px
+
+										border: none
+
+										+open
+
+			&-change-password
+				margin-top: 50px
+				padding-top: 30px
+
+				display: flex
+				justify-content: center
+
+				border-top: 1px solid $lightGray
+
+				&__btn
+					cursor: pointer
+
+					background-color: transparent
+					border: none
+
+					display: flex
+					align-items: center
+
+					font-size: 20px
+					color: $darkMainColor
+
+					& > svg
+						margin-right: 15px
+						fill: $darkMainColor
 
 		&-history
 			&-section

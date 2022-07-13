@@ -46,7 +46,5 @@ export const sendLogin = (data: Login) => {
 					password: " ",
 				});
 			});
-
-
 	};
 };

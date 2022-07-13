@@ -138,6 +138,10 @@ export { default as CabinetSettingFormInfo } from "./Cabinet/CabinetSetting/Cabi
 // CabinetSettingFormContact
 export { default as CabinetSettingFormContact } from "./Cabinet/CabinetSetting/CabinetSettingForm/CabinetSettingFormContact/CabinetSettingFormContact";
 export { default as CabinetSettingFormContactEmailInput } from "./Cabinet/CabinetSetting/CabinetSettingForm/CabinetSettingFormContact/CabinetSettingFormContactEmailInput";
+// CabinetSettingChangePassword
+export { default as CabinetSettingChangePassword } from "./Cabinet/CabinetSetting/CabinetSettingChangePassword/CabinetSettingChangePassword";
+export { default as CabinetSettingChangePasswordForm } from "./Cabinet/CabinetSetting/CabinetSettingChangePassword/CabinetSettingChangePasswordForm";
+export { default as CabinetSettingChangePasswordFormMessageError } from "./Cabinet/CabinetSetting/CabinetSettingChangePassword/CabinetSettingChangePasswordFormMessageError";
 // CabinetHistory
 export { default as CabinetHistory } from "./Cabinet/CabinetHistory/CabinetHistory";
 export { default as CabinetHistorySection } from "./Cabinet/CabinetHistory/CabinetHistorySection";

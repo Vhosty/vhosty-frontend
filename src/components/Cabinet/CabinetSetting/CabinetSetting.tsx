@@ -1,6 +1,6 @@
 import React from "react";
 
-import {CabinetSettingForm} from "../../";
+import {CabinetSettingForm, CabinetSettingChangePassword} from "../../";
 
 import {useTypedSelector} from "../../../hooks/useTypedSelector";
 
@@ -12,14 +12,18 @@ const CabinetSetting: React.FC = () => {
             <h2 className="cabinet-content__title">
                 Добро пожаловать,{" "}
                 <span>
-                    {user.first_name !== "" ? user.first_name : `User${user.id}`}
+                    {user.first_name !== ""
+                        ? user.first_name
+                        : `User${user.id}`}
                 </span>
             </h2>
             <p className="cabinet-content__subtitle">
                 Здесь вы можете изменить свои персональные данные.
             </p>
 
-            <CabinetSettingForm />
+			<CabinetSettingForm />
+			
+			<CabinetSettingChangePassword />
         </div>
     );
 };

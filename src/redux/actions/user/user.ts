@@ -3,11 +3,11 @@ import { Dispatch } from 'redux'
 import {
 	UserActionTypes,
 	UserActions,
-} from "../types/IUser";
+} from "../../types/IUser";
 
-import { UserInfo } from '../../models/IUser'
+import { UserInfo } from '../../../models/IUser'
 
-import $api from '../../http/index'
+import $api from '../../../http/index'
 
 export const fetchUserAboutMe = () => {
 	return async (dispatch: Dispatch<UserActions>) => {
@@ -20,7 +20,7 @@ export const fetchUserAboutMe = () => {
 	}
 }
 
-export const fetchUserUpdateAboutMe = (data: UserInfo) => {
+export const sendUserUpdateAboutMe = (data: UserInfo) => {
 	return async (dispatch: Dispatch<UserActions>) => {
 		$api.post("/users/about-me", data).then(({ data }) => {
 			dispatch({
@@ -31,8 +31,8 @@ export const fetchUserUpdateAboutMe = (data: UserInfo) => {
 	}
 }
 
-export const fetchRepeatUserConfirmedEmail = (data: any) => {
+export const sendRepeatUserConfirmedEmail = (email: string) => {
 	return async (dispatch: Dispatch<UserActions>) => {
-
+		$api.post("/users/verification/resend-email", { email })
 	}
 }

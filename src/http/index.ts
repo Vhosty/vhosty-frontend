@@ -9,6 +9,7 @@ $api.interceptors.request.use((config: any) => {
 	config.headers.Authorization = `${localStorage.getItem(
 		"accessToken"
 	)}`;
+	
 	return config;
 });
 

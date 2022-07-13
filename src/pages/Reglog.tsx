@@ -11,6 +11,7 @@ import {
     RecoveryPasswordForm,
     RecoveryPasswordConfirmedForm,
     Logout,
+    CabinetSettingChangePasswordForm,
 } from "../components/";
 
 import {ReglogStateTypes} from "../redux/types/IReglog";
@@ -24,6 +25,7 @@ import {
 import {sendRegister} from "../redux/actions/register";
 import {sendLogin} from "../redux/actions/login";
 import {sendRequestRecoveryPassword} from "../redux/actions/recovery_password";
+import {sendUserChangePassword} from "../redux/actions/user/userCabinetSetting";
 
 const Reglog: React.FC = () => {
     const navigate = useNavigate();
@@ -56,6 +58,10 @@ const Reglog: React.FC = () => {
 
     const onSubmitRegister = (data: any) => {
         return dispatch(sendRegister(data) as any);
+    };
+
+    const onSubmitCabinetSettingChangePassword = (data: any) => {
+        return dispatch(sendUserChangePassword(data) as any);
     };
 
     const closeFunc = () => {
@@ -144,6 +150,13 @@ const Reglog: React.FC = () => {
 
                 {type === ReglogStateTypes.LOGOUT && isLoadedUser ? (
                     <Logout />
+                ) : null}
+
+                {type === ReglogStateTypes.CABINET_SETTING_CHANGE_PASSWORD &&
+                isLoadedUser ? (
+                    <CabinetSettingChangePasswordForm
+                        onSubmit={onSubmitCabinetSettingChangePassword}
+                    />
                 ) : null}
             </div>
         </section>

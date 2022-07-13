@@ -3,13 +3,13 @@ import {useDispatch} from "react-redux";
 
 import {CabinetSettingFormInfo, CabinetSettingFormContact} from "../../../";
 
-import {fetchUserUpdateAboutMe} from "../../../../redux/actions/user";
+import {sendUserUpdateAboutMe} from "../../../../redux/actions/user/user";
 
 const CabinetSettingForm: React.FC = () => {
     const dispatch = useDispatch();
 
     const onSubmitInfo = (data: any) => {
-        dispatch(fetchUserUpdateAboutMe(data) as any);
+        dispatch(sendUserUpdateAboutMe(data) as any);
     };
 
     return (
