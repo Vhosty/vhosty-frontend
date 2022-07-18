@@ -1,4 +1,5 @@
 import { Dispatch } from "redux";
+import axios from 'axios'
 
 import { SubmissionError } from "redux-form";
 
@@ -10,7 +11,7 @@ import {
 
 import { Register } from '../../models/IRegister'
 
-import $api from "../../http/index";
+import {fetchUserAboutMe} from '../actions/user/user';
 
 export const sendRegister = (data: Register) => {
 	return async (dispatch: Dispatch<RegisterActions>) => {
@@ -19,13 +20,15 @@ export const sendRegister = (data: Register) => {
 			payload: true,
 		});
 
-		await $api.post("/users/register/email", data).then(({ data }) => {
+		await axios.post(`${process.env.REACT_APP_API_DOMEN}/users/register/email`, data).then(({ data }) => {
 			dispatch({
 				type: RegisterActionTypes.SET_REGISTER_IS_SEND,
 				payload: true,
 			});
 
 			localStorage.setItem("accessToken", data.access_token);
+
+			dispatch(fetchUserAboutMe() as any)
 
 			window.location.hash = "register_success"
 		})

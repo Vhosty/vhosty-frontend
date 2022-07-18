@@ -63,6 +63,7 @@ export { default as RegisterMessageError } from "./Register/RegisterMessageError
 
 // RecoveryPassword
 export { default as RecoveryPasswordForm } from "./RecoveryPassword/RecoveryPasswordForm";
+export { default as RecoveryPasswordMessageError } from "./RecoveryPassword/RecoveryPasswordMessageError";
 
 // RecoveryPassword
 export { default as RecoveryPasswordConfirmedForm } from "./RecoveryPasswordConfirmed/RecoveryPasswordConfirmedForm";
@@ -135,6 +136,9 @@ export { default as CabinetSetting } from "./Cabinet/CabinetSetting/CabinetSetti
 // CabinetSettingForm
 export { default as CabinetSettingForm } from "./Cabinet/CabinetSetting/CabinetSettingForm/CabinetSettingForm";
 export { default as CabinetSettingFormInfo } from "./Cabinet/CabinetSetting/CabinetSettingForm/CabinetSettingFormInfo";
+// CabinetSettingFormTitleAndBtn
+export { default as CabinetSettingFormTitleAndBtn } from "./Cabinet/CabinetSetting/CabinetSettingForm/CabinetSettingFormTitleAndBtn/CabinetSettingFormTitleAndBtn";
+export { default as CabinetSettingFormTitleAndBtnDisabled } from "./Cabinet/CabinetSetting/CabinetSettingForm/CabinetSettingFormTitleAndBtn/CabinetSettingFormTitleAndBtnDisabled";
 // CabinetSettingFormContact
 export { default as CabinetSettingFormContact } from "./Cabinet/CabinetSetting/CabinetSettingForm/CabinetSettingFormContact/CabinetSettingFormContact";
 export { default as CabinetSettingFormContactEmailInput } from "./Cabinet/CabinetSetting/CabinetSettingForm/CabinetSettingFormContact/CabinetSettingFormContactEmailInput";

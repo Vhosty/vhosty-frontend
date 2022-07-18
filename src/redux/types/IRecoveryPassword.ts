@@ -1,6 +1,10 @@
 export interface RecoveryPasswordState {
 	isPending: boolean;
-	errorMessage: string
+	errorMessage: RecoveryPasswordErrorMessage | ""
+}
+
+export enum RecoveryPasswordErrorMessage {
+	NOT_FOUND_EMAIL = "Почта не зарегистрирована"
 }
 
 export enum RecoveryPasswordActionTypes {
@@ -15,7 +19,7 @@ interface setRecoveryPasswordIsPending {
 
 interface setRecoveryPasswordErrorMessage {
 	type: RecoveryPasswordActionTypes.SET_RECOVERY_PASSWORD_ERROR_MESSAGE,
-	payload: RecoveryPasswordActionTypes
+	payload: RecoveryPasswordErrorMessage
 }
 
 export type RecoveryPasswordActions = setRecoveryPasswordIsPending | setRecoveryPasswordErrorMessage

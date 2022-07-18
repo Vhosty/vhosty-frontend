@@ -12,7 +12,7 @@ const CabinetSetting: React.FC = () => {
             <h2 className="cabinet-content__title">
                 Добро пожаловать,{" "}
                 <span>
-                    {user.first_name !== ""
+                    {user.first_name !== "" && user.first_name !== null
                         ? user.first_name
                         : `User${user.id}`}
                 </span>
@@ -21,9 +21,9 @@ const CabinetSetting: React.FC = () => {
                 Здесь вы можете изменить свои персональные данные.
             </p>
 
-			<CabinetSettingForm />
-			
-			<CabinetSettingChangePassword />
+            <CabinetSettingForm />
+
+            <CabinetSettingChangePassword />
         </div>
     );
 };

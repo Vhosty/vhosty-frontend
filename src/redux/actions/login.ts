@@ -1,4 +1,5 @@
 import { Dispatch } from "redux";
+import axios from "axios"
 
 import { SubmissionError } from "redux-form";
 
@@ -10,8 +11,6 @@ import {
 
 import { Login } from '../../models/ILogin'
 
-import $api from "../../http/index";
-
 export const sendLogin = (data: Login) => {
 	return async (dispatch: Dispatch<LoginActions>) => {
 		dispatch({
@@ -19,7 +18,7 @@ export const sendLogin = (data: Login) => {
 			payload: true,
 		});
 
-		return $api.post("/users/login/email", data)
+		return axios.post(`${process.env.REACT_APP_API_DOMEN}/users/login/email`, data)
 			.then(({ data }) => {
 				localStorage.setItem("accessToken", data.access_token);
 

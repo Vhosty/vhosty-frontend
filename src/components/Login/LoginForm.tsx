@@ -61,8 +61,6 @@ const LoginForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
                     </Link>
 
                     <div className="reglog-form-block-btn">
-                        <PolicyCheckbox />
-
                         <button
                             className={`btn ${
                                 isPending ? "disabled" : ""

@@ -40,9 +40,5 @@ export const validate = (values: validateValues) => {
 		errors.password = `Не менее ${min} символов`;
 	}
 
-	if (!values.policyCheckbox) {
-		errors.policyCheckbox = "Поле не может быть пустым";
-	}
-
 	return errors;
 };

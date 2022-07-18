@@ -1,8 +1,7 @@
 import { Dispatch } from "react"
+import axios from 'axios'
 
-import $api from '../../http';
-
-import { RecoveryPasswordActions, RecoveryPasswordActionTypes } from '../types/IRecoveryPassword';
+import { RecoveryPasswordErrorMessage, RecoveryPasswordActions, RecoveryPasswordActionTypes } from '../types/IRecoveryPassword';
 
 export const sendRequestRecoveryPassword = (data: any) => {
 	return async (dispatch: Dispatch<RecoveryPasswordActions>) => {
@@ -11,7 +10,7 @@ export const sendRequestRecoveryPassword = (data: any) => {
 			payload: true
 		})
 
-		$api.post("/users/password/reset-request", data).then(() => {
+		axios.post(`${process.env.REACT_APP_API_DOMEN}/users/password/reset-request`, data).then(() => {
 			dispatch({
 				type: RecoveryPasswordActionTypes.SET_RECOVERY_PASSWORD_IS_PENDING,
 				payload: false
@@ -19,7 +18,10 @@ export const sendRequestRecoveryPassword = (data: any) => {
 
 			window.location.hash = "recovery_password_success"
 		}).catch(() => {
-
+			dispatch({
+				type: RecoveryPasswordActionTypes.SET_RECOVERY_PASSWORD_ERROR_MESSAGE,
+				payload: RecoveryPasswordErrorMessage.NOT_FOUND_EMAIL
+			})
 		})
 	}
 } 

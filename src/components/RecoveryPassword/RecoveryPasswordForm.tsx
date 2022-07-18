@@ -4,7 +4,7 @@ import {Field, reduxForm, InjectedFormProps} from "redux-form";
 
 import {validate} from "./validate";
 
-import {RenderInput} from "../";
+import {RenderInput, RecoveryPasswordMessageError} from "../";
 
 interface RecoveryPasswordFormProps {}
 
@@ -12,8 +12,8 @@ const RecoveryPasswordForm: React.FC<
     RecoveryPasswordFormProps & InjectedFormProps<{}, RecoveryPasswordFormProps>
 > = ({handleSubmit}) => {
     return (
-        <div className="reglog-content-padding">
-            <form className="reglog-form" onSubmit={handleSubmit}>
+        <form className="reglog-form" onSubmit={handleSubmit}>
+            <div className="reglog-content-padding-top">
                 <div className="reglog-form-text">
                     <p className="reglog-form-text__subtitle">
                         Гость №{localStorage.getItem("userNumber")}
@@ -22,7 +22,11 @@ const RecoveryPasswordForm: React.FC<
                         Восстановить пароль
                     </p>
                 </div>
+            </div>
 
+            <RecoveryPasswordMessageError />
+
+            <div className="reglog-content-padding-bottom">
                 <div className="reglog-form-block">
                     <div className="reglog-form-block-input">
                         <Field
@@ -45,8 +49,8 @@ const RecoveryPasswordForm: React.FC<
                         </button>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     );
 };
 

@@ -8,15 +8,15 @@ import {sendUserUpdateAboutMe} from "../../../../redux/actions/user/user";
 const CabinetSettingForm: React.FC = () => {
     const dispatch = useDispatch();
 
-    const onSubmitInfo = (data: any) => {
+    const onSubmit = (data: any) => {
         dispatch(sendUserUpdateAboutMe(data) as any);
     };
 
     return (
         <div className="cabinet-content-setting-form">
-            <CabinetSettingFormInfo onSubmit={onSubmitInfo} />
+            <CabinetSettingFormInfo onSubmit={onSubmit} />
 
-            <CabinetSettingFormContact />
+            <CabinetSettingFormContact onSubmit={onSubmit} />
         </div>
     );
 };

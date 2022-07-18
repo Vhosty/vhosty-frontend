@@ -115,6 +115,22 @@
 								justify-content: center
 								align-items: center
 
+								&__svgActive
+									display: flex
+									align-items: center
+									justify-content: center
+
+									opacity: 0
+
+									z-index: 1
+									position: absolute
+									cursor: pointer
+
+									+transition
+
+									&.active
+										opacity: 1
+
 							&-message-wrapper
 								position: relative
 
@@ -162,11 +178,27 @@
 							&-icon
 								margin-left: 10px
 
-								display: flex
-								align-items: center
-								justify-content: center
-
 								cursor: pointer
+
+								display: flex
+								justify-content: center
+								align-items: center
+
+								&__svgActive
+									display: flex
+									align-items: center
+									justify-content: center
+
+									opacity: 0
+
+									z-index: 1
+									position: absolute
+									cursor: pointer
+
+									+transition
+
+									&.active
+										opacity: 1
 
 							&-message-wrapper
 								position: relative
@@ -442,20 +474,20 @@
 						justify-content: space-between
 
 						&.left
-							padding: 20px 0 20px 30px
+							padding: 10px 0 10px 30px
 
 						&.right
 							text-align: right
 							align-items: flex-end
 
 						&-subblock
-							margin-bottom: 30px
+							margin-bottom: 25px
 
 							&:last-child
 								margin-bottom: 0
 
 							&-stars
-								margin-bottom: 10px
+								margin-bottom: 5px
 
 							&__title
 								width: 90%
@@ -465,7 +497,7 @@
 								text-overflow: ellipsis
 
 								font-size: 20px
-								margin-bottom: 10px
+								margin-bottom: 5px
 
 								color: $darkMainColor
 

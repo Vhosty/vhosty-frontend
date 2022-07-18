@@ -9,7 +9,7 @@ $api.interceptors.request.use((config: any) => {
 	config.headers.Authorization = `${localStorage.getItem(
 		"accessToken"
 	)}`;
-	
+
 	return config;
 });
 
@@ -31,6 +31,7 @@ $api.interceptors.response.use(
 				try {
 					const response = await axios.post(
 						`${process.env.REACT_APP_API_DOMEN}/users/token/refresh`,
+						{},
 						{ withCredentials: true }
 					);
 
@@ -41,13 +42,12 @@ $api.interceptors.response.use(
 
 					return $api.request(originalRequest);
 				} catch (e) {
-					if (localStorage.getItem("accessToken")) {
-						await $api.post("/users/revoke")
+					// if (localStorage.getItem("accessToken")) {
+					// 	await $api.post("/users/revoke")
 
-
-						localStorage.removeItem("accessToken");
-						window.location.reload();
-					}
+					// 	localStorage.removeItem("accessToken");
+					// 	window.location.reload();
+					// }
 				}
 			}
 		}

@@ -10,6 +10,8 @@ body
 	background-color: #F3F4F5
 	color: $black
 
+	overflow-x: hidden
+
 div
 	&::-webkit-scrollbar
 		width: 3px
@@ -418,29 +420,26 @@ input:-webkit-autofill:active
 
 		margin-left: 15px
 
-		&-icon-wrapper
-			width: 23px
-			height: 23px
-
+		&-icon
 			display: flex
 			justify-content: center
 			align-items: center
 
-		&-icon
-			position: absolute
-			cursor: pointer
+			&__svgActive
+				display: flex
+				align-items: center
+				justify-content: center
+				
+				opacity: 0
 
-		&-icon-active
-			opacity: 0
+				z-index: 1
+				position: absolute
+				cursor: pointer
 
-			z-index: 1
-			position: absolute
-			cursor: pointer
+				+transition
 
-			+transition
-
-			&.active
-				opacity: 1
+				&.active
+					opacity: 1
 
 		&__text
 			padding: 20px
@@ -727,7 +726,6 @@ input:-webkit-autofill:active
 
 // service-icon
 .service-icon
-
 	display: flex
 	align-items: center
 
@@ -799,10 +797,10 @@ input:-webkit-autofill:active
 			fill: $darkMainGreen
 
 	&.disabled &__title
-		color: $gray
+		color: $darkGray
 
 		& > svg
-			fill: $gray
+			fill: $darkGray
 
 // tab
 .tab
