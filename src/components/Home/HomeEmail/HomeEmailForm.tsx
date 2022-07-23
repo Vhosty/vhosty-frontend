@@ -16,7 +16,7 @@ const HomeEmailForm: React.FC<
             <div className="home-email-form-text">
                 <h2 className="home-email-form-text__title">
                     Гости сэкономили с нами на бронированиях{" "}
-                    <span>более 13 млн руб.</span>
+                    <span>более 13 млн ₽</span>
                 </h2>
 
                 <p className="home-email-form-text__subtitle">

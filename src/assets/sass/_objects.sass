@@ -257,8 +257,11 @@
 			margin-bottom: 40px
 
 			+borderRadius
+			+open
 
 			&-cover-wrapper
+				cursor: pointer
+
 				position: relative
 
 				min-width: 220px
@@ -288,7 +291,27 @@
 
 					background-color: rgba(0, 0, 0, 0.2)
 
+					&-cols-wrapper
+						z-index: 2
+
+						display: flex
+						justify-content: space-between
+						align-items: center
+
+						position: absolute
+
+						top: 0
+						left: 0
+
+						height: 100%
+						width: 100%
+
+					&-col
+						height: 100%
+
 					&-icons
+						z-index: 3
+
 						width: 100%
 
 						display: flex
@@ -314,6 +337,8 @@
 								opacity: 1
 
 					&-dots
+						z-index: 1
+
 						display: flex
 						align-items: center
 
@@ -328,6 +353,8 @@
 							border-radius: 50%
 
 							margin: 0 15px
+
+							+transition
 
 							&.active
 								background-color: $white

@@ -4,11 +4,11 @@ import {useTypedSelector} from "../../../hooks/useTypedSelector";
 
 import {checkDeclension} from "../../../functions/checkDeclension";
 
-import {Popup, ObjectFiltersGlobalGuestRoomSelect} from "../../";
+import {Popup, ObjectsFiltersGlobalGuestRoomSelect} from "../../";
 
-const ObjectFiltersGlobalGuestRoom: React.FC = () => {
+const ObjectsFiltersGlobalGuestRoom: React.FC = () => {
     const {guestRoom} = useTypedSelector(
-        ({filters}) => filters
+        ({objects_filters_global}) => objects_filters_global
     );
 
     const [activeSelect, setActiveSelect] = React.useState<boolean>(false);
@@ -98,10 +98,10 @@ const ObjectFiltersGlobalGuestRoom: React.FC = () => {
                 setWrapperActive={setActiveSelect}
                 addClassWrapper="filters-object-form-guest-room-select-wrapper"
             >
-                <ObjectFiltersGlobalGuestRoomSelect />
+                <ObjectsFiltersGlobalGuestRoomSelect />
             </Popup>
         </div>
     );
 };
 
-export default ObjectFiltersGlobalGuestRoom;
+export default ObjectsFiltersGlobalGuestRoom;

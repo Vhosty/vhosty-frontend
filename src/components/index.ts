@@ -16,6 +16,7 @@ export { default as ServiceIcon } from "./Interface/ServiceIcon";
 export { default as Tab } from "./Interface/Tab";
 export { default as Location } from "./Interface/Location";
 export { default as PolicyCheckbox } from "./Interface/PolicyCheckbox";
+export { default as Loader } from "./Interface/Loader";
 
 // Header
 export { default as Header } from "./Header/Header";
@@ -42,13 +43,13 @@ export { default as HomeCorporate } from "./Home/HomeCorporate";
 export { default as HomeEmail } from "./Home/HomeEmail/HomeEmail";
 export { default as HomeEmailForm } from "./Home/HomeEmail/HomeEmailForm";
 
-// ObjectFiltersGlobal
-export { default as ObjectFiltersGlobal } from "./ObjectFiltersGlobal/ObjectFiltersGlobal";
-// ObjectFiltersGlobalGuestRoom
-export { default as ObjectFiltersGlobalGuestRoom } from "./ObjectFiltersGlobal/ObjectFiltersGlobalGuestRoom/ObjectFiltersGlobalGuestRoom";
-export { default as ObjectFiltersGlobalGuestRoomSelect } from "./ObjectFiltersGlobal/ObjectFiltersGlobalGuestRoom/ObjectFiltersGlobalGuestRoomSelect";
-export { default as ObjectFiltersGlobalGuestRoomSelectItem } from "./ObjectFiltersGlobal/ObjectFiltersGlobalGuestRoom/ObjectFiltersGlobalGuestRoomSelectItem";
-export { default as ObjectFiltersGlobalGuestRoomSelectItemKids } from "./ObjectFiltersGlobal/ObjectFiltersGlobalGuestRoom/ObjectFiltersGlobalGuestRoomSelectItemKids";
+// ObjectsFiltersGlobal
+export { default as ObjectsFiltersGlobal } from "./ObjectsFiltersGlobal/ObjectsFiltersGlobal";
+// ObjectsFiltersGlobalGuestRoom
+export { default as ObjectsFiltersGlobalGuestRoom } from "./ObjectsFiltersGlobal/ObjectsFiltersGlobalGuestRoom/ObjectsFiltersGlobalGuestRoom";
+export { default as ObjectsFiltersGlobalGuestRoomSelect } from "./ObjectsFiltersGlobal/ObjectsFiltersGlobalGuestRoom/ObjectsFiltersGlobalGuestRoomSelect";
+export { default as ObjectsFiltersGlobalGuestRoomSelectItem } from "./ObjectsFiltersGlobal/ObjectsFiltersGlobalGuestRoom/ObjectsFiltersGlobalGuestRoomSelectItem";
+export { default as ObjectsFiltersGlobalGuestRoomSelectItemKids } from "./ObjectsFiltersGlobal/ObjectsFiltersGlobalGuestRoom/ObjectsFiltersGlobalGuestRoomSelectItemKids";
 
 // Reglog
 export { default as ReglogSuccess } from "./Reglog/ReglogSuccess";

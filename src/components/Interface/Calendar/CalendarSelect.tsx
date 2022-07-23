@@ -65,7 +65,7 @@ const CalendarSelect: React.FC<CalendarSelectProps> = ({
             setFrom({...from, date: day, active: true, selected: true});
             setTo({...to, date: day});
         }
-    };
+	};
 
     return (
         <>

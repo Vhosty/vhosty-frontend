@@ -1,39 +1,47 @@
 import React from "react";
 
-import {filtersItem} from "../../../redux/types/IFilters";
+import {ObjectsFiltersGlobalGuestItem} from "../../../redux/types/IObjectsFiltersGlobal";
 
 import {checkDeclension} from "../../../functions/checkDeclension";
 
-import {Popup, ObjectFiltersGlobalGuestRoomSelectItemKids} from "../../";
+import {Popup, ObjectsFiltersGlobalGuestRoomSelectItemKids} from "../../";
 
-interface ObjectFiltersGlobalGuestRoomSelectItem extends filtersItem {
+interface ObjectsFiltersGlobalGuestRoomSelectItem
+    extends ObjectsFiltersGlobalGuestItem {
     itemIndex: number;
     isLast: boolean;
     isOne: boolean;
 
-    plusfiltersAdultsCountOnClick: (index: number) => void;
-    minusfiltersAdultsCountOnClick: (index: number) => void;
+    plusObjectsFiltersGlobalGuestRoomAdultsCountOnClick: (
+        index: number
+    ) => void;
+    minusObjectsFiltersGlobalGuestRoomAdultsCountOnClick: (
+        index: number
+    ) => void;
     deleteGuestRoomOnClick: (index: number) => void;
-    addfiltersKidsOnClick: (index: number, age: number) => void;
-    deletefiltersKidsOnClick: (
+    addObjectsFiltersGlobalGuestRoomKidsOnClick: (
+        index: number,
+        age: number
+    ) => void;
+    deleteObjectsFiltersGlobalGuestRoomKidsOnClick: (
         itemIndex: number,
         kidsItemIndex: number
     ) => void;
 }
 
-const ObjectFiltersGlobalGuestRoomSelectItem: React.FC<
-    ObjectFiltersGlobalGuestRoomSelectItem
+const ObjectsFiltersGlobalGuestRoomSelectItem: React.FC<
+    ObjectsFiltersGlobalGuestRoomSelectItem
 > = ({
     itemIndex,
     adultsCount,
     kids,
     isLast,
     isOne,
-    plusfiltersAdultsCountOnClick,
-    minusfiltersAdultsCountOnClick,
+    plusObjectsFiltersGlobalGuestRoomAdultsCountOnClick,
+    minusObjectsFiltersGlobalGuestRoomAdultsCountOnClick,
     deleteGuestRoomOnClick,
-    addfiltersKidsOnClick,
-    deletefiltersKidsOnClick,
+    addObjectsFiltersGlobalGuestRoomKidsOnClick,
+    deleteObjectsFiltersGlobalGuestRoomKidsOnClick,
 }) => {
     const [activeKidsSelect, setActiveKidsSelect] =
         React.useState<boolean>(false);
@@ -89,7 +97,9 @@ const ObjectFiltersGlobalGuestRoomSelectItem: React.FC<
                                 adultsCount === 1 ? "disabled" : ""
                             }`}
                             onClick={() =>
-                                minusfiltersAdultsCountOnClick(itemIndex)
+                                minusObjectsFiltersGlobalGuestRoomAdultsCountOnClick(
+                                    itemIndex
+                                )
                             }
                         >
                             <svg
@@ -113,7 +123,9 @@ const ObjectFiltersGlobalGuestRoomSelectItem: React.FC<
                         <div
                             className="filters-object-form-guest-room-select-item-adults-change-block plus"
                             onClick={() =>
-                                plusfiltersAdultsCountOnClick(itemIndex)
+                                plusObjectsFiltersGlobalGuestRoomAdultsCountOnClick(
+                                    itemIndex
+                                )
                             }
                         >
                             <svg
@@ -167,7 +179,7 @@ const ObjectFiltersGlobalGuestRoomSelectItem: React.FC<
                                             <div
                                                 className="filters-object-form-guest-room-select-item-kids-item-delete"
                                                 onClick={() =>
-                                                    deletefiltersKidsOnClick(
+                                                    deleteObjectsFiltersGlobalGuestRoomKidsOnClick(
                                                         itemIndex,
                                                         index
                                                     )
@@ -238,11 +250,14 @@ const ObjectFiltersGlobalGuestRoomSelectItem: React.FC<
                                     : {top: "-50px", right: "10px"}
                             }
                         >
-                            <ObjectFiltersGlobalGuestRoomSelectItemKids
+                            <ObjectsFiltersGlobalGuestRoomSelectItemKids
                                 itemIndex={itemIndex}
                                 onChange={(age: number) => {
-									addfiltersKidsOnClick(itemIndex, age);
-									setActiveKidsSelect(false);
+                                    addObjectsFiltersGlobalGuestRoomKidsOnClick(
+                                        itemIndex,
+                                        age
+                                    );
+                                    setActiveKidsSelect(false);
                                 }}
                             />
                         </Popup>
@@ -253,4 +268,4 @@ const ObjectFiltersGlobalGuestRoomSelectItem: React.FC<
     );
 };
 
-export default ObjectFiltersGlobalGuestRoomSelectItem;
+export default ObjectsFiltersGlobalGuestRoomSelectItem;

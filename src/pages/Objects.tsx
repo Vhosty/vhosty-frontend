@@ -1,8 +1,9 @@
 import React from "react";
+
 import {Helmet} from "react-helmet";
 
 import {
-    ObjectFiltersGlobal,
+    ObjectsFiltersGlobal,
     ObjectsFilters,
     ObjectsCatalog,
 } from "../components/";
@@ -24,7 +25,7 @@ const Objects: React.FC = () => {
 
                 <div className="container">
                     <div className="objects-wrapper">
-                        <ObjectFiltersGlobal />
+                        <ObjectsFiltersGlobal />
 
                         <div className="objects-catalog-wrapper">
                             <ObjectsFilters />

@@ -132,10 +132,10 @@ const ObjectPageRoomBlock: React.FC = () => {
                 <div className="object-page-section-room-block-subblock-price">
                     <div className="object-page-section-room-block-subblock-price-block">
                         <h2 className="object-page-section-room-block-subblock-price-block__title">
-                            480 000 руб.
+                            480 000 ₽
                         </h2>
                         <p className="object-page-section-room-block-subblock-price-block__subtitle">
-                            10 суток (4 800 руб. / ночь)
+                            10 суток (4 800 ₽ / ночь)
                         </p>
                     </div>
 

@@ -158,7 +158,7 @@ const Payment: React.FC = () => {
                                         ИТОГО
                                     </p>
                                     <p className="payment-info-smeta-total-price__title">
-                                        150 000 руб.
+                                        150 000 ₽
                                     </p>
                                     <p className="payment-info-smeta-total-price__description">
                                         За всех гостей (4 гостя + ребенок 13

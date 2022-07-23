@@ -1,14 +1,146 @@
 import React from "react";
+import {
+    useNavigate,
+    createSearchParams,
+    useSearchParams,
+} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import moment, {Moment} from "moment";
+import {animateScroll as scroll} from "react-scroll";
+
+import {useTypedSelector} from "../../hooks/useTypedSelector";
 
 import {
     TitleIcon,
     Input,
     Calendar,
-    ObjectFiltersGlobalGuestRoom,
+    ObjectsFiltersGlobalGuestRoom,
     Checkbox,
 } from "../";
 
-const FiltersForm: React.FC = () => {
+import {
+    setObjectsFiltersGlobalCity,
+    setObjectsFiltersGlobalGuestRoom,
+    setObjectsFiltersGlobalDate,
+    setObjectsFiltersGlobalFlexibleDate,
+    setObjectsFiltersGlobalIsParse,
+} from "../../redux/actions/objects/objects_filters_global";
+
+import {fetchObjects} from "../../redux/actions/objects/objects";
+
+const ObjectsFiltersGlobal: React.FC = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const [query] = useSearchParams();
+
+    const {isParse, city, guestRoom, date, flexibleDate} = useTypedSelector(
+        ({objects_filters_global}) => objects_filters_global
+    );
+
+    const [cityQuery, setCityQuery] = React.useState<string>("");
+    const [guestRoomQuery, setGuestRoomQuery] = React.useState<any>(null);
+    const [dateFromQuery, setDateFromQuery] = React.useState<string>("");
+    const [dateToQuery, setDateToQuery] = React.useState<string>("");
+    const [flexibleDateQuery, setFlexibleDateQuery] =
+        React.useState<boolean>(false);
+    const [isInit, setIsInit] = React.useState<boolean>(false);
+
+    React.useEffect(() => {
+        setCityQuery(String(query.get("city")));
+        setGuestRoomQuery(JSON.parse(String(query.get("room"))));
+        setDateFromQuery(String(query.get("from")));
+        setDateToQuery(String(query.get("to")));
+        setFlexibleDateQuery(
+            String(query.get("flexibleDate")) === "true" ? true : false
+        );
+
+        setIsInit(true);
+    }, [query]);
+
+    React.useEffect(() => {
+        if (isInit) {
+            if (cityQuery !== "null")
+                dispatch(setObjectsFiltersGlobalCity(cityQuery));
+
+            if (guestRoomQuery !== null)
+                dispatch(setObjectsFiltersGlobalGuestRoom(guestRoomQuery));
+
+            if (dateFromQuery !== "null" && dateToQuery !== "null")
+                dispatch(
+                    setObjectsFiltersGlobalDate(dateFromQuery, dateToQuery)
+                );
+
+            dispatch(setObjectsFiltersGlobalFlexibleDate(flexibleDateQuery));
+
+            dispatch(setObjectsFiltersGlobalIsParse(true));
+        }
+    }, [isInit]);
+
+    React.useEffect(() => {
+        if (isParse) {
+            let persons_count = 0;
+            let children_count = 0;
+
+            guestRoom.map((room) => {
+                persons_count += room.adultsCount;
+                children_count += room.kids.length;
+            });
+
+            dispatch(
+                fetchObjects({
+                    from: date.from,
+                    to: date.to,
+                    city: city,
+                    persons_count,
+                    children_count,
+                    location_id: flexibleDate ? 1 : 0,
+                }) as any
+            );
+        }
+    }, [
+        isParse,
+        cityQuery,
+        guestRoomQuery,
+        dateFromQuery,
+        dateToQuery,
+        flexibleDateQuery,
+    ]);
+
+    const onChangeCity = (city: string) => {
+        dispatch(setObjectsFiltersGlobalCity(city));
+    };
+
+    const onChangeCalendary = (from: Moment, to: Moment) => {
+        dispatch(
+            setObjectsFiltersGlobalDate(
+                moment(from).format("YYYY-MM-DD"),
+                moment(to).format("YYYY-MM-DD")
+            )
+        );
+    };
+
+    const onChangeFlexibleDate = (status: boolean) => {
+        dispatch(setObjectsFiltersGlobalFlexibleDate(status));
+    };
+
+    const sendSearchObjects = () => {
+        if (window.location.pathname === "/objects") {
+            scroll.scrollTo(400, {duration: 400});
+		}
+		
+        navigate({
+            pathname: "/objects",
+            search: `?${createSearchParams({
+                city,
+                room: JSON.stringify(guestRoom),
+                from: date.from,
+                to: date.to,
+                flexibleDate: String(flexibleDate),
+            })}`,
+        });
+    };
+
     return (
         <div className="filters-object-form">
             <div className="filters-object-form-block-row">
@@ -51,15 +183,27 @@ const FiltersForm: React.FC = () => {
 
             <div className="filters-object-form-block-row">
                 <div className="filters-object-form-block left filters-object-form-block-input">
-                    <Input label="Например, Дубай" small type="text" />
+                    <Input
+                        label="Например, Дубай"
+                        small
+                        type="text"
+                        value={city}
+                        onChange={onChangeCity}
+                    />
                 </div>
 
                 <div className="filters-object-form-block middle filters-object-form-block-calendar">
-                    <Calendar />
+                    <Calendar
+                        onChange={onChangeCalendary}
+                        initialState={{from: date.from, to: date.to}}
+                    />
                 </div>
 
                 <div className="filters-object-form-block right filters-object-form-block-btn">
-                    <button className="btn small filters-object-form-block__btn">
+                    <button
+                        className="btn small filters-object-form-block__btn"
+                        onClick={sendSearchObjects}
+                    >
                         Искать
                     </button>
                 </div>
@@ -67,11 +211,15 @@ const FiltersForm: React.FC = () => {
 
             <div className="filters-object-form-block-row">
                 <div className="filters-object-form-block left filters-object-form-block-guest-room">
-                    <ObjectFiltersGlobalGuestRoom />
+                    <ObjectsFiltersGlobalGuestRoom />
                 </div>
 
                 <div className="filters-object-form-block middle filters-object-form-block-checkbox">
-                    <Checkbox questionMessage="Поиск будет осуществляться с учетом 3-х дат до и 3-х дат после указанных">
+                    <Checkbox
+                        questionMessage="Поиск будет осуществляться с учетом 3-х дат до и 3-х дат после указанных"
+                        onChange={onChangeFlexibleDate}
+                        checked={flexibleDate}
+                    >
                         У меня гибкая дата
                     </Checkbox>
                 </div>
@@ -82,4 +230,4 @@ const FiltersForm: React.FC = () => {
     );
 };
 
-export default FiltersForm;
+export default ObjectsFiltersGlobal;

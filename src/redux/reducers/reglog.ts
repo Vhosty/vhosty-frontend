@@ -13,7 +13,7 @@ const initialState: ReglogState = {
 	type: ReglogStateTypes.LOGIN,
 };
 
-const login = (state = initialState, action: ReglogActions) => {
+const reglog = (state = initialState, action: ReglogActions) => {
 	if (action.type === ReglogActionTypes.SET_REGLOG_OPEN) {
 		return {
 			...state,
@@ -45,4 +45,4 @@ const login = (state = initialState, action: ReglogActions) => {
 	return state;
 };
 
-export default login;
+export default reglog;

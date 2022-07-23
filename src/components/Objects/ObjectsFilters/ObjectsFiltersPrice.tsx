@@ -27,7 +27,7 @@ const ObjectsFiltersPrice: React.FC = () => {
             <div className="objects-filters-block-input-from-to">
                 <div className="objects-filters-block-input-from-to-block">
                     <Input
-                        label="0 руб."
+                        label="0 ₽"
                         small
                         smallPlaceholder
                         type="number"
@@ -36,7 +36,7 @@ const ObjectsFiltersPrice: React.FC = () => {
                 <div className="objects-filters-block-input-from-to-line"></div>
                 <div className="objects-filters-block-input-from-to-block">
                     <Input
-                        label="100к руб."
+                        label="100к ₽"
                         small
                         smallPlaceholder
                         type="number"

@@ -8,12 +8,18 @@ interface CheckboxProps {
 
     small?: boolean;
     questionMessage?: string;
+
+    checked?: boolean;
+
+    onChange?: (status: boolean) => void;
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({
     children,
     small,
     questionMessage,
+    checked,
+    onChange,
 }) => {
     const id = v4();
 
@@ -26,7 +32,15 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
     return (
         <div className="checkbox-wrapper">
-            <input id={id} type="checkbox" className="checkbox" />
+            <input
+                id={id}
+                type="checkbox"
+                className="checkbox"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    onChange && onChange(e.target.checked)
+                }
+                checked={checked}
+            />
 
             <label
                 htmlFor={id}

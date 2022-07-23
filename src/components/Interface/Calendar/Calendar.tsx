@@ -15,18 +15,50 @@ export interface CalendarTo {
     date: Moment;
 }
 
-const Calendar: React.FC = () => {
+interface CalendarProps {
+    initialState?: {
+        from: string;
+        to: string;
+    };
+
+    onChange?: (from: Moment, to: Moment) => void;
+}
+
+const Calendar: React.FC<CalendarProps> = ({onChange, initialState}) => {
     const [activeCalendar, setActiveCalendar] = React.useState<boolean>(false);
 
     const [date, setDate] = React.useState<Moment>(moment());
+
     const [from, setFrom] = React.useState<CalendarFrom>({
         date: moment(),
         active: false,
         selected: false,
     });
+
     const [to, setTo] = React.useState<CalendarTo>({
         date: moment(),
     });
+
+    React.useEffect(() => {
+        if (initialState?.from) {
+            setFrom({
+                ...from,
+                date: moment(initialState?.from, "YYYY-MM-DD"),
+                selected: true,
+            });
+        }
+
+        if (initialState?.to) {
+            setTo({...to, date: moment(initialState?.to, "YYYY-MM-DD")});
+        }
+	}, [initialState?.from, initialState?.to]);
+	
+    React.useEffect(() => {
+        if (onChange && to.date.diff(from.date, "days") !== 0) {
+            onChange(from.date, to.date);
+        }
+    }, [from, to]);
+
     const [daysMonth, setDaysMonth] = React.useState<Moment[]>([]);
 
     const openCalendar = () => {

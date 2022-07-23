@@ -1,10 +1,38 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import NumberFormat from "react-number-format";
+
+import {checkDeclension} from "../../../../functions/checkDeclension";
 
 import {Stars, ServiceIcon} from "../../../";
 
-const ObjectsCatalogBlock: React.FC = () => {
-    const blockIndex = 1;
+import {IObjectBlock} from "../../../../models/IObjectBlock";
+
+interface ObjectsCatalogBlockProps extends IObjectBlock {
+    blockIndex: string;
+}
+
+const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
+    blockIndex,
+    images,
+    hotel_name,
+    short_address,
+    rating,
+    rating_text,
+    reviews_count,
+    room_category_name,
+    options,
+    bed_type,
+    daily_price,
+    price,
+    overnights_count,
+}) => {
+    const [currentIndexImageCover, setCurrentIndexImageCover] =
+        React.useState<number>(0);
+
+    const center_distance = options.filter(
+        (item) => item.type === "center_distance"
+    )[0].value;
 
     return (
         <div className="objects-catalog-block">
@@ -12,11 +40,24 @@ const ObjectsCatalogBlock: React.FC = () => {
                 <div
                     className="objects-catalog-block-cover"
                     style={{
-                        backgroundImage:
-                            "url('https://images.unsplash.com/photo-1562438668-bcf0ca6578f0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1460&q=80')",
+                        backgroundImage: `url('${images[currentIndexImageCover]}')`,
                     }}
                 ></div>
+
                 <div className="objects-catalog-block-cover-plaecholder">
+                    <div className="objects-catalog-block-cover-plaecholder-cols-wrapper">
+                        {images.map((_, index) => (
+                            <div
+                                style={{width: `${100 / images.length}%`}}
+                                className="objects-catalog-block-cover-plaecholder-col"
+                                key={`objects-catalog-block-cover-plaecholder-col-${blockIndex}-${index}`}
+                                onMouseOver={() =>
+                                    setCurrentIndexImageCover(index)
+                                }
+                            ></div>
+                        ))}
+                    </div>
+
                     <div className="objects-catalog-block-cover-plaecholder-icons">
                         <div className="objects-catalog-block-cover-plaecholder-icons-resize">
                             <svg
@@ -49,16 +90,14 @@ const ObjectsCatalogBlock: React.FC = () => {
                         </div>
                     </div>
                     <div className="objects-catalog-block-cover-plaecholder-dots">
-                        {Array(4)
-                            .fill(0)
-                            .map((_, index) => (
-                                <div
-                                    className={`objects-catalog-block-cover-plaecholder-dots-item ${
-                                        index === 1 ? "active" : ""
-                                    }`}
-                                    key={`${blockIndex}-objects-catalog-block-cover-plaecholder-dots-item-${index}`}
-                                ></div>
-                            ))}
+                        {images.map((_, index) => (
+                            <div
+                                className={`objects-catalog-block-cover-plaecholder-dots-item ${
+                                    currentIndexImageCover === index ? "active" : ""
+                                }`}
+                                key={`${blockIndex}-objects-catalog-block-cover-plaecholder-dots-item-${index}`}
+                            ></div>
+                        ))}
                     </div>
                 </div>
             </div>
@@ -70,11 +109,11 @@ const ObjectsCatalogBlock: React.FC = () => {
                             <Stars count={5} />
                         </div>
                         <h3 className="objects-catalog-block-text-block-subblock__title">
-                            <Link to="/">Palm View Dubai Hotel & Suites</Link>
+                            <Link to="/">{hotel_name}</Link>
                         </h3>
                         <div className="objects-catalog-block-text-block-subblock-location">
                             <p className="objects-catalog-block-text-block-subblock-location__title">
-                                Дубай Медиа-Сити, Дубай
+                                {short_address}
                                 <svg
                                     width="16"
                                     height="16"
@@ -89,17 +128,18 @@ const ObjectsCatalogBlock: React.FC = () => {
                                 </svg>
                             </p>
                             <p className="objects-catalog-block-text-block-subblock-location__subtitle">
-                                1,9 км от центра
+                                {center_distance} км от центра
                             </p>
                         </div>
                     </div>
                     <div className="objects-catalog-block-text-block-subblock">
                         <div className="objects-catalog-block-text-block-subblock-info-room">
                             <p className="objects-catalog-block-text-block-subblock-info-room__title">
-                                Двухместный номер полулюкс
+                                {room_category_name}
                             </p>
                             <p className="objects-catalog-block-text-block-subblock-info-room__subtitle">
-                                2 двухместные кровати
+                                {/* 2 двухместные кровати */}
+                                {bed_type}
                             </p>
                         </div>
                     </div>
@@ -150,13 +190,19 @@ const ObjectsCatalogBlock: React.FC = () => {
                     <div className="objects-catalog-block-text-block-subblock">
                         <div className="objects-catalog-block-text-block-subblock-feedbacks">
                             <h3 className="objects-catalog-block-text-block-subblock-feedbacks__title">
-                                4,7
+                                {rating}
                             </h3>
                             <p className="objects-catalog-block-text-block-subblock-feedbacks__subtitle">
-                                отлично
+                                {rating_text}
                             </p>
                             <p className="objects-catalog-block-text-block-subblock-feedbacks__subtitle">
-                                5 отзывов
+                                {
+                                    checkDeclension(reviews_count, [
+                                        "отзыв",
+                                        "отзыва",
+                                        "отзывов",
+                                    ]).title
+                                }
                             </p>
                         </div>
                     </div>
@@ -164,10 +210,58 @@ const ObjectsCatalogBlock: React.FC = () => {
                     <div className="objects-catalog-block-text-block-subblock">
                         <div className="objects-catalog-block-text-block-subblock-price">
                             <h3 className="objects-catalog-block-text-block-subblock-price__title">
-                                9 000 <span>руб.</span>
+                                <NumberFormat
+                                    value={price}
+                                    displayType={"text"}
+                                    thousandSeparator={" "}
+                                    renderText={(formattedValue: string) => (
+                                        <>
+                                            {parseInt(
+                                                formattedValue
+                                                    .split(" ")
+                                                    .join("")
+                                            ) >= 10000
+                                                ? formattedValue
+                                                : parseInt(
+                                                      formattedValue
+                                                          .split(" ")
+                                                          .join("")
+                                                  )}
+                                        </>
+                                    )}
+                                />{" "}
+                                <span>₽</span>
                             </h3>
                             <p className="objects-catalog-block-text-block-subblock-price__subtitle">
-                                10 суток (800 руб. / ночь)
+                                {
+                                    checkDeclension(overnights_count, [
+                                        "сутки",
+                                        "суток",
+                                        "суток",
+                                    ]).title
+                                }{" "}
+                                (
+                                <NumberFormat
+                                    value={daily_price}
+                                    displayType={"text"}
+                                    thousandSeparator={" "}
+                                    renderText={(formattedValue: string) => (
+                                        <>
+                                            {parseInt(
+                                                formattedValue
+                                                    .split(" ")
+                                                    .join("")
+                                            ) >= 10000
+                                                ? formattedValue
+                                                : parseInt(
+                                                      formattedValue
+                                                          .split(" ")
+                                                          .join("")
+                                                  )}
+                                        </>
+                                    )}
+                                />{" "}
+                                ₽ / ночь)
                             </p>
                         </div>
                     </div>

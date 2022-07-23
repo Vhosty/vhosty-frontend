@@ -11,7 +11,6 @@ interface InputProps {
     smallPlaceholder?: boolean;
 
     value?: string | number;
-    defaultValue?: string | number;
 
     disabled?: boolean;
 
@@ -26,7 +25,6 @@ const Input: React.FC<InputProps> = ({
     smallPlaceholder,
     title,
     value,
-    defaultValue,
     disabled,
     onChange,
 }) => {
@@ -60,7 +58,6 @@ const Input: React.FC<InputProps> = ({
                     }`}
                     placeholder={label}
                     value={value}
-                    defaultValue={defaultValue}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                         onChange && onChange(e.target.value)
                     }
