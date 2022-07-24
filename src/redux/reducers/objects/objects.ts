@@ -8,6 +8,9 @@ const initialState: ObjectsState = {
 
 	firstIsLoaded: false,
 	isLoaded: false,
+
+	isOpenImageBox: false,
+	currentIndexBlockImageBox: 0,
 }
 
 const objects = (state = initialState, action: ObjectsActions) => {
@@ -15,6 +18,20 @@ const objects = (state = initialState, action: ObjectsActions) => {
 		return {
 			...state,
 			items: action.payload
+		}
+	}
+
+	if (action.type === ObjectsActionTypes.SET_OBJECTS_TOTAL_COUNT_ITEMS) {
+		return {
+			...state,
+			totalCount: action.payload
+		}
+	}
+
+	if (action.type === ObjectsActionTypes.SET_OBJECTS_PAGE) {
+		return {
+			...state,
+			page: action.payload
 		}
 	}
 
@@ -31,7 +48,21 @@ const objects = (state = initialState, action: ObjectsActions) => {
 			isLoaded: action.payload
 		}
 	}
-	
+
+	if (action.type === ObjectsActionTypes.SET_OBJECTS_IS_OPEN_IMAGE_BOX) {
+		return {
+			...state,
+			isOpenImageBox: action.payload
+		}
+	}
+
+	if (action.type === ObjectsActionTypes.SET_OBJECTS_CURRENT_INDEX_BLOCK_IMAGE_BOX) {
+		return {
+			...state,
+			currentIndexBlockImageBox: action.payload
+		}
+	}
+
 	return state
 }
 

@@ -1,9 +1,35 @@
 import React from "react";
+import {useDispatch} from "react-redux";
+
+import {useTypedSelector} from "../../../hooks/useTypedSelector";
+
+import {setObjectsPage} from "../../../redux/actions/objects/objects";
 
 const ObjectsCatalogPagination: React.FC = () => {
+    const dispatch = useDispatch();
+
+    const {items, totalCount, page} = useTypedSelector(({objects}) => objects);
+
+    const totalPages: number = Math.ceil(totalCount / items.length);
+
+    const totalPagesArray: number[] = Array(totalPages)
+        .fill(0)
+        .map((_, index) => index + 1);
+
+    const setCurrentPage = (number: number) => {
+        if (number >= 1 && number <= totalPages) {
+            dispatch(setObjectsPage(number));
+        }
+    };
+
     return (
         <div className="objects-catalog-block-pagination">
-            <button className="objects-catalog-block-pagination__btn disabled prev">
+            <button
+                className={`objects-catalog-block-pagination__btn prev ${
+                    page === 1 ? "disabled" : ""
+                }`}
+                onClick={() => setCurrentPage(page - 1)}
+            >
                 <svg
                     width="9"
                     height="16"
@@ -19,31 +45,63 @@ const ObjectsCatalogPagination: React.FC = () => {
                 </svg>
             </button>
             <div className="objects-catalog-block-pagination-number">
-                <p className="objects-catalog-block-pagination-number__item active">
-                    1
-                </p>
+                {page > 1 ? (
+                    <>
+                        <p
+                            className={`objects-catalog-block-pagination-number__item ${
+                                page === 1 ? "active" : ""
+                            }`}
+                            onClick={() => setCurrentPage(1)}
+                        >
+                            1
+                        </p>
 
-                <p className="objects-catalog-block-pagination-number__item">
-                    2
-                </p>
+                        <p className="objects-catalog-block-pagination-number__item disabled">
+                            ...
+                        </p>
+                    </>
+                ) : null}
 
-                <p className="objects-catalog-block-pagination-number__item">
-                    3
-                </p>
+                {totalPagesArray
+                    .slice(
+                        page + 3 < totalPages ? page - 1 : totalPages - 4,
+                        page + 3
+                    )
+                    .map((currentPage, index) => (
+                        <p
+                            className={`objects-catalog-block-pagination-number__item ${
+                                page === currentPage ? "active" : ""
+                            }`}
+                            key={`objects-catalog-block-pagination-number__item-${index}`}
+                            onClick={() => setCurrentPage(currentPage)}
+                        >
+                            {currentPage}
+                        </p>
+                    ))}
 
-                <p className="objects-catalog-block-pagination-number__item">
-                    4
-                </p>
+                {totalPages > 4 && page + 3 < totalPages ? (
+                    <>
+                        <p className="objects-catalog-block-pagination-number__item disabled">
+                            ...
+                        </p>
 
-                <p className="objects-catalog-block-pagination-number__item disabled">
-                    ...
-                </p>
-
-                <p className="objects-catalog-block-pagination-number__item">
-                    20
-                </p>
+                        <p
+                            className={`objects-catalog-block-pagination-number__item ${
+                                totalPages === page ? "active" : ""
+                            }`}
+                            onClick={() => setCurrentPage(totalPages)}
+                        >
+                            {totalPages}
+                        </p>
+                    </>
+                ) : null}
             </div>
-            <button className="objects-catalog-block-pagination__btn next">
+            <button
+                className={`objects-catalog-block-pagination__btn next ${
+                    page === totalPages ? "disabled" : ""
+                }`}
+                onClick={() => setCurrentPage(page + 1)}
+            >
                 <svg
                     width="9"
                     height="16"

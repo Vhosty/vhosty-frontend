@@ -10,6 +10,9 @@ import {IObjectBlock} from "../../../../models/IObjectBlock";
 
 interface ObjectsCatalogBlockProps extends IObjectBlock {
     blockIndex: string;
+    isLoaded: boolean;
+
+    openObjectsImageBox: () => void;
 }
 
 const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
@@ -26,6 +29,8 @@ const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
     daily_price,
     price,
     overnights_count,
+    isLoaded,
+    openObjectsImageBox,
 }) => {
     const [currentIndexImageCover, setCurrentIndexImageCover] =
         React.useState<number>(0);
@@ -59,7 +64,10 @@ const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
                     </div>
 
                     <div className="objects-catalog-block-cover-plaecholder-icons">
-                        <div className="objects-catalog-block-cover-plaecholder-icons-resize">
+                        <div
+                            className="objects-catalog-block-cover-plaecholder-icons-resize"
+                            onClick={openObjectsImageBox}
+                        >
                             <svg
                                 width="30"
                                 height="30"
@@ -93,7 +101,9 @@ const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
                         {images.map((_, index) => (
                             <div
                                 className={`objects-catalog-block-cover-plaecholder-dots-item ${
-                                    currentIndexImageCover === index ? "active" : ""
+                                    currentIndexImageCover === index
+                                        ? "active"
+                                        : ""
                                 }`}
                                 key={`${blockIndex}-objects-catalog-block-cover-plaecholder-dots-item-${index}`}
                             ></div>

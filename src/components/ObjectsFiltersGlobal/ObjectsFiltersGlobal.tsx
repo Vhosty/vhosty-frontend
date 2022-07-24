@@ -26,7 +26,10 @@ import {
     setObjectsFiltersGlobalIsParse,
 } from "../../redux/actions/objects/objects_filters_global";
 
-import {fetchObjects} from "../../redux/actions/objects/objects";
+import {
+    fetchObjects,
+    setObjectsPage,
+} from "../../redux/actions/objects/objects";
 
 const ObjectsFiltersGlobal: React.FC = () => {
     const dispatch = useDispatch();
@@ -37,6 +40,7 @@ const ObjectsFiltersGlobal: React.FC = () => {
     const {isParse, city, guestRoom, date, flexibleDate} = useTypedSelector(
         ({objects_filters_global}) => objects_filters_global
     );
+    const {page, firstIsLoaded} = useTypedSelector(({objects}) => objects);
 
     const [cityQuery, setCityQuery] = React.useState<string>("");
     const [guestRoomQuery, setGuestRoomQuery] = React.useState<any>(null);
@@ -44,6 +48,8 @@ const ObjectsFiltersGlobal: React.FC = () => {
     const [dateToQuery, setDateToQuery] = React.useState<string>("");
     const [flexibleDateQuery, setFlexibleDateQuery] =
         React.useState<boolean>(false);
+    const [pageQuery, setPageQuery] = React.useState<string>("");
+
     const [isInit, setIsInit] = React.useState<boolean>(false);
 
     React.useEffect(() => {
@@ -54,6 +60,7 @@ const ObjectsFiltersGlobal: React.FC = () => {
         setFlexibleDateQuery(
             String(query.get("flexibleDate")) === "true" ? true : false
         );
+        setPageQuery(String(query.get("page")));
 
         setIsInit(true);
     }, [query]);
@@ -70,6 +77,12 @@ const ObjectsFiltersGlobal: React.FC = () => {
                 dispatch(
                     setObjectsFiltersGlobalDate(dateFromQuery, dateToQuery)
                 );
+
+            if (pageQuery !== "null") {
+                dispatch(setObjectsPage(parseInt(pageQuery)));
+            } else {
+                dispatch(setObjectsPage(1));
+            }
 
             dispatch(setObjectsFiltersGlobalFlexibleDate(flexibleDateQuery));
 
@@ -95,6 +108,8 @@ const ObjectsFiltersGlobal: React.FC = () => {
                     persons_count,
                     children_count,
                     location_id: flexibleDate ? 1 : 0,
+                    page,
+                    isFirst: !firstIsLoaded,
                 }) as any
             );
         }
@@ -105,7 +120,14 @@ const ObjectsFiltersGlobal: React.FC = () => {
         dateFromQuery,
         dateToQuery,
         flexibleDateQuery,
+        pageQuery,
     ]);
+
+    React.useEffect(() => {
+        if (isParse) {
+            sendSearchObjects();
+        }
+    }, [page]);
 
     const onChangeCity = (city: string) => {
         dispatch(setObjectsFiltersGlobalCity(city));
@@ -127,8 +149,8 @@ const ObjectsFiltersGlobal: React.FC = () => {
     const sendSearchObjects = () => {
         if (window.location.pathname === "/objects") {
             scroll.scrollTo(400, {duration: 400});
-		}
-		
+        }
+
         navigate({
             pathname: "/objects",
             search: `?${createSearchParams({
@@ -137,6 +159,7 @@ const ObjectsFiltersGlobal: React.FC = () => {
                 from: date.from,
                 to: date.to,
                 flexibleDate: String(flexibleDate),
+                page: String(page),
             })}`,
         });
     };
