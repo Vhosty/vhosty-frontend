@@ -49,7 +49,6 @@ const ObjectsCatalog: React.FC = () => {
                                     openObjectsImageBox={() =>
                                         openObjectsImageBox(index)
                                     }
-                                    isLoaded={isLoaded}
                                     key={`objects-catalog-block-${object.id}-${index}`}
                                 />
                             ))}

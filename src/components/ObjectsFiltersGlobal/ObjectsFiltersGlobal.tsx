@@ -104,7 +104,7 @@ const ObjectsFiltersGlobal: React.FC = () => {
                 fetchObjects({
                     from: date.from,
                     to: date.to,
-                    city: city,
+                    city,
                     persons_count,
                     children_count,
                     location_id: flexibleDate ? 1 : 0,
@@ -124,7 +124,7 @@ const ObjectsFiltersGlobal: React.FC = () => {
     ]);
 
     React.useEffect(() => {
-        if (isParse) {
+        if (isParse && window.location.pathname === "/objects") {
             sendSearchObjects();
         }
     }, [page]);
@@ -147,21 +147,23 @@ const ObjectsFiltersGlobal: React.FC = () => {
     };
 
     const sendSearchObjects = () => {
-        if (window.location.pathname === "/objects") {
-            scroll.scrollTo(400, {duration: 400});
-        }
+        if (date.from !== "" && date.to !== "" && city !== "") {
+            if (window.location.pathname === "/objects") {
+                scroll.scrollTo(400, {duration: 400});
+            }
 
-        navigate({
-            pathname: "/objects",
-            search: `?${createSearchParams({
-                city,
-                room: JSON.stringify(guestRoom),
-                from: date.from,
-                to: date.to,
-                flexibleDate: String(flexibleDate),
-                page: String(page),
-            })}`,
-        });
+            navigate({
+                pathname: "/objects",
+                search: `?${createSearchParams({
+                    city,
+                    room: JSON.stringify(guestRoom),
+                    from: date.from,
+                    to: date.to,
+                    flexibleDate: String(flexibleDate),
+                    page: String(page),
+                })}`,
+            });
+        }
     };
 
     return (

@@ -10,7 +10,6 @@ import {IObjectBlock} from "../../../../models/IObjectBlock";
 
 interface ObjectsCatalogBlockProps extends IObjectBlock {
     blockIndex: string;
-    isLoaded: boolean;
 
     openObjectsImageBox: () => void;
 }
@@ -25,11 +24,11 @@ const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
     reviews_count,
     room_category_name,
     options,
-    bed_type,
+    bed_type_text,
     daily_price,
     price,
+    stars,
     overnights_count,
-    isLoaded,
     openObjectsImageBox,
 }) => {
     const [currentIndexImageCover, setCurrentIndexImageCover] =
@@ -116,7 +115,7 @@ const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
                 <div className="objects-catalog-block-text-block left">
                     <div className="objects-catalog-block-text-block-subblock">
                         <div className="objects-catalog-block-text-block-subblock-stars">
-                            <Stars count={5} />
+                            <Stars count={stars} />
                         </div>
                         <h3 className="objects-catalog-block-text-block-subblock__title">
                             <Link to="/">{hotel_name}</Link>
@@ -148,8 +147,7 @@ const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
                                 {room_category_name}
                             </p>
                             <p className="objects-catalog-block-text-block-subblock-info-room__subtitle">
-                                {/* 2 двухместные кровати */}
-                                {bed_type}
+                                {bed_type_text}
                             </p>
                         </div>
                     </div>

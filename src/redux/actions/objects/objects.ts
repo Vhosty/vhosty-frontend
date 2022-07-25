@@ -64,6 +64,23 @@ export const fetchObjects = ({ from, to, city, persons_count, children_count, lo
 				type: ObjectsActionTypes.SET_OBJECTS_IS_LOADED,
 				payload: true
 			})
+		}).catch(() => {
+			dispatch({
+				type: ObjectsActionTypes.SET_OBJECTS_ITEMS,
+				payload: []
+			})
+
+			if (isFirst) {
+				dispatch({
+					type: ObjectsActionTypes.SET_OBJECTS_FIRST_IS_LOADED,
+					payload: true
+				})
+			}
+
+			dispatch({
+				type: ObjectsActionTypes.SET_OBJECTS_IS_LOADED,
+				payload: true
+			})
 		})
 	}
 }

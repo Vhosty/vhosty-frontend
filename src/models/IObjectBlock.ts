@@ -18,5 +18,7 @@ export interface IObjectBlock {
 	room_category_name: string,
 	options: IObjectBlockOptions[],
 	bed_type: string,
-	images: string[]
+	bed_type_text: string,
+	images: string[],
+	stars: number,
 }
