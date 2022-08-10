@@ -6,17 +6,21 @@
 
 body
 	font-family: 'Ubuntu', sans-serif
-	font-size: 20px
+	font-size: 18px
 	background-color: #F3F4F5
 	color: $black
 
 	overflow-x: hidden
 
 div
+	&::-webkit-scrollbar-track
+		margin: 15px 0
+
 	&::-webkit-scrollbar
-		width: 3px
+		width: 4px
 		height: 4px
-		background-color: #CFE2E1
+
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0) 5%, #CFE2E1 5%, #CFE2E1 95%, rgba(0, 0, 0, 0) 95%)
 
 	&::-webkit-scrollbar-thumb
 		background-color: $darkMainColor
@@ -26,11 +30,14 @@ div
 		background-color: $darkMainColor
 
 	&::-ms-scrollbar
-		width: 3px
+		width: 4px
 		height: 4px
-		background-color: #CFE2E1
+
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0) 5%, #CFE2E1 5%, #CFE2E1 95%, rgba(0, 0, 0, 0) 95%)
 
 	&::-ms-scrollbar-thumb
+		margin: 25px 0
+
 		background-color: $darkMainColor
 		border-radius: 3px
 
@@ -196,8 +203,8 @@ button
 
 	cursor: pointer
 
-	font-size: 20px
-	color: $mainColor
+	font-size: 18px
+	color: $darkMainColor
 
 	background-color: transparent
 
@@ -206,7 +213,13 @@ button
 	+transition
 
 	&:hover
-		color: $darkMainColor
+		color: $mainColor
+
+	&.gray
+		color: $gray
+
+		&:hover
+			color: $darkGray
 
 // input
 input:-webkit-autofill,
@@ -277,6 +290,11 @@ input:-webkit-autofill:active
 
 			position: absolute
 
+			+transition
+
+			&.disabled
+				color: $gray
+
 		&.small-placeholder &__fixlabel
 			font-size: 15px
 
@@ -307,6 +325,29 @@ input:-webkit-autofill:active
 		color: $red
 
 		+openPopup
+
+// textarea
+.textarea
+	width: 100%
+	min-height: 200px
+
+	resize: none
+	outline: none
+
+	font-size: 20px
+	color: $black
+
+	border-radius: 25px
+	padding: 18px 25px
+
+	background-color: transparent
+	border: 2px solid $lightGray
+
+	+transition
+
+	&::placeholder
+		user-select: none
+		color: $lightGray
 
 // input-range
 .input-range
@@ -482,6 +523,7 @@ input:-webkit-autofill:active
 		height: 60px
 
 	&.active
+		z-index: 10
 		+boxShadow
 
 	&.border
@@ -491,7 +533,7 @@ input:-webkit-autofill:active
 			box-shadow: none
 
 	&.small
-		padding: 10px 25px
+		padding: 7px 15px 7px 25px
 
 	&-wrapper
 		cursor: pointer
@@ -500,6 +542,19 @@ input:-webkit-autofill:active
 		min-height: 60px
 
 		position: relative
+
+		+transition
+
+		&.small
+			min-height: 52px
+
+		&.disabled
+			cursor: default
+
+			pointer-events: none
+			user-select: none
+
+			opacity: .5
 
 	&-title
 		display: flex
@@ -511,6 +566,11 @@ input:-webkit-autofill:active
 		&__title
 			user-select: none
 
+			overflow: hidden
+			display: -webkit-box
+			-webkit-line-clamp: 1
+			-webkit-box-orient: vertical
+
 		&-icon
 			+transition
 
@@ -518,11 +578,20 @@ input:-webkit-autofill:active
 				transform: rotate(180deg)
 
 	&-list
+		margin-top: 15px
+		padding-right: 15px
+
+		max-height: 250px
+		overflow: auto
+
 		&__item
-			margin-top: 20px
+			margin-top: 15px
 			user-select: none
 
 			+transition
+
+			&:first-child
+				margin-top: 0
 
 			&.active
 				color: $mainColor
@@ -875,3 +944,76 @@ input:-webkit-autofill:active
 		background-color: $lightMainColor
 		border-radius: 50%
 		animation: ballPulse 1s ease-in-out infinite
+
+// radio
+.radio
+	position: relative
+	font-size: 18px
+
+	&.small > label
+		font-size: 15px
+
+	& > input[type=radio]
+		position: absolute
+		z-index: -1
+		opacity: 0
+
+	& > label
+		position: relative
+
+		display: inline-flex
+		align-items: center
+
+		cursor: pointer
+		user-select: none
+
+		&::before
+			content: ""
+			display: inline-block
+
+			margin-right: 10px
+
+			width: 30px
+			height: 30px
+
+			border: 1px solid $lightGray
+
+			border-radius: 10px
+
+			+transition
+
+		&::after
+			content: ""
+			display: block
+
+			width: 16px
+			height: 16px
+
+			background-color: transparent
+
+			position: absolute
+
+			top: 8px
+			left: 8px
+
+			border-radius: 5px
+
+			+transition
+
+	& > input:checked+label::before
+		border: 1px solid $mainColor
+
+	& > input:checked+label::after
+		background-color: $mainColor
+
+// time
+.time
+	display: flex
+	justify-content: space-between
+	align-items: center
+
+	&-hourses
+		width: calc( 50% - 10px )
+
+	&-minutes
+		width: calc( 50% - 10px )
