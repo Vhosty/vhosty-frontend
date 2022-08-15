@@ -36,3 +36,7 @@ export const sendRepeatUserConfirmedEmail = (email: string) => {
 		$api.post("/users/verification/resend-email", { email })
 	}
 }
+
+export const fetchUserFavorites = () => {
+	
+}

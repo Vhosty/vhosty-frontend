@@ -31,7 +31,7 @@ const HeaderTransparent: React.FC<HeaderTransparentProps> = ({bgImage}) => {
                     <Link to="/" className="header-transparent-block-logo">
                         <img
                             src={LogoWhite}
-                            alt="Vhosty"
+                            alt="Bookover"
                             className="header-transparent-block-logo__image"
                         />
                     </Link>

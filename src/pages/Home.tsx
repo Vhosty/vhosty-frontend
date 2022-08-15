@@ -13,14 +13,14 @@ const Home: React.FC = () => {
     return (
         <>
             <Helmet>
-                <title>Vhosty | Главная</title>
+                <title>Bookover | Главная</title>
             </Helmet>
 
             <HomeMain />
 
             <HomeServices />
 
-            <HomeSecurity />
+            <HomeSecurity /> 
 
             <HomeCorporate />
 

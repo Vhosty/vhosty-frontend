@@ -20,7 +20,7 @@ const ObjectPage: React.FC = () => {
         <>
             <Helmet>
                 <title>
-                    Vhosty | Auster Avani Palm View Dubai Hotel & Suites
+                    Bookover | Auster Avani Palm View Dubai Hotel & Suites
                 </title>
             </Helmet>
 

@@ -23,7 +23,7 @@ const HeaderTransparentUser: React.FC = () => {
         <>
             {isLoadedUser ? (
                 <div className="header-transparent-block-user">
-                    <HeaderTransparentUserNotifications />
+                    {/* <HeaderTransparentUserNotifications /> */}
 
                     <button
                         className="header-transparent-block-user__btn"
@@ -31,6 +31,8 @@ const HeaderTransparentUser: React.FC = () => {
                     >
                         Личный кабинет
                     </button>
+
+                    <button className="header-transparent-block-user__btn-mobile"></button>
 
                     <Popup
                         wrapperActive={activeHeaderModal}
@@ -42,11 +44,13 @@ const HeaderTransparentUser: React.FC = () => {
                 </div>
             ) : (
                 <Link to="#login" className="header-transparent-block-user">
-                    <HeaderTransparentUserNotifications />
+                    {/* <HeaderTransparentUserNotifications /> */}
 
                     <button className="header-transparent-block-user__btn">
                         Личный кабинет
                     </button>
+
+                    <button className="header-transparent-block-user__btn-mobile"></button>
                 </Link>
             )}
         </>

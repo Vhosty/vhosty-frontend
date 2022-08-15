@@ -29,7 +29,7 @@ const Objects: React.FC = () => {
     return (
         <>
             <Helmet>
-                <title>Vhosty | Найти отель</title>
+                <title>Bookover | Найти отель</title>
             </Helmet>
 
             <section className="objects">

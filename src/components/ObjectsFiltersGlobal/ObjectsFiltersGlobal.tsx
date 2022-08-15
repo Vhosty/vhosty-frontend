@@ -184,8 +184,15 @@ const ObjectsFiltersGlobal: React.FC = () => {
                             />
                         </svg>
                     </TitleIcon>
-                </div>
 
+                    <Input
+                        label="Например, Дубай"
+                        small
+                        type="text"
+                        value={city}
+                        onChange={onChangeCity}
+                    />
+                </div>
                 <div className="filters-object-form-block middle">
                     <TitleIcon title="Дата" marginBottom>
                         <svg
@@ -201,30 +208,13 @@ const ObjectsFiltersGlobal: React.FC = () => {
                             />
                         </svg>
                     </TitleIcon>
-                </div>
 
-                <div className="filters-object-form-block right"></div>
-            </div>
-
-            <div className="filters-object-form-block-row">
-                <div className="filters-object-form-block left filters-object-form-block-input">
-                    <Input
-                        label="Например, Дубай"
-                        small
-                        type="text"
-                        value={city}
-                        onChange={onChangeCity}
-                    />
-                </div>
-
-                <div className="filters-object-form-block middle filters-object-form-block-calendar">
                     <Calendar
                         onChange={onChangeCalendary}
                         initialState={{from: date.from, to: date.to}}
                     />
                 </div>
-
-                <div className="filters-object-form-block right filters-object-form-block-btn">
+                <div className="filters-object-form-block right">
                     <button
                         className="btn small filters-object-form-block__btn"
                         onClick={sendSearchObjects}
@@ -234,7 +224,7 @@ const ObjectsFiltersGlobal: React.FC = () => {
                 </div>
             </div>
 
-            <div className="filters-object-form-block-row">
+            <div className="filters-object-form-block-row mt">
                 <div className="filters-object-form-block left filters-object-form-block-guest-room">
                     <ObjectsFiltersGlobalGuestRoom />
                 </div>
@@ -250,6 +240,15 @@ const ObjectsFiltersGlobal: React.FC = () => {
                 </div>
 
                 <div className="filters-object-form-block right"></div>
+            </div>
+
+            <div className="filters-object-form-block-btn-media-wrapper">
+                <button
+                    className="btn small filters-object-form-block-btn-media__btn"
+                    onClick={sendSearchObjects}
+                >
+                    Искать
+                </button>
             </div>
         </div>
     );

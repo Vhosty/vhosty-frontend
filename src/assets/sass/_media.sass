@@ -1,0 +1,242 @@
+// media
+@media screen and ( max-width: 1200px )
+	// interface
+	.checkbox
+		&-message
+			&__text
+				bottom: 35px
+				right: 0
+				left: auto
+
+	// header-transparent
+	.header-transparent
+		&-block
+			&-user
+				&-notifications
+					margin-top: 10px
+					margin-right: 25px
+
+				&__btn
+					display: none
+
+				&__btn-mobile
+					display: block
+
+	// home
+	.home
+		&-corporate
+			&-content
+				&__image
+					width: 600px
+
+	// filters-object-form
+	.filters-object-form
+		&-block
+			&.left, &.middle
+				width: 49%
+
+			&.right
+				display: none
+
+			&-btn-media-wrapper
+				display: flex
+
+@media screen and ( max-width: 1000px )
+	// interface
+	.btn-light
+		padding: 15px 35px
+		font-size: 20px
+
+	// header-transparent
+	.header-transparent
+		&-bg
+			height: 600px
+
+		&-block
+			&-search, &__pass
+				display: none
+
+		&__link
+			display: none
+
+	// home
+	.home
+		&-corporate
+			&-content
+				align-items: flex-end
+
+				&__image
+					width: 60%
+
+					margin-left: 0
+
+					bottom: 25px
+					left: -100px
+
+					position: absolute
+
+				&-text
+					margin-left: auto
+					width: 60%
+
+					&-btn
+						display: none
+
+			&-btn-media
+				margin-top: 150px
+				display: flex
+
+	// footer
+	.footer
+		&-block
+			&-content
+				width: 20%
+
+			&-menu
+				width: 70%
+
+@media screen and ( max-width: 800px )
+	// interface
+	.checkbox
+		&-message
+			&__text
+				width: 300px
+
+				right: -50px
+				bottom: 35px
+
+	// filters-object-form
+	.filters-object-form
+		padding: 35px
+
+		&-block
+			margin-top: 25px
+
+			&:first-child
+				margin-top: 0
+
+			&-row
+				flex-direction: column
+				align-items: flex-start
+
+			&.left, &.middle, &.right
+				width: 100%
+
+			&-btn-media
+				&__btn
+					width: 100%
+
+	// home
+	.home
+		&-corporate
+			&-bg-image
+				bottom: -100px
+				right: -75px
+
+				top: auto
+
+			&-content
+				flex-direction: column
+				align-items: flex-start
+
+				&__image
+					width: 500px
+
+					position: static
+					margin-bottom: 50px
+
+				&-text
+					width: 100%
+
+			&-btn-media
+				margin-top: 50px
+				justify-content: flex-start
+
+	// footer
+	.footer
+		&-block-wrapper
+			flex-direction: column
+
+		&-block
+			&-content
+				width: 100%
+
+			&-menu
+				margin-top: 50px
+				width: 100%
+
+			&__link
+				margin-top: 15px
+
+@media screen and ( max-width: 650px  )
+	// home
+	.home
+		&-corporate
+			&-bg-image
+				display: none
+
+			&-btn-media
+				&__btn
+					width: 100%
+
+@media screen and ( max-width: 600px  )
+	// home
+	.home
+		// corporate
+		&-corporate
+			&-content
+				&__image
+					width: 100%
+
+	// footer
+	.footer
+		&-block-wrapper
+			text-align: center
+			align-items: center
+
+		&-block
+			&-menu
+				flex-direction: column
+
+				&-item
+					margin-bottom: 50px
+
+					&:last-child
+						margin-bottom: 0
+
+@media screen and ( max-width: 500px )
+	// interface
+	.btn
+		padding: 20px
+		font-size: 17px
+
+	.btn-light
+		font-size: 15px
+
+	// header-transparent
+	.header-transparent
+		padding: 25px 0 50px 0
+
+		&-bg
+			background-position: center right
+
+	// reglog
+	.reglog
+		&-content
+			&-padding
+				padding: 25px
+
+			&-padding-top
+				padding: 25px 25px 0 25px
+
+			&-padding-bottom
+				padding: 0 25px 25px 25px
+
+@media screen and ( max-width: 400px )
+	// interface
+	.checkbox
+		&-message
+			&__text
+				width: 250px
+
+				right: -20px

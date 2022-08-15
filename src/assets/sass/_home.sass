@@ -157,38 +157,49 @@
 						width: 150px
 						height: 100px
 
+	// corporate
 	&-corporate
-		margin: 200px 0 125px 0
+		padding: 200px 0 125px 0
+		overflow: hidden
 
 		&-wrapper
 			position: relative
 
-			display: flex
-			justify-content: space-between
-
 		&-bg-image
-			right: -150px
-			top: -200px
+			right: -125px
+			top: -250px
 
 			position: absolute
 
 			+disabledImage
 
-		&__image
-			margin-left: -150px
+			&__image
+				width: 100%
 
-			+disabledImage
+		&-content
+			display: flex
+			justify-content: space-between
+			align-items: flex-start
 
-		&-text
-			&__title
-				font-size: 32px
-				margin-bottom: 25px
+			&__image
+				margin-left: -150px
 
-			&-btn
-				display: flex
-				justify-content: flex-end
+				+disabledImage
 
-				margin-top: 75px
+			&-text
+				&__title
+					font-size: 28px
+					margin-bottom: 25px
+
+				&-btn
+					display: flex
+					justify-content: flex-end
+
+					margin-top: 75px
+
+		&-btn-media
+			display: none
+			justify-content: center
 
 	// email
 	&-email

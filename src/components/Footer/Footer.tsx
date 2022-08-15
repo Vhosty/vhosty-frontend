@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
                             <Link to="/" className="footer-block-logo">
                                 <img
                                     src={LogoBlack}
-                                    alt="Vhosty"
+                                    alt="Bookover"
                                     className="footer-block-logo__image"
                                 />
                                 <span className="footer-block-logo__subtitle">

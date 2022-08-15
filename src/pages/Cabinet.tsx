@@ -38,7 +38,7 @@ const Cabinet: React.FC = () => {
     return (
         <>
             <Helmet>
-                <title>Vhosty | {title}</title>
+                <title>Bookover | {title}</title>
             </Helmet>
 
             <section className="cabinet">

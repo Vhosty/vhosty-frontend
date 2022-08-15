@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 import {HeaderModal, HeaderPassLink, HeaderUser} from "../";
 
-import LogoColor from "../../assets/images/logo-color.svg";
+import LogoColor from "../../assets/images/logo-black.svg";
 
 const Header: React.FC = () => {
     const headerContentRef = React.useRef<HTMLDivElement>(null);
@@ -32,7 +32,7 @@ const Header: React.FC = () => {
                             <Link to="/" className="header-block-logo">
                                 <img
                                     src={LogoColor}
-                                    alt="Vhosty"
+                                    alt="Bookover"
                                     className="header-block-logo__image"
                                 />
                             </Link>

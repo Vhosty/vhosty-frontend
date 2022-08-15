@@ -19,7 +19,7 @@ const Payment: React.FC = () => {
     return (
         <>
             <Helmet>
-                <title>Vhosty | Оформление заказа</title>
+                <title>Bookover | Оформление заказа</title>
             </Helmet>
 
             <section className="payment">
