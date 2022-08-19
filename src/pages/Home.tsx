@@ -18,13 +18,13 @@ const Home: React.FC = () => {
 
             <HomeMain />
 
-            <HomeServices />
+            {/* <HomeServices /> */}
 
-            <HomeSecurity /> 
+            {/* <HomeSecurity />  */}
 
-            <HomeCorporate />
+            {/* <HomeCorporate /> */}
 
-            <HomeEmail />
+            {/* <HomeEmail /> */}
         </>
     );
 };

@@ -45,7 +45,8 @@ const ObjectPageCover: React.FC = () => {
                                         3 485 отзывов
                                     </p>
                                 </div>
-                            </div>
+							</div>
+							
                             <div className="object-page-cover-btn">
                                 <div className="object-page-cover-btn-navigate">
                                     <Link
