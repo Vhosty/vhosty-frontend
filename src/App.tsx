@@ -69,7 +69,10 @@ const App = () => {
                     <Route path="/objects" element={<Objects />} />
                     <Route path="/objects/:id" element={<ObjectPage />} />
 
-                    <Route path="/payment" element={<Payment />} />
+                    <Route
+                        path="/payment/:id/:categoryId"
+                        element={<Payment />}
+                    />
 
                     <Route
                         path="/confirmed/:hash"

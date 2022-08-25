@@ -51,7 +51,8 @@ const ObjectsCatalog: React.FC = () => {
                                     }
                                     key={`objects-catalog-block-${object.id}-${index}`}
                                 />
-                            ))}
+							))}
+							
                             <ObjectsCatalogPagination />
                         </>
                     ) : (

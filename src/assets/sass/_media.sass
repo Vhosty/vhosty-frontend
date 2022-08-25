@@ -24,6 +24,29 @@
 
 	// home
 	.home
+		// security
+		&-security
+			&-items-wrapper
+				flex-direction: column
+
+			&-item
+				width: 100%
+				margin-bottom: 50px
+
+				&:last-child
+					margin-bottom: 0
+
+			&-bottom-block
+				flex-direction: column
+
+				&-payments
+					width: 80%
+					margin-bottom: 35px
+
+				&-feedbacks
+					width: 80%
+
+		// corporate
 		&-corporate
 			&-content
 				&__image
@@ -104,6 +127,49 @@
 
 				right: -50px
 				bottom: 35px
+
+	// home
+	.home
+		// services
+		&-services-wrapper
+			height: 400px
+
+		&-services
+			&-item
+				padding: 30px 20px
+
+				width: 90%
+				min-width: 90%
+
+				height: 350px
+
+				&-text
+					&__title
+						font-size: 21px
+
+					&__description
+						font-size: 15px
+
+				&__image
+					width: 250px
+
+		// corporate
+		&-corporate
+			padding: 50px 0
+
+		// security
+		&-security-wrapper
+			padding: 25px
+
+		&-security
+			&-bottom-block
+				flex-direction: column
+
+				&-payments, &-feedbacks
+					width: 100%
+
+					&__description
+						max-width: 100%
 
 	// filters-object-form
 	.filters-object-form

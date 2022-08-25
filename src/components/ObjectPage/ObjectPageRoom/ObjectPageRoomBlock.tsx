@@ -1,9 +1,10 @@
 import React from "react";
 import AnimateHeight from "react-animate-height";
+import {Link} from "react-router-dom";
 
 import {ServiceIcon, ObjectPageRoomBlockAdd} from "../../";
 
-const ObjectPageRoomBlock: React.FC = () => {
+const ObjectPageRoomBlock: React.FC<any> = ({isLogin}) => {
     const [isVisibleAddBlock, setIsVisibleAddBlock] =
         React.useState<boolean>(false);
 
@@ -140,9 +141,12 @@ const ObjectPageRoomBlock: React.FC = () => {
                     </div>
 
                     <div className="object-page-section-room-block-subblock-price-block">
-                        <button className="btn border object-page-section-room-block-subblock-price-block__btn">
+                        <Link
+                            to={isLogin ? `/payment/24/1` : `#login`}
+                            className="btn border object-page-section-room-block-subblock-price-block__btn"
+                        >
                             Забронировать номер
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

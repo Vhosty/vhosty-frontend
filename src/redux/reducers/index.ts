@@ -5,6 +5,7 @@ import reglog from "../reducers/reglog";
 import register from "../reducers/register";
 import login from "../reducers/login";
 import recovery_password from "../reducers/recovery_password";
+import object_page from "../reducers/object_page";
 
 // user
 import user from "../reducers/user/user";
@@ -19,6 +20,7 @@ export const rootReducer = combineReducers({
 	register,
 	login,
 	recovery_password,
+	object_page,
 	user, userCabinetSetting,
 	objects, objects_filters_global,
 	form: formReducer,

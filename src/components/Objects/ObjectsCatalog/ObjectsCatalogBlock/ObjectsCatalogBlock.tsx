@@ -34,10 +34,6 @@ const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
     const [currentIndexImageCover, setCurrentIndexImageCover] =
         React.useState<number>(0);
 
-    const center_distance = options.filter(
-        (item) => item.type === "center_distance"
-    )[0].value;
-
     return (
         <div className="objects-catalog-block">
             <div className="objects-catalog-block-cover-wrapper">
@@ -137,7 +133,12 @@ const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
                                 </svg>
                             </p>
                             <p className="objects-catalog-block-text-block-subblock-location__subtitle">
-                                {center_distance} км от центра
+                                {options.length &&
+                                    options.filter(
+                                        (item) =>
+                                            item.type === "center_distance"
+                                    )[0].value}{" "}
+                                км от центра
                             </p>
                         </div>
                     </div>

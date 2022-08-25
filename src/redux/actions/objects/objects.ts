@@ -8,14 +8,15 @@ interface FetchObjectsFilters {
 	from: string,
 	to: string,
 	city: string,
+	room_count: number,
 	persons_count: number,
 	children_count: number,
-	location_id: 1 | 0,
+	soft_dates: boolean,
 	page: number,
 	isFirst: boolean
 }
 
-export const fetchObjects = ({ from, to, city, persons_count, children_count, location_id, page, isFirst }: FetchObjectsFilters) => {
+export const fetchObjects = ({ from, to, city, room_count, persons_count, children_count, soft_dates, page, isFirst }: FetchObjectsFilters) => {
 	return async (dispatch: Dispatch<ObjectsActions>) => {
 		if (isFirst) {
 			dispatch({
@@ -33,14 +34,15 @@ export const fetchObjects = ({ from, to, city, persons_count, children_count, lo
 			params: {
 				checkin_date: from,
 				checkout_date: to,
-				city_name: city,
-				persons_count,
+				location_name: city,
+				room_count,
+				adults: persons_count,
 				children_count,
-				location_id,
+				soft_dates,
 				page
 			}
 		}).then(({ data }) => {
-			const result: IObjectBlock[] = data.result
+			const result: IObjectBlock[] = data.results
 			const totalCount: number = data.count
 
 			dispatch({

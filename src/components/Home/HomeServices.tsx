@@ -14,7 +14,11 @@ const HomeServices: React.FC = () => {
     const panelsContainer = React.useRef<any>();
 
     React.useLayoutEffect(() => {
-        if (panels.current && panelsContainer.current) {
+        if (
+            panels.current &&
+            panelsContainer.current &&
+            window.innerWidth > 800
+        ) {
             const totalPanels = panels.current.length;
             const width: number = panelsContainer.current.offsetWidth;
 

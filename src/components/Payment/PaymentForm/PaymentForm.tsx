@@ -95,10 +95,6 @@ const PaymentForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
                             component={RenderSelect}
                             choices={[
                                 {title: "Российская Федерация", key: "russia"},
-                                {
-                                    title: "Российская Федерация1",
-                                    key: "russia1",
-                                },
                             ]}
                             border
                             title="Гражданство"

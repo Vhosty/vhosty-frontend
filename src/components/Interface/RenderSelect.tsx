@@ -40,6 +40,11 @@ const RenderSelect: React.FC<RenderSelectProps> = ({
         };
     }, [SelectRef]);
 
+    React.useEffect(() => {
+        dispatch(change(form, input.name, choices[0].key));
+        setCurrentIndex(0);
+    }, []);
+
     const toggleSelect = (e: any) => {
         if (SelectRef.current && !SelectRef.current.contains(e.target)) {
             setIsOpen(false);

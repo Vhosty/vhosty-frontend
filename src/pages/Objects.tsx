@@ -18,9 +18,8 @@ import ObjectsBg from "../assets/images/objects-bg.jpg";
 const Objects: React.FC = () => {
     const dispatch = useDispatch();
 
-    const {isOpenImageBox, items, currentIndexBlockImageBox} = useTypedSelector(
-        ({objects}) => objects
-    );
+    const {isOpenImageBox, items, currentIndexBlockImageBox, isLoaded} =
+        useTypedSelector(({objects}) => objects);
 
     const openObjectsImageBox = (status: boolean) => {
         dispatch(setObjectsIsOpenImageBox(status) as any);

@@ -6,12 +6,12 @@ interface IObjectBlockOptions {
 }
 
 export interface IObjectBlock {
-	id: number,
+	id: string,
 	hotel_name: string,
 	short_address: string,
 	rating: number,
 	rating_text: string,
-	reviews_count: number
+	reviews_count: number,
 	daily_price: number,
 	price: number,
 	overnights_count: number,
@@ -20,5 +20,5 @@ export interface IObjectBlock {
 	bed_type: string,
 	bed_type_text: string,
 	images: string[],
-	stars: number,
+	stars: number
 }

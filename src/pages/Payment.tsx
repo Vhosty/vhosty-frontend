@@ -1,5 +1,8 @@
 import React from "react";
+import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
+
+import {useParams} from "react-router-dom";
 
 import {
     PaymentProgressbar,
@@ -11,8 +14,45 @@ import {
     ServiceIcon,
 } from "../components/";
 
+import {fetchObjectPageItemById} from "../redux/actions/object_page";
+import {sendBooking} from "../redux/actions/booking";
+
+import {useTypedSelector} from "../hooks/useTypedSelector";
+
 const Payment: React.FC = () => {
+    const {id, categoryId} = useParams();
+
+    const {user} = useTypedSelector(({user}) => user);
+    const {itemById, isLoaded} = useTypedSelector(
+        ({object_page}) => object_page
+    );
+
+    const dispatch = useDispatch();
+
+    React.useEffect(() => {
+        dispatch(fetchObjectPageItemById(id ? id : "") as any);
+    }, [id]);
+
     const onSubmit = (data: any) => {
+        dispatch(
+            sendBooking(
+                {
+                    email: data.email,
+                    first_name: data.name,
+                    last_name: data.surname,
+                    residency: data.country,
+                    checkin_date: "2022-08-24",
+                    checkout_date: "2022-08-24",
+                    room_count: 1,
+                    comment: data.message,
+                    phone: data.phone,
+                    adults: 1,
+                    children: 0,
+                },
+                categoryId ? categoryId : ""
+            ) as any
+        );
+
         console.log(data);
     };
 
@@ -30,12 +70,11 @@ const Payment: React.FC = () => {
                             <div className="payment-title-room">
                                 <div className="payment-title-room-text">
                                     <div className="payment-title-room-text-stars">
-                                        <Stars count={5} />
+                                        <Stars count={itemById.stars} />
                                     </div>
 
                                     <h2 className="payment-title-room-text__title">
-                                        Auster Avani Palm View Dubai Hotel &
-                                        Suites
+                                        {itemById.name}
                                     </h2>
 
                                     <Location

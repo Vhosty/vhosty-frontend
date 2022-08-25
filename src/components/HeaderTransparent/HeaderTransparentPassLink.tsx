@@ -3,7 +3,10 @@ import React from "react";
 const HeaderTransparentPassLink: React.FC = () => {
     return (
         <div className="header-transparent-block">
-            <a href="#" className="header-transparent-block__pass">
+            <a
+                href="https://join.bookover.ru"
+                className="header-transparent-block__pass"
+            >
                 <svg
                     width="20"
                     height="20"

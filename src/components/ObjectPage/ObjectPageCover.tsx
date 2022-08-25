@@ -3,14 +3,13 @@ import {Link, animateScroll as scroll} from "react-scroll";
 
 import {Stars, Location} from "../";
 
-const ObjectPageCover: React.FC = () => {
+const ObjectPageCover: React.FC<any> = ({images, name, stars}) => {
     return (
         <>
             <div
                 className="object-page-cover"
                 style={{
-                    backgroundImage:
-                        "url('https://images.unsplash.com/photo-1562438668-bcf0ca6578f0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1460&q=80')",
+                    backgroundImage: `url('${images[0].url}')`,
                 }}
             >
                 <div className="object-page-cover-plaecholder"></div>
@@ -21,11 +20,10 @@ const ObjectPageCover: React.FC = () => {
                             <div className="object-page-cover-text">
                                 <div className="object-page-cover-text-info">
                                     <div className="object-page-cover-text-info-stars">
-                                        <Stars count={5} />
+                                        <Stars count={stars} />
                                     </div>
                                     <h2 className="object-page-cover-text-info__title">
-                                        Auster Avani Palm View Dubai Hotel &
-                                        Suites
+                                        {name}
                                     </h2>
 
                                     <Location
@@ -45,8 +43,8 @@ const ObjectPageCover: React.FC = () => {
                                         3 485 отзывов
                                     </p>
                                 </div>
-							</div>
-							
+                            </div>
+
                             <div className="object-page-cover-btn">
                                 <div className="object-page-cover-btn-navigate">
                                     <Link
