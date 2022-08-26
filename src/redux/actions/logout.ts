@@ -1,9 +1,12 @@
 import $api from "../../http/index";
 
 export const sendLogout = () => {
-	$api.post("/users/revoke").then(() => {
-		localStorage.removeItem("accessToken");
+	// $api.post("/users/revoke").then(() => {
+	// 	localStorage.removeItem("accessToken");
 
-		window.location.href = "/";
-	});
+	// 	window.location.href = "/";
+	// });
+
+	localStorage.removeItem("accessToken");
+	window.location.href = "/";
 }

@@ -1,12 +1,16 @@
 import { User } from '../../models/IUser';
 
 export interface UserState {
-	isLoadedUser: boolean
-	user: User
+	user: User,
+	isLoadedUser: boolean,
+
+	bookings: any
+	isLoadedBookings: boolean
 }
 
 export enum UserActionTypes {
-	SET_USER = "SET_USER"
+	SET_USER = "SET_USER",
+	SET_USER_BOOKINGS = "SET_USER_BOOKINGS",
 }
 
 interface setUser {
@@ -14,4 +18,9 @@ interface setUser {
 	payload: User
 }
 
-export type UserActions = setUser
+interface setUserBookings {
+	type: UserActionTypes.SET_USER_BOOKINGS
+	payload: any
+}
+
+export type UserActions = setUser | setUserBookings

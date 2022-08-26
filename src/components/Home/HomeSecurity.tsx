@@ -140,7 +140,7 @@ const HomeSecurity: React.FC = () => {
 
                         <div className="home-security-bottom-block-feedbacks">
                             <p className="home-security-bottom-block-feedbacks__description">
-                                Отзывы о нашем сервисе VHOSTY на
+                                Отзывы о нашем сервисе BOOKOVER на
                                 сервисах-отзовиках:
                             </p>
 

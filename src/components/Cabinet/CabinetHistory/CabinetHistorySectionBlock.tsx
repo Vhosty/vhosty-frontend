@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 import {ServiceIcon} from "../../";
 
@@ -6,41 +7,49 @@ interface CabinetHistorySectionBlockProps {
     status: "processing" | "success" | "cancel";
 }
 
-const CabinetHistorySectionBlock: React.FC<CabinetHistorySectionBlockProps> = ({
+const CabinetHistorySectionBlock: React.FC<any> = ({
     status,
+    hotel_name,
+    bed,
+    adults,
+    checkin_date,
+    checkout_date,
+    status_text,
+    images,
 }) => {
     return (
         <div className="cabinet-content-history-section-block">
             <div
                 className="cabinet-content-history-section-block-cover"
                 style={{
-                    backgroundImage:
-                        "url('https://images.unsplash.com/photo-1562438668-bcf0ca6578f0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1460&q=80')",
+                    backgroundImage: `url('${images[0].url}')`,
                 }}
             >
                 <p
-                    className={`cabinet-content-history-section-block-cover__status ${status}`}
+                    className={`cabinet-content-history-section-block-cover__status processing`}
                 >
-                    В процессе
+                    {status_text}
                 </p>
                 <p className="cabinet-content-history-section-block-cover__count">
-                    30 фото
+                    {images.length} фото
                 </p>
             </div>
             <div className="cabinet-content-history-section-block-text">
                 <h4 className="cabinet-content-history-section-block-text__title">
-                    Двухместный номер полулюкс
+                    {hotel_name}
                 </h4>
                 <p className="cabinet-content-history-section-block-text__subtitle">
-                    1 Двуспальная кровать, 2 гостя
+                    {bed.bed_type_text}, {adults} гостя
                 </p>
 
                 <p className="cabinet-content-history-section-block-text__date">
-                    15 августа 2022 - 22 августа 2022
+                    {moment(checkin_date, "YYYY-MM-DD").format("DD MMMM YYYY")}{" "}
+                    -{" "}
+                    {moment(checkout_date, "YYYY-MM-DD").format("DD MMMM YYYY")}
                 </p>
 
                 <div className="cabinet-content-history-section-block-text-services">
-                    <ServiceIcon
+                    {/* <ServiceIcon
                         green
                         marginBottom
                         questionMessage="Вы сможете совершенно бесплатно отменить бронь до указанного числа."
@@ -57,7 +66,7 @@ const CabinetHistorySectionBlock: React.FC<CabinetHistorySectionBlockProps> = ({
                             />
                         </svg>
                         Бесплатная отмена до 13 августа
-                    </ServiceIcon>
+                    </ServiceIcon> */}
                     <ServiceIcon disabled marginBottom>
                         <svg
                             viewBox="0 0 13 15"

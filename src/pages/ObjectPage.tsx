@@ -2,7 +2,7 @@ import React from "react";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
 
-import {useParams} from "react-router-dom";
+import {useParams, useSearchParams} from "react-router-dom";
 
 import {
     ObjectPageCover,
@@ -18,26 +18,48 @@ import {
     ObjectPageFaq,
 } from "../components/";
 
-import {fetchObjectPageItemById} from "../redux/actions/object_page";
+import {
+    fetchObjectPageItemById,
+    fetchObjectPageItemByIdRooms,
+    fetchObjectPageItemByIdServices,
+    fetchObjectPageItemByIdTerms,
+} from "../redux/actions/object_page";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
 const ObjectPage: React.FC = () => {
     const {id} = useParams();
 
-    const {itemById, isLoaded} = useTypedSelector(
-        ({object_page}) => object_page
-    );
+    const [query] = useSearchParams();
+
+    const {
+        itemById,
+        isLoaded,
+        itemByIdRooms,
+        isLoadedRooms,
+        itemByIdServices,
+        isLoadedServices,
+        itemByIdTerms,
+        isLoadedTerms,
+    } = useTypedSelector(({object_page}) => object_page);
 
     const dispatch = useDispatch();
 
     React.useEffect(() => {
+        const date: any = {
+            checkin_date: query.get("from"),
+            checkout_date: query.get("to"),
+        };
+
         dispatch(fetchObjectPageItemById(id ? id : "") as any);
+        dispatch(fetchObjectPageItemByIdRooms(id ? id : "", date) as any);
+        dispatch(fetchObjectPageItemByIdServices(id ? id : "") as any);
+        dispatch(fetchObjectPageItemByIdTerms(id ? id : "") as any);
     }, [id]);
 
     return (
         <>
-            {isLoaded ? (
+            {isLoaded && isLoadedRooms && isLoadedServices && isLoadedTerms ? (
                 <>
                     <Helmet>
                         <title>Bookover | {itemById.name}</title>
@@ -50,23 +72,25 @@ const ObjectPage: React.FC = () => {
                     <section className="object-page">
                         <div className="container">
                             <div className="object-page-wrapper">
-                                <ObjectPageSliderImages />
+                                <ObjectPageSliderImages {...itemById} />
 
-                                <ObjectPageAbout />
+                                <ObjectPageAbout {...itemById} />
 
-                                <PrimeSectionBlock />
+                                {/* <PrimeSectionBlock /> */}
 
-                                <ObjectPageRoom />
+                                <ObjectPageRoom rooms={itemByIdRooms} />
 
-                                <ObjectPageMaps />
+                                {/* <ObjectPageMaps /> */}
 
-                                <ObjectPageFeedbacks />
+                                {/* <ObjectPageFeedbacks /> */}
 
-                                <ObjectPageServices />
+                                <ObjectPageServices
+                                    services={itemByIdServices}
+                                />
 
-                                <ObjectPageTerms />
+                                <ObjectPageTerms {...itemByIdTerms} />
 
-                                <ObjectPageFaq />
+                                {/* <ObjectPageFaq /> */}
                             </div>
                         </div>
                     </section>

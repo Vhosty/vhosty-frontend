@@ -105,7 +105,7 @@ const ObjectsFiltersGlobal: React.FC = () => {
                     from: date.from,
                     to: date.to,
                     city,
-                    room_count: 2,
+                    room_count: guestRoom.length,
                     persons_count,
                     children_count,
                     soft_dates: flexibleDate,

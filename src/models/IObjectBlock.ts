@@ -6,6 +6,7 @@ interface IObjectBlockOptions {
 }
 
 export interface IObjectBlock {
+	hotel_id: number,
 	id: string,
 	hotel_name: string,
 	short_address: string,

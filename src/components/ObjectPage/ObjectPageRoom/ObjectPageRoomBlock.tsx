@@ -1,12 +1,29 @@
 import React from "react";
 import AnimateHeight from "react-animate-height";
 import {Link} from "react-router-dom";
+import NumberFormat from "react-number-format";
+
+import {checkDeclension} from "../../../functions/checkDeclension";
 
 import {ServiceIcon, ObjectPageRoomBlockAdd} from "../../";
 
-const ObjectPageRoomBlock: React.FC<any> = ({isLogin}) => {
+const ObjectPageRoomBlock: React.FC<any> = ({
+    id,
+    hotel_id,
+    isLogin,
+    room_category_name,
+    bed_type_text,
+    images,
+    overnights_count,
+    price,
+    daily_price,
+    food_is_included,
+    date_query,
+}) => {
     const [isVisibleAddBlock, setIsVisibleAddBlock] =
         React.useState<boolean>(false);
+
+    const url = isLogin ? `/payment/${hotel_id}/${id}?${date_query}` : `#login`;
 
     return (
         <div className="object-page-section-room-block-wrapper">
@@ -15,22 +32,21 @@ const ObjectPageRoomBlock: React.FC<any> = ({isLogin}) => {
                     <div
                         className="object-page-section-room-block-subblock-info-cover"
                         style={{
-                            backgroundImage:
-                                "url('https://images.unsplash.com/photo-1562438668-bcf0ca6578f0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1460&q=80')",
+                            backgroundImage: `url('${images[0]}')`,
                         }}
                     >
                         <p className="object-page-section-room-block-subblock-info-cover__count">
-                            30 фото
+                            {images.length} фото
                         </p>
                     </div>
 
                     <div className="object-page-section-room-block-subblock-info-text">
                         <div className="object-page-section-room-block-subblock-info-text-block">
                             <h2 className="object-page-section-room-block-subblock-info-text-block__title">
-                                Двухместный номер полулюкс
+                                {room_category_name}
                             </h2>
                             <p className="object-page-section-room-block-subblock-info-text-block__subtitle">
-                                1 Двуспальная кровать
+                                {bed_type_text}
                             </p>
                             {/* <div className="object-page-section-room-block-subblock-info-text-block-services">
                                 <div className="object-page-section-room-block-subblock-info-text-block-services-item">
@@ -86,7 +102,7 @@ const ObjectPageRoomBlock: React.FC<any> = ({isLogin}) => {
                         </div>
 
                         <div className="object-page-section-room-block-subblock-info-text-block">
-                            <ServiceIcon
+                            {/* <ServiceIcon
                                 green
                                 marginBottom
                                 questionMessage="Вы сможете совершенно бесплатно отменить бронь до указанного числа."
@@ -103,18 +119,31 @@ const ObjectPageRoomBlock: React.FC<any> = ({isLogin}) => {
                                     />
                                 </svg>
                                 Бесплатная отмена до 13 августа
-                            </ServiceIcon>
+                            </ServiceIcon> */}
 
-                            <ServiceIcon disabled marginBottom>
-                                <svg
-                                    viewBox="0 0 13 15"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path d="M12.5 8.25V13.5C12.5 13.8978 12.342 14.2794 12.0607 14.5607C11.7794 14.842 11.3978 15 11 15C10.6022 15 10.2206 14.842 9.93934 14.5607C9.65804 14.2794 9.5 13.8978 9.5 13.5V9.75H8V2.25C8 1.65326 8.23705 1.08097 8.65901 0.65901C9.08097 0.237053 9.65326 0 10.25 0L12.5 0V8.25ZM2 7.5C1.60218 7.5 1.22064 7.34196 0.93934 7.06066C0.658035 6.77936 0.5 6.39782 0.5 6V0.75C0.5 0.551088 0.579018 0.360322 0.71967 0.21967C0.860322 0.0790176 1.05109 0 1.25 0C1.44891 0 1.63968 0.0790176 1.78033 0.21967C1.92098 0.360322 2 0.551088 2 0.75V3.75H2.75V0.75C2.75 0.551088 2.82902 0.360322 2.96967 0.21967C3.11032 0.0790176 3.30109 0 3.5 0C3.69891 0 3.88968 0.0790176 4.03033 0.21967C4.17098 0.360322 4.25 0.551088 4.25 0.75V3.75H5V0.75C5 0.551088 5.07902 0.360322 5.21967 0.21967C5.36032 0.0790176 5.55109 0 5.75 0C5.94891 0 6.13968 0.0790176 6.28033 0.21967C6.42098 0.360322 6.5 0.551088 6.5 0.75V6C6.5 6.39782 6.34196 6.77936 6.06066 7.06066C5.77936 7.34196 5.39782 7.5 5 7.5V13.5C5 13.8978 4.84196 14.2794 4.56066 14.5607C4.27936 14.842 3.89782 15 3.5 15C3.10218 15 2.72064 14.842 2.43934 14.5607C2.15804 14.2794 2 13.8978 2 13.5V7.5Z" />
-                                </svg>
-                                Питание не включено
-                            </ServiceIcon>
+                            {food_is_included ? (
+                                <ServiceIcon marginBottom>
+                                    <svg
+                                        viewBox="0 0 13 15"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path d="M12.5 8.25V13.5C12.5 13.8978 12.342 14.2794 12.0607 14.5607C11.7794 14.842 11.3978 15 11 15C10.6022 15 10.2206 14.842 9.93934 14.5607C9.65804 14.2794 9.5 13.8978 9.5 13.5V9.75H8V2.25C8 1.65326 8.23705 1.08097 8.65901 0.65901C9.08097 0.237053 9.65326 0 10.25 0L12.5 0V8.25ZM2 7.5C1.60218 7.5 1.22064 7.34196 0.93934 7.06066C0.658035 6.77936 0.5 6.39782 0.5 6V0.75C0.5 0.551088 0.579018 0.360322 0.71967 0.21967C0.860322 0.0790176 1.05109 0 1.25 0C1.44891 0 1.63968 0.0790176 1.78033 0.21967C1.92098 0.360322 2 0.551088 2 0.75V3.75H2.75V0.75C2.75 0.551088 2.82902 0.360322 2.96967 0.21967C3.11032 0.0790176 3.30109 0 3.5 0C3.69891 0 3.88968 0.0790176 4.03033 0.21967C4.17098 0.360322 4.25 0.551088 4.25 0.75V3.75H5V0.75C5 0.551088 5.07902 0.360322 5.21967 0.21967C5.36032 0.0790176 5.55109 0 5.75 0C5.94891 0 6.13968 0.0790176 6.28033 0.21967C6.42098 0.360322 6.5 0.551088 6.5 0.75V6C6.5 6.39782 6.34196 6.77936 6.06066 7.06066C5.77936 7.34196 5.39782 7.5 5 7.5V13.5C5 13.8978 4.84196 14.2794 4.56066 14.5607C4.27936 14.842 3.89782 15 3.5 15C3.10218 15 2.72064 14.842 2.43934 14.5607C2.15804 14.2794 2 13.8978 2 13.5V7.5Z" />
+                                    </svg>
+                                    Питание включено
+                                </ServiceIcon>
+                            ) : (
+                                <ServiceIcon disabled marginBottom>
+                                    <svg
+                                        viewBox="0 0 13 15"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path d="M12.5 8.25V13.5C12.5 13.8978 12.342 14.2794 12.0607 14.5607C11.7794 14.842 11.3978 15 11 15C10.6022 15 10.2206 14.842 9.93934 14.5607C9.65804 14.2794 9.5 13.8978 9.5 13.5V9.75H8V2.25C8 1.65326 8.23705 1.08097 8.65901 0.65901C9.08097 0.237053 9.65326 0 10.25 0L12.5 0V8.25ZM2 7.5C1.60218 7.5 1.22064 7.34196 0.93934 7.06066C0.658035 6.77936 0.5 6.39782 0.5 6V0.75C0.5 0.551088 0.579018 0.360322 0.71967 0.21967C0.860322 0.0790176 1.05109 0 1.25 0C1.44891 0 1.63968 0.0790176 1.78033 0.21967C1.92098 0.360322 2 0.551088 2 0.75V3.75H2.75V0.75C2.75 0.551088 2.82902 0.360322 2.96967 0.21967C3.11032 0.0790176 3.30109 0 3.5 0C3.69891 0 3.88968 0.0790176 4.03033 0.21967C4.17098 0.360322 4.25 0.551088 4.25 0.75V3.75H5V0.75C5 0.551088 5.07902 0.360322 5.21967 0.21967C5.36032 0.0790176 5.55109 0 5.75 0C5.94891 0 6.13968 0.0790176 6.28033 0.21967C6.42098 0.360322 6.5 0.551088 6.5 0.75V6C6.5 6.39782 6.34196 6.77936 6.06066 7.06066C5.77936 7.34196 5.39782 7.5 5 7.5V13.5C5 13.8978 4.84196 14.2794 4.56066 14.5607C4.27936 14.842 3.89782 15 3.5 15C3.10218 15 2.72064 14.842 2.43934 14.5607C2.15804 14.2794 2 13.8978 2 13.5V7.5Z" />
+                                    </svg>
+                                    Питание не включено
+                                </ServiceIcon>
+                            )}
 
                             <ServiceIcon green>
                                 <svg
@@ -133,16 +162,60 @@ const ObjectPageRoomBlock: React.FC<any> = ({isLogin}) => {
                 <div className="object-page-section-room-block-subblock-price">
                     <div className="object-page-section-room-block-subblock-price-block">
                         <h2 className="object-page-section-room-block-subblock-price-block__title">
-                            480 000 ₽
+                            <NumberFormat
+                                value={price}
+                                displayType={"text"}
+                                thousandSeparator={" "}
+                                renderText={(formattedValue: string) => (
+                                    <>
+                                        {parseInt(
+                                            formattedValue.split(" ").join("")
+                                        ) >= 10000
+                                            ? formattedValue
+                                            : parseInt(
+                                                  formattedValue
+                                                      .split(" ")
+                                                      .join("")
+                                              )}
+                                    </>
+                                )}
+                            />{" "}
+                            ₽
                         </h2>
                         <p className="object-page-section-room-block-subblock-price-block__subtitle">
-                            10 суток (4 800 ₽ / ночь)
+                            {
+                                checkDeclension(overnights_count, [
+                                    "сутки",
+                                    "суток",
+                                    "суток",
+                                ]).title
+                            }{" "}
+                            (
+                            <NumberFormat
+                                value={daily_price}
+                                displayType={"text"}
+                                thousandSeparator={" "}
+                                renderText={(formattedValue: string) => (
+                                    <>
+                                        {parseInt(
+                                            formattedValue.split(" ").join("")
+                                        ) >= 10000
+                                            ? formattedValue
+                                            : parseInt(
+                                                  formattedValue
+                                                      .split(" ")
+                                                      .join("")
+                                              )}
+                                    </>
+                                )}
+                            />{" "}
+                            ₽ / ночь)
                         </p>
                     </div>
 
                     <div className="object-page-section-room-block-subblock-price-block">
                         <Link
-                            to={isLogin ? `/payment/24/1` : `#login`}
+                            to={url}
                             className="btn border object-page-section-room-block-subblock-price-block__btn"
                         >
                             Забронировать номер
@@ -150,7 +223,8 @@ const ObjectPageRoomBlock: React.FC<any> = ({isLogin}) => {
                     </div>
                 </div>
             </div>
-            <div className="object-page-section-room-block-add-btn">
+
+            {/* <div className="object-page-section-room-block-add-btn">
                 <button
                     className={`object-page-section-room-block-add-btn__btn ${
                         isVisibleAddBlock ? "visible" : ""
@@ -184,7 +258,7 @@ const ObjectPageRoomBlock: React.FC<any> = ({isLogin}) => {
                     <ObjectPageRoomBlockAdd />
                     <ObjectPageRoomBlockAdd />
                 </AnimateHeight>
-            </div>
+            </div> */}
         </div>
     );
 };

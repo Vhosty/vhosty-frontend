@@ -3,13 +3,13 @@ import {Link, animateScroll as scroll} from "react-scroll";
 
 import {Stars, Location} from "../";
 
-const ObjectPageCover: React.FC<any> = ({images, name, stars}) => {
+const ObjectPageCover: React.FC<any> = ({background_images, name, stars}) => {
     return (
         <>
             <div
                 className="object-page-cover"
                 style={{
-                    backgroundImage: `url('${images[0].url}')`,
+                    backgroundImage: `url('${background_images[0].url}')`,
                 }}
             >
                 <div className="object-page-cover-plaecholder"></div>
@@ -106,20 +106,18 @@ const ObjectPageCover: React.FC<any> = ({images, name, stars}) => {
                             </div>
                         </div>
 
-                        <div className="object-page-cover-block">
+                        {/* <div className="object-page-cover-block">
                             <div className="object-page-cover-dots">
-                                {Array(7)
-                                    .fill(0)
-                                    .map((_, index) => (
-                                        <div
-                                            className={`object-page-cover-dots-item ${
-                                                index === 1 ? "active" : ""
-                                            }`}
-                                            key={`object-page-cover-dots-item-${index}`}
-                                        ></div>
-                                    ))}
+                                {background_images.map((_: any, index: number) => (
+                                    <div
+                                        className={`object-page-cover-dots-item ${
+                                            index === 1 ? "active" : ""
+                                        }`}
+                                        key={`object-page-cover-dots-item-${index}`}
+                                    ></div>
+                                ))}
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

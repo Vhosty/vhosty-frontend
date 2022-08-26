@@ -10,11 +10,13 @@ import {IObjectBlock} from "../../../../models/IObjectBlock";
 
 interface ObjectsCatalogBlockProps extends IObjectBlock {
     blockIndex: string;
+    date_query: string;
 
     openObjectsImageBox: () => void;
 }
 
 const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
+    hotel_id,
     blockIndex,
     images,
     hotel_name,
@@ -29,11 +31,14 @@ const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
     price,
     stars,
     overnights_count,
+    date_query,
     openObjectsImageBox,
 }) => {
     const [currentIndexImageCover, setCurrentIndexImageCover] =
         React.useState<number>(0);
 
+	const url = `/objects/${hotel_id}?${date_query}`;
+	
     return (
         <div className="objects-catalog-block">
             <div className="objects-catalog-block-cover-wrapper">
@@ -45,7 +50,10 @@ const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
                 ></div>
 
                 <div className="objects-catalog-block-cover-plaecholder">
-                    <div className="objects-catalog-block-cover-plaecholder-cols-wrapper">
+                    <Link
+                        to={url}
+                        className="objects-catalog-block-cover-plaecholder-cols-wrapper"
+                    >
                         {images.map((_, index) => (
                             <div
                                 style={{width: `${100 / images.length}%`}}
@@ -56,7 +64,7 @@ const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
                                 }
                             ></div>
                         ))}
-                    </div>
+                    </Link>
 
                     <div className="objects-catalog-block-cover-plaecholder-icons">
                         <div
@@ -114,7 +122,7 @@ const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
                             <Stars count={stars} />
                         </div>
                         <h3 className="objects-catalog-block-text-block-subblock__title">
-                            <Link to="/">{hotel_name}</Link>
+                            <Link to={url}>{hotel_name}</Link>
                         </h3>
                         <div className="objects-catalog-block-text-block-subblock-location">
                             <p className="objects-catalog-block-text-block-subblock-location__title">
@@ -277,7 +285,7 @@ const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
 
                     <div className="objects-catalog-block-text-block-subblock">
                         <Link
-                            to="/"
+                            to={url}
                             className="btn border objects-catalog-block-text-block-subblock__btn"
                         >
                             Показать все номера

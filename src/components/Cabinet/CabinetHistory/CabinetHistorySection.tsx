@@ -12,10 +12,10 @@ const CabinetHistorySection: React.FC<CabinetHistorySectionProps> = ({
     return (
         <div className="cabinet-content-history-section">
             <h2 className="cabinet-content-history-section__title">{title}</h2>
-
+{/* 
             <CabinetHistorySectionBlock status="processing" />
             <CabinetHistorySectionBlock status="success" />
-            <CabinetHistorySectionBlock status="cancel" />
+            <CabinetHistorySectionBlock status="cancel" /> */}
         </div>
     );
 };

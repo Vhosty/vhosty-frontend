@@ -2,7 +2,37 @@ import React from "react";
 
 import {TitleIcon, ObjectPageBlockTextWrapper} from "../";
 
-const ObjectPageTerms: React.FC = () => {
+interface ObjectPageTermsProps {
+    checkin_time: string;
+    checkout_time: string;
+    other_time_available: boolean;
+    other_time_price: number;
+    additional_info: string;
+}
+
+const ObjectPageTerms: React.FC<ObjectPageTermsProps> = ({
+    checkin_time,
+    checkout_time,
+    other_time_available,
+    other_time_price,
+    additional_info,
+}) => {
+    const ObjectPageSectionTextWrapperRef = React.useRef<HTMLDivElement>(null);
+
+    const [totalHeight, setTotalHeight] = React.useState(0);
+
+    React.useEffect(() => {
+        if (ObjectPageSectionTextWrapperRef.current) {
+            setTotalHeight(
+                ObjectPageSectionTextWrapperRef.current?.offsetHeight
+            );
+        }
+    }, [ObjectPageSectionTextWrapperRef]);
+
+    const calculatePrecentTime = (time: string) => {
+        return (parseInt(time) / 24) * 100;
+    };
+
     return (
         <div
             className="object-page-section object-page-section-terms"
@@ -29,20 +59,36 @@ const ObjectPageTerms: React.FC = () => {
 
                         <div className="object-page-section-terms-from-to-block">
                             <p className="object-page-section-terms-from-to-block__subtitle">
-                                После 14:00
+                                После {checkin_time.split(":")[0]}:
+                                {checkin_time.split(":")[1]}
                             </p>
                             <div className="object-page-section-terms-from-to-block-line-wrapper">
                                 <div className="object-page-section-terms-from-to-block-line">
                                     <div
                                         className="object-page-section-terms-from-to-block-line-active"
-                                        style={{width: "50%", float: "right"}}
+                                        style={{
+                                            width: `${
+                                                100 -
+                                                calculatePrecentTime(
+                                                    checkin_time.split(":")[0]
+                                                )
+                                            }%`,
+                                            float: "right",
+                                        }}
                                     ></div>
                                 </div>
                                 <p
                                     className="object-page-section-terms-from-to-block-line__count"
-                                    style={{marginLeft: "45%"}}
+                                    style={{
+                                        marginLeft: `${
+                                            calculatePrecentTime(
+                                                checkin_time.split(":")[0]
+                                            ) - 5
+                                        }%`,
+                                    }}
                                 >
-                                    14:00
+                                    {checkin_time.split(":")[0]}:
+                                    {checkin_time.split(":")[1]}
                                 </p>
                             </div>
                         </div>
@@ -64,20 +110,32 @@ const ObjectPageTerms: React.FC = () => {
 
                         <div className="object-page-section-terms-from-to-block">
                             <p className="object-page-section-terms-from-to-block__subtitle">
-                                До 14:00
+                                До {checkout_time.split(":")[0]}:
+                                {checkout_time.split(":")[1]}
                             </p>
                             <div className="object-page-section-terms-from-to-block-line-wrapper">
                                 <div className="object-page-section-terms-from-to-block-line">
                                     <div
                                         className="object-page-section-terms-from-to-block-line-active"
-                                        style={{width: "50%"}}
+                                        style={{
+                                            width: `${calculatePrecentTime(
+                                                checkout_time.split(":")[0]
+                                            )}%`,
+                                        }}
                                     ></div>
                                 </div>
                                 <p
                                     className="object-page-section-terms-from-to-block-line__count"
-                                    style={{marginLeft: "45%"}}
+                                    style={{
+                                        marginLeft: `${
+                                            calculatePrecentTime(
+                                                checkout_time.split(":")[0]
+                                            ) - 6
+                                        }%`,
+                                    }}
                                 >
-                                    14:00
+                                    {checkout_time.split(":")[0]}:
+                                    {checkout_time.split(":")[1]}
                                 </p>
                             </div>
                         </div>
@@ -101,58 +159,32 @@ const ObjectPageTerms: React.FC = () => {
                     </TitleIcon>
                     <div className="object-page-section-terms-from-to-change-time-block">
                         <p className="object-page-section-terms-from-to-change-time-block__description">
-                            <span>Есть ли возможность:</span>Да
+                            <span>Есть ли возможность:</span>{" "}
+                            {other_time_available ? "Да" : "Нет"}
                         </p>
-                        <p className="object-page-section-terms-from-to-change-time-block__description">
-                            <span>Есть ли возможность:</span>Да
-                        </p>
+                        {other_time_available ? (
+                            <p className="object-page-section-terms-from-to-change-time-block__description">
+                                <span>Стоимость:</span>
+                                {other_time_price ? "Платно" : "Бесплатно"}
+                            </p>
+                        ) : null}
                     </div>
                 </div>
                 <div className="object-page-section-terms-text">
-                    <ObjectPageBlockTextWrapper>
-                        <h2 className="object-page-section-terms-text__title">
-                            Дополнительная информация
-                        </h2>
-                        <p className="object-page-section__description">
-                            Отель Grand Cosmopolitan расположен в Дубае, в 7,7
-                            км от пляжа Джумейра. К услугам гостей 3 ресторана,
-                            бесплатная частная парковка, открытые бассейны и
-                            фитнес-центр. В отеле можно забронировать семейные
-                            номера. Обустроена детская игровая площадка. Стойка
-                            регистрации открыта круглосуточно, работает пункт
-                            обмена валют. Осуществляется доставка еды и напитков
-                            в номер.
-                        </p>
-                        <p className="object-page-section__description">
-                            Номера с французскими окнами оснащены кондиционером,
-                            телевизором с плоским экраном и технологиями IPTV,
-                            Smart TV, chromecast и спутниковыми каналами. В
-                            числе удобств чайник, гладильные принадлежности,
-                            беспроводное зарядное устройство для мобильных
-                            телефонов и сейф. Во всех номерах установлен шкаф
-                            для одежды и рабочий стол. В собственной ванной
-                            комнате можно воспользоваться феном.
-                        </p>
-                        <p className="object-page-section__description">
-                            Отель Grand Cosmopolitan расположен в Дубае, в 7,7
-                            км от пляжа Джумейра. К услугам гостей 3 ресторана,
-                            бесплатная частная парковка, открытые бассейны и
-                            фитнес-центр. В отеле можно забронировать семейные
-                            номера. Обустроена детская игровая площадка. Стойка
-                            регистрации открыта круглосуточно, работает пункт
-                            обмена валют. Осуществляется доставка еды и напитков
-                            в номер.
-                        </p>
-                        <p className="object-page-section__description">
-                            Номера с французскими окнами оснащены кондиционером,
-                            телевизором с плоским экраном и технологиями IPTV,
-                            Smart TV, chromecast и спутниковыми каналами. В
-                            числе удобств чайник, гладильные принадлежности,
-                            беспроводное зарядное устройство для мобильных
-                            телефонов и сейф. Во всех номерах установлен шкаф
-                            для одежды и рабочий стол. В собственной ванной
-                            комнате можно воспользоваться феном.
-                        </p>
+                    <ObjectPageBlockTextWrapper
+                        isFullHeight={totalHeight < 350 ? true : false}
+                    >
+                        <div
+                            className="object-page-section-terms-text-wrapper"
+                            ref={ObjectPageSectionTextWrapperRef}
+                        >
+                            <h2 className="object-page-section-terms-text__title">
+                                Дополнительная информация
+                            </h2>
+                            <p className="object-page-section__description">
+                                {additional_info}
+                            </p>
+                        </div>
                     </ObjectPageBlockTextWrapper>
                 </div>
 

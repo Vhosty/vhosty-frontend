@@ -24,7 +24,7 @@ const PaymentForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
                     Пожалуйста, заполните все поля для завершения бронирования.
                 </p>
             </div>
-
+{/* 
             <div className="payment-info-room-and-contact-form-bonus">
                 <h2 className="payment-info-room-and-contact-form-bonus__title">
                     Получите <span>46 789 бонусов,</span> которые можно
@@ -35,7 +35,7 @@ const PaymentForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
                     <Link to="#register">Зарегистрируйтесь</Link>, чтобы копить
                     бонусы и бронировать быстрее
                 </p>
-            </div>
+            </div> */}
 
             <div className="payment-block-padding">
                 <div className="payment-info-room-and-contact-form-input-block">

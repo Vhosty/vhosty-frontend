@@ -4,9 +4,7 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
-const ObjectPageSliderImages: React.FC = () => {
-    const imagesCount = 10;
-
+const ObjectPageSliderImages: React.FC<any> = ({images}) => {
     const setting = {
         items: 4,
         dots: false,
@@ -65,17 +63,15 @@ const ObjectPageSliderImages: React.FC = () => {
             </button>
 
             <OwlCarousel {...setting} ref={sliderRef}>
-                {Array(imagesCount)
-                    .fill(0)
-                    .map((_, index) => (
-                        <div
-                            className="object-page-slider-images-item"
-                            style={{
-                                backgroundImage: `url('https://images.unsplash.com/photo-1655937334599-debb7ae30072?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80s')`,
-                            }}
-                            key={`object-page-slider-images-item-${index}`}
-                        ></div>
-                    ))}
+                {images.map((image: any, index: number) => (
+                    <div
+                        className="object-page-slider-images-item"
+                        style={{
+                            backgroundImage: `url('${image.url}')`,
+                        }}
+                        key={`object-page-slider-images-item-${index}`}
+                    ></div>
+                ))}
             </OwlCarousel>
         </div>
     );

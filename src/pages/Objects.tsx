@@ -48,7 +48,7 @@ const Objects: React.FC = () => {
                         <ObjectsFiltersGlobal />
 
                         <div className="objects-catalog-wrapper">
-                            <ObjectsFilters />
+                            {/* <ObjectsFilters /> */}
 
                             <ObjectsCatalog />
                         </div>

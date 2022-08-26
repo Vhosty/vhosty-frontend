@@ -1,12 +1,15 @@
 import React from "react";
 
+import {useSearchParams} from "react-router-dom";
+
 import {ObjectPageRoomFilters, ObjectPageRoomBlock} from "../../";
 
 import {useTypedSelector} from "../../../hooks/useTypedSelector";
 
-const ObjectPageRoom: React.FC = () => {
-    const {isPending} = useTypedSelector(({login}) => login);
-    const {itemById} = useTypedSelector(({object_page}) => object_page);
+const ObjectPageRoom: React.FC<any> = ({rooms}) => {
+    const {isLoadedUser} = useTypedSelector(({user}) => user);
+
+    const [query] = useSearchParams();
 
     return (
         <div
@@ -18,10 +21,19 @@ const ObjectPageRoom: React.FC = () => {
                     Выбор доступного номера
                 </h2>
 
-                <ObjectPageRoomFilters />
+                {/* <ObjectPageRoomFilters /> */}
 
                 <div className="object-page-section-room-block-wrapper-wrappper">
-                    <ObjectPageRoomBlock isLogin={isPending} />
+                    {rooms.map((room: any, index: number) => (
+                        <ObjectPageRoomBlock
+                            {...room}
+                            key={`object-page-section-room-block-${index}`}
+                            isLogin={isLoadedUser}
+                            date_query={`from=${query.get(
+                                "from"
+                            )}&to=${query.get("to")}`}
+                        />
+                    ))}
                 </div>
             </div>
         </div>

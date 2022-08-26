@@ -1,253 +1,68 @@
 import React from "react";
 
-const ObjectPageServices: React.FC = () => {
+const ObjectPageServices: React.FC<any> = ({services}) => {
     return (
         <div
             className="object-page-section object-page-section-services"
             id="object-page-services"
         >
             <div className="object-page-section-padding">
-                <h2 className="object-page-section__title marginBottom">
+                <h2 className="object-page-section__title">
                     Удобства и услуги
                 </h2>
+
                 <div className="object-page-section-services-block-wrapper">
-                    <div className="object-page-section-services-block">
-                        <div className="object-page-section-services-list">
-                            <h3 className="object-page-section-services-list__title">
-                                Общее
-                            </h3>
+                    {services.map((group: any, index: number) =>
+                        group.services.filter(
+                            (service: any) =>
+                                service.is_available || service.is_chargeable
+                        ).length ? (
+                            <div
+                                className="object-page-section-services-list"
+                                key={`object-page-section-services-list-${index}`}
+                            >
+                                <h3 className="object-page-section-services-list__title">
+                                    {group.group_name}
+                                </h3>
 
-                            <ul className="object-page-section-services-list-ul">
-                                <li className="object-page-section-services-list-ul__li">
-                                    Банкомат
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Дворецкий
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Кондиционер
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Магазины
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Обмен валюты
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Огнетушитель
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Отель для некурящих
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Охрана
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Телевизор в лобби
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Ускоренная регистрация заезда и выезда
-                                </li>
-                            </ul>
-                        </div>
+                                <ul className="object-page-section-services-list-ul">
+                                    {group.services.map(
+                                        (service: any, subindex: number) =>
+                                            service.is_available ||
+                                            service.is_chargeable ? (
+                                                <li
+                                                    className="object-page-section-services-list-ul__li"
+                                                    key={`object-page-section-services-list-${index}-ul__li-${subindex}`}
+                                                >
+                                                    {service.name}&nbsp;
+                                                    {service.is_chargeable ? (
+                                                        <span>(платно)</span>
+                                                    ) : null}
+                                                </li>
+                                            ) : null
+                                    )}
+                                </ul>
+                            </div>
+                        ) : null
+                    )}
 
-                        <div className="object-page-section-services-list">
-                            <h3 className="object-page-section-services-list__title">
-                                На свежем воздухе
-                            </h3>
-
-                            <ul className="object-page-section-services-list-ul">
-                                <li className="object-page-section-services-list-ul__li">
-                                    Садовая мебель
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Терраса для загара
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Терраса
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Сад
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Открытый бассейн
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Зона для гриля
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div className="object-page-section-services-list">
-                            <h3 className="object-page-section-services-list__title">
-                                Трансфер
-                            </h3>
-
-                            <ul className="object-page-section-services-list-ul">
-                                <li className="object-page-section-services-list-ul__li">
-                                    Бесплатный трансфер до торгового центра
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Прокат автомобилей&#160;
-                                    <span>(платно)</span>
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Трансфер от аэропорта
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Трансферные услуги&#160;
-                                    <span>(платно)</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="object-page-section-services-block">
-                        <div className="object-page-section-services-list">
-                            <h3 className="object-page-section-services-list__title">
-                                Медицина / Санитарные меры
-                            </h3>
-
-                            <ul className="object-page-section-services-list-ul">
-                                <li className="object-page-section-services-list-ul__li">
-                                    Медицинский пункт
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Бесконтактная регистрация заезда и/или
-                                    выезда
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Дополнительные меры против COVID-19
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Индивидуальные средства защиты для гостей
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Индивидуальные средства защиты для персонала
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Усиленные меры дезинфекции
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div className="object-page-section-services-list">
-                            <h3 className="object-page-section-services-list__title">
-                                Питание
-                            </h3>
-
-                            <ul className="object-page-section-services-list-ul">
-                                <li className="object-page-section-services-list-ul__li">
-                                    Бар
-                                    <svg
-                                        viewBox="0 0 22 18"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M11 12.75C12.6569 12.75 14 11.4069 14 9.75C14 8.09315 12.6569 6.75 11 6.75C9.34315 6.75 8 8.09315 8 9.75C8 11.4069 9.34315 12.75 11 12.75Z"
-                                            fill="#00A0A0"
-                                        />
-                                        <path
-                                            d="M19.25 3.75H16.4844C16.3438 3.75 16.1694 3.65906 16.0334 3.51562L14.8175 1.59656C14.7983 1.56611 14.7768 1.53712 14.7533 1.50984C14.3333 1.02 13.7656 0.75 13.1562 0.75H8.84375C8.23438 0.75 7.66672 1.02 7.24672 1.50984C7.22319 1.53712 7.20173 1.56611 7.1825 1.59656L5.96656 3.51844C5.8625 3.63187 5.71625 3.75281 5.5625 3.75281V3.37781C5.5625 3.1789 5.48348 2.98813 5.34283 2.84748C5.20218 2.70683 5.01141 2.62781 4.8125 2.62781H3.6875C3.48859 2.62781 3.29782 2.70683 3.15717 2.84748C3.01652 2.98813 2.9375 3.1789 2.9375 3.37781V3.75281H2.75C2.15345 3.75343 1.58152 3.99069 1.1597 4.41251C0.737873 4.83433 0.50062 5.40627 0.5 6.00281V15C0.50062 15.5965 0.737873 16.1685 1.1597 16.5903C1.58152 17.0121 2.15345 17.2494 2.75 17.25H19.25C19.8465 17.2494 20.4185 17.0121 20.8403 16.5903C21.2621 16.1685 21.4994 15.5965 21.5 15V6C21.4994 5.40345 21.2621 4.83152 20.8403 4.40969C20.4185 3.98787 19.8465 3.75062 19.25 3.75ZM11 14.25C10.11 14.25 9.23995 13.9861 8.49993 13.4916C7.75991 12.9971 7.18314 12.2943 6.84254 11.4721C6.50195 10.6498 6.41283 9.74501 6.58647 8.87209C6.7601 7.99918 7.18868 7.19736 7.81802 6.56802C8.44736 5.93868 9.24918 5.5101 10.1221 5.33647C10.995 5.16283 11.8998 5.25195 12.7221 5.59254C13.5443 5.93314 14.2471 6.50991 14.7416 7.24993C15.2361 7.98995 15.5 8.85998 15.5 9.75C15.4986 10.9431 15.0241 12.0869 14.1805 12.9305C13.3369 13.7741 12.1931 14.2486 11 14.25V14.25Z"
-                                            fill="#00A0A0"
-                                        />
-                                    </svg>
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Бесплатный чай/кофе
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Бутилированная вода
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Диетическое меню&#160;
-                                    <span className="gray">(по запросу)</span>
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Завтрак
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Ресторан
-                                    <svg
-                                        viewBox="0 0 22 18"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M11 12.75C12.6569 12.75 14 11.4069 14 9.75C14 8.09315 12.6569 6.75 11 6.75C9.34315 6.75 8 8.09315 8 9.75C8 11.4069 9.34315 12.75 11 12.75Z"
-                                            fill="#00A0A0"
-                                        />
-                                        <path
-                                            d="M19.25 3.75H16.4844C16.3438 3.75 16.1694 3.65906 16.0334 3.51562L14.8175 1.59656C14.7983 1.56611 14.7768 1.53712 14.7533 1.50984C14.3333 1.02 13.7656 0.75 13.1562 0.75H8.84375C8.23438 0.75 7.66672 1.02 7.24672 1.50984C7.22319 1.53712 7.20173 1.56611 7.1825 1.59656L5.96656 3.51844C5.8625 3.63187 5.71625 3.75281 5.5625 3.75281V3.37781C5.5625 3.1789 5.48348 2.98813 5.34283 2.84748C5.20218 2.70683 5.01141 2.62781 4.8125 2.62781H3.6875C3.48859 2.62781 3.29782 2.70683 3.15717 2.84748C3.01652 2.98813 2.9375 3.1789 2.9375 3.37781V3.75281H2.75C2.15345 3.75343 1.58152 3.99069 1.1597 4.41251C0.737873 4.83433 0.50062 5.40627 0.5 6.00281V15C0.50062 15.5965 0.737873 16.1685 1.1597 16.5903C1.58152 17.0121 2.15345 17.2494 2.75 17.25H19.25C19.8465 17.2494 20.4185 17.0121 20.8403 16.5903C21.2621 16.1685 21.4994 15.5965 21.5 15V6C21.4994 5.40345 21.2621 4.83152 20.8403 4.40969C20.4185 3.98787 19.8465 3.75062 19.25 3.75ZM11 14.25C10.11 14.25 9.23995 13.9861 8.49993 13.4916C7.75991 12.9971 7.18314 12.2943 6.84254 11.4721C6.50195 10.6498 6.41283 9.74501 6.58647 8.87209C6.7601 7.99918 7.18868 7.19736 7.81802 6.56802C8.44736 5.93868 9.24918 5.5101 10.1221 5.33647C10.995 5.16283 11.8998 5.25195 12.7221 5.59254C13.5443 5.93314 14.2471 6.50991 14.7416 7.24993C15.2361 7.98995 15.5 8.85998 15.5 9.75C15.4986 10.9431 15.0241 12.0869 14.1805 12.9305C13.3369 13.7741 12.1931 14.2486 11 14.25V14.25Z"
-                                            fill="#00A0A0"
-                                        />
-                                    </svg>
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Снэк-бар
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Торговый автомат с закусками/напитками
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div className="object-page-section-services-list">
-                            <h3 className="object-page-section-services-list__title">
-                                Для детей
-                            </h3>
-
-                            <ul className="object-page-section-services-list-ul">
-                                <li className="object-page-section-services-list-ul__li">
-                                    Игровая площадка на улице
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Занятия для детей
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Вечерняя программа
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Детский спорт
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div className="object-page-section-services-block">
-                        <div className="object-page-section-services-list">
-                            <h3 className="object-page-section-services-list__title">
-                                Спорт
-                            </h3>
-
-                            <ul className="object-page-section-services-list-ul">
-                                <li className="object-page-section-services-list-ul__li">
-                                    Теннисный корт
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Йога
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Пилатес
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div className="object-page-section-services-list">
-                            <h3 className="object-page-section-services-list__title">
-                                Другое
-                            </h3>
-
-                            <ul className="object-page-section-services-list-ul">
-                                <li className="object-page-section-services-list-ul__li">
-                                    Йога
-                                </li>
-                                <li className="object-page-section-services-list-ul__li">
-                                    Пилатес
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    {/* <li className="object-page-section-services-list-ul__li">
+                        Ресторан
+                        <svg
+                            viewBox="0 0 22 18"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M11 12.75C12.6569 12.75 14 11.4069 14 9.75C14 8.09315 12.6569 6.75 11 6.75C9.34315 6.75 8 8.09315 8 9.75C8 11.4069 9.34315 12.75 11 12.75Z"
+                                fill="#00A0A0"
+                            />
+                            <path
+                                d="M19.25 3.75H16.4844C16.3438 3.75 16.1694 3.65906 16.0334 3.51562L14.8175 1.59656C14.7983 1.56611 14.7768 1.53712 14.7533 1.50984C14.3333 1.02 13.7656 0.75 13.1562 0.75H8.84375C8.23438 0.75 7.66672 1.02 7.24672 1.50984C7.22319 1.53712 7.20173 1.56611 7.1825 1.59656L5.96656 3.51844C5.8625 3.63187 5.71625 3.75281 5.5625 3.75281V3.37781C5.5625 3.1789 5.48348 2.98813 5.34283 2.84748C5.20218 2.70683 5.01141 2.62781 4.8125 2.62781H3.6875C3.48859 2.62781 3.29782 2.70683 3.15717 2.84748C3.01652 2.98813 2.9375 3.1789 2.9375 3.37781V3.75281H2.75C2.15345 3.75343 1.58152 3.99069 1.1597 4.41251C0.737873 4.83433 0.50062 5.40627 0.5 6.00281V15C0.50062 15.5965 0.737873 16.1685 1.1597 16.5903C1.58152 17.0121 2.15345 17.2494 2.75 17.25H19.25C19.8465 17.2494 20.4185 17.0121 20.8403 16.5903C21.2621 16.1685 21.4994 15.5965 21.5 15V6C21.4994 5.40345 21.2621 4.83152 20.8403 4.40969C20.4185 3.98787 19.8465 3.75062 19.25 3.75ZM11 14.25C10.11 14.25 9.23995 13.9861 8.49993 13.4916C7.75991 12.9971 7.18314 12.2943 6.84254 11.4721C6.50195 10.6498 6.41283 9.74501 6.58647 8.87209C6.7601 7.99918 7.18868 7.19736 7.81802 6.56802C8.44736 5.93868 9.24918 5.5101 10.1221 5.33647C10.995 5.16283 11.8998 5.25195 12.7221 5.59254C13.5443 5.93314 14.2471 6.50991 14.7416 7.24993C15.2361 7.98995 15.5 8.85998 15.5 9.75C15.4986 10.9431 15.0241 12.0869 14.1805 12.9305C13.3369 13.7741 12.1931 14.2486 11 14.25V14.25Z"
+                                fill="#00A0A0"
+                            />
+                        </svg>
+                    </li> */}
                 </div>
             </div>
         </div>

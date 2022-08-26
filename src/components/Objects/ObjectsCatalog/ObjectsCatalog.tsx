@@ -22,6 +22,9 @@ const ObjectsCatalog: React.FC = () => {
     const {firstIsLoaded, isLoaded, items} = useTypedSelector(
         ({objects}) => objects
     );
+    const {date} = useTypedSelector(
+        ({objects_filters_global}) => objects_filters_global
+    );
 
     const openObjectsImageBox = (index: number) => {
         dispatch(setObjectsCurrentIndexBlockImageBox(index) as any);
@@ -30,7 +33,7 @@ const ObjectsCatalog: React.FC = () => {
 
     return (
         <div className="objects-catalog">
-            <ObjectsCatalogFilters />
+            {/* <ObjectsCatalogFilters /> */}
 
             <div className="objects-catalog-block-wrapper">
                 {firstIsLoaded ? (
@@ -49,10 +52,11 @@ const ObjectsCatalog: React.FC = () => {
                                     openObjectsImageBox={() =>
                                         openObjectsImageBox(index)
                                     }
+                                    date_query={`from=${date.from}&to=${date.to}`}
                                     key={`objects-catalog-block-${object.id}-${index}`}
                                 />
-							))}
-							
+                            ))}
+
                             <ObjectsCatalogPagination />
                         </>
                     ) : (

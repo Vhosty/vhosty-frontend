@@ -6,7 +6,7 @@ const PrimeSectionBlock: React.FC = () => {
         <div className="prime-section-block">
             <div className="prime-section-block-text">
                 <h2 className="prime-section-block-text__title">
-                    VHOSTY<span>Prime</span>
+                    BOOKOVER<span>Prime</span>
                 </h2>
 
                 <p className="prime-section-block-text__subtitle">

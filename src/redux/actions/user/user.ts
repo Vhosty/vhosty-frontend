@@ -40,7 +40,10 @@ export const sendRepeatUserConfirmedEmail = (email: string) => {
 export const fetchUserBookings = () => {
 	return async (dispatch: Dispatch<UserActions>) => {
 		$api.get("/hotels/bookings").then(({ data }) => {
-			console.log(data)
+			dispatch(({
+				type: UserActionTypes.SET_USER_BOOKINGS,
+				payload: data.results
+			}))
 		})
 	}
 }

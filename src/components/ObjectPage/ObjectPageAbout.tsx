@@ -2,56 +2,42 @@ import React from "react";
 
 import {ObjectPageBlockTextWrapper} from "../";
 
-const ObjectPageAbout: React.FC = () => {
+interface ObjectPageAboutProps {
+    description: string;
+}
+
+const ObjectPageAbout: React.FC<ObjectPageAboutProps> = ({description}) => {
+    const ObjectPageSectionAboutTextRef = React.useRef<HTMLDivElement>(null);
+
+    const [totalHeight, setTotalHeight] = React.useState(0);
+
+    React.useEffect(() => {
+        if (ObjectPageSectionAboutTextRef.current) {
+            setTotalHeight(ObjectPageSectionAboutTextRef.current?.offsetHeight);
+        }
+    }, [ObjectPageSectionAboutTextRef]);
+
     return (
         <div className="object-page-section object-page-section-about">
             <div className="object-page-section-padding">
                 <div className="object-page-section-about-text">
-                    <ObjectPageBlockTextWrapper>
-                        <h2 className="object-page-section__title">Об отеле</h2>
-                        <p className="object-page-section__description">
-                            Отель Grand Cosmopolitan расположен в Дубае, в 7,7
-                            км от пляжа Джумейра. К услугам гостей 3 ресторана,
-                            бесплатная частная парковка, открытые бассейны и
-                            фитнес-центр. В отеле можно забронировать семейные
-                            номера. Обустроена детская игровая площадка. Стойка
-                            регистрации открыта круглосуточно, работает пункт
-                            обмена валют. Осуществляется доставка еды и напитков
-                            в номер.
-                        </p>
-                        <p className="object-page-section__description">
-                            Номера с французскими окнами оснащены кондиционером,
-                            телевизором с плоским экраном и технологиями IPTV,
-                            Smart TV, chromecast и спутниковыми каналами. В
-                            числе удобств чайник, гладильные принадлежности,
-                            беспроводное зарядное устройство для мобильных
-                            телефонов и сейф. Во всех номерах установлен шкаф
-                            для одежды и рабочий стол. В собственной ванной
-                            комнате можно воспользоваться феном.
-                        </p>
-                        <p className="object-page-section__description">
-                            Отель Grand Cosmopolitan расположен в Дубае, в 7,7
-                            км от пляжа Джумейра. К услугам гостей 3 ресторана,
-                            бесплатная частная парковка, открытые бассейны и
-                            фитнес-центр. В отеле можно забронировать семейные
-                            номера. Обустроена детская игровая площадка. Стойка
-                            регистрации открыта круглосуточно, работает пункт
-                            обмена валют. Осуществляется доставка еды и напитков
-                            в номер.
-                        </p>
-                        <p className="object-page-section__description">
-                            Номера с французскими окнами оснащены кондиционером,
-                            телевизором с плоским экраном и технологиями IPTV,
-                            Smart TV, chromecast и спутниковыми каналами. В
-                            числе удобств чайник, гладильные принадлежности,
-                            беспроводное зарядное устройство для мобильных
-                            телефонов и сейф. Во всех номерах установлен шкаф
-                            для одежды и рабочий стол. В собственной ванной
-                            комнате можно воспользоваться феном.
-                        </p>
+                    <ObjectPageBlockTextWrapper
+                        isFullHeight={totalHeight < 350 ? true : false}
+                    >
+                        <div
+                            className="object-page-section-about-text-wrapper"
+                            ref={ObjectPageSectionAboutTextRef}
+                        >
+                            <h2 className="object-page-section__title">
+                                Об отеле
+                            </h2>
+                            <p className="object-page-section__description">
+                                {description}
+                            </p>
+                        </div>
                     </ObjectPageBlockTextWrapper>
                 </div>
-                <div className="object-page-section-about-services">
+                {/* <div className="object-page-section-about-services">
                     <div className="object-page-section-about-services-block-wrapper">
                         <div className="object-page-section-about-services-block">
                             <h3 className="object-page-section-about-services-block__title">
@@ -247,7 +233,7 @@ const ObjectPageAbout: React.FC = () => {
                     <p className="object-page-section-about-services__link">
                         Полный список удобств и услуг
                     </p>
-                </div>
+                </div> */}
             </div>
         </div>
     );
