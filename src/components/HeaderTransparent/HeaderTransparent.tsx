@@ -39,9 +39,11 @@ const HeaderTransparent: React.FC<HeaderTransparentProps> = ({bgImage}) => {
 
                 {/* <HeaderTransparentSearch /> */}
 
-                <HeaderTransparentPassLink />
+                <div className="header-transparent-block">
+                    <HeaderTransparentPassLink />
 
-                <HeaderTransparentUser />
+                    <HeaderTransparentUser />
+                </div>
             </header>
         </>
     );

@@ -67,7 +67,7 @@ const CabinetMenu: React.FC = () => {
                 </p>
             </NavLink> */}
 
-            <NavLink
+            {/* <NavLink
                 to="/cabinet/favorites"
                 className={({isActive}) =>
                     `cabinet-content-menu-item ${isActive ? "active" : ""}`
@@ -86,7 +86,7 @@ const CabinetMenu: React.FC = () => {
                 <p className="cabinet-content-menu-item__subtitle">
                     Любимые объекты
                 </p>
-            </NavLink>
+            </NavLink> */}
 
             <Link to="#logout" className="cabinet-content-menu-item">
                 <p className="cabinet-content-menu-item__title">

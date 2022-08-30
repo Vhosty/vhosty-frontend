@@ -71,13 +71,13 @@ const Calendar: React.FC<CalendarProps> = ({onChange, initialState}) => {
                 <div className="calendar-period">
                     <span className="calendar-period__from">
                         {from.selected
-                            ? from.date.format("D MMMM (dd)")
+                            ? from.date.format("D MMM (dd)")
                             : "Заезд"}
                     </span>
-                    <div className="calendar-period__line"></div>
+                    <div className="calendar-period-line"></div>
                     <span className="calendar-period__to">
                         {from.selected && !from.date.isSame(to.date, "days")
-                            ? to.date.format("D MMMM (dd)")
+                            ? to.date.format("D MMM (dd)")
                             : "Отъезд"}
                     </span>
                 </div>

@@ -1,5 +1,7 @@
 import React from "react";
 
+import {ObjectPageServicesGroup, ObjectPageServicesTabsGroup} from "../../";
+
 const ObjectPageServices: React.FC<any> = ({services}) => {
     return (
         <div
@@ -11,42 +13,23 @@ const ObjectPageServices: React.FC<any> = ({services}) => {
                     Удобства и услуги
                 </h2>
 
-                <div className="object-page-section-services-block-wrapper">
-                    {services.map((group: any, index: number) =>
-                        group.services.filter(
-                            (service: any) =>
-                                service.is_available || service.is_chargeable
-                        ).length ? (
-                            <div
-                                className="object-page-section-services-list"
-                                key={`object-page-section-services-list-${index}`}
-                            >
-                                <h3 className="object-page-section-services-list__title">
-                                    {group.group_name}
-                                </h3>
+                {document.documentElement.clientWidth > 600 ? (
+                    <div className="object-page-section-services-block-wrapper">
+                        {services.map((group: any, index: number) =>
+                            group.services.filter(
+                                (service: any) =>
+                                    service.is_available ||
+                                    service.is_chargeable
+                            ).length ? (
+                                <ObjectPageServicesGroup
+                                    {...group}
+                                    key={`object-page-section-services-list-${index}`}
+                                    index={index}
+                                />
+                            ) : null
+                        )}
 
-                                <ul className="object-page-section-services-list-ul">
-                                    {group.services.map(
-                                        (service: any, subindex: number) =>
-                                            service.is_available ||
-                                            service.is_chargeable ? (
-                                                <li
-                                                    className="object-page-section-services-list-ul__li"
-                                                    key={`object-page-section-services-list-${index}-ul__li-${subindex}`}
-                                                >
-                                                    {service.name}&nbsp;
-                                                    {service.is_chargeable ? (
-                                                        <span>(платно)</span>
-                                                    ) : null}
-                                                </li>
-                                            ) : null
-                                    )}
-                                </ul>
-                            </div>
-                        ) : null
-                    )}
-
-                    {/* <li className="object-page-section-services-list-ul__li">
+                        {/* <li className="object-page-section-services-list-ul__li">
                         Ресторан
                         <svg
                             viewBox="0 0 22 18"
@@ -63,7 +46,24 @@ const ObjectPageServices: React.FC<any> = ({services}) => {
                             />
                         </svg>
                     </li> */}
-                </div>
+                    </div>
+                ) : (
+                    <div className="object-page-section-services-block-tabs-wrapper">
+                        {services.map((group: any, index: number) =>
+                            group.services.filter(
+                                (service: any) =>
+                                    service.is_available ||
+                                    service.is_chargeable
+                            ).length ? (
+                                <ObjectPageServicesTabsGroup
+                                    {...group}
+                                    key={`object-page-section-services-list-${index}`}
+                                    index={index}
+                                />
+                            ) : null
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );

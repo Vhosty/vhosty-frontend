@@ -46,7 +46,7 @@ div
 
 // container
 .container
-	width: 90%
+	width: 95%
 	height: 100%
 
 	max-width: 1200px
@@ -69,7 +69,7 @@ p
 		color: $mainColor
 
 .description
-	font-size: 20px
+	font-size: 18px
 
 // link
 a
@@ -99,16 +99,16 @@ button
 
 .btn
 	text-align: center
-	
+
 	display: inline-flex
 	justify-content: center
 	align-items: center
 
 	cursor: pointer
 
-	padding: 20px 60px
+	padding: 12px 50px
 
-	font-size: 20px
+	font-size: 18px
 	font-weight: 700
 	color: $white
 
@@ -127,11 +127,11 @@ button
 
 	&.border
 		font-size: 15px
-		padding: 17px 35px
+		padding: 17px 25px
 		border-radius: 35px 0px
 
 	&.small
-		padding: 15px 45px
+		padding: 12px 45px
 
 	&.disabled
 		pointer-events: none
@@ -145,9 +145,9 @@ button
 
 	cursor: pointer
 
-	padding: 20px 60px
+	padding: 12px 50px
 
-	font-size: 20px
+	font-size: 18px
 	font-weight: 700
 
 	color: $darkMainColor
@@ -179,7 +179,7 @@ button
 
 	padding: 20px 60px
 
-	font-size: 20px
+	font-size: 18px
 	font-weight: 700
 	color: $black
 
@@ -238,7 +238,7 @@ input:-webkit-autofill:active
 		align-items: center
 
 		&__title
-			font-size: 20px
+			font-size: 18px
 			margin-bottom: 5px
 
 	&-field
@@ -246,7 +246,7 @@ input:-webkit-autofill:active
 		width: 100%
 
 		&.small > input
-			padding: 13px 25px
+			padding: 10px 25px
 
 		&.small-placeholder > input
 			font-size: 15px
@@ -336,7 +336,7 @@ input:-webkit-autofill:active
 	resize: none
 	outline: none
 
-	font-size: 20px
+	font-size: 18px
 	color: $black
 
 	border-radius: 25px
@@ -369,6 +369,7 @@ input:-webkit-autofill:active
 
 // popup
 .popup
+	z-index: 5
 	+openPopup
 
 	&.close
@@ -383,6 +384,7 @@ input:-webkit-autofill:active
 		margin-bottom: 20px
 
 	& > svg
+		min-width: 20px
 		width: 20px
 		height: 20px
 
@@ -390,7 +392,7 @@ input:-webkit-autofill:active
 
 	&__title
 		user-select: none
-		font-size: 20px
+		font-size: 18px
 
 		&.bold
 			font-weight: 500
@@ -441,8 +443,8 @@ input:-webkit-autofill:active
 		content: ''
 		display: inline-block
 
-		min-width: 30px
-		height: 30px
+		min-width: 28px
+		height: 28px
 
 		border: 1px solid $lightGray
 		border-radius: 10px
@@ -518,7 +520,7 @@ input:-webkit-autofill:active
 	+borderRadius
 
 	&__title
-		font-size: 20px
+		font-size: 18px
 		margin-bottom: 5px
 
 	&-height
@@ -617,7 +619,7 @@ input:-webkit-autofill:active
 	justify-content: space-between
 	align-items: center
 
-	padding: 13px 25px
+	padding: 10px 25px
 	border: 2px solid $lightGray
 	border-radius: 100px
 
@@ -631,7 +633,7 @@ input:-webkit-autofill:active
 		&__from, &__to
 			user-select: none
 
-		&__line
+		&-line
 			margin: 0 15px
 			background-color: $mainColor
 
@@ -657,8 +659,6 @@ input:-webkit-autofill:active
 
 		right: 0
 		top: 70px
-
-		z-index: 2
 
 		width: 350px
 		height: 350px
@@ -813,6 +813,7 @@ input:-webkit-autofill:active
 
 	&__title > svg
 		width: 18px
+		min-width: 18px
 		fill: $mainColor
 
 		margin-right: 10px

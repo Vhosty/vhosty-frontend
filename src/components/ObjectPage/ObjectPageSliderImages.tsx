@@ -10,6 +10,7 @@ const ObjectPageSliderImages: React.FC<any> = ({images}) => {
         dots: false,
         margin: 20,
         id: "object-page-slider-images",
+        autoWidth: true,
     };
 
     const sliderRef = React.useRef<any>(null);

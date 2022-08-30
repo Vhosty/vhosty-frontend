@@ -123,6 +123,12 @@ export { default as ObjectPageFeedbacks } from "./ObjectPage/ObjectPageFeedbacks
 export { default as ObjectPageFeedbacksBlock } from "./ObjectPage/ObjectPageFeedbacks/ObjectPageFeedbacksBlock";
 // ObjectPageServices
 export { default as ObjectPageServices } from "./ObjectPage/ObjectPageServices/ObjectPageServices";
+// ObjectPageServicesGroup
+export { default as ObjectPageServicesGroup } from "./ObjectPage/ObjectPageServices/ObjectPageServicesGroup/ObjectPageServicesGroup";
+export { default as ObjectPageServicesGroupItem } from "./ObjectPage/ObjectPageServices/ObjectPageServicesGroup/ObjectPageServicesGroupItem";
+// ObjectPageServicesTabsGroup
+export { default as ObjectPageServicesTabsGroup } from "./ObjectPage/ObjectPageServices/ObjectPageServicesTabsGroup/ObjectPageServicesTabsGroup";
+export { default as ObjectPageServicesTabsGroupItem } from "./ObjectPage/ObjectPageServices/ObjectPageServicesTabsGroup/ObjectPageServicesTabsGroupItem";
 
 // Prime
 export { default as PrimeSectionBlock } from "./Prime/PrimeSectionBlock";

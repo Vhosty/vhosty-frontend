@@ -10,7 +10,7 @@ const HeaderUser: React.FC = () => {
 
     const [activeHeaderModal, setActiveHeaderModal] =
         React.useState<boolean>(false);
-	
+
     const openHeaderModal = () => {
         setActiveHeaderModal(true);
     };
@@ -28,6 +28,8 @@ const HeaderUser: React.FC = () => {
                         Личный кабинет
                     </button>
 
+                    <button className="header-block-user__btn-mobile"></button>
+
                     <Popup
                         wrapperActive={activeHeaderModal}
                         setWrapperActive={setActiveHeaderModal}
@@ -43,6 +45,8 @@ const HeaderUser: React.FC = () => {
                     <button className="header-block-user__btn">
                         Личный кабинет
                     </button>
+
+                    <button className="header-block-user__btn-mobile"></button>
                 </Link>
             )}
         </>

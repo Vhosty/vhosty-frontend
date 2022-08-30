@@ -64,11 +64,72 @@
 			&-btn-media-wrapper
 				display: flex
 
+	// object-page
+	.object-page
+		&-navigation-btn
+			flex-direction: column
+			align-items: center
+
+			top: -30px
+
+			&.visible
+				top: 120px
+
+			&-navigate
+				width: 100%
+				justify-content: center
+
+				&__btn
+					margin: 0 15px
+
+					&:last-child
+						margin: 0 15px
+
+			&-accent
+				margin-top: 20px
+
+		&-cover
+			&-btn
+				flex-direction: column
+				align-items: center
+
+				&-navigate
+					width: 100%
+					justify-content: center
+
+					&__btn
+						margin: 0 15px
+
+						&:last-child
+							margin: 0 15px
+
+				&-accent
+					margin-top: 20px
+
+@media screen and ( max-width: 1050px )
+	// object-page
+	.object-page
+		&-section
+			&-room
+				&-block
+					flex-direction: column
+
+					&-subblock
+						&-price
+							margin-top: 30px
+
+							display: flex
+							justify-content: space-between
+							align-items: center
+							flex-direction: row
+
+							text-align: left
+
 @media screen and ( max-width: 1000px )
 	// interface
 	.btn-light
 		padding: 15px 35px
-		font-size: 20px
+		font-size: 18px
 
 	// header-transparent
 	.header-transparent
@@ -76,7 +137,7 @@
 			height: 600px
 
 		&-block
-			&-search, &__pass
+			&-search
 				display: none
 
 		&__link
@@ -109,6 +170,36 @@
 				margin-top: 150px
 				display: flex
 
+	// cabinet
+	.cabinet
+		&-content
+			flex-direction: column
+
+			&-block
+				order: 1
+
+				&-render
+					width: 100%
+
+			&-menu
+				margin-top: 50px
+
+				order: 2
+
+				width: 100%
+				position: static
+
+	// object-page
+	.object-page
+		&-section
+			&-terms
+				&-from-to
+					flex-direction: column
+
+					&-block-wrapper
+						width: 100%
+						margin-bottom: 25px
+
 	// footer
 	.footer
 		&-block
@@ -117,6 +208,59 @@
 
 			&-menu
 				width: 70%
+
+@media screen and (max-width: 900px)
+	// filters-object-form
+	.filters-object-form
+		padding: 25px 20px
+
+		&-block
+			margin-top: 25px
+
+			&:first-child
+				margin-top: 0
+
+			&-row
+				flex-direction: column
+				align-items: flex-start
+
+			&.left, &.middle, &.right
+				width: 100%
+
+			&-btn-media
+				&__btn
+					width: 100%
+
+		&-guest-room-wrapper
+			width: 100%
+
+	// object-page
+	.object-page
+		&-navigation-btn
+			&-navigate
+				justify-content: space-between
+
+				&__btn
+					margin: 0
+
+					&:last-child
+						margin: 0
+
+		&-cover
+			&-btn
+				&-navigate
+					justify-content: space-between
+
+					&__btn
+						margin: 0
+
+						&:last-child
+							margin: 0
+
+		&-section
+			&-services
+				&-list
+					width: 50%
 
 @media screen and ( max-width: 800px )
 	// interface
@@ -157,44 +301,6 @@
 		&-corporate
 			padding: 50px 0
 
-		// security
-		&-security-wrapper
-			padding: 25px
-
-		&-security
-			&-bottom-block
-				flex-direction: column
-
-				&-payments, &-feedbacks
-					width: 100%
-
-					&__description
-						max-width: 100%
-
-	// filters-object-form
-	.filters-object-form
-		padding: 25px
-
-		&-block
-			margin-top: 25px
-
-			&:first-child
-				margin-top: 0
-
-			&-row
-				flex-direction: column
-				align-items: flex-start
-
-			&.left, &.middle, &.right
-				width: 100%
-
-			&-btn-media
-				&__btn
-					width: 100%
-
-	// home
-	.home
-		&-corporate
 			&-bg-image
 				bottom: -100px
 				right: -75px
@@ -218,6 +324,34 @@
 				margin-top: 50px
 				justify-content: flex-start
 
+		// security
+		&-security-wrapper
+			padding: 25px
+
+		&-security
+			&-bottom-block
+				flex-direction: column
+
+				&-payments, &-feedbacks
+					width: 100%
+
+					&__description
+						max-width: 100%
+
+	// cabinet
+	.cabinet
+		&-content
+			&-setting
+				&-form
+					&-block
+						&-title
+							&__btn
+								&-message
+									&-text
+										left: 50%
+										transform: translateX(-50%)
+										bottom: 30px
+
 	// footer
 	.footer
 		&-block-wrapper
@@ -234,6 +368,96 @@
 			&__link
 				margin-top: 15px
 
+@media screen and ( max-width: 760px  )
+	// objects
+	.objects
+		&-catalog
+			&-block
+				flex-direction: column
+
+				&-cover-wrapper
+					height: 250px
+					min-height: 100%
+					min-width: 100%
+
+				&-text
+					flex-direction: column
+
+					&-block
+						&.left
+							padding: 20px 0 20px 20px
+
+						&.right
+							text-align: left
+							align-items: flex-start
+
+						&-subblock
+							margin-bottom: 15px
+
+							&-price
+								padding: 0 0 60px 20px
+
+							&.btn-block
+								position: absolute
+								bottom: 0
+								right: 0
+
+							&.feedbacks-block
+								margin-bottom: 0
+								position: absolute
+								bottom: 0
+								left: 0
+
+							&-feedbacks
+								padding: 16px
+
+								display: flex
+								align-items: center
+
+								border-radius: 0px 35px
+
+								&__title
+									margin-right: 5px
+
+									font-size: 18px
+
+								&__subtitle
+									font-size: 12px
+
+								&__subtitle.count-feedbacks
+									display: none
+
+@media screen and ( max-width: 750px  )
+	// header
+	.header
+		&-block
+			&-user
+				&__btn
+					display: none
+
+				&__btn-mobile
+					display: block
+
+	// object-page
+	.object-page
+		&-navigation
+			&-btn
+				top: 40px
+
+				&-navigate
+					display: none
+
+				&-accent
+					margin-top: 0
+
+		&-cover
+			&-btn
+				&-navigate
+					display: none
+
+				&-accent
+					margin-top: 0
+
 @media screen and ( max-width: 650px  )
 	// home
 	.home
@@ -246,6 +470,34 @@
 					width: 100%
 
 @media screen and ( max-width: 600px  )
+	// interface
+	// calendar
+	.calendar
+		padding: 13px 20px
+
+		&-period
+			&__from, &__to
+				font-size: 15px
+
+			&-line
+				margin: 0 5px
+				width: 10px
+
+		&__count
+			font-size: 15px
+
+	// header-transparent
+	.header-transparent
+		&-block
+			&__pass
+				display: none
+
+	// header
+	.header
+		&-block
+			&__pass
+				display: none
+
 	// home
 	.home
 		// corporate
@@ -253,6 +505,99 @@
 			&-content
 				&__image
 					width: 100%
+
+	// cabinet
+	.cabinet
+		&-content
+			&-block
+				padding: 35px
+
+			&-setting
+				&-form
+					&-block
+						&-title
+							align-items: flex-start
+							flex-direction: column
+							margin-bottom: 0
+
+							&__btn
+								margin-top: 25px
+
+								&-message
+									&-text
+										left: 0
+										transform: translateX(0)
+										width: 250px
+
+						&-inputs
+							flex-direction: column
+
+						&-input-wrapper
+							width: 100%
+
+						&-input
+							margin-top: 25px
+							width: 100%
+
+			&-history
+				&-section
+					&-block
+						flex-direction: column
+
+						&-cover
+							width: 100%
+							height: 200px
+
+							border-radius: 35px 35px 0px 0px
+
+						&-text
+							margin-top: 25px
+							margin-left: 0
+
+	// object-page
+	.object-page
+		&-section
+			&-padding
+				padding: 30px
+
+			&__title
+				font-size: 28px
+
+			&__description
+				font-size: 15px
+
+			&-room
+				&-block
+					&-subblock
+						&-info
+							flex-direction: column
+
+							&-cover
+								width: 100%
+								height: 200px
+
+							&-text
+								margin-top: 30px
+								margin-left: 0
+
+			&-terms
+				&-from-to
+					&-block
+						margin-left: 0
+
+					&-change-time
+						&-block
+							flex-direction: column
+
+							&__description
+								display: flex
+								justify-content: space-between
+
+								margin-bottom: 15px
+
+				&-payment
+					&-block
+						width: 100%
 
 	// footer
 	.footer
@@ -279,6 +624,33 @@
 	.btn-light
 		font-size: 15px
 
+	.location
+		&__title
+			font-size: 15px
+
+	// calendar
+	.calendar
+		&-select
+			width: 270px
+			height: 280px
+
+			&-days
+				&-title
+					&__title
+						font-size: 14px
+						height: 26px
+
+				&__day
+					font-size: 14px
+					height: 26px
+
+	// filters-object
+	.filters-object
+		&-form
+			&-guest-room
+				&-select-wrapper
+					width: 100%
+
 	// header-transparent
 	.header-transparent
 		padding: 25px 0 50px 0
@@ -294,6 +666,15 @@
 				&__title
 					font-size: 28px
 
+		// security
+		&-security
+			&-bottom-block
+				&-feedbacks
+					&-logos
+						&-item
+							width: 70px
+							height: 70px
+
 	// reglog
 	.reglog
 		&-content
@@ -306,6 +687,73 @@
 			&-padding-bottom
 				padding: 0 25px 25px 25px
 
+	// object-page
+	.object-page
+		&-cover-wrapper
+			justify-content: flex-end
+
+			width: 100%
+			height: 100%
+
+		&-cover
+			&-block
+				height: 100%
+
+				display: flex
+				flex-direction: column
+				justify-content: space-between
+
+			&-text
+				order: 2
+
+				border-radius: 35px 35px 0px 0px
+
+				&-info
+					margin-bottom: 25px
+					
+					&__title
+						font-size: 18px
+
+				&-feedbacks
+					position: absolute
+
+					bottom: 0
+					right: 0
+					
+					padding: 15px 20px
+
+					flex-direction: row
+					border-radius: 35px 0px 0px 0px
+
+					&__count
+						font-size: 18px
+						margin-right: 5px
+
+					&__title
+						font-size: 12px
+
+					&__subtitle
+						display: none
+
+			&-btn
+				order: 1
+
+		&-section
+			&-room
+				&-block
+					&-subblock
+						&-price
+							text-align: center
+							align-items: center
+							flex-direction: column
+
+							&-block
+								width: 100%
+
+								&__btn
+									margin-top: 25px
+									width: 100%
+
 @media screen and ( max-width: 400px )
 	// interface
 	.checkbox
@@ -314,3 +762,44 @@
 				width: 250px
 
 				right: -20px
+
+@media screen and ( max-width: 370px  )
+	// interface
+	// calendar
+	.calendar
+		&-period
+			flex-direction: column
+
+			&-line
+				margin: 10px 0
+
+	// objects
+	.objects
+		&-catalog
+			&-block
+				&-text
+					&-block
+						&-subblock
+							&-price
+								padding: 0 0 10px 20px
+
+							&.price-block
+								order: 1
+
+							&.btn-block
+								order: 3
+
+								width: 100%
+								position: static
+
+							&__btn
+								width: 100%
+								border-radius: 0 !important
+
+							&.feedbacks-block
+								order: 2
+
+								position: static
+
+							&-feedbacks
+								border-radius: 35px 35px 0 0

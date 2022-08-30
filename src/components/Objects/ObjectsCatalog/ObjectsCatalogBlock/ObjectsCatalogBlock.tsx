@@ -204,15 +204,15 @@ const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
                 </div>
 
                 <div className="objects-catalog-block-text-block right">
-                    <div className="objects-catalog-block-text-block-subblock">
+                    <div className="objects-catalog-block-text-block-subblock feedbacks-block">
                         <div className="objects-catalog-block-text-block-subblock-feedbacks">
                             <h3 className="objects-catalog-block-text-block-subblock-feedbacks__title">
-                                {rating}
+                                {/* {rating} */}4,7
                             </h3>
                             <p className="objects-catalog-block-text-block-subblock-feedbacks__subtitle">
-                                {rating_text}
+                                {/* {rating_text} */}Нормально
                             </p>
-                            <p className="objects-catalog-block-text-block-subblock-feedbacks__subtitle">
+                            <p className="objects-catalog-block-text-block-subblock-feedbacks__subtitle count-feedbacks">
                                 {
                                     checkDeclension(reviews_count, [
                                         "отзыв",
@@ -224,7 +224,7 @@ const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
                         </div>
                     </div>
 
-                    <div className="objects-catalog-block-text-block-subblock">
+                    <div className="objects-catalog-block-text-block-subblock price-block">
                         <div className="objects-catalog-block-text-block-subblock-price">
                             <h3 className="objects-catalog-block-text-block-subblock-price__title">
                                 <NumberFormat
@@ -283,7 +283,7 @@ const ObjectsCatalogBlock: React.FC<ObjectsCatalogBlockProps> = ({
                         </div>
                     </div>
 
-                    <div className="objects-catalog-block-text-block-subblock">
+                    <div className="objects-catalog-block-text-block-subblock btn-block">
                         <Link
                             to={url}
                             className="btn border objects-catalog-block-text-block-subblock__btn"

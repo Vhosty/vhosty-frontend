@@ -27,7 +27,7 @@ const ObjectPageNavigation: React.FC = () => {
                     smooth={true}
                     offset={-50}
                     duration={500}
-                    className="btn-light small object-page-navigation-btn-block__btn"
+                    className="btn-light small object-page-navigation-btn-navigate__btn"
                 >
                     Удобства
                 </Link>
@@ -38,7 +38,7 @@ const ObjectPageNavigation: React.FC = () => {
                     smooth={true}
                     offset={-50}
                     duration={500}
-                    className="btn-light small object-page-navigation-btn-block__btn"
+                    className="btn-light small object-page-navigation-btn-navigate__btn"
                 >
                     Местность
                 </Link>
@@ -49,7 +49,7 @@ const ObjectPageNavigation: React.FC = () => {
                     smooth={true}
                     offset={-50}
                     duration={500}
-                    className="btn-light small object-page-navigation-btn-block__btn"
+                    className="btn-light small object-page-navigation-btn-navigate__btn"
                 >
                     Отзывы
                 </Link>
@@ -60,7 +60,7 @@ const ObjectPageNavigation: React.FC = () => {
                     smooth={true}
                     offset={-50}
                     duration={500}
-                    className="btn-light small object-page-navigation-btn-block__btn"
+                    className="btn-light small object-page-navigation-btn-navigate__btn"
                 >
                     Условия
                 </Link>
@@ -72,7 +72,7 @@ const ObjectPageNavigation: React.FC = () => {
                     smooth={true}
                     offset={-50}
                     duration={500}
-                    className="btn small object-page-navigation-btn-block__btn"
+                    className="btn small object-page-navigation-btn-navigate__btn"
                 >
                     Доступные номера
                 </Link>
