@@ -81,15 +81,17 @@ const CalendarSelect: React.FC<CalendarSelectProps> = ({
                     onClick={minusMonthOnClick}
                 >
                     <svg
-                        width="9"
-                        height="16"
-                        viewBox="0 0 9 16"
+                        width="7"
+                        height="13"
+                        viewBox="0 0 7 13"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                     >
                         <path
-                            d="M8 1L2.41421 6.58579C1.63316 7.36684 1.63316 8.63316 2.41421 9.41421L8 15"
-                            strokeWidth="2"
+                            d="M6.25 1.5L2.06066 5.68934C1.47487 6.27513 1.47487 7.22487 2.06066 7.81066L6.25 12"
+                            stroke="#00A0A0"
+                            strokeOpacity="0.5"
+                            strokeWidth="1.5"
                             strokeLinecap="round"
                         />
                     </svg>
@@ -110,15 +112,16 @@ const CalendarSelect: React.FC<CalendarSelectProps> = ({
                     onClick={addMonthOnClick}
                 >
                     <svg
-                        width="9"
-                        height="16"
-                        viewBox="0 0 9 16"
+                        width="7"
+                        height="12"
+                        viewBox="0 0 7 12"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                     >
                         <path
-                            d="M1 15L6.58579 9.41421C7.36684 8.63316 7.36684 7.36684 6.58579 6.58579L1 1"
-                            strokeWidth="2"
+                            d="M0.75 11.25L4.93934 7.06066C5.52513 6.47487 5.52513 5.52513 4.93934 4.93934L0.750001 0.75"
+                            stroke="#00A0A0"
+                            strokeWidth="1.5"
                             strokeLinecap="round"
                         />
                     </svg>

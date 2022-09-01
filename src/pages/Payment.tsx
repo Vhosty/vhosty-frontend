@@ -207,34 +207,49 @@ const Payment: React.FC = () => {
                                             </div>
 
                                             <div className="payment-info-smeta-from-to-length">
+                                                <TitleIcon title="Длительность проживания">
+                                                    <svg
+                                                        viewBox="0 0 20 20"
+                                                        fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                    >
+                                                        <path
+                                                            d="M9.99 0C4.47 0 0 4.48 0 10C0 15.52 4.47 20 9.99 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 9.99 0ZM13.29 14.71L9 10.41V5H11V9.59L14.71 13.3L13.29 14.71Z"
+                                                            fill="#00A0A0"
+                                                        />
+                                                    </svg>
+                                                </TitleIcon>
+
                                                 <p className="payment-info-smeta-from-to-length__title">
-                                                    Длительность проживания
-                                                </p>
-                                                <p className="payment-info-smeta-from-to-length__subtitle">
-                                                    {  itemRoomById.overnights_count === 1 ? "1 день" : <>
-                                                        {
-                                                            checkDeclension(
-                                                                itemRoomById.overnights_count -
-                                                                    1,
-                                                                [
-                                                                    "день",
-                                                                    "дня",
-                                                                    "дней",
-                                                                ]
-                                                            ).title
-                                                        }
-                                                        ,{" "}
-                                                        {
-                                                            checkDeclension(
-                                                                itemRoomById.overnights_count,
-                                                                [
-                                                                    "ночь",
-                                                                    "ночи",
-                                                                    "ночей",
-                                                                ]
-                                                            ).title
-                                                        }
-                                                    </>}
+                                                    {itemRoomById.overnights_count ===
+                                                    1 ? (
+                                                        "1 день"
+                                                    ) : (
+                                                        <>
+                                                            {
+                                                                checkDeclension(
+                                                                    itemRoomById.overnights_count -
+                                                                        1,
+                                                                    [
+                                                                        "день",
+                                                                        "дня",
+                                                                        "дней",
+                                                                    ]
+                                                                ).title
+                                                            }
+                                                            ,{" "}
+                                                            {
+                                                                checkDeclension(
+                                                                    itemRoomById.overnights_count,
+                                                                    [
+                                                                        "ночь",
+                                                                        "ночи",
+                                                                        "ночей",
+                                                                    ]
+                                                                ).title
+                                                            }
+                                                        </>
+                                                    )}
                                                 </p>
                                             </div>
                                         </div>
