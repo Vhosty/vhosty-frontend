@@ -6,6 +6,8 @@ export interface ObjectsState {
 	totalCount: number,
 	page: number,
 
+	isFavorites: boolean,
+
 	firstIsLoaded: boolean,
 	isLoaded: boolean,
 
@@ -15,9 +17,11 @@ export interface ObjectsState {
 
 export enum ObjectsActionTypes {
 	SET_OBJECTS_ITEMS = "SET_OBJECTS_ITEMS",
+
 	SET_OBJECTS_TOTAL_COUNT_ITEMS = "SET_OBJECTS_TOTAL_COUNT_ITEMS",
 	SET_OBJECTS_PAGE = "SET_OBJECTS_PAGE",
 
+	SET_OBJECTS_IS_FAVORITES = "SET_OBJECTS_IS_FAVORITES",
 
 	SET_OBJECTS_IS_LOADED = "SET_OBJECTS_IS_LOADED",
 	SET_OBJECTS_FIRST_IS_LOADED = "SET_OBJECTS_FIRST_IS_LOADED",
@@ -41,6 +45,11 @@ interface setObjectsPage {
 	payload: number
 }
 
+interface setObjectsIsFavorites {
+	type: ObjectsActionTypes.SET_OBJECTS_IS_FAVORITES,
+	payload: boolean
+}
+
 interface setObjectsFirstIsLoaded {
 	type: ObjectsActionTypes.SET_OBJECTS_FIRST_IS_LOADED,
 	payload: boolean
@@ -61,4 +70,4 @@ interface setObjectsCurrentIndexBlockImageBox {
 	payload: number
 }
 
-export type ObjectsActions = setObjectsItems | setObjectsTotalCountItems | setObjectsPage | setObjectsFirstIsLoaded | setObjectsIsLoaded | setObjectsIsOpenImageBox | setObjectsCurrentIndexBlockImageBox
+export type ObjectsActions = setObjectsItems | setObjectsTotalCountItems | setObjectsPage | setObjectsIsFavorites | setObjectsFirstIsLoaded | setObjectsIsLoaded | setObjectsIsOpenImageBox | setObjectsCurrentIndexBlockImageBox

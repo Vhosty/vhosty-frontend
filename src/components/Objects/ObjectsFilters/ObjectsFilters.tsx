@@ -19,11 +19,11 @@ import {
 const ObjectsFilters: React.FC = () => {
     return (
         <div className="objects-filters-wrapper">
-            <ObjectsFiltersMap />
+            {/* <ObjectsFiltersMap /> */}
 
             <div className="objects-filters">
                 <ObjectsFiltersPrice />
-
+{/* 
                 <ObjectsFiltersDistance />
 
                 <ObjectsFiltersLocation />
@@ -44,7 +44,7 @@ const ObjectsFilters: React.FC = () => {
 
                 <ObjectsFiltersHotels />
 
-                <ObjectsFiltersThemes />
+                <ObjectsFiltersThemes /> */}
             </div>
         </div>
     );

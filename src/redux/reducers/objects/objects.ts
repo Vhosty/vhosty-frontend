@@ -6,6 +6,8 @@ const initialState: ObjectsState = {
 	totalCount: 0,
 	page: 1,
 
+	isFavorites: false,
+
 	firstIsLoaded: false,
 	isLoaded: false,
 
@@ -32,6 +34,13 @@ const objects = (state = initialState, action: ObjectsActions) => {
 		return {
 			...state,
 			page: action.payload
+		}
+	}
+
+	if (action.type === ObjectsActionTypes.SET_OBJECTS_IS_FAVORITES) {
+		return {
+			...state,
+			isFavorites: action.payload
 		}
 	}
 

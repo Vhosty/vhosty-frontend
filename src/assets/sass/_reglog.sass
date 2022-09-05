@@ -35,8 +35,10 @@
 		width: 500px
 
 		+borderRadius
-
 		+openPopup
+
+		&.middle-width
+			width: 800px
 
 		&.close
 			+closePopup
@@ -93,6 +95,21 @@
 
 			&-input
 				margin-bottom: 25px
+
+			&-inputs-row
+				display: flex
+				justify-content: space-between
+
+				&:first-child
+					margin-top: 30px
+
+				&-input
+					width: calc(50% - 15px)
+
+					margin-bottom: 30px
+
+					&:last-child
+						margin-bottom: 0
 
 			&-recovery__link
 				margin-top: 30px
@@ -175,3 +192,39 @@
 			&__btn
 				margin-top: 50px
 				width: 100%
+
+	&-confirm-reject
+		padding: 30px 0
+
+		text-align: center
+
+		&__title
+			font-size: 18px
+			color: $darkMainColor
+			margin-bottom: 20px
+
+			& > span.green
+				color: $darkMainGreen
+
+			& > span.red
+				color: $darkMainRed
+
+		&__subtitle
+			font-size: 15px
+
+		&-btn
+			margin-top: 35px
+			display: flex
+			flex-direction: column
+
+			&__reject
+				margin-top: 25px
+
+				cursor: pointer
+
+				color: $mainColor
+				font-weight: 500
+				font-size: 18px
+
+				border: none
+				background-color: transparent

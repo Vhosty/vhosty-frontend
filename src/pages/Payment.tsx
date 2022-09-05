@@ -90,6 +90,7 @@ const Payment: React.FC = () => {
                         <div className="payment-wrapper">
                             <div className="payment-title payment-block">
                                 <PaymentProgressbar currentNumber={2} />
+
                                 <div className="payment-title-room">
                                     <div className="payment-title-room-text">
                                         <div className="payment-title-room-text-stars">

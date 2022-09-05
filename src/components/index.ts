@@ -20,6 +20,8 @@ export { default as Calendar } from "./Interface/Calendar/Calendar";
 export { default as CalendarSelect } from "./Interface/Calendar/CalendarSelect";
 // ImageBox
 export { default as ImageBox } from "./Interface/ImageBox/ImageBox";
+// Cities
+export { default as Cities } from "./Interface/Cities/Cities";
 
 // Header
 export { default as Header } from "./Header/Header";

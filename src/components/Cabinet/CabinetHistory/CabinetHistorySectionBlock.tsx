@@ -8,13 +8,13 @@ interface CabinetHistorySectionBlockProps {
 }
 
 const CabinetHistorySectionBlock: React.FC<any> = ({
+    status_text,
     status,
     hotel_name,
     bed,
     adults,
     checkin_date,
     checkout_date,
-    status_text,
     images,
 }) => {
     return (
@@ -26,7 +26,13 @@ const CabinetHistorySectionBlock: React.FC<any> = ({
                 }}
             >
                 <p
-                    className={`cabinet-content-history-section-block-cover__status processing`}
+                    className={`cabinet-content-history-section-block-cover__status ${
+                        status === "created"
+                            ? "processing"
+                            : status === "reject"
+                            ? "cancel"
+                            : "success"
+                    }`}
                 >
                     {status_text}
                 </p>

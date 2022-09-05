@@ -16,6 +16,8 @@ import {
     Calendar,
     ObjectsFiltersGlobalGuestRoom,
     Checkbox,
+    Cities,
+    Popup,
 } from "../";
 
 import {
@@ -30,6 +32,8 @@ import {
     fetchObjects,
     setObjectsPage,
 } from "../../redux/actions/objects/objects";
+
+import {fetchCities} from "../../redux/actions/cities";
 
 const ObjectsFiltersGlobal: React.FC = () => {
     const dispatch = useDispatch();
@@ -51,6 +55,8 @@ const ObjectsFiltersGlobal: React.FC = () => {
     const [pageQuery, setPageQuery] = React.useState<string>("");
 
     const [isInit, setIsInit] = React.useState<boolean>(false);
+
+    const [isActiveCities, setIsActiveCities] = React.useState<boolean>(false);
 
     React.useEffect(() => {
         setCityQuery(String(query.get("city")));
@@ -131,6 +137,10 @@ const ObjectsFiltersGlobal: React.FC = () => {
     }, [page]);
 
     const onChangeCity = (city: string) => {
+        dispatch(fetchCities(city) as any);
+
+        setIsActiveCities(true);
+
         dispatch(setObjectsFiltersGlobalCity(city));
     };
 
@@ -193,6 +203,18 @@ const ObjectsFiltersGlobal: React.FC = () => {
                         value={city}
                         onChange={onChangeCity}
                     />
+
+                    <Popup
+                        wrapperActive={isActiveCities}
+                        setWrapperActive={setIsActiveCities}
+                    >
+                        <Cities
+                            onChange={(city: string) => {
+                                dispatch(setObjectsFiltersGlobalCity(city));
+                                setIsActiveCities(false);
+                            }}
+                        />
+                    </Popup>
                 </div>
                 <div className="filters-object-form-block middle">
                     <TitleIcon title="Дата" marginBottom>

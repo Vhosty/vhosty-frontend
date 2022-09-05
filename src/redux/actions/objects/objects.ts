@@ -92,6 +92,11 @@ export const setObjectsPage = (page: number) => ({
 	payload: page
 })
 
+export const setObjectsIsFavorites = (isFavorites: boolean) => ({
+	type: ObjectsActionTypes.SET_OBJECTS_IS_FAVORITES,
+	payload: isFavorites
+})
+
 export const setObjectsIsOpenImageBox = (status: boolean) => ({
 	type: ObjectsActionTypes.SET_OBJECTS_IS_OPEN_IMAGE_BOX,
 	payload: status

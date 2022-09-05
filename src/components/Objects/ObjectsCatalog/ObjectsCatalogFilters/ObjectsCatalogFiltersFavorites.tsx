@@ -1,15 +1,22 @@
 import React from "react";
+import {useDispatch} from "react-redux";
+
+import { useTypedSelector } from "../../../../hooks/useTypedSelector";
+
+import {setObjectsIsFavorites} from "../../../../redux/actions/objects/objects";
 
 const ObjectsCatalogFiltersFavorites: React.FC = () => {
-    const [isSelected, setIsSelected] = React.useState<boolean>(false);
+    const dispatch = useDispatch();
+
+    const {isFavorites} = useTypedSelector(({objects}) => objects);
 
     return (
         <div className="objects-catalog-filters-favorites">
             <button
                 className={`objects-catalog-filters-favorites__btn ${
-                    isSelected ? "active" : ""
+                    isFavorites ? "active" : ""
                 }`}
-                onClick={() => setIsSelected(!isSelected)}
+                onClick={() => dispatch(setObjectsIsFavorites(!isFavorites))}
             >
                 <svg
                     width="24"
