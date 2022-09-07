@@ -141,6 +141,8 @@ export { default as PaymentForm } from "./Payment/PaymentForm/PaymentForm";
 // PaymentProgressbar
 export { default as PaymentProgressbar } from "./Payment/PaymentProgressbar/PaymentProgressbar";
 export { default as PaymentProgressbarItem } from "./Payment/PaymentProgressbar/PaymentProgressbarItem";
+// PaymentModals
+export { default as PaymentModalsSuccess } from "./Payment/PaymentModals/PaymentModalsSuccess";
 
 // Cabinet
 export { default as CabinetMenu } from "./Cabinet/CabinetMenu";

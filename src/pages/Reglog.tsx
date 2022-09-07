@@ -1,5 +1,5 @@
 import React from "react";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import {useDispatch} from "react-redux";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
@@ -12,6 +12,7 @@ import {
     RecoveryPasswordConfirmedForm,
     Logout,
     CabinetSettingChangePasswordForm,
+    PaymentModalsSuccess,
 } from "../components/";
 
 import {ReglogStateTypes} from "../redux/types/IReglog";
@@ -30,6 +31,8 @@ import {sendUserChangePassword} from "../redux/actions/user/userCabinetSetting";
 const Reglog: React.FC = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const [query] = useSearchParams();
 
     const {closeAnimation, changeCloseAnimation, type} = useTypedSelector(
         ({reglog}) => reglog
@@ -53,7 +56,12 @@ const Reglog: React.FC = () => {
     };
 
     const onSubmitLogin = (data: any) => {
-        return dispatch(sendLogin(data) as any);
+        return dispatch(
+            sendLogin(
+                data,
+                query.get("is_redirect") == "true" ? true : false
+            ) as any
+        );
     };
 
     const onSubmitRegister = (data: any) => {
@@ -69,7 +77,7 @@ const Reglog: React.FC = () => {
 
         navigate({
             pathname: window.location.pathname,
-            search: ``,
+            search: window.location.search,
             hash: "",
         });
     };
@@ -157,6 +165,10 @@ const Reglog: React.FC = () => {
                     <CabinetSettingChangePasswordForm
                         onSubmit={onSubmitCabinetSettingChangePassword}
                     />
+                ) : null}
+
+                {type === ReglogStateTypes.PAYMENT_SUCCESS ? (
+                    <PaymentModalsSuccess />
                 ) : null}
             </div>
         </section>

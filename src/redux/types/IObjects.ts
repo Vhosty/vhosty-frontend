@@ -13,6 +13,7 @@ export interface ObjectsState {
 
 	isOpenImageBox: boolean,
 	currentIndexBlockImageBox: number,
+	currentIndexImageBox: number
 }
 
 export enum ObjectsActionTypes {
@@ -27,7 +28,8 @@ export enum ObjectsActionTypes {
 	SET_OBJECTS_FIRST_IS_LOADED = "SET_OBJECTS_FIRST_IS_LOADED",
 
 	SET_OBJECTS_IS_OPEN_IMAGE_BOX = "SET_OBJECTS_IS_OPEN_IMAGE_BOX",
-	SET_OBJECTS_CURRENT_INDEX_BLOCK_IMAGE_BOX = "SET_CURRENT_INDEX_BLOCK_IMAGE_BOX"
+	SET_OBJECTS_CURRENT_INDEX_BLOCK_IMAGE_BOX = "SET_CURRENT_INDEX_BLOCK_IMAGE_BOX",
+	SET_OBJECTS_CURRENT_INDEX_IMAGE_BOX = "SET_OBJECTS_CURRENT_INDEX_IMAGE_BOX"
 }
 
 interface setObjectsItems {
@@ -70,4 +72,9 @@ interface setObjectsCurrentIndexBlockImageBox {
 	payload: number
 }
 
-export type ObjectsActions = setObjectsItems | setObjectsTotalCountItems | setObjectsPage | setObjectsIsFavorites | setObjectsFirstIsLoaded | setObjectsIsLoaded | setObjectsIsOpenImageBox | setObjectsCurrentIndexBlockImageBox
+interface setObjectsCurrentIndexImageBox {
+	type: ObjectsActionTypes.SET_OBJECTS_CURRENT_INDEX_IMAGE_BOX,
+	payload: number
+}
+
+export type ObjectsActions = setObjectsItems | setObjectsTotalCountItems | setObjectsPage | setObjectsIsFavorites | setObjectsFirstIsLoaded | setObjectsIsLoaded | setObjectsIsOpenImageBox | setObjectsCurrentIndexBlockImageBox | setObjectsCurrentIndexImageBox

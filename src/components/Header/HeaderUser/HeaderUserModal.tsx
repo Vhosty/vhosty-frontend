@@ -45,7 +45,10 @@ const HeaderUserModal: React.FC = () => {
                 <p className="header-block-user-modal-item__title">Избранное</p>
             </NavLink>
 
-            <Link to="#logout" className="header-block-user-modal-item">
+            <Link
+                to={`${window.location.search}#logout`}
+                className="header-block-user-modal-item"
+            >
                 <p className="header-block-user-modal-item__title">
                     Выйти из аккаунта
                 </p>

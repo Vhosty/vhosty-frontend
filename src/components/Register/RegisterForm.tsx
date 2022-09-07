@@ -25,7 +25,10 @@ const RegisterForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
                         Гость №{localStorage.getItem("userNumber")}
                     </p>
                     <p className="reglog-form-text__title">
-                        Зарегистрироваться или <Link to="#login">Войти</Link>
+                        Зарегистрироваться или{" "}
+                        <Link to={`${window.location.search}#login`}>
+                            Войти
+                        </Link>
                     </p>
                 </div>
             </div>

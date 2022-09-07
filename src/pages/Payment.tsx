@@ -361,11 +361,11 @@ const Payment: React.FC = () => {
                                         </div>
                                         <div className="payment-info-room-and-contact-room-block-text">
                                             <div className="payment-info-room-and-contact-room-block-text-block">
-                                                <h2 className="payment-info-room-and-contact-room-block-text-block__title">
+                                                <h3 className="payment-info-room-and-contact-room-block-text-block__title">
                                                     {
                                                         itemRoomById.room_category_name
                                                     }
-                                                </h2>
+                                                </h3>
                                                 <p className="payment-info-room-and-contact-room-block-text-block__subtitle">
                                                     {itemRoomById.bed_type_text}
                                                 </p>

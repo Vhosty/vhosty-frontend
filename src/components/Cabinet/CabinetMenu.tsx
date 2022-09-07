@@ -88,7 +88,10 @@ const CabinetMenu: React.FC = () => {
                 </p>
             </NavLink> */}
 
-            <Link to="#logout" className="cabinet-content-menu-item">
+            <Link
+                to={`${window.location.search}#logout`}
+                className="cabinet-content-menu-item"
+            >
                 <p className="cabinet-content-menu-item__title">
                     <svg
                         viewBox="0 0 16 16"

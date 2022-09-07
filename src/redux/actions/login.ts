@@ -11,7 +11,7 @@ import {
 
 import { Login } from '../../models/ILogin'
 
-export const sendLogin = (data: Login) => {
+export const sendLogin = (data: Login, isRedirect?: boolean) => {
 	return async (dispatch: Dispatch<LoginActions>) => {
 		dispatch({
 			type: LoginActionTypes.SET_LOGIN_IS_PENDING,
@@ -22,7 +22,11 @@ export const sendLogin = (data: Login) => {
 			.then(({ data }) => {
 				localStorage.setItem("accessToken", data.access_token);
 
-				window.location.href = "/cabinet/setting";
+				if (isRedirect) {
+					window.location.href = "/cabinet/setting";
+				} else {
+					window.location.hash = ""
+				}
 			})
 			.catch(({ response }) => {
 				const errorMessage = response.data.detail

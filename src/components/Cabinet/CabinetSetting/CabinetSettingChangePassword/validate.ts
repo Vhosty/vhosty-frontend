@@ -43,7 +43,7 @@ export const validate = (values: validateValues) => {
 	} else if (values.new_password2.length < min) {
 		errors.new_password2 = `Не менее ${min} символов`;
 	} else if (values.new_password2 !== values.new_password) {
-		errors.new_password2 = `Пароли не равны`;
+		errors.new_password2 = `Не совпадают`;
 	}
 
 	return errors;

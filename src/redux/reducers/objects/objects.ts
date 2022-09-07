@@ -13,6 +13,7 @@ const initialState: ObjectsState = {
 
 	isOpenImageBox: false,
 	currentIndexBlockImageBox: 0,
+	currentIndexImageBox: 0,
 }
 
 const objects = (state = initialState, action: ObjectsActions) => {
@@ -69,6 +70,13 @@ const objects = (state = initialState, action: ObjectsActions) => {
 		return {
 			...state,
 			currentIndexBlockImageBox: action.payload
+		}
+	}
+
+	if (action.type === ObjectsActionTypes.SET_OBJECTS_CURRENT_INDEX_IMAGE_BOX) {
+		return {
+			...state,
+			currentIndexImageBox: action.payload
 		}
 	}
 

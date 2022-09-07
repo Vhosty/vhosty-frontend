@@ -11,7 +11,7 @@ import {
 
 import { Register } from '../../models/IRegister'
 
-import {fetchUserAboutMe} from '../actions/user/user';
+import { fetchUserAboutMe } from '../actions/user/user';
 
 export const sendRegister = (data: Register) => {
 	return async (dispatch: Dispatch<RegisterActions>) => {

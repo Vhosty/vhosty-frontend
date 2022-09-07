@@ -152,10 +152,17 @@ const Footer: React.FC = () => {
                                 />
 
                                 <p className="footer-block-reglog__title">
-                                    <Link to="#register">
+                                    <Link
+                                        to={`${window.location.search}#register`}
+                                    >
                                         Зарегистрироваться
                                     </Link>{" "}
-                                    или <Link to="#login">Войти</Link>
+                                    или{" "}
+                                    <Link
+                                        to={`${window.location.search}#login`}
+                                    >
+                                        Войти
+                                    </Link>
                                 </p>
                             </div>
                         </div>

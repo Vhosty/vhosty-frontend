@@ -1,6 +1,4 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {createTextMask} from "redux-form-input-masks";
 
 import {Field, reduxForm, InjectedFormProps} from "redux-form";
 
@@ -24,15 +22,15 @@ const PaymentForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
                     Пожалуйста, заполните все поля для завершения бронирования.
                 </p>
             </div>
-{/* 
+            {/* 
             <div className="payment-info-room-and-contact-form-bonus">
                 <h2 className="payment-info-room-and-contact-form-bonus__title">
                     Получите <span>46 789 бонусов,</span> которые можно
                     потратить на путешествия
                 </h2>
                 <p className="payment-info-room-and-contact-form-bonus__subtitle">
-                    <Link to="#login">Авторизируйтесь</Link> или{" "}
-                    <Link to="#register">Зарегистрируйтесь</Link>, чтобы копить
+                    <Link to={`${window.location.search}#login`}>Авторизируйтесь</Link> или{" "}
+                    <Link to={`${window.location.search}#register`}>Зарегистрируйтесь</Link>, чтобы копить
                     бонусы и бронировать быстрее
                 </p>
             </div> */}
@@ -58,11 +56,6 @@ const PaymentForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
                             label={"8 999 999 99 99"}
                             type="text"
                             small
-                            {...(createTextMask({
-                                pattern: "+7 999 999 99-99",
-                                guide: false,
-                                stripMask: false,
-                            }) as any)}
                         />
                     </div>
                 </div>
@@ -117,7 +110,7 @@ const PaymentForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
                 </div>
                 <div className="payment-info-room-and-contact-form-btn">
                     <button className="btn payment-info-room-and-contact-form-btn__btn">
-                        Перейти к оплате
+                        Забронировать номер
                     </button>
                 </div>
             </div>

@@ -25,7 +25,10 @@ const LoginForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
                         Гость №{localStorage.getItem("userNumber")}
                     </p>
                     <p className="reglog-form-text__title">
-                        Войти или <Link to="#register">Зарегистрироваться</Link>
+                        Войти или{" "}
+                        <Link to={`${window.location.search}#register`}>
+                            Зарегистрироваться
+                        </Link>
                     </p>
                 </div>
             </div>
@@ -54,7 +57,7 @@ const LoginForm: React.FC<{} & InjectedFormProps<{}, {}>> = ({
                     </div>
 
                     <Link
-                        to="#recovery_password"
+                        to={`${window.location.search}#recovery_password`}
                         className="reglog-form-block-recovery__link"
                     >
                         Забыли пароль?

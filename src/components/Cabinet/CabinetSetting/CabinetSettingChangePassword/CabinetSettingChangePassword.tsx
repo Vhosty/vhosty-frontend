@@ -1,11 +1,11 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import {Link} from "react-router-dom";
 
 const CabinetSettingChangePassword: React.FC = () => {
     return (
         <div className="cabinet-content-setting-change-password">
             <Link
-                to="#cabinet_setting_change_password"
+                to={`${window.location.search}#cabinet_setting_change_password`}
                 className="cabinet-content-setting-change-password__btn"
             >
                 <svg

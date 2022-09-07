@@ -282,8 +282,7 @@
 			&-item
 				padding: 30px 20px
 
-				width: 90%
-				min-width: 90%
+				width: 400px
 
 				height: 350px
 
@@ -295,7 +294,9 @@
 						font-size: 15px
 
 				&__image
-					width: 250px
+					bottom: -50px
+					right: -50px
+					width: 250px !important
 
 		// corporate
 		&-corporate
@@ -500,6 +501,15 @@
 
 	// home
 	.home
+		// services
+		&-services
+			&-item
+				min-width: 300px
+				width: 300px
+
+				&__image
+					bottom: -90px
+
 		// corporate
 		&-corporate
 			&-content
@@ -655,9 +665,6 @@
 	.header-transparent
 		padding: 25px 0 50px 0
 
-		&-bg
-			background-position: center right
-
 	// home
 	.home
 		// main
@@ -710,7 +717,7 @@
 
 				&-info
 					margin-bottom: 25px
-					
+
 					&__title
 						font-size: 18px
 
@@ -719,7 +726,7 @@
 
 					bottom: 0
 					right: 0
-					
+
 					padding: 15px 20px
 
 					flex-direction: row
@@ -753,6 +760,32 @@
 								&__btn
 									margin-top: 25px
 									width: 100%
+
+	// objects
+	.objects
+		&-catalog
+			&-block
+				margin-bottom: 20px
+				
+				&-cover-wrapper
+					height: 110px
+
+				&-text
+					&-block
+						&.left
+							padding: 20px 0 5px 20px
+
+						&-subblock
+							margin-bottom: 5px
+
+							&-stars
+								margin-bottom: 0
+
+							&__title
+								margin-bottom: 0
+
+							&-info-room
+								display: none
 
 @media screen and ( max-width: 400px )
 	// interface

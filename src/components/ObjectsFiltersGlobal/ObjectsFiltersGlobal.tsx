@@ -197,7 +197,7 @@ const ObjectsFiltersGlobal: React.FC = () => {
                     </TitleIcon>
 
                     <Input
-                        label="Например, Дубай"
+                        label="Например, Москва"
                         small
                         type="text"
                         value={city}

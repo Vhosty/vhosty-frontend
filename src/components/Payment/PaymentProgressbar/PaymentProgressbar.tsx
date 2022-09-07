@@ -1,5 +1,7 @@
 import React from "react";
 
+import {useParams} from "react-router-dom";
+
 import PaymentProgressbarItem from "../PaymentProgressbar/PaymentProgressbarItem";
 
 interface PaymentProgressbarProps {
@@ -9,6 +11,8 @@ interface PaymentProgressbarProps {
 const PaymentProgressbar: React.FC<PaymentProgressbarProps> = ({
     currentNumber,
 }) => {
+    const {id} = useParams();
+
     return (
         <div className="payment-title-progressbar">
             <PaymentProgressbarItem
@@ -16,6 +20,7 @@ const PaymentProgressbar: React.FC<PaymentProgressbarProps> = ({
                 number={1}
                 success={currentNumber > 1 ? true : false}
                 active={currentNumber === 1 ? true : false}
+                linkTo={`/objects/${id}${window.location.search}`}
             />
 
             <div className="payment-title-progressbar-line"></div>

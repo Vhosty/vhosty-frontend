@@ -55,11 +55,16 @@ div
 
 // title
 h1, h2, h3, h4, h5, h6
-	font-weight: 700
 	line-height: 1.3em
 
 	& > span
 		color: $mainColor
+
+h1, h2
+	font-weight: 700
+
+h3, h4, h5, h6
+	font-weight: 500
 
 // description
 p
@@ -67,6 +72,7 @@ p
 
 	& > a
 		color: $mainColor
+		font-weight: 500
 
 .description
 	font-size: 18px
@@ -124,6 +130,8 @@ button
 		background: $lightGray
 
 .btn-light
+	text-align: center
+
 	display: inline-flex
 	justify-content: center
 	align-items: center
@@ -153,7 +161,7 @@ button
 		background-color: #F2FAFA
 
 	&.small
-		padding: 15px 45px
+		padding: 12px 50px
 
 .btn-white
 	display: inline-flex
@@ -251,7 +259,7 @@ input[type="file"]
 			color: $black
 
 			border-radius: 100px
-			padding: 12px 25px
+			padding: 10px 25px
 			width: 100%
 
 			background-color: transparent
@@ -328,7 +336,7 @@ input[type="file"]
 		font-family: 'Ubuntu', sans-serif
 
 		width: 100%
-		min-height: 200px
+		min-height: 350px
 
 		resize: none
 		outline: none
@@ -883,6 +891,7 @@ input[type="file"]
 
 	&.disabled &__title
 		color: $darkGray
+		font-weight: 400
 
 		& > svg
 			fill: $darkGray
@@ -898,6 +907,8 @@ input[type="file"]
 		margin-bottom: 0
 
 	&__title
+		font-size: 18px
+
 		user-select: none
 		cursor: pointer
 
@@ -968,6 +979,16 @@ input[type="file"]
 
 	&.small > label
 		font-size: 15px
+
+	&.disabled
+		pointer-events: none
+		user-select: none
+
+		& > label
+			color: $gray
+
+			&::before
+				background-color: #F3F4F5
 
 	& > input[type=radio]
 		position: absolute

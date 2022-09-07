@@ -1,10 +1,18 @@
 import React from "react";
+import {useDispatch} from "react-redux";
 
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
+import {
+    setObjectsIsOpenImageBox,
+    setObjectsCurrentIndexImageBox,
+} from "../../redux/actions/objects/objects";
+
 const ObjectPageSliderImages: React.FC<any> = ({images}) => {
+    const dispatch = useDispatch();
+
     const setting = {
         items: 4,
         dots: false,
@@ -21,6 +29,11 @@ const ObjectPageSliderImages: React.FC<any> = ({images}) => {
 
     const onClickNext = () => {
         sliderRef.current?.next();
+    };
+
+    const openObjectsImageBox = (index: number) => {
+        dispatch(setObjectsCurrentIndexImageBox(index) as any);
+        dispatch(setObjectsIsOpenImageBox(true) as any);
     };
 
     return (
@@ -71,6 +84,7 @@ const ObjectPageSliderImages: React.FC<any> = ({images}) => {
                             backgroundImage: `url('${image.url}')`,
                         }}
                         key={`object-page-slider-images-item-${index}`}
+                        onClick={() => openObjectsImageBox(index)}
                     ></div>
                 ))}
             </OwlCarousel>

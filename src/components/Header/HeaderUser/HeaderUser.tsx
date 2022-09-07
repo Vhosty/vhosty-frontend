@@ -39,7 +39,10 @@ const HeaderUser: React.FC = () => {
                     </Popup>
                 </div>
             ) : (
-                <Link to="#login" className="header-block-user">
+                <Link
+                    to={`${window.location.search}#register`}
+                    className="header-block-user"
+                >
                     <HeaderUserNotifications />
 
                     <button className="header-block-user__btn">

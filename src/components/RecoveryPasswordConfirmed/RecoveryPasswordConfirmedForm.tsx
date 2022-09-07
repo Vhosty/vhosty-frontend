@@ -31,7 +31,7 @@ const RecoveryPasswordConfirmedForm: React.FC<
                             type="password"
                             name="password"
                             label="• • • • • • • • • •"
-                            title="Пароль"
+                            title="Новый пароль"
                         />
                     </div>
                     <div className="reglog-form-block-input">
@@ -40,7 +40,7 @@ const RecoveryPasswordConfirmedForm: React.FC<
                             type="password"
                             name="password2"
                             label="• • • • • • • • • •"
-                            title="Повторите пароль"
+                            title="Повторите новый пароль"
                         />
 					</div>
 					

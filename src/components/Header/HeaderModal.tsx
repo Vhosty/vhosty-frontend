@@ -108,14 +108,14 @@ const HeaderModal: React.FC<HeaderModalProps> = ({color}) => {
                     {isLoadedUser ? null : (
                         <p className="header-block-menu-modal-block-bottom__link">
                             <Link
-                                to="#register"
+                                to={`${window.location.search}#register`}
                                 onClick={() => setActiveHeaderModal(false)}
                             >
                                 Зарегистрироваться
                             </Link>{" "}
                             или{" "}
                             <Link
-                                to="#login"
+                                to={`${window.location.search}#login`}
                                 onClick={() => setActiveHeaderModal(false)}
                             >
                                 Войти

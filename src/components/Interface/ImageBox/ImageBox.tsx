@@ -6,10 +6,16 @@ import "react-image-lightbox/style.css";
 interface ImageBoxProps {
     state: boolean;
     setState: (status: boolean) => void;
-    images: string[];
+    images: any;
+    initIndex?: number;
 }
 
-const ImageBox: React.FC<ImageBoxProps> = ({state, setState, images}) => {
+const ImageBox: React.FC<ImageBoxProps> = ({
+    state,
+    setState,
+    images,
+    initIndex,
+}) => {
     const [imageBoxState, setImageBoxState] = React.useState(state);
     const [photoIndex, setPhotoIndex] = React.useState(0);
 
@@ -17,30 +23,62 @@ const ImageBox: React.FC<ImageBoxProps> = ({state, setState, images}) => {
         setImageBoxState(state);
     }, [state]);
 
+	React.useEffect(() => {
+		if (initIndex) setPhotoIndex(initIndex);
+	}, [initIndex]);
+
     return (
         <>
             {imageBoxState ? (
-                <Lightbox
-                    mainSrc={images[photoIndex]}
-                    nextSrc={images[(photoIndex + 1) % images.length]}
-                    prevSrc={
-                        images[(photoIndex + images.length - 1) % images.length]
-                    }
-                    onCloseRequest={() => {
-                        setImageBoxState(false);
-                        setState(false);
-                        setPhotoIndex(0);
-                    }}
-                    onMovePrevRequest={() =>
-                        setPhotoIndex(
-                            (photoIndex + images.length - 1) % images.length
-                        )
-                    }
-                    onMoveNextRequest={() =>
-                        setPhotoIndex((photoIndex + 1) % images.length)
-                    }
-                    animationDuration={200}
-                />
+                images[0].url ? (
+                    <Lightbox
+                        mainSrc={images[photoIndex].url}
+                        nextSrc={images[(photoIndex + 1) % images.length].url}
+                        prevSrc={
+                            images[
+                                (photoIndex + images.length - 1) % images.length
+                            ].url
+                        }
+                        onCloseRequest={() => {
+                            setImageBoxState(false);
+                            setState(false);
+                            setPhotoIndex(0);
+                        }}
+                        onMovePrevRequest={() =>
+                            setPhotoIndex(
+                                (photoIndex + images.length - 1) % images.length
+                            )
+                        }
+                        onMoveNextRequest={() =>
+                            setPhotoIndex((photoIndex + 1) % images.length)
+                        }
+                        animationDuration={200}
+                    />
+                ) : (
+                    <Lightbox
+                        mainSrc={images[photoIndex]}
+                        nextSrc={images[(photoIndex + 1) % images.length]}
+                        prevSrc={
+                            images[
+                                (photoIndex + images.length - 1) % images.length
+                            ]
+                        }
+                        onCloseRequest={() => {
+                            setImageBoxState(false);
+                            setState(false);
+                            setPhotoIndex(0);
+                        }}
+                        onMovePrevRequest={() =>
+                            setPhotoIndex(
+                                (photoIndex + images.length - 1) % images.length
+                            )
+                        }
+                        onMoveNextRequest={() =>
+                            setPhotoIndex((photoIndex + 1) % images.length)
+                        }
+                        animationDuration={200}
+                    />
+                )
             ) : null}
         </>
     );

@@ -106,3 +106,8 @@ export const setObjectsCurrentIndexBlockImageBox = (number: number) => ({
 	type: ObjectsActionTypes.SET_OBJECTS_CURRENT_INDEX_BLOCK_IMAGE_BOX,
 	payload: number
 })
+
+export const setObjectsCurrentIndexImageBox = (number: number) => ({
+	type: ObjectsActionTypes.SET_OBJECTS_CURRENT_INDEX_IMAGE_BOX,
+	payload: number
+})
