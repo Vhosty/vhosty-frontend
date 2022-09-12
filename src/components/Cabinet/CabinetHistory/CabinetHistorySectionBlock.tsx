@@ -1,21 +1,20 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import moment from "moment";
 
 import {ServiceIcon} from "../../";
 
-interface CabinetHistorySectionBlockProps {
-    status: "processing" | "success" | "cancel";
-}
-
 const CabinetHistorySectionBlock: React.FC<any> = ({
     status_text,
     status,
+    hotel_id,
     hotel_name,
     bed,
     adults,
     checkin_date,
     checkout_date,
     images,
+    openCabinetHistoryImageBoxIndex,
 }) => {
     return (
         <div className="cabinet-content-history-section-block">
@@ -36,14 +35,23 @@ const CabinetHistorySectionBlock: React.FC<any> = ({
                 >
                     {status_text}
                 </p>
-                <p className="cabinet-content-history-section-block-cover__count">
+                <p
+                    className="cabinet-content-history-section-block-cover__count"
+                    onClick={openCabinetHistoryImageBoxIndex}
+                >
                     {images.length} фото
                 </p>
             </div>
             <div className="cabinet-content-history-section-block-text">
-                <h4 className="cabinet-content-history-section-block-text__title">
+                <Link
+                    to={`/objects/${hotel_id}?from=${moment().format(
+                        "YYYY-MM-DD"
+                    )}&to=${moment().add(1, "day").format("YYYY-MM-DD")}`}
+                    className="cabinet-content-history-section-block-text__title"
+                >
                     {hotel_name}
-                </h4>
+                </Link>
+
                 <p className="cabinet-content-history-section-block-text__subtitle">
                     {bed.bed_type_text}, {adults} гостя
                 </p>

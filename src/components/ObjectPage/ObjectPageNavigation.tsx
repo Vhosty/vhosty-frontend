@@ -22,10 +22,32 @@ const ObjectPageNavigation: React.FC = () => {
         >
             <div className="object-page-navigation-btn-navigate">
                 <Link
+                    to="object-page-slider-images"
+                    spy={true}
+                    smooth={true}
+                    offset={-150}
+                    duration={500}
+                    className="btn-light small object-page-navigation-btn-navigate__btn"
+                >
+                    Фотографии
+                </Link>
+
+                <Link
+                    to="object-page-about"
+                    spy={true}
+                    smooth={true}
+                    offset={-150}
+                    duration={500}
+                    className="btn-light small object-page-navigation-btn-navigate__btn"
+                >
+                    Об отеле
+                </Link>
+
+                <Link
                     to="object-page-services"
                     spy={true}
                     smooth={true}
-                    offset={-50}
+                    offset={-150}
                     duration={500}
                     className="btn-light small object-page-navigation-btn-navigate__btn"
                 >
@@ -33,32 +55,10 @@ const ObjectPageNavigation: React.FC = () => {
                 </Link>
 
                 <Link
-                    to="object-page-maps"
-                    spy={true}
-                    smooth={true}
-                    offset={-50}
-                    duration={500}
-                    className="btn-light small object-page-navigation-btn-navigate__btn"
-                >
-                    Местность
-                </Link>
-
-                <Link
-                    to="object-page-feedbacks"
-                    spy={true}
-                    smooth={true}
-                    offset={-50}
-                    duration={500}
-                    className="btn-light small object-page-navigation-btn-navigate__btn"
-                >
-                    Отзывы
-                </Link>
-
-                <Link
                     to="object-page-terms"
                     spy={true}
                     smooth={true}
-                    offset={-50}
+                    offset={-150}
                     duration={500}
                     className="btn-light small object-page-navigation-btn-navigate__btn"
                 >
@@ -70,7 +70,7 @@ const ObjectPageNavigation: React.FC = () => {
                     to="object-page-room"
                     spy={true}
                     smooth={true}
-                    offset={-50}
+                    offset={-150}
                     duration={500}
                     className="btn small object-page-navigation-btn-navigate__btn"
                 >

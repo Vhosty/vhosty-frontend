@@ -21,7 +21,7 @@
 			align-items: center
 
 			&-line
-				width: 130px
+				width: 10%
 				height: 1px
 				background-color: $lightGray
 
@@ -82,10 +82,7 @@
 					margin-bottom: 5px
 
 			&-feedbacks
-				display: flex
-				flex-direction: column
-				align-items: center
-				justify-content: center
+				text-align: center
 
 				padding: 25px
 				background-color: $darkMainColor
@@ -96,8 +93,9 @@
 				&__title
 					font-size: 40px
 
-				&__subtitle
-					font-size: 15px
+				&-block
+					&__subtitle
+						font-size: 15px
 
 	&-info
 		display: flex
@@ -208,11 +206,17 @@
 			width: calc( 65% - 50px )
 
 			&-room-block
+				width: 100%
+
 				display: flex
 
 				background-color: $white
 
 				+borderRadius
+
+				&.media
+					display: none
+					margin-bottom: 25px
 
 				&-cover
 					padding: 10px 15px

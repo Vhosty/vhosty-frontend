@@ -27,7 +27,7 @@ const HomeCorporate: React.FC = () => {
 
                         <div className="home-corporate-content-text">
                             <h2 className="home-corporate-content-text__title">
-                                Индивидуальный подход для{" "}
+                                Индивидуальный подход <br /> для{" "}
                                 <span>корпоративных клиентов</span>
                             </h2>
                             <p className="home-corporate-content-text__description">

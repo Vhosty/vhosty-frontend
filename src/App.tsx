@@ -17,7 +17,7 @@ import {
     Confirmed,
 } from "./pages";
 
-import {fetchUserAboutMe} from "./redux/actions/user/user";
+import {fetchUserAboutMe, setUserIsPending} from "./redux/actions/user/user";
 
 const App = () => {
     const dispatch = useDispatch();
@@ -36,6 +36,8 @@ const App = () => {
 
         if (localStorage.getItem("accessToken")) {
             dispatch(fetchUserAboutMe() as any);
+        } else {
+            dispatch(setUserIsPending(false));
         }
 
         const userNumber: string = `${Math.floor(

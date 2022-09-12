@@ -143,6 +143,8 @@ export { default as PaymentProgressbar } from "./Payment/PaymentProgressbar/Paym
 export { default as PaymentProgressbarItem } from "./Payment/PaymentProgressbar/PaymentProgressbarItem";
 // PaymentModals
 export { default as PaymentModalsSuccess } from "./Payment/PaymentModals/PaymentModalsSuccess";
+// PaymentRoom
+export { default as PaymentRoom } from "./Payment/PaymentRoom/PaymentRoom";
 
 // Cabinet
 export { default as CabinetMenu } from "./Cabinet/CabinetMenu";

@@ -15,7 +15,10 @@ import {
     PaymentModalsSuccess,
 } from "../components/";
 
-import {ReglogStateTypes} from "../redux/types/IReglog";
+import {
+    ReglogStateTypesNotLogin,
+    ReglogStateTypesLogin,
+} from "../redux/types/IReglog";
 
 import {
     setReglogOpen,
@@ -59,7 +62,7 @@ const Reglog: React.FC = () => {
         return dispatch(
             sendLogin(
                 data,
-                query.get("is_redirect") == "true" ? true : false
+                query.get("is_redirect") == "false" ? false : true
             ) as any
         );
     };
@@ -120,15 +123,15 @@ const Reglog: React.FC = () => {
                     </svg>
                 </div>
 
-                {type === ReglogStateTypes.LOGIN ? (
+                {type === ReglogStateTypesNotLogin.LOGIN ? (
                     <LoginForm onSubmit={onSubmitLogin} />
                 ) : null}
 
-                {type === ReglogStateTypes.REGISTER ? (
+                {type === ReglogStateTypesNotLogin.REGISTER ? (
                     <RegisterForm onSubmit={onSubmitRegister} />
                 ) : null}
 
-                {type === ReglogStateTypes.REGISTER_SUCCESS ? (
+                {type === ReglogStateTypesNotLogin.REGISTER_SUCCESS ? (
                     <ReglogSuccess
                         topTitle="Зарегистрироваться или Войти"
                         title="Проверьте почту!"
@@ -138,11 +141,11 @@ const Reglog: React.FC = () => {
                     />
                 ) : null}
 
-                {type === ReglogStateTypes.RECOVERY_PASSWORD ? (
+                {type === ReglogStateTypesNotLogin.RECOVERY_PASSWORD ? (
                     <RecoveryPasswordForm onSubmit={onSubmitRecoveryPassword} />
                 ) : null}
 
-                {type === ReglogStateTypes.RECOVERY_PASSWORD_SUCCESS ? (
+                {type === ReglogStateTypesNotLogin.RECOVERY_PASSWORD_SUCCESS ? (
                     <ReglogSuccess
                         topTitle="Восстановить пароль"
                         title="Проверьте почту!"
@@ -152,22 +155,24 @@ const Reglog: React.FC = () => {
                     />
                 ) : null}
 
-                {type === ReglogStateTypes.RECOVERY_PASSWORD_CONFIRMED ? (
+                {type ===
+                ReglogStateTypesNotLogin.RECOVERY_PASSWORD_CONFIRMED ? (
                     <RecoveryPasswordConfirmedForm onSubmit={() => {}} />
                 ) : null}
 
-                {type === ReglogStateTypes.LOGOUT && isLoadedUser ? (
+                {type === ReglogStateTypesLogin.LOGOUT && isLoadedUser ? (
                     <Logout />
                 ) : null}
 
-                {type === ReglogStateTypes.CABINET_SETTING_CHANGE_PASSWORD &&
+                {type ===
+                    ReglogStateTypesLogin.CABINET_SETTING_CHANGE_PASSWORD &&
                 isLoadedUser ? (
                     <CabinetSettingChangePasswordForm
                         onSubmit={onSubmitCabinetSettingChangePassword}
                     />
                 ) : null}
 
-                {type === ReglogStateTypes.PAYMENT_SUCCESS ? (
+                {type === ReglogStateTypesLogin.PAYMENT_SUCCESS ? (
                     <PaymentModalsSuccess />
                 ) : null}
             </div>
@@ -180,17 +185,37 @@ const ReglogWrapper: React.FC = () => {
     const dispatch = useDispatch();
 
     const {open} = useTypedSelector(({reglog}) => reglog);
+    const {isLoadedUser, isPendingUser} = useTypedSelector(({user}) => user);
 
     React.useEffect(() => {
         const type_hash: string = hash.split("#")[1];
 
-        if (Object.values(ReglogStateTypes).find((type) => type == type_hash)) {
-            dispatch(setReglogType(type_hash, open) as any);
-            dispatch(setReglogOpen());
-        } else {
-            dispatch(setReglogClose() as any);
+        if (!isPendingUser) {
+            if (isLoadedUser) {
+                if (
+                    Object.values(ReglogStateTypesLogin).find(
+                        (type) => type == type_hash
+                    )
+                ) {
+                    dispatch(setReglogType(type_hash, open) as any);
+                    dispatch(setReglogOpen());
+                } else {
+                    dispatch(setReglogClose() as any);
+                }
+            } else {
+                if (
+                    Object.values(ReglogStateTypesNotLogin).find(
+                        (type) => type == type_hash
+                    )
+                ) {
+                    dispatch(setReglogType(type_hash, open) as any);
+                    dispatch(setReglogOpen());
+                } else {
+                    dispatch(setReglogClose() as any);
+                }
+            }
         }
-    }, [hash, pathname]);
+    }, [hash, pathname, isLoadedUser, isPendingUser]);
 
     return <>{open ? <Reglog /> : null}</>;
 };

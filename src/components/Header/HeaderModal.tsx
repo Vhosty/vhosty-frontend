@@ -91,12 +91,12 @@ const HeaderModal: React.FC<HeaderModalProps> = ({color}) => {
                         >
                             Объектам размещения
                         </Link>
-                        <Link
-                            to="/"
+                        <a
+                            href="https://join.bookover.ru"
                             className="header-block-menu-modal-block__link"
                         >
                             Разместить свой объект
-                        </Link>
+                        </a>
                         <Link
                             to="/"
                             className="header-block-menu-modal-block__link"

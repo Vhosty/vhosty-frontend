@@ -81,12 +81,9 @@
 
 			&-navigate
 				display: flex
-				justify-content: space-between
-
-				width: 65%
 
 				&__btn
-					margin-right: 30px
+					margin-right: 20px
 					font-size: 15px
 
 					&:last-child
@@ -117,7 +114,7 @@
 	&-navigation-btn
 		position: fixed
 
-		top: 40px
+		top: 0
 		left: 50%
 
 		transform: translateX(-50%)
@@ -133,16 +130,16 @@
 		+transition
 
 		&.visible
-			top: 100px
+			top: 90px
 
 		&-navigate
-			display: flex
-			justify-content: space-between
-
-			width: 65%
-
 			&__btn
+				margin-right: 20px
+
 				+boxShadow
+
+				&:last-child
+					margin-right: 0
 
 	&-slider-images
 		position: relative

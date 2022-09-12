@@ -37,7 +37,10 @@ const ObjectPageSliderImages: React.FC<any> = ({images}) => {
     };
 
     return (
-        <div className="object-page-slider-images">
+        <div
+            className="object-page-slider-images"
+            id="object-page-slider-images"
+        >
             <button
                 className="object-page-slider-images__btn prev"
                 onClick={onClickPrev}

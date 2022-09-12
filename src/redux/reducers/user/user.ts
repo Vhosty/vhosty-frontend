@@ -10,7 +10,9 @@ const initialState: UserState = {
 		phone_is_verified: false,
 		email_is_verified: false
 	},
+
 	isLoadedUser: false,
+	isPendingUser: true,
 
 	bookings: [],
 	isLoadedBookings: false
@@ -22,6 +24,13 @@ const user = (state = initialState, action: UserActions) => {
 			...state,
 			user: action.payload,
 			isLoadedUser: true,
+		}
+	}
+	
+	if (action.type === UserActionTypes.SET_USER_IS_PENDING) {
+		return {
+			...state,
+			isPendingUser: action.payload,
 		}
 	}
 

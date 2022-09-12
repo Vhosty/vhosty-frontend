@@ -25,7 +25,7 @@ export const sendLogin = (data: Login, isRedirect?: boolean) => {
 				if (isRedirect) {
 					window.location.href = "/cabinet/setting";
 				} else {
-					window.location.hash = ""
+					window.location.href = document.location.pathname
 				}
 			})
 			.catch(({ response }) => {

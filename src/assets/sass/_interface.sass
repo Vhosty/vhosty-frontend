@@ -122,7 +122,7 @@ button
 		border-radius: 35px 0px
 
 	&.small
-		padding: 12px 45px
+		padding: 10px 45px
 
 	&.disabled
 		pointer-events: none
@@ -161,7 +161,7 @@ button
 		background-color: #F2FAFA
 
 	&.small
-		padding: 12px 50px
+		padding: 10px 50px
 
 .btn-white
 	display: inline-flex
@@ -336,7 +336,7 @@ input[type="file"]
 		font-family: 'Ubuntu', sans-serif
 
 		width: 100%
-		min-height: 350px
+		height: 300px
 
 		resize: none
 		outline: none
@@ -353,6 +353,37 @@ input[type="file"]
 		border: 2px solid $lightGray
 
 		+transition
+
+		&::-webkit-scrollbar-track
+			margin: 15px 0
+
+		&::-webkit-scrollbar
+			width: 4px
+			height: 4px
+
+			background: linear-gradient(180deg, rgba(0, 0, 0, 0) 5%, #CFE2E1 5%, #CFE2E1 95%, rgba(0, 0, 0, 0) 95%)
+
+		&::-webkit-scrollbar-thumb
+			background-color: $darkMainColor
+			border-radius: 3px
+
+		&::-webkit-scrollbar-thumb:hover
+			background-color: $darkMainColor
+
+		&::-ms-scrollbar
+			width: 4px
+			height: 4px
+
+			background: linear-gradient(180deg, rgba(0, 0, 0, 0) 5%, #CFE2E1 5%, #CFE2E1 95%, rgba(0, 0, 0, 0) 95%)
+
+		&::-ms-scrollbar-thumb
+			margin: 25px 0
+
+			background-color: $darkMainColor
+			border-radius: 3px
+
+		&::-ms-scrollbar-thumb:hover
+			background-color: $darkMainColor
 
 		&::placeholder
 			user-select: none
@@ -957,7 +988,7 @@ input[type="file"]
 .ball-pulse
 	display: flex
 	justify-content: center
-	margin: 100px 0 150px 0
+	padding: 100px 0 150px 0
 	+openPopup
 
 	.loader

@@ -18,7 +18,10 @@ const ObjectPageAbout: React.FC<ObjectPageAboutProps> = ({description}) => {
     }, [ObjectPageSectionAboutTextRef]);
 
     return (
-        <div className="object-page-section object-page-section-about">
+        <div
+            className="object-page-section object-page-section-about"
+            id="object-page-about"
+        >
             <div className="object-page-section-padding">
                 <div className="object-page-section-about-text">
                     <ObjectPageBlockTextWrapper

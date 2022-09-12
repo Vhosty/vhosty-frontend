@@ -47,7 +47,7 @@ const HeaderTransparentUser: React.FC = () => {
                 </div>
             ) : (
                 <Link
-                    to={`${window.location.search}#register`}
+                    to={`${window.location.search}#login`}
                     className="header-transparent-block-user"
                 >
                     {/* <HeaderTransparentUserNotifications /> */}

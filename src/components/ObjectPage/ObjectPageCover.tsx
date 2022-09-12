@@ -47,43 +47,43 @@ const ObjectPageCover: React.FC<any> = ({background_images, name, stars}) => {
                         <div className="object-page-cover-btn">
                             <div className="object-page-cover-btn-navigate">
                                 <Link
+                                    to="object-page-slider-images"
+                                    spy={true}
+                                    smooth={true}
+                                    offset={-150}
+                                    duration={500}
+                                    className="btn-light small object-page-cover-btn-navigate__btn"
+                                >
+                                    Фотографии
+                                </Link>
+
+                                <Link
+                                    to="object-page-about"
+                                    spy={true}
+                                    smooth={true}
+                                    offset={-150}
+                                    duration={500}
+                                    className="btn-light small object-page-cover-btn-navigate__btn"
+                                >
+                                    Об отеле
+								</Link>
+								
+                                <Link
                                     to="object-page-services"
                                     spy={true}
                                     smooth={true}
-                                    offset={-50}
+                                    offset={-150}
                                     duration={500}
                                     className="btn-light small object-page-cover-btn-navigate__btn"
                                 >
                                     Удобства
-                                </Link>
-
-                                <Link
-                                    to="object-page-maps"
-                                    spy={true}
-                                    smooth={true}
-                                    offset={-50}
-                                    duration={500}
-                                    className="btn-light small object-page-cover-btn-navigate__btn"
-                                >
-                                    Местность
-                                </Link>
-
-                                <Link
-                                    to="object-page-feedbacks"
-                                    spy={true}
-                                    smooth={true}
-                                    offset={-50}
-                                    duration={500}
-                                    className="btn-light small object-page-cover-btn-navigate__btn"
-                                >
-                                    Отзывы
-                                </Link>
-
+								</Link>
+								
                                 <Link
                                     to="object-page-terms"
                                     spy={true}
                                     smooth={true}
-                                    offset={-50}
+                                    offset={-150}
                                     duration={500}
                                     className="btn-light small object-page-cover-btn-navigate__btn"
                                 >
@@ -95,7 +95,7 @@ const ObjectPageCover: React.FC<any> = ({background_images, name, stars}) => {
                                     to="object-page-room"
                                     spy={true}
                                     smooth={true}
-                                    offset={-50}
+                                    offset={-150}
                                     duration={500}
                                     className="btn small object-page-cover-btn-navigate__btn"
                                 >

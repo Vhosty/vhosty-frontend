@@ -40,7 +40,7 @@ const HeaderUser: React.FC = () => {
                 </div>
             ) : (
                 <Link
-                    to={`${window.location.search}#register`}
+                    to={`${window.location.search}#login`}
                     className="header-block-user"
                 >
                     <HeaderUserNotifications />

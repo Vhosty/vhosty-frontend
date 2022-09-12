@@ -8,7 +8,7 @@ import Service3 from "../../assets/images/service3.png";
 
 const HomeServices: React.FC = () => {
     const setting = {
-        items: 2,
+        items: 1,
         dots: false,
         margin: 100,
         id: "home-services-slider",
