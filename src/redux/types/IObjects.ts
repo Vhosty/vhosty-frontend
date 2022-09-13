@@ -10,10 +10,6 @@ export interface ObjectsState {
 
 	firstIsLoaded: boolean,
 	isLoaded: boolean,
-
-	isOpenImageBox: boolean,
-	currentIndexBlockImageBox: number,
-	currentIndexImageBox: number
 }
 
 export enum ObjectsActionTypes {
@@ -26,10 +22,6 @@ export enum ObjectsActionTypes {
 
 	SET_OBJECTS_IS_LOADED = "SET_OBJECTS_IS_LOADED",
 	SET_OBJECTS_FIRST_IS_LOADED = "SET_OBJECTS_FIRST_IS_LOADED",
-
-	SET_OBJECTS_IS_OPEN_IMAGE_BOX = "SET_OBJECTS_IS_OPEN_IMAGE_BOX",
-	SET_OBJECTS_CURRENT_INDEX_BLOCK_IMAGE_BOX = "SET_CURRENT_INDEX_BLOCK_IMAGE_BOX",
-	SET_OBJECTS_CURRENT_INDEX_IMAGE_BOX = "SET_OBJECTS_CURRENT_INDEX_IMAGE_BOX"
 }
 
 interface setObjectsItems {
@@ -62,19 +54,4 @@ interface setObjectsIsLoaded {
 	payload: boolean
 }
 
-interface setObjectsIsOpenImageBox {
-	type: ObjectsActionTypes.SET_OBJECTS_IS_OPEN_IMAGE_BOX,
-	payload: boolean
-}
-
-interface setObjectsCurrentIndexBlockImageBox {
-	type: ObjectsActionTypes.SET_OBJECTS_CURRENT_INDEX_BLOCK_IMAGE_BOX,
-	payload: number
-}
-
-interface setObjectsCurrentIndexImageBox {
-	type: ObjectsActionTypes.SET_OBJECTS_CURRENT_INDEX_IMAGE_BOX,
-	payload: number
-}
-
-export type ObjectsActions = setObjectsItems | setObjectsTotalCountItems | setObjectsPage | setObjectsIsFavorites | setObjectsFirstIsLoaded | setObjectsIsLoaded | setObjectsIsOpenImageBox | setObjectsCurrentIndexBlockImageBox | setObjectsCurrentIndexImageBox
+export type ObjectsActions = setObjectsItems | setObjectsTotalCountItems | setObjectsPage | setObjectsIsFavorites | setObjectsFirstIsLoaded | setObjectsIsLoaded 

@@ -28,7 +28,10 @@ const HeaderUser: React.FC = () => {
                         Личный кабинет
                     </button>
 
-                    <button className="header-block-user__btn-mobile"></button>
+                    <button
+                        className="header-block-user__btn-mobile"
+                        onClick={openHeaderModal}
+                    ></button>
 
                     <Popup
                         wrapperActive={activeHeaderModal}

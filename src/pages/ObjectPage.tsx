@@ -16,10 +16,7 @@ import {
     ObjectPageServices,
     ObjectPageTerms,
     ObjectPageFaq,
-    ImageBox,
 } from "../components/";
-
-import {setObjectsIsOpenImageBox} from "../redux/actions/objects/objects";
 
 import {
     fetchObjectPageItemById,
@@ -47,10 +44,6 @@ const ObjectPage: React.FC = () => {
         isLoadedTerms,
     } = useTypedSelector(({object_page}) => object_page);
 
-    const {isOpenImageBox, currentIndexImageBox} = useTypedSelector(
-        ({objects}) => objects
-    );
-
     React.useEffect(() => {
         const date: any = {
             checkin_date: query.get("from"),
@@ -63,10 +56,6 @@ const ObjectPage: React.FC = () => {
         dispatch(fetchObjectPageItemByIdTerms(id ? id : "") as any);
     }, [id]);
 
-    const openObjectsImageBox = (status: boolean) => {
-        dispatch(setObjectsIsOpenImageBox(status) as any);
-    };
-
     return (
         <>
             {isLoaded && isLoadedRooms && isLoadedServices && isLoadedTerms ? (
@@ -78,13 +67,6 @@ const ObjectPage: React.FC = () => {
                     <ObjectPageCover {...itemById} />
 
                     <ObjectPageNavigation />
-
-                    <ImageBox
-                        state={isOpenImageBox}
-                        setState={openObjectsImageBox}
-                        images={itemById.images}
-                        initIndex={currentIndexImageBox}
-                    />
 
                     <section className="object-page">
                         <div className="container">

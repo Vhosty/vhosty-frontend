@@ -7,17 +7,15 @@ import {
     ObjectsCatalogBlock,
     ObjectsCatalogPagination,
     ObjectsCatalogNotFound,
+    ImageBox,
 } from "../../";
-
-import {
-    setObjectsIsOpenImageBox,
-    setObjectsCurrentIndexBlockImageBox,
-} from "../../../redux/actions/objects/objects";
 
 import {useTypedSelector} from "../../../hooks/useTypedSelector";
 
 const ObjectsCatalog: React.FC = () => {
-    const dispatch = useDispatch();
+    const [isOpenImageBox, setIsOpenImageBox] = React.useState<boolean>(false);
+    const [currentIndexBlockImageBox, setCurrentIndexBlockImageBox] =
+        React.useState<number>(0);
 
     const {firstIsLoaded, isLoaded, items} = useTypedSelector(
         ({objects}) => objects
@@ -26,14 +24,15 @@ const ObjectsCatalog: React.FC = () => {
         ({objects_filters_global}) => objects_filters_global
     );
 
-    const openObjectsImageBox = (index: number) => {
-        dispatch(setObjectsCurrentIndexBlockImageBox(index) as any);
-        dispatch(setObjectsIsOpenImageBox(true) as any);
-    };
-
     return (
         <div className="objects-catalog">
             {/* <ObjectsCatalogFilters /> */}
+
+            <ImageBox
+                state={isOpenImageBox}
+                setState={setIsOpenImageBox}
+                images={items[currentIndexBlockImageBox]?.images}
+            />
 
             <div className="objects-catalog-block-wrapper">
                 {firstIsLoaded ? (
@@ -49,10 +48,11 @@ const ObjectsCatalog: React.FC = () => {
                                 <ObjectsCatalogBlock
                                     {...object}
                                     blockIndex={`${object.id}-${index}`}
-                                    openObjectsImageBox={() =>
-                                        openObjectsImageBox(index)
-                                    }
                                     date_query={`from=${date.from}&to=${date.to}`}
+                                    openObjectsImageBox={() => {
+                                        setCurrentIndexBlockImageBox(index);
+                                        setIsOpenImageBox(true);
+                                    }}
                                     key={`objects-catalog-block-${object.id}-${index}`}
                                 />
                             ))}

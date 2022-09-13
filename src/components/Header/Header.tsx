@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 import {HeaderModal, HeaderPassLink, HeaderUser} from "../";
 
-import LogoColor from "../../assets/images/logo-black.svg";
+import LogoColor from "../../assets/images/logo-color.svg";
 
 const Header: React.FC = () => {
     const headerContentRef = React.useRef<HTMLDivElement>(null);

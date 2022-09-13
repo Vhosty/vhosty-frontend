@@ -28,7 +28,7 @@ const CabinetHistorySectionBlock: React.FC<any> = ({
                     className={`cabinet-content-history-section-block-cover__status ${
                         status === "created"
                             ? "processing"
-                            : status === "reject"
+                            : status === "rejected"
                             ? "cancel"
                             : "success"
                     }`}

@@ -10,9 +10,17 @@ const HomeServices: React.FC = () => {
     const setting = {
         items: 1,
         dots: false,
-        margin: 100,
         id: "home-services-slider",
         autoWidth: true,
+        responsive: {
+            0: {
+                margin: 30,
+            },
+
+            500: {
+                margin: 100,
+            },
+        },
     };
 
     return (

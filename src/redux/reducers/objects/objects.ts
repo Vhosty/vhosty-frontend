@@ -10,10 +10,6 @@ const initialState: ObjectsState = {
 
 	firstIsLoaded: false,
 	isLoaded: false,
-
-	isOpenImageBox: false,
-	currentIndexBlockImageBox: 0,
-	currentIndexImageBox: 0,
 }
 
 const objects = (state = initialState, action: ObjectsActions) => {
@@ -56,27 +52,6 @@ const objects = (state = initialState, action: ObjectsActions) => {
 		return {
 			...state,
 			isLoaded: action.payload
-		}
-	}
-
-	if (action.type === ObjectsActionTypes.SET_OBJECTS_IS_OPEN_IMAGE_BOX) {
-		return {
-			...state,
-			isOpenImageBox: action.payload
-		}
-	}
-
-	if (action.type === ObjectsActionTypes.SET_OBJECTS_CURRENT_INDEX_BLOCK_IMAGE_BOX) {
-		return {
-			...state,
-			currentIndexBlockImageBox: action.payload
-		}
-	}
-
-	if (action.type === ObjectsActionTypes.SET_OBJECTS_CURRENT_INDEX_IMAGE_BOX) {
-		return {
-			...state,
-			currentIndexImageBox: action.payload
 		}
 	}
 

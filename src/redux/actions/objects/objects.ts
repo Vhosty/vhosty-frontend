@@ -96,18 +96,3 @@ export const setObjectsIsFavorites = (isFavorites: boolean) => ({
 	type: ObjectsActionTypes.SET_OBJECTS_IS_FAVORITES,
 	payload: isFavorites
 })
-
-export const setObjectsIsOpenImageBox = (status: boolean) => ({
-	type: ObjectsActionTypes.SET_OBJECTS_IS_OPEN_IMAGE_BOX,
-	payload: status
-})
-
-export const setObjectsCurrentIndexBlockImageBox = (number: number) => ({
-	type: ObjectsActionTypes.SET_OBJECTS_CURRENT_INDEX_BLOCK_IMAGE_BOX,
-	payload: number
-})
-
-export const setObjectsCurrentIndexImageBox = (number: number) => ({
-	type: ObjectsActionTypes.SET_OBJECTS_CURRENT_INDEX_IMAGE_BOX,
-	payload: number
-})

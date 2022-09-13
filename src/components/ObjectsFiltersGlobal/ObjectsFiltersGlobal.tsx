@@ -160,7 +160,7 @@ const ObjectsFiltersGlobal: React.FC = () => {
     const sendSearchObjects = () => {
         if (date.from !== "" && date.to !== "" && city !== "") {
             if (window.location.pathname === "/objects") {
-                scroll.scrollTo(400, {duration: 400});
+                scroll.scrollTo(100, {duration: 400});
             }
 
             navigate({

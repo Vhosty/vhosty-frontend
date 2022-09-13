@@ -7,15 +7,15 @@ import {
     ImageBox,
 } from "../../";
 
-import {
-    setObjectsIsOpenImageBox,
-    setObjectsCurrentIndexBlockImageBox,
-} from "../../../redux/actions/objects/objects";
 import {fetchUserBookings} from "../../../redux/actions/user/user";
 
 import {useTypedSelector} from "../../../hooks/useTypedSelector";
 
 const CabinetHistory: React.FC = () => {
+    const [isOpenImageBox, setIsOpenImageBox] = React.useState<boolean>(false);
+    const [currentIndexBlockImageBox, setCurrentIndexBlockImageBox] =
+        React.useState<number>(0);
+
     const dispatch = useDispatch();
 
     const {bookings, isLoadedBookings} = useTypedSelector(({user}) => user);
@@ -24,24 +24,11 @@ const CabinetHistory: React.FC = () => {
         dispatch(fetchUserBookings() as any);
     }, []);
 
-    const {isOpenImageBox, currentIndexBlockImageBox} = useTypedSelector(
-        ({objects}) => objects
-    );
-
-    const openCabinetHistoryImageBox = (status: boolean) => {
-        dispatch(setObjectsIsOpenImageBox(status) as any);
-    };
-
-    const openCabinetHistoryImageBoxIndex = (index: number) => {
-        dispatch(setObjectsCurrentIndexBlockImageBox(index) as any);
-        dispatch(setObjectsIsOpenImageBox(true) as any);
-    };
-
     return (
         <>
             <ImageBox
                 state={isOpenImageBox}
-                setState={openCabinetHistoryImageBox}
+                setState={setIsOpenImageBox}
                 images={bookings[currentIndexBlockImageBox]?.images}
             />
 
@@ -56,10 +43,11 @@ const CabinetHistory: React.FC = () => {
                         {bookings.map((item: any, index: number) => (
                             <CabinetHistorySectionBlock
                                 {...item}
-                                openCabinetHistoryImageBoxIndex={() =>
-                                    openCabinetHistoryImageBoxIndex(index)
-                                }
                                 key={`cabinet-content-history-section-block-${index}`}
+                                openCabinetHistoryImageBoxIndex={() => {
+                                    setCurrentIndexBlockImageBox(index);
+                                    setIsOpenImageBox(true);
+                                }}
                             />
                         ))}
                     </div>

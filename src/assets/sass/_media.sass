@@ -74,13 +74,12 @@
 			flex-direction: column
 			align-items: center
 
-			top: -30px
-
-			&.visible
-				top: 120px
+			top: -60px
 
 			&-navigate
 				width: 100%
+
+				display: flex
 				justify-content: center
 
 				&__btn
@@ -130,11 +129,6 @@
 							text-align: left
 
 @media screen and ( max-width: 1000px )
-	// interface
-	.btn-light
-		padding: 15px 35px
-		font-size: 18px
-
 	// header-transparent
 	.header-transparent
 		&-bg
@@ -243,29 +237,27 @@
 				width: 70%
 
 @media screen and (max-width: 900px)
-	// filters-object-form
-	.filters-object-form
-		padding: 25px 20px
-
-		&-block
-			margin-top: 25px
-
-			&:first-child
-				margin-top: 0
-
-			&-row
+	// objects
+	.objects
+		&-catalog
+			&-not-found
+				margin-top: 50px
 				flex-direction: column
-				align-items: flex-start
 
-			&.left, &.middle, &.right
-				width: 100%
+				&-image
+					order: 1
 
-			&-btn-media
-				&__btn
-					width: 100%
+				&-text
+					margin-top: 50px
 
-		&-guest-room-wrapper
-			width: 100%
+					text-align: center
+					order: 2
+
+					&__title
+						font-size: 18px
+
+					&__description
+						width: 100%
 
 	// object-page
 	.object-page
@@ -274,10 +266,14 @@
 				justify-content: space-between
 
 				&__btn
+					width: 20%
 					margin: 0
 
 					&:last-child
 						margin: 0
+
+			&-accent &-navigate__btn
+				width: 100%
 
 		&-cover
 			&-btn
@@ -315,8 +311,8 @@
 			&-item
 				padding: 30px 20px
 
-				width: 400px
-
+				width: 350px
+				min-width: 350px
 				height: 350px
 
 				&-text
@@ -344,7 +340,8 @@
 
 			&-content
 				flex-direction: column
-				align-items: flex-start
+				align-items: center
+				text-align: center
 
 				&__image
 					width: 500px
@@ -545,6 +542,43 @@
 						text-align: left
 
 @media screen and ( max-width: 700px  )
+	// filters-object-form
+	.filters-object-form
+		padding: 25px 20px
+
+		&-block
+			margin-top: 25px
+
+			&:first-child
+				margin-top: 0
+
+			&-row
+				flex-direction: column
+				align-items: flex-start
+
+			&.left, &.middle, &.right
+				width: 100%
+
+			&-btn-media
+				&__btn
+					width: 100%
+
+		&-guest-room-wrapper
+			width: 100%
+
+	// cabinet
+	.cabinet
+		&-content
+			&-setting
+				&-form
+					&-block
+						&-input
+							&-title
+								&-message
+									left: auto
+									right: -150px
+									bottom: 30px
+
 	// payment
 	.payment
 		&-info
@@ -594,9 +628,29 @@
 
 	// header
 	.header
+		padding: 10px 0
+
 		&-block
+			&-menu-btn
+				width: 30px
+				height: 30px
+
+			&-logo
+				&__image
+					width: 110px
+
 			&__pass
 				display: none
+
+			&-user
+				&__btn
+					&-mobile
+						width: 30px
+						height: 30px
+
+						&::before
+							width: 30px
+							height: 30px
 
 	// home
 	.home
@@ -621,6 +675,10 @@
 			&-content
 				&__image
 					width: 100%
+
+	// objects
+	.objects
+		padding: 30px 0
 
 	// cabinet
 	.cabinet
@@ -761,6 +819,13 @@
 	.btn-light
 		font-size: 15px
 
+	.checkbox
+		&__label
+			align-items: flex-start
+
+			&__text
+				font-size: 12px
+
 	.location
 		&__title
 			font-size: 15px
@@ -800,6 +865,12 @@
 				&__title
 					font-size: 28px
 
+		// service
+		&-services
+			&-item
+				&__image
+					right: -15px
+
 		// security
 		&-security
 			&-bottom-block
@@ -822,8 +893,8 @@
 				padding: 0 25px 25px 25px
 
 		&-close
-			top: 10px
-			right: 10px
+			top: 15px
+			right: 15px
 
 	// object-page
 	.object-page
@@ -933,6 +1004,18 @@
 		&-services
 			&-item
 				width: 300px
+
+	// cabinet
+	.cabinet
+		&-content
+			&-setting
+				&-form
+					&-block
+						&-input
+							&-title
+								&-message
+									width: 300px
+									right: -70px
 
 @media screen and ( max-width: 370px  )
 	// interface

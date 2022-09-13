@@ -19,6 +19,7 @@ const ObjectPageRoomBlock: React.FC<any> = ({
     daily_price,
     food_is_included,
     date_query,
+    onClickOpenImageBox,
 }) => {
     const [isVisibleAddBlock, setIsVisibleAddBlock] =
         React.useState<boolean>(false);
@@ -33,7 +34,10 @@ const ObjectPageRoomBlock: React.FC<any> = ({
                             backgroundImage: `url('${images[0]}')`,
                         }}
                     >
-                        <p className="object-page-section-room-block-subblock-info-cover__count">
+                        <p
+                            className="object-page-section-room-block-subblock-info-cover__count"
+                            onClick={onClickOpenImageBox}
+                        >
                             {images.length} фото
                         </p>
                     </div>
