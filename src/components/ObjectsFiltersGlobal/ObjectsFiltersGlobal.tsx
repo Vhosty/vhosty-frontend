@@ -181,7 +181,7 @@ const ObjectsFiltersGlobal: React.FC = () => {
         <div className="filters-object-form">
             <div className="filters-object-form-block-row">
                 <div className="filters-object-form-block left">
-                    <TitleIcon title="Страна, город путешествия" marginBottom>
+                    <TitleIcon title="Город путешествия" marginBottom>
                         <svg
                             width="14"
                             height="18"

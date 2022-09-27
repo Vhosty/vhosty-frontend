@@ -18,3 +18,10 @@ export { default as Cabinet } from "./Cabinet";
 
 // Confirmed
 export { default as Confirmed } from "./Confirmed";
+
+// NotFound
+export { default as NotFound } from "./NotFound";
+
+// Developing
+export { default as Developing } from "./Developing";
+

@@ -141,6 +141,15 @@
 		&__link
 			display: none
 
+	// filters-object-form
+	.filters-object-form
+		&-block
+			&.left
+				width: 30%
+
+			&.middle
+				width: 68%
+
 	// home
 	.home
 		&-corporate
@@ -290,6 +299,13 @@
 			&-services
 				&-list
 					width: 50%
+
+	// notfound
+	.notfound
+		&-content
+			&-text
+				&__description
+					width: 100%
 
 @media screen and ( max-width: 800px )
 	// interface
@@ -476,6 +492,30 @@
 				&__btn-mobile
 					display: block
 
+	// filters-object-form
+	.filters-object-form
+		padding: 25px 20px
+
+		&-block
+			margin-top: 25px
+
+			&:first-child
+				margin-top: 0
+
+			&-row
+				flex-direction: column
+				align-items: flex-start
+
+			&.left, &.middle, &.right
+				width: 100%
+
+			&-btn-media
+				&__btn
+					width: 100%
+
+		&-guest-room-wrapper
+			width: 100%
+
 	// home
 	.home
 		&-main
@@ -542,30 +582,6 @@
 						text-align: left
 
 @media screen and ( max-width: 700px  )
-	// filters-object-form
-	.filters-object-form
-		padding: 25px 20px
-
-		&-block
-			margin-top: 25px
-
-			&:first-child
-				margin-top: 0
-
-			&-row
-				flex-direction: column
-				align-items: flex-start
-
-			&.left, &.middle, &.right
-				width: 100%
-
-			&-btn-media
-				&__btn
-					width: 100%
-
-		&-guest-room-wrapper
-			width: 100%
-
 	// cabinet
 	.cabinet
 		&-content
@@ -632,7 +648,7 @@
 
 		&-block
 			&-menu-btn
-				width: 30px
+				width: 35px
 				height: 30px
 
 			&-logo
@@ -988,6 +1004,16 @@
 
 							&-info-room
 								display: none
+
+	// notfound
+	.notfound
+		&-content
+			&__image
+				width: 200px
+
+			&-text
+				&__title
+					font-size: 36px
 
 @media screen and ( max-width: 400px )
 	// interface

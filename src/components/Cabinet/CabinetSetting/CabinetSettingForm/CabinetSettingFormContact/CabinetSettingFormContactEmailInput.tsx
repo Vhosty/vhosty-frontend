@@ -61,7 +61,7 @@ const CabinetSettingFormContactEmailInput: React.FC<
                         Электронная почта
                     </p>
 
-                    {!user.email_is_verified ? null : (
+                    {user.email_is_verified ? null : (
                         <>
                             <div
                                 className="cabinet-content-setting-form-block-input-title-icon"

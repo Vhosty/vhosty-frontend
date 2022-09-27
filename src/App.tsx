@@ -15,6 +15,7 @@ import {
     Payment,
     Cabinet,
     Confirmed,
+    NotFound,
 } from "./pages";
 
 import {fetchUserAboutMe, setUserIsPending} from "./redux/actions/user/user";
@@ -56,12 +57,11 @@ const App = () => {
     return (
         <>
             <React.Suspense fallback={<></>}>
-                {pathname === "/" ||
-                pathname.indexOf("/cabinet") !== -1 ||
-                pathname === "/" ||
-                pathname.indexOf("/confirmed") !== -1 ? null : (
+                {pathname.indexOf("/objects") !== -1 ||
+                pathname.indexOf("/payment") !== -1 ||
+                pathname.indexOf("/cabinet") !== -1 ? (
                     <Header />
-                )}
+                ) : null}
 
                 <Reglog />
 
@@ -89,6 +89,8 @@ const App = () => {
                             isRedirectUser ? <Cabinet /> : <Navigate to="/" />
                         }
                     />
+
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
 
                 {pathname.indexOf("/confirmed") !== -1 ? null : <Footer />}
