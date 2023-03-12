@@ -11,7 +11,7 @@ const Developing: React.FC = () => {
     return (
         <>
             <Helmet>
-                <title>Bookover | 404</title>
+                <title>Bookover | СТРАНИЦА В РАЗРАБОТКЕ</title>
             </Helmet>
 
             <section className="developing">

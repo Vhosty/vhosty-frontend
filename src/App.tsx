@@ -58,8 +58,7 @@ const App = () => {
         <>
             <React.Suspense fallback={<></>}>
                 {pathname.indexOf("/objects") !== -1 ||
-                pathname.indexOf("/payment") !== -1 ||
-                pathname.indexOf("/cabinet") !== -1 ? (
+                pathname.indexOf("/payment") !== -1 ? (
                     <Header />
                 ) : null}
 
